@@ -1,0 +1,33 @@
+# Metadatos editoriales del envío OJS (generado con asistente interactivo RMA)
+formato: "tradicional"
+codigo_publicacion: "v19n03a09"
+seccion: "Bioantropología"
+volumen: "19"
+numero: "3"
+anio: "2026"
+pagina_inicio: "01"
+paginas: ""
+doi: "https://doi.org/10.31048/"
+autor_corto: "B. Mazza & G. Figueiro"
+titulo_corto: "Primeras aproximaciones al estudio de pato ..."
+recibido: "08-09-2026"
+correcciones: "26-10-2026"
+aceptado: "13-11-2026"
+editor_seccion: "M. Fabra"
+editores_invitados: ""
+
+autores:
+  - nombre: "Bárbara Mazza"
+    orcid: "0000-0002-3474-4660"
+    afiliacion: "1"
+  - nombre: "Gonzalo Figueiro"
+    orcid: "0000-0003-0433-932X"
+    afiliacion: "2"
+
+afiliaciones:
+  1:
+    texto: "Consejo Nacional de Investigaciones Científicas y Técnicas. E-mail: barbarapamelamazza@gmail.com"
+    ror: "03cqe8w59"
+  2:
+    texto: "Universidad de la República de Uruguay. E-mail: gonzalo.figueiro@fhce.edu.uy"
+    ror: "030bbe882"

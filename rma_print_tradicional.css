@@ -1,0 +1,597 @@
+@page {
+    size: A4 portrait;
+    margin: 22mm 20mm 21mm 20mm;
+    @bottom-center {
+        content: counter(page) "\A" string(running-issn);
+        white-space: pre;
+        text-align: center;
+        font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+        font-size: 7.4pt;
+        line-height: 1.32;
+        color: #2b2b2b;
+        vertical-align: top;
+        padding-top: 2mm;
+    }
+    @footnote {
+        border-top: 0.5pt solid #444444;
+        padding-top: 1.5mm;
+        margin-top: 2.5mm;
+    }
+}
+
+@page :left {
+    @top-center {
+        content: element(header-left);
+        width: 100%;
+        vertical-align: bottom;
+    }
+}
+
+@page :right {
+    @top-center {
+        content: element(header-right);
+        width: 100%;
+        vertical-align: bottom;
+    }
+}
+
+@page :first {
+    margin-top: 14mm;
+    margin-bottom: 26mm;
+    @top-center { content: none; }
+    @bottom-center {
+        content: element(pie-p1);
+        width: 100%;
+        vertical-align: top;
+    }
+}
+
+.running-header-left {
+    position: running(header-left);
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+    font-size: 7.4pt;
+    line-height: 1.28;
+    color: #2b2b2b;
+    border-bottom: 0.5pt solid #555555;
+    padding-bottom: 1.4mm;
+    margin-bottom: 2.5mm;
+}
+.running-header-right {
+    position: running(header-right);
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+    font-size: 7.4pt;
+    line-height: 1.28;
+    color: #2b2b2b;
+    border-bottom: 0.5pt solid #555555;
+    padding-bottom: 1.4mm;
+    margin-bottom: 2.5mm;
+}
+.running-header-left .rh-linea,
+.running-header-right .rh-linea {
+    display: block;
+}
+.running-header-left a,
+.running-header-right a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
+}
+.meta-running-issn {
+    string-set: running-issn content();
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    font-size: 1pt;
+}
+
+body {
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.35;
+    color: #141414;
+    margin: 0;
+}
+
+a {
+    color: #1a4b84;
+    text-decoration: none;
+}
+
+/* --- PIE INSTITUCIONAL DE PÁGINA 1 (EXACTO AL PDF TRADICIONAL) --- */
+.pie-primera-pagina {
+    position: running(pie-p1);
+    border-top: 0.6pt solid #333333;
+    padding-top: 1.6mm;
+    font-size: 6.6pt;
+    line-height: 1.25;
+    color: #1f1f1f;
+    width: 100%;
+    box-sizing: border-box;
+}
+.pie-p1-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2.5mm;
+    width: 100%;
+}
+.pie-p1-cc {
+    flex: 0 0 auto;
+    padding-top: 0.5mm;
+}
+.logo-cc-img {
+    height: 6.2mm;
+    width: auto;
+    display: block;
+}
+.pie-p1-centro {
+    flex: 1 1 auto;
+    text-align: center;
+}
+.pie-p1-centro p {
+    margin: 0;
+}
+.pie-p1-centro .cita-biblio-p1 {
+    font-weight: 400;
+    color: #141414;
+}
+.pie-p1-editores {
+    flex: 0 0 auto;
+    text-align: right;
+    max-width: 44mm;
+    font-size: 6.8pt;
+    line-height: 1.24;
+    color: #141414;
+}
+.pie-p1-editores p {
+    margin: 0;
+}
+.pie-p1-editores .editor-principal {
+    font-weight: 400;
+}
+
+/* --- PORTADA TRADICIONAL EN PÁGINA 1 --- */
+.portada-articulo {
+    margin-bottom: 0;
+}
+
+.cabezal-revista {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5mm;
+}
+
+.marca-rma-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 24mm;
+}
+.logo-rma-img {
+    height: 15mm;
+    width: auto;
+    display: block;
+    margin-bottom: 0.8mm;
+}
+.sigla-rma {
+    font-weight: 700;
+    font-size: 12pt;
+    line-height: 1.05;
+    letter-spacing: 0.5pt;
+    color: #141414;
+}
+.seccion-rma {
+    font-weight: 400;
+    font-size: 8.2pt;
+    color: #222222;
+    margin-top: 0.6mm;
+}
+
+/* En el diseño tradicional, arriba a la derecha solo va el DOI; nombre de revista e ISSN van al pie */
+.datos-cabezal-der {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.nombre-revista-cabezal,
+.edicion-cabezal,
+.issn-cabezal {
+    display: none;
+}
+.doi-rma {
+    font-size: 8.2pt;
+    font-weight: 400;
+    color: #141414;
+}
+.doi-rma a {
+    color: #141414;
+}
+
+.bloque-titulos {
+    margin-top: -8mm;
+    margin-left: 28mm;
+    margin-bottom: 3mm;
+    text-align: right;
+}
+.titulo-es {
+    font-size: 14.5pt;
+    line-height: 1.18;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 2mm 0;
+    text-align: right;
+}
+.acento-titulo {
+    display: none;
+}
+.titulo-en {
+    font-size: 11pt;
+    line-height: 1.22;
+    font-style: italic;
+    font-weight: 400;
+    color: #222222;
+    margin: 0;
+    text-align: right;
+}
+
+.bloque-autoria {
+    margin-bottom: 3mm;
+    text-align: right;
+}
+.autores {
+    font-size: 9.5pt;
+    font-weight: 400;
+    color: #141414;
+    margin-bottom: 2mm;
+    text-align: right;
+}
+.afiliaciones {
+    margin: 0;
+    text-align: right;
+}
+.afil {
+    font-size: 7.4pt;
+    line-height: 1.26;
+    margin: 0 0 0.8mm 0;
+    color: #222222;
+    text-align: right;
+}
+.afil:last-child {
+    margin-bottom: 0;
+}
+
+.bloque-resumenes {
+    border-top: 0.6pt solid #333333;
+    border-bottom: 0.6pt solid #333333;
+    padding: 2.2mm 0;
+    margin: 0 0 3.5mm 0;
+    font-size: 8.2pt;
+    line-height: 1.28;
+    text-align: justify;
+}
+.bloque-resumenes h3 {
+    font-size: 8.4pt;
+    font-weight: 700;
+    margin: 0 0 0.8mm 0;
+    color: #141414;
+    font-style: normal;
+}
+.bloque-resumenes p {
+    margin: 0 0 1.4mm 0;
+    font-style: italic;
+}
+.bloque-resumenes p.keywords {
+    font-style: normal;
+    font-size: 8pt;
+    margin-bottom: 2mm;
+}
+.bloque-resumenes p.keywords:last-child {
+    margin-bottom: 0;
+}
+hr.divisor-resumen,
+hr.divisor-portada {
+    display: none;
+}
+
+/* --- CUERPO A DOS COLUMNAS (82mm + 6mm medianil + 82mm = 170mm) --- */
+.cuerpo-articulo {
+    column-count: 2;
+    column-gap: 6mm;
+    column-fill: balance;
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+.cuerpo-articulo h2 {
+    font-size: 9.5pt;
+    line-height: 1.22;
+    font-weight: 700;
+    text-align: left;
+    color: #111111;
+    margin: 3.5mm 0 1.5mm 0;
+    break-after: avoid;
+    page-break-after: avoid;
+    hyphens: none;
+}
+.cuerpo-articulo > h2:first-child {
+    margin-top: 0;
+}
+
+.cuerpo-articulo p {
+    margin: 0 0 2.1mm 0;
+    orphans: 2;
+    widows: 2;
+}
+
+.cuerpo-articulo p.fecha-manuscrito {
+    text-align: right;
+    font-style: italic;
+    font-size: 8.2pt;
+    color: #333333;
+    margin-top: 2.5mm;
+    hyphens: none;
+}
+
+blockquote {
+    margin: 2.2mm 4mm;
+    padding-left: 2mm;
+    border-left: 1pt solid #888888;
+    font-size: 8.2pt;
+    line-height: 1.28;
+    color: #222222;
+    orphans: 2;
+    widows: 2;
+}
+
+span.footnote {
+    float: footnote;
+    font-size: 7.2pt;
+    line-height: 1.22;
+    text-align: left;
+    hyphens: none;
+}
+::footnote-call {
+    content: counter(footnote);
+    font-size: 68%;
+    vertical-align: super;
+    line-height: none;
+}
+::footnote-marker {
+    content: counter(footnote) ". ";
+    font-size: 7.2pt;
+}
+.fn-ref-link, .notas-al-pie-html {
+    display: none;
+}
+
+/* --- FIGURAS Y TABLAS EN 2 COLUMNAS --- */
+.rma-figura {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 5.5mm 0 6mm 0;
+    padding-bottom: 2.2mm;
+    border-bottom: 0.45pt solid #c4c4c4;
+    hyphens: none;
+}
+.rma-tabla {
+    margin: 5.5mm 0 6mm 0;
+    padding-bottom: 2.2mm;
+    border-bottom: 0.45pt solid #c4c4c4;
+    hyphens: none;
+}
+.rma-tabla.tabla-indivisible {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.rma-tabla.tabla-divisible {
+    break-inside: auto;
+    page-break-inside: auto;
+}
+.rma-tabla.tabla-fragmento-continua {
+    margin-bottom: 1.8mm;
+    padding-bottom: 1.2mm;
+    border-bottom: none;
+}
+.rma-tabla.tabla-fragmento-continuacion {
+    margin-top: 1.5mm;
+}
+.tabla-cont-sup {
+    font-size: 7.3pt;
+    font-style: italic;
+    color: #333333;
+    text-align: left;
+    margin-bottom: 1.2mm;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+.tabla-cont-inf {
+    font-size: 7.3pt;
+    font-style: italic;
+    color: #333333;
+    text-align: right;
+    margin-top: 1.2mm;
+    break-before: avoid;
+    page-break-before: avoid;
+}
+.ancho-completo {
+    column-span: all;
+    width: 100%;
+    max-width: 100%;
+    margin: 5.5mm 0 6mm 0;
+}
+.ancho-centrado,
+.ancho-columna {
+    width: 100%;
+    max-width: 100%;
+}
+
+.rma-figura img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 84mm;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+.rma-figura.ancho-completo img {
+    max-height: 100mm;
+}
+
+.par-figuras-columnas {
+    column-span: all;
+    display: flex;
+    gap: 6mm;
+    align-items: flex-start;
+    width: 100%;
+    margin: 5.5mm 0 6mm 0;
+    padding-bottom: 2.2mm;
+    border-bottom: 0.45pt solid #c4c4c4;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.par-figuras-columnas > .rma-figura {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.par-figuras-columnas > .rma-figura img {
+    max-height: 78mm;
+}
+
+figcaption, .tabla-caption {
+    font-size: 7.6pt;
+    line-height: 1.28;
+    text-align: left;
+    margin-top: 3.6mm;
+    color: #2b2b2b;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+figcaption {
+    break-before: avoid;
+    page-break-before: avoid;
+}
+.cap-es, .cap-en {
+    display: block;
+    margin-bottom: 0.5mm;
+}
+
+.rma-tabla table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 7.4pt;
+    line-height: 1.2;
+    text-align: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.rma-tabla thead {
+    display: table-header-group;
+}
+.rma-tabla tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+.rma-tabla th, .rma-tabla td {
+    border-top: 0.5pt solid #333333;
+    border-bottom: 0.5pt solid #333333;
+    padding: 0.9mm 1mm;
+    vertical-align: top;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.rma-tabla th {
+    font-weight: 700;
+    background-color: #f2f2f2;
+}
+
+/* Escala progresiva para tablas anchas (6+ columnas) sin desborde de margen */
+.rma-tabla.tabla-compacta table {
+    font-size: 6.5pt;
+    line-height: 1.16;
+}
+.rma-tabla.tabla-compacta th,
+.rma-tabla.tabla-compacta td {
+    padding: 0.75mm 0.8mm;
+}
+.rma-tabla.tabla-densa table {
+    font-size: 5.7pt;
+    line-height: 1.14;
+}
+.rma-tabla.tabla-densa th,
+.rma-tabla.tabla-densa td {
+    padding: 0.6mm 0.65mm;
+}
+.rma-tabla.tabla-micro table {
+    font-size: 5pt;
+    line-height: 1.12;
+}
+.rma-tabla.tabla-micro th,
+.rma-tabla.tabla-micro td {
+    padding: 0.5mm 0.45mm;
+}
+
+.tabla-notas {
+    font-size: 7pt;
+    line-height: 1.2;
+    margin-top: 2.2mm;
+    text-align: left;
+    color: #333333;
+    break-inside: avoid;
+}
+
+/* --- REFERENCIAS BIBLIOGRÁFICAS (SANGRE FRANCESA EN 2 COLUMNAS) --- */
+.referencias .ref-item {
+    padding-left: 4.5mm;
+    text-indent: -4.5mm;
+    font-size: 8pt;
+    line-height: 1.26;
+    text-align: left;
+    margin: 0 0 1.4mm 0;
+    orphans: 2;
+    widows: 2;
+    hyphens: none;
+    overflow-wrap: break-word;
+}
+
+.enlace-id {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    margin-left: 0.8mm;
+    line-height: 1;
+}
+.icono-orcid {
+    width: 3.1mm;
+    height: 3.1mm;
+    vertical-align: -0.5mm;
+    display: inline-block;
+}
+a.cita-enlace {
+    color: #0066cc;
+    text-decoration: none;
+    border-bottom: none;
+}
+.icono-ror {
+    height: 3.1mm;
+    width: auto;
+    vertical-align: -0.5mm;
+    display: inline-block;
+}

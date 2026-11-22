@@ -1,0 +1,33 @@
+# Metadatos editoriales del envio OJS
+codigo_publicacion: "v19n02a02"
+seccion: "Arqueología"
+volumen: "19"
+numero: "2"
+anio: "2026"
+paginas: "07-08"
+doi: "https://doi.org/10.31048/yz2ywx50"
+autor_corto: "M. Gómez et al."
+titulo_corto: "Espacios domésticos y prácticas sociales ..."
+recibido: "12-05-2026"
+correcciones: "03-07-2026"
+aceptado: "14-07-2026"
+editor_seccion: "R. Cattáneo"
+editores_invitados: ""
+pagina_inicio: "07"
+pagina_fin: "08"
+
+autores:
+  - nombre: "María Gómez"
+    orcid: "0000-0002-0000-0001"
+    afiliacion: "1"
+  - nombre: "Carlos Pérez"
+    orcid: "0000-0002-0000-0002"
+    afiliacion: "2"
+
+afiliaciones:
+  1:
+    texto: "Instituto de Antropología de Córdoba (IDACOR-CONICET), Universidad Nacional de Córdoba, Argentina. E-mail: mgomez@unc.edu.ar"
+    ror: "03x524c58"
+  2:
+    texto: "Departamento de Arqueología, Universidad Nacional de Trujillo, Perú. E-mail: cperez@unitru.edu.pe"
+    ror: "002901825"

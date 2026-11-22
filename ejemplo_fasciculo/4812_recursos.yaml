@@ -1,0 +1,16 @@
+figuras:
+  1:
+    ancho: "completo"
+    es: "Mapa de ubicación regional del área de estudio y localidades principales."
+    en: "Regional location map of the study area and main localities."
+  2:
+    ancho: "centrado"
+    es: "Planta esquemática de los sectores analizados en el trabajo."
+    en: "Schematic plan of the sectors analyzed in the study."
+
+tablas:
+  1:
+    ancho: "completo"
+    es: "Síntesis de unidades analíticas, rasgos asociados y materialidad documentada."
+    en: "Synthesis of analytical units, associated features, and documented materiality."
+    notas: "(1) Fechados radiocarbónicos calibrados con curva SHCal20 a 2 sigmas."

@@ -1,0 +1,474 @@
+@page {
+    size: A4 portrait;
+    margin: 22mm 22mm 20mm 22mm;
+    @bottom-center {
+        content: string(running-issn);
+        font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+        font-size: 7.5pt;
+        color: #555555;
+        vertical-align: top;
+        padding-top: 2mm;
+    }
+    @footnote {
+        border-top: 0.6pt solid #8a7f72;
+        padding-top: 2mm;
+        margin-top: 3mm;
+    }
+}
+
+@page :left {
+    @top-left {
+        content: string(running-left) "\A" string(running-doi);
+        white-space: pre;
+        font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+        font-size: 7.5pt;
+        line-height: 1.28;
+        color: #4a4a4a;
+        border-bottom: 0.6pt solid #b8afa3;
+        padding-bottom: 1.8mm;
+        margin-bottom: 4mm;
+        width: 100%;
+    }
+    @bottom-left {
+        content: counter(page);
+        font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+        font-size: 8.5pt;
+        font-weight: bold;
+        color: #7a2e1d;
+        vertical-align: top;
+        padding-top: 2mm;
+    }
+}
+
+@page :right {
+    @top-right {
+        content: string(running-right) "\A" string(running-doi);
+        white-space: pre;
+        text-align: right;
+        font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+        font-size: 7.5pt;
+        line-height: 1.28;
+        color: #4a4a4a;
+        border-bottom: 0.6pt solid #b8afa3;
+        padding-bottom: 1.8mm;
+        margin-bottom: 4mm;
+        width: 100%;
+    }
+    @bottom-right {
+        content: counter(page);
+        font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+        font-size: 8.5pt;
+        font-weight: bold;
+        color: #7a2e1d;
+        vertical-align: top;
+        padding-top: 2mm;
+    }
+}
+
+@page :first {
+    margin-top: 13mm;
+    margin-bottom: 27mm;
+    @top-left { content: none; border: none; }
+    @top-right { content: none; border: none; }
+    @bottom-left { content: none; border: none; }
+    @bottom-right { content: none; border: none; }
+    @bottom-center {
+        content: element(pie-p1);
+        width: 100%;
+        vertical-align: top;
+    }
+}
+
+.meta-running-left { string-set: running-left content(); display: none; }
+.meta-running-right { string-set: running-right content(); display: none; }
+.meta-running-doi { string-set: running-doi content(); display: none; }
+.meta-running-issn { string-set: running-issn content(); display: none; }
+
+body {
+    font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.46;
+    color: #1f2328;
+    margin: 0;
+}
+
+a {
+    color: #7a2e1d;
+    text-decoration: none;
+    border-bottom: 0.4pt solid #c49a90;
+}
+
+/* --- PIE INSTITUCIONAL EXCLUSIVO DE PÁGINA 1 --- */
+.pie-primera-pagina {
+    position: running(pie-p1);
+    border-top: 0.9pt solid #7a2e1d;
+    background-color: #faf8f4;
+    padding: 2mm 2.5mm;
+    font-size: 6.7pt;
+    line-height: 1.28;
+    color: #2c3138;
+    width: 100%;
+    box-sizing: border-box;
+}
+.pie-p1-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3mm;
+    width: 100%;
+}
+.pie-p1-cc {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.pie-p1-cc a {
+    border-bottom: none;
+}
+.logo-cc-img {
+    height: 6.2mm;
+    width: auto;
+    display: block;
+}
+.pie-p1-centro {
+    flex: 1 1 auto;
+    text-align: center;
+}
+.pie-p1-centro p {
+    margin: 0;
+}
+.pie-p1-centro .cita-biblio-p1 {
+    font-weight: 700;
+    color: #181c20;
+}
+.pie-p1-editores {
+    flex: 0 0 auto;
+    text-align: right;
+    max-width: 46mm;
+    font-size: 6.8pt;
+    line-height: 1.25;
+    color: #1f2328;
+}
+.pie-p1-editores p {
+    margin: 0;
+}
+.pie-p1-editores .editor-principal {
+    font-weight: 700;
+    color: #7a2e1d;
+}
+
+/* --- PORTADA / PRIMERA PÁGINA --- */
+.cabezal-revista {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: #faf8f4;
+    border: 0.5pt solid #e5dfd5;
+    border-bottom: 1.8pt solid #7a2e1d;
+    border-radius: 3pt 3pt 0 0;
+    padding: 3mm 4mm;
+    margin-bottom: 4.5mm;
+}
+
+.marca-rma-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 24mm;
+}
+.logo-rma-img {
+    height: 13.5mm;
+    width: auto;
+    display: block;
+    margin-bottom: 1mm;
+}
+.sigla-rma {
+    font-weight: 900;
+    font-size: 13pt;
+    line-height: 1.05;
+    letter-spacing: 0.8pt;
+    color: #181818;
+}
+.seccion-rma {
+    font-weight: 700;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+    color: #7a2e1d;
+    margin-top: 0.6mm;
+}
+
+.datos-cabezal-der {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1mm;
+}
+.nombre-revista-cabezal {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #2b2f36;
+}
+.edicion-cabezal {
+    font-size: 8pt;
+    color: #464c54;
+}
+.issn-cabezal {
+    font-size: 7pt;
+    color: #606670;
+}
+.doi-rma {
+    font-size: 8pt;
+    font-weight: 600;
+    background-color: #f1ece4;
+    padding: 0.8mm 2.2mm;
+    border-radius: 2pt;
+    color: #2b2f36;
+}
+.doi-rma a {
+    color: #7a2e1d;
+    border-bottom: none;
+}
+
+.bloque-titulos {
+    margin-bottom: 4mm;
+}
+.titulo-es {
+    font-size: 16.5pt;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #14171a;
+    margin: 0 0 2.2mm 0;
+    text-align: left;
+}
+.acento-titulo {
+    width: 22mm;
+    height: 1.5pt;
+    background-color: #7a2e1d;
+    margin: 0 0 2.2mm 0;
+}
+.titulo-en {
+    font-size: 11.5pt;
+    line-height: 1.26;
+    font-style: italic;
+    font-weight: 400;
+    color: #424852;
+    margin: 0;
+    text-align: left;
+}
+
+.bloque-autoria {
+    background-color: #f4f6f8;
+    border-left: 2.5pt solid #465a6e;
+    padding: 2.5mm 3.5mm;
+    margin-bottom: 4mm;
+    border-radius: 0 2.5pt 2.5pt 0;
+}
+.autores {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #182026;
+    margin-bottom: 1.5mm;
+}
+.afiliaciones {
+    margin: 0;
+}
+.afil {
+    font-size: 7.6pt;
+    line-height: 1.3;
+    margin: 0 0 0.7mm 0;
+    color: #363d45;
+}
+.afil:last-child {
+    margin-bottom: 0;
+}
+
+.bloque-resumenes {
+    background-color: #f7f3ec;
+    border: 0.5pt solid #e2d9cb;
+    border-left: 3.5pt solid #7a2e1d;
+    border-radius: 0 3pt 3pt 0;
+    padding: 3.2mm 4.2mm;
+    margin: 0 0 4.5mm 0;
+    font-size: 8.7pt;
+    line-height: 1.36;
+    text-align: justify;
+}
+.bloque-resumenes h3 {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4pt;
+    margin: 0 0 1mm 0;
+    color: #7a2e1d;
+}
+.bloque-resumenes p {
+    margin: 0 0 1.6mm 0;
+}
+.bloque-resumenes .keywords {
+    font-size: 8.2pt;
+    color: #333840;
+    margin-bottom: 0;
+}
+hr.divisor-resumen {
+    border: none;
+    border-top: 0.5pt solid #d6cbb9;
+    margin: 2.4mm 0;
+}
+
+hr.divisor-portada {
+    border: none;
+    border-top: 1pt solid #c9bfb0;
+    margin: 0 0 4mm 0;
+}
+
+/* --- CUERPO A UNA COLUMNA --- */
+.cuerpo-articulo {
+    text-align: justify;
+}
+
+.cuerpo-articulo h2 {
+    font-size: 11.5pt;
+    line-height: 1.25;
+    font-weight: 700;
+    text-align: left;
+    color: #181c20;
+    border-top: 0.6pt solid #d8d0c5;
+    padding-top: 2.5mm;
+    margin: 5.5mm 0 2mm 0;
+    break-after: avoid;
+}
+.cuerpo-articulo > h2:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.cuerpo-articulo p {
+    margin: 0 0 3mm 0;
+    orphans: 2;
+    widows: 2;
+}
+
+.cuerpo-articulo p.fecha-manuscrito {
+    text-align: right;
+    font-style: italic;
+    font-size: 8.8pt;
+    color: #4a5058;
+    margin-top: 4mm;
+}
+
+blockquote {
+    margin: 3.5mm 8mm;
+    padding: 1.5mm 3mm;
+    border-left: 2pt solid #c9bfb0;
+    background-color: #faf9f7;
+    font-size: 9pt;
+    line-height: 1.38;
+    color: #2c3138;
+}
+
+span.footnote {
+    float: footnote;
+    font-size: 7.8pt;
+    line-height: 1.26;
+    text-align: left;
+}
+::footnote-call {
+    content: counter(footnote);
+    font-size: 68%;
+    vertical-align: super;
+    line-height: none;
+    color: #7a2e1d;
+    font-weight: bold;
+}
+::footnote-marker {
+    content: counter(footnote) ". ";
+    font-size: 7.8pt;
+    font-weight: bold;
+    color: #7a2e1d;
+}
+.fn-ref-link, .notas-al-pie-html {
+    display: none;
+}
+
+/* --- FIGURAS Y TABLAS EN 1 COLUMNA --- */
+.rma-figura, .rma-tabla {
+    break-inside: avoid;
+    margin: 5mm auto;
+    padding: 2.5mm;
+    background-color: #faf8f5;
+    border: 0.5pt solid #e2dbd0;
+    border-radius: 2.5pt;
+}
+.ancho-completo {
+    width: 100%;
+    box-sizing: border-box;
+}
+.ancho-centrado {
+    width: 74%;
+    box-sizing: border-box;
+}
+
+.rma-figura img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 0.3pt solid #d0c8bc;
+}
+figcaption, .tabla-caption {
+    font-size: 8.3pt;
+    line-height: 1.3;
+    text-align: left;
+    margin-top: 3.8mm;
+    color: #2b3036;
+}
+.cap-es, .cap-en {
+    display: block;
+    margin-bottom: 0.8mm;
+}
+
+.rma-tabla table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.2pt;
+    line-height: 1.28;
+    text-align: left;
+    background-color: #ffffff;
+}
+.rma-tabla th, .rma-tabla td {
+    border-top: 0.5pt solid #666666;
+    border-bottom: 0.5pt solid #666666;
+    padding: 1.5mm 2mm;
+    vertical-align: top;
+}
+.rma-tabla th {
+    background-color: #efeae2;
+    font-weight: 700;
+    color: #181c20;
+}
+a.cita-enlace {
+    color: #0066cc;
+    text-decoration: none;
+    border-bottom: none;
+}
+.tabla-notas {
+    font-size: 7.5pt;
+    line-height: 1.24;
+    margin-top: 1.5mm;
+    text-align: left;
+    color: #424852;
+}
+
+/* --- REFERENCIAS BIBLIOGRÁFICAS --- */
+.referencias .ref-item {
+    padding-left: 6mm;
+    text-indent: -6mm;
+    font-size: 8.8pt;
+    line-height: 1.34;
+    text-align: left;
+    margin: 0 0 2mm 0;
+}

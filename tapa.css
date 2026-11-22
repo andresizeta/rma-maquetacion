@@ -1,0 +1,268 @@
+/* ==========================================================================
+   Tapa Editorial (5.ª Etapa · 2027) — Revista del Museo de Antropología
+   Pleno borravino patrimonial + tramado orgánico + franja de 5 disciplinas
+   ========================================================================== */
+
+:root {
+  --rma-burgundy: #820D27;
+  --rma-white: #FFFFFF;
+  --rma-sand: #F2DFC4;
+}
+
+@page {
+  size: 210mm 280mm;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 210mm;
+  height: 280mm;
+  background-color: var(--rma-burgundy);
+  font-family: "Liberation Sans", "DejaVu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.cover-sheet {
+  width: 210mm;
+  height: 280mm;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--rma-burgundy);
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+1. Campo Superior Borravino con Tramado Orgánico (216mm)
+   -------------------------------------------------------------------------- */
+.upper-field {
+  position: relative;
+  width: 210mm;
+  height: 216mm;
+  background-color: var(--rma-burgundy);
+  overflow: hidden;
+}
+
+.relief-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 210mm;
+  height: 216mm;
+  object-fit: cover;
+  display: block;
+}
+
+/* Suaviza sutilmente el tramado detrás del cabezal superior para máxima lectura */
+.upper-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 210mm;
+  height: 75mm;
+  background: linear-gradient(
+    to bottom,
+    rgba(130, 13, 39, 0.88) 0%,
+    rgba(130, 13, 39, 0.45) 62%,
+    rgba(130, 13, 39, 0) 100%
+  );
+  z-index: 1;
+}
+
+.cover-header {
+  position: relative;
+  z-index: 2;
+  padding: 13mm 15mm 0 15mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+}
+
+.issn-block {
+  font-size: 7.8pt;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--rma-white);
+  margin-bottom: 2mm;
+}
+
+.issn-block span {
+  font-weight: 400;
+  color: var(--rma-sand);
+}
+
+.revista-1960 {
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 56pt;
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.015em;
+  color: var(--rma-white);
+  transform: scaleY(1.34);
+  transform-origin: left top;
+  margin-bottom: 6.2mm;
+}
+
+.revista-sub {
+  font-size: 15.8pt;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--rma-sand);
+}
+
+/* Distintivo tipográfico 20 AÑOS en ángulo superior derecho */
+.anniv-lockup {
+  display: flex;
+  align-items: center;
+  gap: 2.5mm;
+  padding-left: 3.2mm;
+  border-left: 1.6pt solid var(--rma-sand);
+  margin-top: 1.5mm;
+}
+
+.anniv-num {
+  font-family: "Liberation Serif", "DejaVu Serif", Georgia, serif;
+  font-size: 26pt;
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--rma-white);
+}
+
+.anniv-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8mm;
+}
+
+.anniv-word {
+  font-size: 9.8pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--rma-sand);
+  line-height: 1;
+}
+
+.anniv-dates {
+  font-size: 7.2pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--rma-white);
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+2. Franja Horizontal de las 5 Disciplinas (3.5mm)
+   -------------------------------------------------------------------------- */
+.horizon-bar {
+  width: 210mm;
+  height: 3.5mm;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.hbar-seg {
+  flex: 1 1 0;
+  display: block;
+}
+.seg-arql { background-color: #D4653B; }
+.seg-biol { background-color: #36878D; }
+.seg-soc  { background-color: #4680B0; }
+.seg-mus  { background-color: #82679E; }
+.seg-dos  { background-color: #DDA44E; }
+
+/* --------------------------------------------------------------------------
+3. Glifo RMA cabalgando la franja de colores a la derecha
+   -------------------------------------------------------------------------- */
+.horizon-turtle {
+  position: absolute;
+  right: 15mm;
+  top: 194mm;
+  width: 31mm;
+  height: 37mm;
+  object-fit: contain;
+  z-index: 3;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+4. Zócalo Institucional Borravino Limpio (60.5mm)
+   -------------------------------------------------------------------------- */
+.cover-footer {
+  flex: 1;
+  width: 210mm;
+  background-color: var(--rma-burgundy);
+  padding: 9mm 15mm 11mm 15mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 4mm;
+}
+
+.issue-metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8mm;
+}
+
+.issue-citation {
+  font-size: 9.8pt;
+  font-weight: 700;
+  color: var(--rma-white);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.affiliations-list {
+  list-style: none;
+  font-size: 7.2pt;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--rma-sand);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.institutional-logos {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3mm;
+  flex-shrink: 0;
+}
+
+.inst-logo {
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.inst-logo-unc {
+  height: 9.8mm;
+  max-width: 31mm;
+}
+
+.inst-logo-ffyh {
+  height: 11mm;
+  max-width: 21mm;
+}
+
+.inst-logo-museo {
+  height: 11mm;
+  max-width: 21mm;
+}
+
+.inst-logo-idacor {
+  height: 9.8mm;
+  max-width: 24mm;
+}

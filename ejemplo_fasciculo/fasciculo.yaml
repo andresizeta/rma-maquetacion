@@ -1,0 +1,14 @@
+# Configuración del fascículo para paginación consecutiva automática
+volumen: "19"
+numero: "2"
+anio: "2026"
+pagina_inicial_numero: 7
+actualizar_metadatos_yaml: true
+
+articulos:
+  - id: "4812"
+    codigo_publicacion: "v19n02a02"
+    seccion: "Arqueología"
+  - id: "4819"
+    codigo_publicacion: "v19n02a03"
+    seccion: "Dossier"

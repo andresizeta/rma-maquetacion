@@ -1,0 +1,6 @@
+Índice de paginación consecutiva — Revista del Museo de Antropología Vol. 19 (2), 2026
+============================================================================================
+Código         ID OJS   Páginas    Folios   Formato       Sección            Título
+--------------------------------------------------------------------------------------------
+v19n02a02      4812     07-08      2        tradicional   Arqueología        Espacios domésticos y prácticas sociales en asentamientos prehispánicos del área andina
+v19n02a03      4819     09-10      2        tradicional   Dossier            Materialidades, memorias y territorios en comunidades rurales de las Sierras Centrales

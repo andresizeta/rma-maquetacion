@@ -1,0 +1,30 @@
+# Configuración institucional de la Revista del Museo de Antropología (RMA)
+# Cambiá 'formato' a "moderno" para el rediseño a 1 columna del próximo año,
+# o dejalo en "tradicional" para el diseño clásico a 2 columnas del número actual.
+formato: "tradicional"
+
+# Si es true, el HTML de OJS ({codigo}_{id}.html) incrusta el CSS y todas las imágenes en Base64
+# para subir un único archivo a OJS sin cargar dependencias sueltas.
+html_autocontenido: true
+
+sigla: "RMA"
+titulo_revista: "Revista del Museo de Antropología"
+subtitulo_institucional: "IDACOR-CONICET / Facultad de Filosofía y Humanidades – Universidad Nacional de Córdoba - Argentina"
+url_revista: "http://revistas.unc.edu.ar/index.php/antropologia/index"
+issn_impreso: "1852-060X"
+issn_electronico: "1852-4826"
+licencia: "CC BY-NC-SA 4.0"
+url_licencia: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+logo: "assets/logo_rma.png"
+logo_cc: "assets/cc_by_nc_sa.png"
+digitos_pagina: 2
+
+secciones_habituales:
+  - "Arqueología"
+  - "Antropología Social"
+  - "Bioantropología"
+  - "Dossier"
+  - "Editorial"
+  - "Foro"
+  - "Notas"
+  - "Reseñas"

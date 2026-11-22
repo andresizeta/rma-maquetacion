@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1 20151215//EN" "JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1" specific-use="sps-1.9" xml:lang="es" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">rma</journal-id>
+      <journal-title-group>
+        <journal-title>Revista del Museo de Antropología</journal-title>
+        <abbrev-journal-title abbrev-type="publisher">Rev. Mus. Antropol.</abbrev-journal-title>
+      </journal-title-group>
+      <issn pub-type="ppub">1852-060X</issn>
+      <issn pub-type="epub">1852-4826</issn>
+      <publisher>
+        <publisher-name>IDACOR-CONICET / Facultad de Filosofía y Humanidades – Universidad Nacional de Córdoba - Argentina</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">4812</article-id>
+      <article-id pub-id-type="doi">10.31048/yz2ywx50</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Arqueología</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Espacios domésticos y prácticas sociales en asentamientos prehispánicos del área andina</article-title>
+        <trans-title-group xml:lang="en">
+          <trans-title>Domestic spaces and social practices in pre-Hispanic settlements of the Andean area</trans-title>
+        </trans-title-group>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-0000-0001</contrib-id>
+          <name>
+            <surname>Gómez</surname>
+            <given-names>María</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-0000-0002</contrib-id>
+          <name>
+            <surname>Pérez</surname>
+            <given-names>Carlos</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <institution content-type="original">Instituto de Antropología de Córdoba (IDACOR-CONICET), Universidad Nacional de Córdoba, Argentina. E-mail: mgomez@unc.edu.ar</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/03x524c58</institution-id>
+          <institution content-type="orgname">Instituto de Antropología de Córdoba (IDACOR-CONICET), Universidad Nacional de Córdoba</institution>
+        </institution-wrap>
+        <country country="AR">Argentina</country>
+        <email>mgomez@unc.edu.ar</email>
+      </aff>
+      <aff id="aff2">
+        <label>2</label>
+        <institution content-type="original">Departamento de Arqueología, Universidad Nacional de Trujillo, Perú. E-mail: cperez@unitru.edu.pe</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/002901825</institution-id>
+          <institution content-type="orgname">Departamento de Arqueología, Universidad Nacional de Trujillo</institution>
+        </institution-wrap>
+        <country country="PE">Perú</country>
+        <email>cperez@unitru.edu.pe</email>
+      </aff>
+      <pub-date date-type="pub" publication-format="electronic">
+        <day>01</day>
+        <month>08</month>
+        <year>2026</year>
+      </pub-date>
+      <volume>19</volume>
+      <issue>2</issue>
+      <fpage>7</fpage>
+      <lpage>8</lpage>
+      <history>
+        <date date-type="received">
+          <day>12</day>
+          <month>05</month>
+          <year>2026</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>03</day>
+          <month>07</month>
+          <year>2026</year>
+        </date>
+        <date date-type="accepted">
+          <day>14</day>
+          <month>07</month>
+          <year>2026</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>Copyright © 2026 Revista del Museo de Antropología</copyright-statement>
+        <copyright-year>2026</copyright-year>
+        <copyright-holder>Revista del Museo de Antropología</copyright-holder>
+        <license license-type="open-access" xlink:href="https://creativecommons.org/licenses/by-nc-sa/4.0/" xml:lang="es">
+          <license-p>Este es un artículo publicado en acceso abierto bajo una licencia Creative Commons (CC BY-NC-SA 4.0).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>En este artículo se analizan las configuraciones espaciales y las prácticas sociales desarrolladas en un conjunto de estudio mediante el registro sistemático, el análisis material y la distribución espacial de rasgos documentados. Los resultados permiten identificar dinámicas diferenciadas de producción, intercambio y vida cotidiana a escala regional.</p>
+      </abstract>
+      <trans-abstract xml:lang="en">
+        <p>This article analyzes the spatial configurations and social practices carried out in a study assemblage through systematic recording, material analysis, and the spatial distribution of documented features. The results identify differentiated dynamics of production, exchange, and daily life at a regional scale.</p>
+      </trans-abstract>
+      <kwd-group xml:lang="es">
+        <title>Palabras clave</title>
+        <kwd>Antropología</kwd>
+        <kwd>Arqueología</kwd>
+        <kwd>Espacios sociales</kwd>
+        <kwd>Prácticas sociales</kwd>
+        <kwd>Materialidad</kwd>
+      </kwd-group>
+      <kwd-group xml:lang="en">
+        <title>Keywords</title>
+        <kwd>Anthropology</kwd>
+        <kwd>Archaeology</kwd>
+        <kwd>Social spaces</kwd>
+        <kwd>Social practices</kwd>
+        <kwd>Materiality</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec sec-type="intro">
+      <title>Introducción</title>
+      <p>El estudio de las prácticas sociales constituye una vía fundamental para comprender la organización socioeconómica de las comunidades (Wilk y Rathje, 1982; Lull, 2007). A través de la articulación entre espacialidad y materialidad asociada es posible inferir secuencias de actividades cotidianas y relaciones de producción y consumo a escala local (Figura 1).</p>
+      <fig id="f1">
+        <label>Figura 1</label>
+        <caption>
+          <title>Mapa de ubicación regional del área de estudio y localidades principales.</title>
+        </caption>
+        <caption xml:lang="en">
+          <title>Regional location map of the study area and main localities.</title>
+        </caption>
+        <graphic xlink:href="4812_fig01.png"/>
+      </fig>
+    </sec>
+    <sec sec-type="materials|methods">
+      <title>Metodología y registro</title>
+      <p>Las tareas de campo permitieron relevar tres sectores contiguos delimitados por estructuras de piedra y superficies preparadas de arcilla compactada (Figura 2). Cada unidad de registro fue documentada mediante fotomosaicos georreferenciados y muestreo sistemático de sedimentos para recuperación de especies como <italic>Zea mays</italic> y <italic>Cucurbita</italic> sp. (Tabla 1).</p>
+      <fig id="f2">
+        <label>Figura 2</label>
+        <caption>
+          <title>Planta esquemática de los sectores analizados en el trabajo.</title>
+        </caption>
+        <caption xml:lang="en">
+          <title>Schematic plan of the sectors analyzed in the study.</title>
+        </caption>
+        <graphic xlink:href="4812_fig02.png"/>
+      </fig>
+      <table-wrap id="t1">
+        <label>Tabla 1</label>
+        <caption>
+          <title>Síntesis de unidades analíticas, rasgos asociados y materialidad documentada.</title>
+        </caption>
+        <caption xml:lang="en">
+          <title>Synthesis of analytical units, associated features, and documented materiality.</title>
+        </caption>
+        <table>
+          <thead>
+            <tr><th>Unidad</th><th>Rasgos asociados</th><th>Nivel</th><th>Materialidad predominante</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Unidad 1</td><td>Muros M1 y M2, Fogón 1</td><td>Nivel B</td><td>Cerámica utilitaria, carbón, restos de Zea mays</td></tr>
+            <tr><td>Unidad 2</td><td>Muros M2 y M3, Rasgo 14</td><td>Nivel B</td><td>Cántaros almacenadores, restos de Camelidae</td></tr>
+            <tr><td>Unidad 3</td><td>Corredor de acceso norte</td><td>Nivel A</td><td>Materialidad escasa y fragmentos decorados</td></tr>
+          </tbody>
+        </table>
+        <table-wrap-foot>
+          <fn id="tfn1"><p>(1) Fechados radiocarbónicos calibrados con curva SHCal20 a 2 sigmas.</p></fn>
+        </table-wrap-foot>
+      </table-wrap>
+      <disp-quote>
+        <p>“El espacio social no es un contenedor neutro entre las cosas, sino el producto y el soporte material de las relaciones sociales que en él se reproducen cotidianamente.” (Lefebvre, [1974] 2013: 129).</p>
+      </disp-quote>
+    </sec>
+    <sec sec-type="conclusions">
+      <title>Conclusiones</title>
+      <p>La integración de múltiples líneas de evidencia demuestra una marcada articulación entre los espacios de actividad cotidiana y las redes de interacción regional documentadas.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title>Referencias bibliográficas</title>
+      <ref id="B1">
+        <mixed-citation>Lefebvre, H. ([1974] 2013). <italic>La producción del espacio</italic>. Madrid: Capitán Swing.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Lefebvre</surname><given-names>H.</given-names></name>
+          </person-group>
+          <year>2013</year>
+          <source>La producción del espacio</source>
+          <publisher-loc>Madrid</publisher-loc>
+          <publisher-name>Capitán Swing</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B2">
+        <mixed-citation>Lull, V. (2007). <italic>Los objetos distinguidos. La arqueología como excusa</italic>. Barcelona: Bellaterra.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Lull</surname><given-names>V.</given-names></name>
+          </person-group>
+          <year>2007</year>
+          <source>Los objetos distinguidos. La arqueología como excusa</source>
+          <publisher-loc>Barcelona</publisher-loc>
+          <publisher-name>Bellaterra</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B3">
+        <mixed-citation>Wilk, R. y Rathje, W. (1982). Household Archaeology. <italic>The American Behavioral Scientist</italic>, 25(6), 617-639. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1177/000276482025006003">https://doi.org/10.1177/000276482025006003</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Wilk</surname><given-names>R.</given-names></name>
+            <name><surname>Rathje</surname><given-names>W.</given-names></name>
+          </person-group>
+          <year>1982</year>
+          <article-title>Household Archaeology</article-title>
+          <source>The American Behavioral Scientist</source>
+          <volume>25</volume>
+          <issue>6</issue>
+          <fpage>617</fpage>
+          <lpage>639</lpage>
+          <pub-id pub-id-type="doi">10.1177/000276482025006003</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
