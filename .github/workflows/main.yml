@@ -18,17 +18,13 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Instalar motor grafico GTK3/Pango 64-bit para WeasyPrint
+      - name: Instalar Pango y GTK3 64-bit oficial (MSYS2)
         shell: pwsh
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          gh release download -R tschoonj/GTK-for-Windows-Runtime-Environment-Installer --pattern "*win64.exe" -O gtk3-installer.exe
-          Start-Process -FilePath ".\gtk3-installer.exe" -ArgumentList "/S" -Wait
-          Remove-Item ".\gtk3-installer.exe" -Force
-          $gtkBin = "C:\Program Files\GTK3-Runtime Win64\bin"
-          if (-not (Test-Path "$gtkBin\libgobject-2.0-0.dll")) {
-            Write-Error "No se encontro GTK3 64-bit en $gtkBin"
+          C:\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-pango"
+          $gtkBin = "C:\msys64\mingw64\bin"
+          if (-not (Test-Path "$gtkBin\libpango-1.0-0.dll")) {
+            Write-Error "No se encontro libpango-1.0-0.dll en $gtkBin"
             exit 1
           }
           echo "$gtkBin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
@@ -36,7 +32,12 @@ jobs:
 
       - name: Ejecutar instalar_windows.bat
         shell: cmd
-        run: call instalar_windows.bat < nul
+        run: |
+          call instalar_windows.bat < nul || (
+            echo --- Diagnostico real de WeasyPrint ---
+            .venv\Scripts\python.exe -c "import weasyprint; print(weasyprint.__version__)"
+            exit /b 1
+          )
 
       - name: Probar maquetacion de articulo y portada
         shell: cmd
