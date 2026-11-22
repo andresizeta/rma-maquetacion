@@ -6,10 +6,10 @@ Este paquete automatiza la generación simultánea del **PDF maquetado** (en for
 
 ## Instalación (una sola vez)
 
-1. Ubicá esta carpeta en `/home/andres/ANDRES/automatizacion_rma_ojs` (o `~/automatizacion_rma_ojs`).
+1. Ubicá esta carpeta en `/your_folder/automatizacion_rma_ojs` (o `~/automatizacion_rma_ojs`).
 2. Abrí una terminal dentro de esa carpeta y ejecutá el instalador:
    ```bash
-   cd /home/andres/ANDRES/automatizacion_rma_ojs
+   cd /home/your_folder/automatizacion_rma_ojs
    bash instalar_linux_mac.sh
    ```
    *(En Windows: doble clic en `instalar_windows.bat`).*
