@@ -41,16 +41,11 @@ jobs:
             exit /b 1
           )
 
-      - name: Probar maquetacion de volumen19_n3_54854 y portada
+      - name: Probar maquetacion de ejemplo y portada
         shell: cmd
         run: |
-          .venv\Scripts\python.exe maquetar_rma.py volumen19_n3_54854 54854
-          if exist tapa.bat (
-            call tapa.bat < nul
-          ) else (
-            .venv\Scripts\python.exe generar_trama.py --vol 19 --num 3 --year 2026 --out trama.svg
-            .venv\Scripts\python.exe -m weasyprint tapa.html tapa_v19n3.pdf --presentational-hints
-          )
+          .venv\Scripts\python.exe maquetar_rma.py ejemplo_articulo 0001
+          call tapa.bat < nul
 
       - name: Empaquetar resultados para descargar
         uses: actions/upload-artifact@v4
@@ -61,4 +56,4 @@ jobs:
             tapa_*.pdf
             tapa_*.png
             salida/**/*
-            volumen19_n3_54854/**/*
+            ejemplo_articulo/**/*
