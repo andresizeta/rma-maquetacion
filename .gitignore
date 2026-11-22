@@ -8,9 +8,13 @@ __pycache__/
 *.tmp
 *~
 
-# Salidas generadas y carpetas de trabajo editorial
+# Salidas generadas
 salida/
 tapa_*.pdf
 tapa_*.png
 trama.svg
+
+# Carpetas de manuscritos reales (se conserva solo la carpeta base vacia)
 volumen*/
+articulos/*
+!articulos/.gitkeep
