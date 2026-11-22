@@ -1,0 +1,51 @@
+name: Probar pipeline en Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+
+      - name: Instalar Python en Windows
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar motor grafico GTK3/Pango para WeasyPrint
+        shell: pwsh
+        run: |
+          choco install gtk-runtime -y --no-progress
+          echo "C:\Program Files\GTK3-Runtime Win64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Ejecutar instalar_windows.bat
+        shell: cmd
+        run: call instalar_windows.bat < nul
+
+      - name: Probar maquetacion de articulo y portada
+        shell: cmd
+        run: |
+          .venv\Scripts\python.exe maquetar_rma.py ejemplo_ojs 4812
+          if exist tapa.bat (
+            call tapa.bat < nul
+          ) else (
+            .venv\Scripts\python.exe generar_trama.py --vol 20 --num 1 --year 2027 --out trama.svg
+            .venv\Scripts\python.exe -m weasyprint tapa.html tapa_v20n1.pdf --presentational-hints
+          )
+
+      - name: Empaquetar resultados para descargar
+        uses: actions/upload-artifact@v4
+        with:
+          name: salidas-windows-rma
+          if-no-files-found: ignore
+          path: |
+            tapa_v20n1.pdf
+            tapa_v20n1.png
+            salida/**/*
+            ejemplo_ojs/**/*
