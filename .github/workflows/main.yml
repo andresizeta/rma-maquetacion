@@ -18,17 +18,19 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Instalar motor grafico GTK3/Pango para WeasyPrint
+      - name: Instalar motor grafico GTK3/Pango 64-bit para WeasyPrint
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          choco install gtk-runtime -y --no-progress
-          $dll = Get-ChildItem -Path "C:\Program Files*", "C:\gtk*", "C:\msys64*" -Filter "libgobject-2.0-0.dll" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $dll) {
-            Write-Error "No se encontro libgobject-2.0-0.dll en el sistema."
+          gh release download -R tschoonj/GTK-for-Windows-Runtime-Environment-Installer --pattern "*win64.exe" -O gtk3-installer.exe
+          Start-Process -FilePath ".\gtk3-installer.exe" -ArgumentList "/S" -Wait
+          Remove-Item ".\gtk3-installer.exe" -Force
+          $gtkBin = "C:\Program Files\GTK3-Runtime Win64\bin"
+          if (-not (Test-Path "$gtkBin\libgobject-2.0-0.dll")) {
+            Write-Error "No se encontro GTK3 64-bit en $gtkBin"
             exit 1
           }
-          $gtkBin = $dll.DirectoryName
-          echo "GTK3 encontrado en: $gtkBin"
           echo "$gtkBin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           echo "WEASYPRINT_DLL_DIRECTORIES=$gtkBin" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
