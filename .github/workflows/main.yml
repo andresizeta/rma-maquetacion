@@ -41,15 +41,15 @@ jobs:
             exit /b 1
           )
 
-      - name: Probar maquetacion de articulo y portada
+      - name: Probar maquetacion de volumen19_n3_54854 y portada
         shell: cmd
         run: |
-          .venv\Scripts\python.exe maquetar_rma.py ejemplo_ojs 4812
+          .venv\Scripts\python.exe maquetar_rma.py volumen19_n3_54854 54854
           if exist tapa.bat (
             call tapa.bat < nul
           ) else (
-            .venv\Scripts\python.exe generar_trama.py --vol 20 --num 1 --year 2027 --out trama.svg
-            .venv\Scripts\python.exe -m weasyprint tapa.html tapa_v20n1.pdf --presentational-hints
+            .venv\Scripts\python.exe generar_trama.py --vol 19 --num 3 --year 2026 --out trama.svg
+            .venv\Scripts\python.exe -m weasyprint tapa.html tapa_v19n3.pdf --presentational-hints
           )
 
       - name: Empaquetar resultados para descargar
@@ -58,7 +58,7 @@ jobs:
           name: salidas-windows-rma
           if-no-files-found: ignore
           path: |
-            tapa_v20n1.pdf
-            tapa_v20n1.png
+            tapa_*.pdf
+            tapa_*.png
             salida/**/*
-            ejemplo_ojs/**/*
+            volumen19_n3_54854/**/*
