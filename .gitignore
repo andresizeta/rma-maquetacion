@@ -1,0 +1,16 @@
+# Entornos y cache de Python
+.venv/
+__pycache__/
+*.pyc
+
+# Respaldos y temporales
+*.bak
+*.tmp
+*~
+
+# Salidas generadas y carpetas de trabajo editorial
+salida/
+tapa_*.pdf
+tapa_*.png
+trama.svg
+volumen*/
