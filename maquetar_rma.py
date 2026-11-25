@@ -3474,11 +3474,12 @@ def compilar_articulo(
         })
         for idx_r, r_html in enumerate(art["referencias"]):
             rid = f"blk-ref-{idx_r}"
+            r_html_con_id = refs_con_backlinks[idx_r] if idx_r < len(refs_con_backlinks) else r_html
             bloques_pdf_base.append({
                 "id": rid,
                 "tipo": "ref",
                 "movible": True,
-                "html_pdf": f'<div class="referencias" data-blk="{rid}"><p class="ref-item">{r_html}</p></div>',
+                "html_pdf": f'<div class="referencias" data-blk="{rid}"><p class="ref-item">{r_html_con_id}</p></div>',
             })
 
     def _emparejar_figuras_columna(lista_blks: list[dict]) -> list[dict]:
