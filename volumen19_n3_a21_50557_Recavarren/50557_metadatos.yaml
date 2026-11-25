@@ -1,0 +1,25 @@
+# Metadatos editoriales del envío OJS
+formato: tradicional
+codigo_publicacion: v19n03a21
+seccion: Dossier
+volumen: '19'
+numero: '3'
+anio: '2026'
+pagina_inicio: '01'
+paginas: ''
+doi: https://doi.org/10.31048/
+autor_corto: A. P. Recavarren
+titulo_corto: Patrimonio “desde abajo”...
+recibido: 03-11-2025
+correcciones: 16-02-2026
+aceptado: 14-03-2026
+editor_seccion: M Espinosa & G. Sora
+editores_invitados: C. Crespo & C. Benedetti
+autores:
+- nombre: Ana Pía Recavarren
+  orcid: 0000-0002-0293-1357
+  afiliacion: '1'
+afiliaciones:
+  '1':
+    texto: Universidad Nacional del Centro de la Provincia de Buenos Aires, Argentina, anarecavarren@gmail.com
+    ror: 011gakh74

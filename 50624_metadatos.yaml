@@ -1,0 +1,25 @@
+# Metadatos editoriales del envío OJS
+formato: tradicional
+codigo_publicacion: v16n03a24
+seccion: Dossier
+volumen: '19'
+numero: '3'
+anio: '2026'
+pagina_inicio: '01'
+paginas: ''
+doi: https://doi.org/10.31048/
+autor_corto: R. de Sá Gonçalves
+titulo_corto: Para que serve tanto patrimônio?...
+recibido: 09-11-2025
+correcciones: 04-03-2026
+aceptado: 14-07-2026
+editor_seccion: M. Espinosa & G. Sora
+editores_invitados: C. Crespo & C. Benedetti
+autores:
+- nombre: Renata de Sá Gonçalves
+  orcid: 0000-0001-6707-235X
+  afiliacion: '1'
+afiliaciones:
+  '1':
+    texto: Universidade Federal Fluminense, Brasil, renatagoncalves@id.uff.br
+    ror: 02r046519

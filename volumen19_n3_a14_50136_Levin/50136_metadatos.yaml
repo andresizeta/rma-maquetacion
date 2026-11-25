@@ -1,0 +1,25 @@
+# Metadatos editoriales del envío OJS
+formato: tradicional
+codigo_publicacion: v19n03a14
+seccion: Antropología Social
+volumen: '19'
+numero: '3'
+anio: '2026'
+pagina_inicio: '01'
+paginas: ''
+doi: https://doi.org/10.31048/
+autor_corto: A. Levin
+titulo_corto: Discapacidad certificada, trastornos mentales...
+recibido: 24-09-2025
+correcciones: 10-08-2026
+aceptado: 11-09-2026
+editor_seccion: M. Espinosa
+editores_invitados: ''
+autores:
+- nombre: Axel Levin
+  orcid: 0000-0003-4273-2472
+  afiliacion: '1'
+afiliaciones:
+  '1':
+    texto: 'Instituto de Ciencias Antropológicas, Facultad de Filosofía y Letras de la Universidad de Buenos Aires, Argentina. Instituto de Investigaciones Sociales de América Latina, FLACSO-CONICET, Argentina. E-mail: axellevin4@gmail.com'
+    ror: 0081fs513

@@ -1,0 +1,39 @@
+# Metadatos editoriales del envío OJS (generado con asistente interactivo RMA)
+formato: "tradicional"
+codigo_publicacion: "v19n03a04"
+seccion: "Arqueología"
+volumen: "19"
+numero: "3"
+anio: "2026"
+pagina_inicio: "01"
+paginas: ""
+doi: "https://doi.org/10.31048/"
+autor_corto: "J. Lund et al."
+titulo_corto: "Identificación de macrorrestos botánicos ..."
+recibido: "16-06-2026"
+correcciones: "31-08-2026"
+aceptado: "01-10-2026"
+editor_seccion: "R. Cattáneo & A. Robledo"
+editores_invitados: ""
+
+autores:
+  - nombre: "Julia Lund"
+    orcid: "0000-0003-0013-4888"
+    afiliacion: "1"
+  - nombre: "María Laura López"
+    orcid: "0000-0001-9967-4424"
+    afiliacion: "2"
+  - nombre: "Luis Manuel del Papa"
+    orcid: "0000-0003-1316-3565"
+    afiliacion: "3"
+
+afiliaciones:
+  1:
+    texto: "División de Antropología, Facultad de Ciencias Naturales y Museo. Universidad Nacional de La Plata. Becaria ANPCyT. E-mail:"
+    ror: "04chzd762"
+  2:
+    texto: "CONICET. División de Arqueología, Facultad de Ciencias Naturales y Museo. Universidad Nacional de La Plata. E-mail: mllopezdepaoli@gmail.com"
+    ror: "03cqe8w59"
+  3:
+    texto: "CONICET. División de Antropología, Facultad de Ciencias Naturales y Museo. Universidad Nacional de La Plata. E-mail:"
+    ror: "03cqe8w59"

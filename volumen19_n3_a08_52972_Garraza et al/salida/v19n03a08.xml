@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1 20151215//EN" "JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1" specific-use="sps-1.9" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">rma</journal-id>
+      <journal-title-group>
+        <journal-title>Revista del Museo de Antropología</journal-title>
+        <abbrev-journal-title abbrev-type="publisher">Rev. Mus. Antropol.</abbrev-journal-title>
+      </journal-title-group>
+      <issn pub-type="ppub">1852-060X</issn>
+      <issn pub-type="epub">1852-4826</issn>
+      <publisher>
+        <publisher-name>IDACOR-CONICET / FFyH - UNC</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">52972</article-id>
+      <article-id pub-id-type="doi">10.31048/52972</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Antropología Biológica</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Malnutrition and intestinal parasitic infection among children living in popular neighborhoods of San Rafael, Mendoza</article-title>
+        <trans-title-group xml:lang="es">
+          <trans-title>Malnutrición y enteroparasitosis en niños y niñas que residen en barrios populares de San Rafael, Mendoza</trans-title>
+        </trans-title-group>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-1974-6844</contrib-id>
+          <name>
+            <surname>Garraza</surname>
+            <given-names>Mariela</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0009-0004-2743-4711</contrib-id>
+          <name>
+            <surname>Zucol</surname>
+            <given-names>Joaquín U.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">2</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0009-0007-2238-7866</contrib-id>
+          <name>
+            <surname>Avila</surname>
+            <given-names>Astor N.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">3</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Gomez</surname>
+            <given-names>Helen Escorcia</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff4">4</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0003-1372-9231</contrib-id>
+          <name>
+            <surname>Cesani</surname>
+            <given-names>María F.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff5">5</xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <institution content-type="original">Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET), La Plata, Argentina. Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata, Argentina. E-mail: garrazam@fcnym.unlp.edu.ar</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/03cqe8w59</institution-id>
+          <institution content-type="orgname">Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET), La Plata, Argentina. Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata</institution>
+        </institution-wrap>
+        <country country="AR">Argentina</country>
+        <email>garrazam@fcnym.unlp.edu.ar</email>
+      </aff>
+      <aff id="aff2">
+        <label>2</label>
+        <institution content-type="original">01tjs6929</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/01tjs6929</institution-id>
+          <institution content-type="orgname">01tjs6929</institution>
+        </institution-wrap>
+        <country country="AR">Argentina</country>
+      </aff>
+      <aff id="aff3">
+        <label>3</label>
+        <institution content-type="original">01tjs6929</institution>
+        <institution content-type="orgname">01tjs6929</institution>
+      </aff>
+      <aff id="aff4">
+        <label>4</label>
+        <institution content-type="original">Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata, Argentina. E-mail: helenescorciagomez@gmail.com</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/01tjs6929</institution-id>
+          <institution content-type="orgname">Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata</institution>
+        </institution-wrap>
+        <country country="AR">Argentina</country>
+        <email>helenescorciagomez@gmail.com</email>
+      </aff>
+      <aff id="aff5">
+        <label>5</label>
+        <institution content-type="original">Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET), La Plata, Argentina. Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata, Argentina. E-mail: mfcesani@fcnym.unlp.edu.ar</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/03cqe8w59</institution-id>
+          <institution content-type="orgname">Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET), La Plata, Argentina. Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata</institution>
+        </institution-wrap>
+        <country country="AR">Argentina</country>
+        <email>mfcesani@fcnym.unlp.edu.ar</email>
+      </aff>
+      <pub-date date-type="pub" publication-format="electronic">
+        <day>01</day>
+        <month>12</month>
+        <year>2026</year>
+      </pub-date>
+      <volume>19</volume>
+      <issue>3</issue>
+      <fpage>1</fpage>
+      <lpage>10</lpage>
+      <history>
+        <date date-type="received">
+          <day>26</day>
+          <month>05</month>
+          <year>2026</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>31</day>
+          <month>07</month>
+          <year>2026</year>
+        </date>
+        <date date-type="accepted">
+          <day>07</day>
+          <month>08</month>
+          <year>2026</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>Copyright © 2026 Revista del Museo de Antropología</copyright-statement>
+        <copyright-year>2026</copyright-year>
+        <copyright-holder>Revista del Museo de Antropología</copyright-holder>
+        <license license-type="open-access" xlink:href="https://creativecommons.org/licenses/by-nc-sa/4.0/" xml:lang="en">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License (CC BY-NC-SA 4.0).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>The aim of this study is to estimate the prevalence of malnutrition and intestinal parasitic infection among children from low-income neighborhoods in San Rafael (Mendoza) and to analyze their association with socioeconomic and environmental characteristics of residential settings. The anthropometric and socioenvironmental survey was conducted on 674 schoolchildren aged 4-13 years, and the parasitological survey included 124 schoolchildren aged 4-7 years. Nutritional status was assessed following the WHO standards, and concentration techniques were employed for parasitological diagnosis. Socio-environmental data was collected using questionnaires, and analyzed using principal component analysis (PCA), allowing for the formation of two groups. Group I include families with more favorable socioeconomic and environmental characteristics, and Group II include families with critical overcrowding, less access to public services, lower educational level and formal employment in parents. We record 5.48% of undernutrition, 30.40% excess of weight and 58.87% were infected with parasites. Comparatively, Group II showed significantly higher prevalence of undernutrition (7.87% vs 2.39%), chronic undernutrition (6.82% vs 2.38%) and intestinal parasitic infection (67.57% vs 45.45%). These results highlight high prevalence rates of malnutrition and enteroparasitoses among children in low-income neighborhoods, associated with socioeconomic and environmental conditions of residence in San Rafael.</p>
+      </abstract>
+      <trans-abstract xml:lang="es">
+        <p>Este estudio tiene como objetivo estimar las prevalencias de malnutrición y enteroparasitosis en niños y niñas residentes en barrios populares de San Rafael (Mendoza) y analizar su asociación con las características socioeconómicas y ambientales de residencia. El relevamiento antropométrico y socioambiental incluyó 674 niños y niñas de 4 a 13 años de edad y el parasitológico 124 menores de 4 a 7 años. El estado nutricional se evaluó según la referencia OMS, para el diagnóstico parasitológico se utilizaron técnicas de concentración y la caracterización socioeconómica y ambiental se realizó mediante encuestas y análisis de componentes principales, que permitió definir dos grupos. El Grupo I (incluyó familias con características socioeconómicas y ambientales más favorables) y Grupo II (familias con presencia de hacinamiento crítico, menor acceso a servicios públicos, menor nivel educativo y empleo formal en padres y madres). Se registró 5,48% de desnutrición, 30,40% de exceso de peso y 58,87% de enteroparasitosis. Comparativamente, el Grupo II presentó prevalencias significativamente mayores de desnutrición (7,87% vs 2,39%), desnutrición crónica (6,82% vs 2,38%) y enteroparasitosis (67,57% vs 45,45%). Los resultados evidencian altas tasas de malnutrición y enteroparasitosis infantil en barrios populares de San Rafael, asociadas con las condiciones socioeconómicas y ambientales de residencia.</p>
+      </trans-abstract>
+      <kwd-group xml:lang="es">
+        <title>Palabras clave</title>
+        <kwd>Malnutrición</kwd>
+        <kwd>Enteroparasitosis</kwd>
+        <kwd>Barrios Populares</kwd>
+        <kwd>Escolares</kwd>
+        <kwd>Mendoza</kwd>
+      </kwd-group>
+      <kwd-group xml:lang="en">
+        <title>Keywords</title>
+        <kwd>Malnutrition</kwd>
+        <kwd>Intestinal parasitic infection</kwd>
+        <kwd>Low-income Neighborhoods</kwd>
+        <kwd>Schoolchildren</kwd>
+        <kwd>Mendoza</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec sec-type="intro">
+      <title>Introducción</title>
+      <p>En América Latina, la expansión urbana informal se configura a partir de procesos territoriales heterogéneos que comparten un rasgo común: la irregularidad en la tenencia de la tierra y la incapacidad de algunos sectores de la población para cumplir con las normativas que regulan el acceso y la ocupación del suelo y la vivienda. En este contexto, muchas familias deben resolver sus necesidades habitacionales por fuera del mercado inmobiliario formal, dando lugar a la conformación de asentamientos caracterizados por condiciones de precariedad habitacional, déficit de infraestructura y acceso limitado a servicios básicos (Guevara <italic>et al</italic>., 2018). Desde una perspectiva territorial, estos asentamientos suelen localizarse en la periferia de las ciudades, a menudo en áreas expuestas a riesgos ambientales. A ello se suma la presencia de barreras sociales y económicas que restringen el acceso a los recursos y a las oportunidades, reforzando dinámicas de exclusión y desigualdad persistente, entre las cuales se encuentra la salud.</p>
+      <p>En Argentina, un claro ejemplo de estos espacios son los denominados “barrios populares”, categoría establecida en el año 2016 para referirse a conglomerados urbanos de al menos ocho familias, agrupadas o contiguas, donde más de la mitad carece de título de propiedad y acceso regular a por lo menos, dos de los servicios públicos básicos (Miño y Carrara, 2023). En el año 2017 y bajo el decreto 2670/2017 se incorpora de manera formal esta categoría y se conforma el Registro Nacional de Barrios Populares (RENABAP). Posteriormente, se sanciona la Ley 27453 para la integración sociourbana de los Barrios Populares incluidos en el RENABAP.</p>
+      <p>Estudios recientes dan cuenta que, a nivel nacional, existen 6.467 barrios populares, donde viven más de 5.3 millones de personas, cifra que equivale al 11% de la población argentina (García Lazo <italic>et al</italic>., 2025). En estos espacios de gran vulnerabilidad socioeconómica y ambiental -caracterizados por la precariedad habitacional, el hacinamiento crítico, el saneamiento deficitario, el bajo nivel educativo y las altas tasas de desempleo de las personas adultas responsables del hogar- la inseguridad alimentaria, la malnutrición infantil y las enteroparasitosis emergen como indicadores de calidad de vida comprometida (Rivero <italic>et al.</italic>, 2017; Garraza y Oyhenart, 2020; Cociancic <italic>et al., </italic>2021; Ortale <italic>et al.</italic>, 2024; López Monja <italic>et al.,</italic> 2026).</p>
+      <p>La evidencia indica que a lo largo del territorio nacional coexisten distintas formas de malnutrición, ya sea por déficit como por exceso (Ministerio de Salud y Desarrollo Social, 2019). De acuerdo con la Segunda Encuesta Nacional de Nutrición y Salud (ENNyS 2), las prevalencias de desnutrición global, aguda y crónica en niños menores de cinco años alcanzaban en 2019 al 1,7%, 1,6% y 7,9%, respectivamente; en tanto que el exceso de peso (sobrepeso + obesidad) era de 14% de dicho segmento de la población. Por su parte, si bien en niños, niñas y adolescentes de 5-17 años la desnutrición fue menor, la malnutrición por exceso alcanzó valores cercanos al 40%. Asimismo, se observó un patrón alimentario deficitario, con bajo consumo de alimentos saludables y alta ingesta de productos ultra-procesados, situación más acentuada en los sectores de bajos ingresos, donde las estrategias alimentarias priorizan alimentos de alta densidad calórica y bajo valor nutricional (Ministerio de Salud y Desarrollo Social, 2019).</p>
+      <p>En cuanto a las enteroparasitosis, Navone <italic>et al</italic>. (2017) y Cociancic <italic>et al</italic>. (2021) informaron una marcada variabilidad regional, con valores cercanos al 80% en el norte del país, entre el 60% y 65% en la región central y menores a 40% en el sur. La distribución de estas infecciones responde a diferencias climáticas y socioeconómicas, evidenciando un gradiente descendente de norte a sur y de este a oeste. Cabe señalar la relación bidireccional y sinérgica entre malnutrición y enteroparasitosis (Fauziah <italic>et al</italic>., 2022; Vila <italic>et al</italic>., 2025). Por un lado, un estado nutricional inadecuado compromete la respuesta inmunológica, favoreciendo así la persistencia o recurrencia de las infecciones (Gwela <italic>et al</italic>., 2019; Walson y Berkley, 2018). Por otro lado, las infecciones parasitarias entéricas afectan la absorción y aprovechamiento de nutrientes, generando malabsorción y competencia por los nutrientes (Rajoo <italic>et al</italic>., 2017). Asimismo, interactúan con la microbiota pudiendo disminuir o exacerbar la enfermedad mediante la inmunidad del huésped. Estas interacciones pueden alterar la patogenicidad (tanto de los parásitos como de la microbiota) modificando así los resultados de la infección, la absorción y el perfil general de la enfermedad (Al-Rashidi y El-Wakil, 2024). En otras palabras, en contextos de vulnerabilidad socioeconómica y ambiental, la interacción entre malnutrición -particularmente la desnutrición- y enteroparasitosis se presenta como un círculo vicioso difícil de romper (Garraza <italic>et al</italic>., 2019; Zonta <italic>et al</italic>., 2024).</p>
+      <p>Considerando las condiciones de vulnerabilidad socioeconómica y ambiental que caracterizan a los barrios populares de Argentina, profundizar el conocimiento sobre la salud de la población infantil que reside en estos contextos constituye una prioridad para la Salud Pública. No obstante, la información disponible para numerosas regiones del país sigue siendo escasa, hecho que limita la comprensión de estos problemas y dificulta el diseño de intervenciones sustentadas en evidencia. En este marco, el presente trabajo tuvo por objetivo estimar las prevalencias de malnutrición y enteroparasitosis en niños y niñas residentes en barrios populares del departamento de San Rafael (provincia de Mendoza) y analizar su asociación con las características socioeconómicas y ambientales del entorno de residencia.</p>
+    </sec>
+    <sec sec-type="materials|methods">
+      <title>Materiales y métodos</title>
+      <p><italic>Área de estudio</italic></p>
+      <p>El departamento de San Rafael, se encuentra ubicado al sur de la provincia de Mendoza, cuenta con una población de 215.020 habitantes (INDEC, CNPyV, 2022) y presenta una configuración urbana de tipo ciudad-oasis, caracterizada por un patrón de ocupación disperso y de baja densidad, con elevado consumo de suelo por habitante (Otta, 2014). El proceso de expansión urbana, desarrollado de manera rápida y con limitada planificación desde los primeros asentamientos a inicios del siglo XX, ha dado lugar a la conformación de un cinturón periférico empobrecido, expuesto a diversas amenazas ambientales. En este contexto, el RENABAP identifica 34 barrios populares donde residen aproximadamente 3.290 familias, distribuidas tanto en áreas próximas al casco urbano como en distritos más alejados (RENABAP, 2022).</p>
+      <p><italic>Población y muestra</italic></p>
+      <p>El presente trabajo se llevó a cabo en establecimientos educativos públicos localizados dentro o en las inmediaciones de los siguientes barrios populares: Isla Río Diamante, Cruce del Parque, El Molino y Costa Canal Babacce. La selección de estos barrios se fundamentó en su inclusión en el RENABAP y en su tamaño poblacional. En este sentido se incluyeron, por conveniencia, aquellos que presentaban escuelas dentro o en su cercanía con matrículas más numerosas con el objetivo de asegurar un tamaño muestral representativo y adecuado para el cumplimiento de los objetivos propuestos. Asimismo, se consideraron los antecedentes generados por nuestro equipo de trabajo que indicaron que se trataba de barrios caracterizadas por un acceso limitado a servicios públicos, condiciones habitacionales precarias y situaciones de hacinamiento, junto con bajos niveles educativos y alta proporción de empleo informal (Garraza <italic>et al</italic>., 2016).</p>
+      <p>El trabajo de campo se realizó durante los ciclos lectivos 2019 y 2023. Se solicitó la autorización a la Dirección General de Escuelas de la Provincia de Mendoza para ingresar a las instituciones educativas y una vez obtenido el permiso se informó a las familias de los escolares acerca de los objetivos y alcance del estudio y se solicitó el consentimiento informado de los adultos a cargo para la inclusión de los menores en el mismo.</p>
+      <p>La población elegible quedó constituida por todos los niños y niñas asistentes a los turnos mañana y tarde, con edades comprendidas entre 4-13 años, que no presentaban enfermedad manifiesta, que disponían del consentimiento escrito e informado de los adultos a cargo y que otorgaron su asentimiento para participar del estudio.</p>
+      <p><italic>Diseño del trabajo</italic></p>
+      <p>Se realizó un estudio de tipo transversal, estructurado en tres ejes de análisis: antropométrico, parasitológico y socioeconómico y ambiental.</p>
+      <p><italic>Análisis antropométrico</italic></p>
+      <p>El relevamiento antropométrico fue realizado siguiendo protocolos estandarizados (Lohman et al., 1988). Se registró el peso (Pe) y la talla (T) de 674 escolares (342 varones y 332 mujeres). El Pe se midió en kilogramos con balanza digital portátil (TANITA) de 100 g de precisión; los niños y las niñas se pesaron sin calzado y con ropa liviana. La T se registró en centímetros utilizando un antropómetro vertical (SECA 213) con 1 mm de precisión, con los niños y las niñas sin calzado. Las mediciones fueron realizadas por las autoras MG y MFC.</p>
+      <p>A partir de los valores de Pe y T se calculó el índice de masa corporal (IMC=Pe/T<sup>2</sup> (kg/m<sup>2</sup>)). Para determinar el estado nutricional, se emplearon los softwares WHO Anthro versión 3.2.2 y WHO Anthroplus versión 1.0.4 y se aplicaron los puntos de corte propuestos por la Organización Mundial de la Salud (WHO, 2006, 2007). Para determinar la desnutrición se consideraron los indicadores: Baja Talla para la Edad (desnutrición crónica), Bajo Peso para la Edad (desnutrición global) y Bajo IMC para la Edad (desnutrición aguda). El sobrepeso y la obesidad se determinaron mediante el empleo del IMC para la edad. Los niños y las niñas se consideraron con desnutrición si presentaban Baja Talla para la Edad, Bajo Peso para la Edad y/o Bajo IMC para la Edad; con exceso de peso si evidenciaban sobrepeso u obesidad y con estado nutricional adecuado cuando no se ubicaron en las categorías anteriores.</p>
+      <p><italic>Análisis parasitológico</italic></p>
+      <p>El análisis de las enteroparasitosis se realizó en una submuestra de 124 niños y niñas (70 varones y 54 mujeres) con edades comprendidas entre 4 y 7 años. A fin de intercambiar información sobre las parasitosis intestinales se realizaron talleres en los establecimientos educativos a los cuales asistieron las familias y autoridades escolares. Durante estas actividades se ofreció la posibilidad de realizar el análisis coproparasitológico a los niños y las niñas de las familias interesadas.</p>
+      <p>Previa autorización de los padres, las madres o los tutores se entregaron frascos con formol al 5% para la recolección de muestras de materia fecal y escobillado anal seriado por parte del adulto responsable. Las muestras fueron analizadas en el Laboratorio de Parasitología Humana del Centro de Estudios Parasitológicos y de Vectores (CEPAVE, UNLP-CONICET- asoc.CIC). Para el análisis de las muestras de materia fecal se utilizó la técnica de concentración por sedimentación -Formol acetato de etilo- (Cociancic et al., 2018). Los escobillados anales se centrifugaron durante 5 minutos a 1500 rpm (WHO, 1991). Las muestras temporarias fueron observadas al microscopio óptico en 100x y 400x de aumento.</p>
+      <p><italic>Análisis socioeconómico y ambiental de residencia</italic></p>
+      <p>Los adultos a cargo de los niños y las niñas que participaron del relevamiento antropométrico contestaron una encuesta elaborada por nuestro equipo de investigación y previamente validada por Oyhenart et al. (2008). Dicha encuesta permitió relevar información sobre el contexto de residencia familiar. Se incluyeron variables del ambiente intradomiciliario (materiales constructivos de la vivienda, régimen de tenencia de la misma, hacinamiento crítico) y peridomiciliario (acceso a servicios públicos como electricidad, agua corriente, gas natural, recolección de residuos, otros). Asimismo, se indagó sobre el nivel de educación formal alcanzado y la situación laboral de los padres y las madres, la atención de la salud y otros indicadores que brindaron información acerca de la situación socioeconómica familiar (por ejemplo, complementos alimentarios y monetarios a través de subsidios o ayudas estatales).</p>
+      <p><italic>Procesamiento estadístico</italic></p>
+      <p>Se calcularon prevalencias de estado nutricional y se compararon por sexo y edad mediante pruebas de chi al cuadrado (χ²). También se estimaron prevalencias parasitológicas considerando el porcentaje de cada especie encontrada: parasitados totales (parasitado por al menos una especie), mono, bi y poliparasitados (parasitados por una, dos y tres o más especies, respectivamente).</p>
+      <p>Para el análisis de las variables socioeconómicas y ambientales se realizó análisis de componentes principales categóricos (ACPcat) que permitió reducir la dimensionalidad de las variables y definir, a partir del primer componente, dos grupos de acuerdo a las características de residencia. Luego se calcularon frecuencias para cada variable analizadas en la muestra total y en cada grupo y se compararon mediante pruebas Chi<sup>2</sup>. Todos los análisis se realizaron con el programa estadístico IBM SPSS Statistics 23, considerando un nivel de significación p&lt;0,05.</p>
+    </sec>
+    <sec>
+      <title>Consideraciones éticas</title>
+      <p>La investigación se realizó de acuerdo con los estándares éticos instituidos por el Código de Nuremberg de 1947, la Declaración Universal de los Derechos Humanos de 1948 y la Declaración de Helsinki de 1964 y sucesivas modificaciones, prestando especial atención a la Ley 26343 de Protección de los Datos Personales. Cabe destacar que los estudios antropométricos y parasitológicos incluyeron técnicas no invasivas, ni cruentas y se practicaron sólo cuando existió voluntad expresa de los adultos a cargo y de los niños y las niñas.</p>
+      <p>El protocolo de investigación aplicado en este estudio cuenta con aprobación del Comité Consultivo Central de Bioética de la Dirección de Salud de la Universidad Nacional de La Plata (Acta 64).</p>
+    </sec>
+    <sec sec-type="results">
+      <title>Resultados</title>
+      <p>En la Tabla 1 se presentan las prevalencias de cada indicador de estado nutricional en la muestra total, por edades y por sexo. Del total de la muestra analizada, 5,5% presentó desnutrición, 30,4% exceso de peso y 66,7% estado nutricional adecuado. La desnutrición más prevalente fue la de tipo crónica (4,9%), seguida por la desnutrición global (2,7%) y la desnutrición aguda (0,7%). En cuanto al exceso de peso, el sobrepeso fue más prevalente (17,6%) que la obesidad (12,7%). Se observaron diferencias significativas por edad para exceso de peso, sobrepeso y obesidad. Las prevalencias más bajas se registraron a los cuatro años y las más altas a los 12 años para exceso de peso y obesidad y a los 13 años para sobrepeso. Las comparaciones por sexo no evidenciaron diferencias significativas.</p>
+      <table-wrap id="t1">
+        <label>Table 1</label>
+        <caption>
+          <title>Prevalencias de malnutrición y prueba de Chi <sup>2</sup> por edad y sexo.</title>
+          <p xml:lang="en">Prevalences of malnutrition and Chi-square test by age and sex.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr><th><bold>Estado nutricional</bold></th><th></th><th colspan="10"><bold>Edad (años) </bold></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td><bold>Estado nutricional</bold></td><td><bold>Total</bold></td><td><bold>4</bold></td><td><bold>5</bold></td><td><bold>6</bold></td><td><bold>7</bold></td><td><bold>8</bold></td><td><bold>9</bold></td><td><bold>10</bold></td><td><bold>11</bold></td><td><bold>12</bold></td><td><bold>13</bold></td><td><bold>Chi<sup>2 </sup></bold></td><td><bold>p</bold></td><td><bold>Varones</bold></td><td><bold>Mujeres</bold></td><td><bold>Chi<sup>2 </sup></bold></td><td><bold>p</bold></td></tr>
+            <tr><td><bold>Estado nutricional</bold></td><td></td><td colspan="10"><bold>Prevalencias (%)</bold></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><bold>Desnutrición</bold></td><td>5,48</td><td>6,94</td><td>4,76</td><td>6,15</td><td>6,45</td><td>6,09</td><td>5,88</td><td>5,88</td><td>3,44</td><td>4,87</td><td>4,00</td><td>1,49</td><td>0,997</td><td>5,26</td><td>5,72</td><td>0,79</td><td>0,866</td></tr>
+            <tr><td>Desnutrición crónica</td><td>4,89</td><td>4,16</td><td>3,17</td><td>4,61</td><td>6,45</td><td>6,09</td><td>5,88</td><td>5,88</td><td>3,44</td><td>4,87</td><td>4,00</td><td>1,79</td><td>0,994</td><td>4,67</td><td>5,12</td><td>0,07</td><td>0,790</td></tr>
+            <tr><td>Desnutrición global</td><td>2,74</td><td>2,77</td><td>1,58</td><td>3,07</td><td>3,22</td><td>1,21</td><td>3,52</td><td>12,50</td><td>-</td><td>-</td><td>-</td><td>4,15</td><td>0,650</td><td>2,22</td><td>3,30</td><td>0,48</td><td>0,490</td></tr>
+            <tr><td>Desnutrición aguda</td><td>0,70</td><td>-</td><td>-</td><td>1,53</td><td>-</td><td>-</td><td>-</td><td>1,96</td><td>1,14</td><td>2,43</td><td>-</td><td>7,90</td><td>0,544</td><td>0,29</td><td>1,20</td><td>1,91</td><td>0,211</td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><bold>Exceso Peso</bold></td><td>30,40</td><td>4,16</td><td>27,98</td><td>32,30</td><td>25,80</td><td>32,92</td><td>40,00</td><td>25,49</td><td>31,03</td><td>45,12</td><td>40,00</td><td>38,52</td><td>0,000</td><td>31,57</td><td>29,21</td><td>0,44</td><td>0,505</td></tr>
+            <tr><td>Sobrepeso</td><td>17,65</td><td>1,38</td><td>19,04</td><td>15,38</td><td>16,12</td><td>17,07</td><td>21,17</td><td>13,72</td><td>22,98</td><td>24,39</td><td>28,00</td><td>20,90</td><td>0,013</td><td>17,83</td><td>17,47</td><td>0,90</td><td>0,920</td></tr>
+            <tr><td>Obesidad</td><td>12,75</td><td>2,77</td><td>7,93</td><td>16,92</td><td>9,67</td><td>15,85</td><td>18,82</td><td>11,76</td><td>8,04</td><td>20,73</td><td>12,00</td><td>19,29</td><td>0,023</td><td>13,74</td><td>11,74</td><td>0,60</td><td>0,438</td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <p>El análisis parasitológico mostró que el 58,9% de la muestra resultó parasitada por al menos una especie. La prevalencia de especies patógenas fue de 94,5%. Entre los parasitados, el 60,3% correspondió a infecciones por una única especie, el 26,0% por dos especies y el 13,7% por tres o más especies (Figura 1). La riqueza específica fue de 8 y las especies más prevalentes fueron <italic>Enterobius vermicularis</italic> (28,2%) y <italic>Blastocystis </italic>sp<italic>.</italic> (27,4%) (Figura 2). Los resultados de la prueba de Chi<sup>2 </sup>indicaron diferencias no significativas por edad para las categorías parasitados, monoparasitados, biparasitados y poliparasitados (p&gt;0.05). Por el contrario, hubo diferencias significativas entre sexos, en tanto que los varones resultaron más parasitados (67,1%) que las mujeres (48,1%) (p=0.043).</p>
+      <p>FIGURAS 1 y 2</p>
+      <p>El análisis socioeconómico y ambiental mostró que, en términos generales, la mayoría de las familias residían en casas de mampostería de ladrillo y contaba con acceso a agua de red, mientras que sólo 11,2% disponía de conexión a la red cloacal y menos de 10,0% tenía acceso a gas natural. El servicio de recolección de residuos alcanzaba a menos de la mitad de la población y sólo el 14,0% contaba con pavimento. Además, dos de cada diez familias presentaban hacinamiento crítico y contaban con cobertura de salud por obra social o prepaga (Tabla 2).</p>
+      <p>Con relación al nivel educativo se registró que más del 20,0% de los padres y de las madres no había finalizado la escuela primaria y que menos del 3,0% acreditaba nivel terciario/universitario completo. En cuanto a la situación laboral, sólo 34,0% de los padres y 35,3% de las madres tenían empleo formal. Por último, 34,2% y 21,6% de los hogares recibía ayuda monetaria (Asignación Universal por Hijo) y alimentaria, respectivamente (Tabla 2).</p>
+      <table-wrap id="t2">
+        <label>Table 2</label>
+        <caption>
+          <title>Características socio-económicas y ambientales de la muestra total y por grupos. Comparación entre grupos mediante prueba de Chi <sup>2</sup>.</title>
+          <p xml:lang="en">Socioeconomic and environmental characteristics of the total sample and by groups. Comparison between groups using the Chi-square test.</p>
+        </caption>
+        <table>
+          <thead>
+            <tr><th colspan="6"><bold>Frecuencia (%)</bold></th></tr>
+          </thead>
+          <tbody>
+            <tr><td><bold>Variable</bold></td><td><bold>Muestra Total</bold></td><td><bold>Grupo 1</bold></td><td><bold>Grupo 2</bold></td><td><bold>Chi <sup>2</sup></bold></td><td><bold>p</bold></td></tr>
+            <tr><td><bold>Régimen de tenencia de vivienda</bold></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Propia</td><td>72,76</td><td>81,09</td><td>66,40</td><td>17,98</td><td>0,001</td></tr>
+            <tr><td>Alquilada</td><td>6,25</td><td>6,52</td><td>6,03</td><td>0,07</td><td>0,794</td></tr>
+            <tr><td>Otros</td><td>20,47</td><td>12,02</td><td>27,03</td><td>22,71</td><td>0,001</td></tr>
+            <tr><td colspan="6"><bold>Tipo de construcción de la vivienda</bold></td></tr>
+            <tr><td>Mampostería de ladrillo</td><td>92,04</td><td>99,69</td><td>97,39</td><td>5,23</td><td>0,024</td></tr>
+            <tr><td>Precaria (Chapa / Madera)</td><td>8,33</td><td>5,49</td><td>10,49</td><td>5,40</td><td>0,020</td></tr>
+            <tr><td><bold>Calidad del agua de consumo</bold></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Agua de red</td><td>76,30</td><td>88,96</td><td>66,66</td><td>45,28</td><td>0,001</td></tr>
+            <tr><td>Perforación con bomba</td><td>7,73</td><td>7,21</td><td>8,13</td><td>0,19</td><td>0,658</td></tr>
+            <tr><td><bold>Eliminación de excretas</bold></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Red cloacal</td><td>11,16</td><td>24,04</td><td>1,00</td><td>90,71</td><td>0,001</td></tr>
+            <tr><td>Pozo</td><td>88,69</td><td>75,25</td><td>98,95</td><td>92,33</td><td>0,001</td></tr>
+            <tr><td colspan="6"><bold>Combustible para calefaccionar/cocinar</bold></td></tr>
+            <tr><td>Gas Natural</td><td>8,92</td><td>14,43</td><td>4,74</td><td>19,12</td><td>0,001</td></tr>
+            <tr><td>Gas Envasado</td><td>84,97</td><td>84,56</td><td>85,32</td><td>0,07</td><td>0,783</td></tr>
+            <tr><td>Leña</td><td>9,52</td><td>2,74</td><td>14,69</td><td>27,33</td><td>0,001</td></tr>
+            <tr><td colspan="6"><bold>Servicios Públicos</bold></td></tr>
+            <tr><td>Pavimento</td><td>14,00</td><td>23,79</td><td>6,56</td><td>40,58</td><td>0,001</td></tr>
+            <tr><td>Recolección de residuos</td><td>45,41</td><td>69,75</td><td>26,77</td><td>123,00</td><td>0,001</td></tr>
+            <tr><td>Electricidad</td><td>83,92</td><td>93,81</td><td>76,37</td><td>37,18</td><td>0,001</td></tr>
+            <tr><td colspan="6"><bold>Educación Paterna</bold></td></tr>
+            <tr><td>Primario incompleto</td><td>26,11</td><td>21,00</td><td>30,01</td><td>16,29</td><td>0,001</td></tr>
+            <tr><td>Nivel Primario</td><td>36,56</td><td>40,54</td><td>33,50</td><td>3,51</td><td>0,060</td></tr>
+            <tr><td>Nivel Secundario</td><td>12,23</td><td>20,27</td><td>6,06</td><td>30,92</td><td>0,001</td></tr>
+            <tr><td>Nivel Terciario/ Universitario</td><td>0,44</td><td>1,03</td><td>0,26</td><td>1,63</td><td>0,201</td></tr>
+            <tr><td colspan="6"><bold>Educación materna</bold></td></tr>
+            <tr><td>Primario incompleto</td><td>21,00</td><td>12,10</td><td>27,90</td><td>24,79</td><td>0,001</td></tr>
+            <tr><td>Nivel Primario</td><td>49,70</td><td>54,48</td><td>46,05</td><td>4,67</td><td>0,030</td></tr>
+            <tr><td>Nivel Secundario</td><td>19,55</td><td>24,48</td><td>15,78</td><td>7,90</td><td>0,005</td></tr>
+            <tr><td>Nivel Terciario/ Universitario</td><td>2,83</td><td>4,48</td><td>1,57</td><td>5,03</td><td>0,024</td></tr>
+            <tr><td colspan="6"><bold>Empleo del padre </bold></td></tr>
+            <tr><td>Empleo Formal</td><td>34,02</td><td>66,89</td><td>8,94</td><td>246,03</td><td>0,001</td></tr>
+            <tr><td>Empleo Informal</td><td>44,47</td><td>21,03</td><td>62,36</td><td>113,79</td><td>0,001</td></tr>
+            <tr><td colspan="6"><bold>Empleo de la madre</bold></td></tr>
+            <tr><td>Empleo Formal</td><td>35,27</td><td>41,72</td><td>30,34</td><td>9,32</td><td>0,002</td></tr>
+            <tr><td>Empleo Informal</td><td>20,62</td><td>19,65</td><td>21,37</td><td>0,30</td><td>0,587</td></tr>
+            <tr><td colspan="6"><bold>Ingreso familiar</bold></td></tr>
+            <tr><td>Ayuda Monetaria</td><td>34,17</td><td>25,51</td><td>40,78</td><td>17,52</td><td>0,001</td></tr>
+            <tr><td>Ayuda alimentaria</td><td>21,60</td><td>21,74</td><td>21,52</td><td>0,04</td><td>0,952</td></tr>
+            <tr><td><bold>Cobertura de salud</bold></td><td>17,55</td><td>39,86</td><td>0,52</td><td>176,36</td><td>0,001</td></tr>
+            <tr><td><bold>Atención Hospitalaria</bold></td><td>79,61</td><td>59,10</td><td>95,27</td><td>132,98</td><td>0,001</td></tr>
+            <tr><td><bold>Hacinamiento Crítico </bold></td><td>20,23</td><td>10,29</td><td>28,39</td><td>30,32</td><td>0,001</td></tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <p>El ACPcat presentó un alfa de Cronbach de 0,85 y explicó el 20,93% de la varianza total. El primer componente (CP1) aportó el 11,76% de la varianza y permitió diferenciar dos grupos. El Grupo I (n= 381), con valores positivos incluyó familias con condiciones socioeconómicas y ambientales más favorables, tales como tenencia de vivienda propia y construida con mampostería de ladrillo, acceso a servicios públicos (red cloacal, agua de red, pavimento, electricidad, recolección de residuos y gas natural), mayor nivel educativo y empleo formal de padres y madres y cobertura de salud prepaga o por obra social. Por su parte, el Grupo II (n=293) presentó valores negativos en el CP1 y agrupó familias en condiciones menos favorables, caracterizada por viviendas prestadas o alquiladas, construcciones precarias, agua de consumo extraída de pozo, eliminación de excretas mediante pozo absorbente, utilización de leña y gas envasado para cocinar y calefaccionar, trabajo informal de padres y madres, ayuda monetaria y alimentaria por parte del estado, hacinamiento crítico y atención de la salud en hospitales públicos (Figura 3). La frecuencia de casi todas las variables incluidas en este análisis mostró diferencias significativas entre grupos (Tabla 2).</p>
+      <fig id="f3">
+        <label>Figure 3</label>
+        <caption>
+          <title>Análisis por componentes principales categóricos (ACPcat).</title>
+          <p xml:lang="en">Categorical Principal Component Analysis (CATPCA). Leyenda de figura 3.  1: own house; 2: house built with brick; 3: drinking water by piped system; ; 4: wastewater disposal by sewage system; 5: mother level education; 6: waste collection; 7: father level education; 8: pavement; 9: formal mather’s employment; 10: electricity; 11: piped gas system; 12: formal father’s employment; 13: Health insurance; 14: rented house; 15: drinking water by pump; 16: house built with precarious materials; 17: borrowed house; 18: firewood as fuel; 19: wastewater disposal by septic tank (cesspool); 20: overcrowding; 21: informal father’s employment 22: public hospital care; 23: monetary support; 24 informal mather’s employment; 25: nutritional support; 26: bottled gas.</p>
+        </caption>
+        <graphic xlink:href="Figura+3.png"/>
+      </fig>
+      <p>La Tabla 3 presenta las prevalencias de malnutrición y enteroparasitosis en los grupos definidos a partir del ACPcat. La desnutrición general y la desnutrición crónica fueron más prevalentes en el Grupo II (desnutrición general: Grupo II: 7,87% vs. Grupo I: 2,39%; χ² = 9,60; p = 0,001; OR = 3,49; desnutrición crónica: Grupo II: 6,82% vs. Grupo I: 2,38%; χ² = 6,99; p = 0,008; OR = 2,99). En cambio, la desnutrición global y la desnutrición aguda no mostraron diferencias significativas entre los grupos. De manera similar se comportó el exceso de peso, aunque las prevalencias de sobrepeso y obesidad fueron mayores en el Grupo I, dichas diferencias no alcanzaron significación estadística. Finalmente, si bien se encontraron porcentajes más elevados de monoparasitados, biparasitados, poliparasitados y de especies patógenas en el Grupo II, las diferencias entre grupos tampoco resultaron estadísticamente significativas. Cabe aclarar que el número de casos incluidos en este último análisis se redujo a 59 debido a la ausencia de información socioambiental de residencia de algunos niños o niñas analizados.</p>
+    </sec>
+    <sec sec-type="discussion">
+      <title>Discusión</title>
+      <p>Los barrios populares de San Rafael (Mendoza) en los que se desarrolló el presente trabajo presentan marcadas condiciones de precariedad socioeconómica y ambiental. Se trata de territorios donde el acceso al suelo y a la vivienda se ha dado a través de procesos informales acompañado por un significativo déficit en el acceso regular a servicios básicos (Baldovin Simonovich, 2014; Garraza <italic>et al</italic>., 2016). En este contexto uno de cada tres niños o niñas presentaba malnutrición y más de la mitad estaba parasitado.</p>
+      <p>El perfil nutricional hallado coincide con el reportado para otras poblaciones del país y la región, donde el exceso de peso y la desnutrición coexisten, configurando un escenario de doble carga de malnutrición (Garraza <italic>et al</italic>., 2019; Oyhenart <italic>et al</italic>., 2013; Popkin <italic>et al</italic>., 2020; Zonta <italic>et al</italic>., 2024). Los datos correspondientes a América Latina muestran que el retraso del crecimiento infantil disminuyó del 25% en 1990 al 11% en 2015, mientras que el exceso de peso (sobrepeso/obesidad) en niños y adolescentes aumentó del 22% en 2000 al 31% en 2016, aunque con grandes disparidades regionales (UNICEF, 2023). Las prevalencias de desnutrición observada en la población analizada resultaron inferiores a las reportadas para el contexto latinoamericano. Por el contrario, fueron superiores a las estimadas por la ENNyS 2 a nivel nacional, en tanto que el exceso de peso presentó valores inferiores (Ministerio de Salud y Desarrollo Social (2019). A nivel provincial se cuenta con información obtenida previamente por nuestro equipo de investigación. Los datos obtenidos dan cuenta de prevalencias de desnutrición y exceso de peso cercanos al 8% y 28%, respectivamente en escolares de Guaymallén (Garraza et al., 2019) y del orden del 11% y 21%, respectivamente en niños y niñas de San Rafael (Garraza et al., 2016). Si bien los resultados obtenidos en el presente trabajo dan cuenta de menores prevalencias de desnutrición y mayores de exceso de peso, las diferencias con los estudios previos deben ser analizadas con cautela, ya que en ellos no se estudiaron poblaciones residen en barrios populares y se utilizaron como referencia los datos de NHANES III (Frisancho, 2008) y no lo de la Organización Mundial de la Salud (WHO, 2006, 2007).</p>
+      <p>El análisis por edad evidenció un comportamiento no homogéneo. En particular, los indicadores de malnutrición por exceso fueron notablemente bajos a los 4 años, en relación con el resto de los grupos etarios. Algunos autores plantean que las tasas de sobrepeso y obesidad suelen incrementarse a partir de los 5 años (Rodriguez-Martinez <italic>et al</italic>., 2020). En línea con ello, el Ministerio de Salud y Desarrollo Social (2019) informó prevalencias bajas en niños menores a 5 años de Argentina, en tanto que Ricardo <italic>et al</italic>., (2021) a partir de un análisis que incluyó datos de noventa encuestas de salud de países de ingreso bajos y medios encontraron una relación inversa entre el exceso de peso y la edad.</p>
+      <p>Aunque la desnutrición y el exceso de peso suelen percibirse como problemáticas nutricionales opuestas, en contextos de pobreza, ambas se inscriben en un mismo entramado de determinantes sociales (Poda <italic>et al</italic>., 2017; Scrinis, 2020; UNICEF, 2019; Wells <italic>et al</italic>., 2020). Entre ellos, se destacan el bajo nivel educativo de madres y padres y las condiciones socioeconómicas desfavorables del hogar. Estos factores presentan una fuerte asociación con la desnutrición (Chowdhury <italic>et al</italic>., 2018; Garraza <italic>et al</italic>., 2019;  Soekatri <italic>et al</italic>., 2020), aunque en interacción con otros condicionantes, también ocupan un rol importante en la etiología de la obesidad (Pförtner <italic>et al</italic>., 2025; Seum <italic>et al</italic>., 2022). En este marco, la población analizada se caracterizó por bajos niveles de instrucción -un cuarto de los adultos sin escolaridad primaria completa y menos de una quinta parte con secundario finalizado-, junto con una limitada inserción en el empleo formal y una elevada proporción de informalidad, condiciones que podrían contribuir a los perfiles de malnutrición observados en los barrios populares estudiados.</p>
+      <p>Las condiciones antes descriptas remiten a la pobreza entendida como un fenómeno complejo y multidimensional, que además de la dimensión económica incluye otras, como la educación, la salud y el acceso a infraestructura de saneamiento y servicios básicos (Téllez y Macció, 2020; World Bank, 2020). En este sentido, el impacto de la pobreza se manifiesta de múltiples formas, entre las que figuran la inseguridad alimentaria, el retardo del crecimiento y desarrollo, la malnutrición infantil y la vulnerabilidad a contraer enfermedades (Siddiqui <italic>et al</italic>., 2020; WHO, 2024). Con relación a ello, es de considerar que más de la mitad de la población infantil analizada estaba parasitada. Las especies más prevalentes fueron <italic>Blastocystis</italic> sp. y <italic>E. vermicularis</italic>, coincidiendo con lo informado a nivel nacional por Cociancic <italic>et al</italic>. (2021) y en la provincia de Mendoza por Garraza <italic>et al</italic>. (2014, 2019).</p>
+      <p>Las infecciones parasitarias identificadas corresponden mayoritariamente a protozoos que se reconocen como agentes causales de 1.700 millones de enfermedades diarreicas y 842.000 muertes anuales en todo el mundo (Arslan <italic>et al.,</italic> 2022). Estas formas parásitas se transmiten por la contaminación de alimentos y agua con materia fecal y se asocian con la falta de acceso a servicios públicos como agua de red y cloacas (Ahmed, 2023; Garraza <italic>et al</italic>., 2019). Cabe mencionar, que un cuarto de la población analizada carecía de agua de red y solo la décima parte contaba con red cloacal, condiciones que podrían haber favorecido la transmisión de estos parásitos. En particular, <italic>Blastocystis </italic>sp. es un protozoo patógeno identificado como posible agente etiológico de diarreas crónicas, especialmente en personas inmunodeprimidas y en personas con trastornos funcionales intestinales, desnutrición o con cáncer (Badparva y Kheirandish, 2020; Rudzińska <italic>et al</italic>., 2020). Por otra parte, <italic>E. vermicularis</italic> -único nematodo identificado- es una parasitosis cosmopolita que afecta aproximadamente al 30% de los niños en todo el mundo y hasta al 60% en algunos países en desarrollo (Leung <italic>et al</italic>., 2025). Su transmisión ocurre a través del contacto directo entre individuos y de la ingesta e inhalación de los huevos, y se ve favorecida por la reinfección (Cranston <italic>et al</italic>., 2015; Taghipour <italic>et al</italic>., 2020). Entre los principales factores de riesgo se han reconocido la falta de higiene personal o grupal, el hacinamiento y el nivel educativo de los padres y las madres (Leung <italic>et al</italic>., 2025; Mao <italic>et al</italic>., 2025; Rivero <italic>et al</italic>., 2017; Taghipour <italic>et al</italic>., 2020). Estas condiciones fueron identificadas en la población estudiada ya que, un cuarto de los niños vivía en condiciones de hacinamiento crítico y más de la mitad de las madres sólo acreditaban educación primaria, ya sea completa o incompleta. Ello, sumado a los hábitos propios de la edad, podría explicar las altas prevalencias encontradas de este tipo de parásito.</p>
+      <p>La ausencia de geohelmintos- parásitos intestinales cuyos huevos maduran en la tierra y se vuelven infectivos- y la baja prevalencia de <italic>Hymenolepis nana</italic> podrían relacionarse con las condiciones climáticas locales, caracterizadas por la elevada radiación solar y la baja humedad. Cabe señalar que el departamento de San Rafael presenta un clima templado seco con una temperatura media anual inferior a 18°C -con variación entre 31°C y 0.9 °C- y precipitación anual menor a 400 mm (Balbi <italic>et al</italic>., 2019; Garraza <italic>et al</italic>., 2014). Por el contrario, estas parasitosis son frecuentes en regiones subtropicales con alta humedad y abundante vegetación, como lo es la región noreste de nuestro país, donde se han registrado altas prevalencias de estos parásitos (Alvarez Di Fino <italic>et al</italic>., 2020; Cociancic <italic>et al.</italic>, 2021; Navone <italic>et al., </italic>2017). En Misiones y en Formosa, por ejemplo, se han informado prevalencia de geohelmintos de 35% (Gamboa <italic>et al.</italic>, 2022) y 17% (Zonta <italic>et al</italic>., 2020), respectivamente. En este sentido, el clima de San Rafael podría actuar como un factor protector para estas especies.</p>
+      <p>Aunque el análisis socioeconómico y ambiental evidenció condiciones de vida deficitarias en toda la población, la malnutrición y las enteroparasitosis no fueron homogéneas, evidenciando diferencias en los grupos definidos mediante el ACPcat. El Grupo II -ubicado en el extremo más vulnerable del gradiente socioeconómico y ambiental- presentó un riesgo 3,5 veces superior de desnutrición en comparación con el Grupo I. Estos hallazgos refuerzan el papel del entorno en la configuración del estado nutricional, dado que niveles educativos más altos favorecen el acceso a empleos formales, estables y mejor remunerados, lo que a su vez posibilita una alimentación de mayor calidad (Darmon y Drewnowski, 2015; Vollmer <italic>et al</italic>., 2017). Si bien una proporción importante de los hogares era beneficiaria de planes asistenciales alimentarios y/o monetarios por parte del Estado, dicha ayuda resultaría insuficiente para compensar la precariedad laboral y mejorar las condiciones de vida.</p>
+      <p>En relación con el perfil parasitológico, los niños y las niñas del Grupo II exhibieron prevalencias más elevadas de parasitosis y poliparasitosis junto con una proporción superior de especies patógenas. Es conocido que el acceso limitado a servicios básicos, el hacinamiento y el bajo nivel educativo parental favorecen la transmisión y persistencias de las enteroparasitosis (Cardona-Arias, 2018; Cociancic <italic>et al</italic>., 2020). En este sentido, las condiciones socioeconómicas y ambientales adversas observadas en el Grupo II resultan consistentes con estos hallazgos y contribuyen a explicar las mayores prevalencias registradas. Los resultados obtenidos muestran que los barrios populares de San Rafael analizados exponen una problemática de desigualdad en salud infantil, incluso cuando toda la población se encuentra vulnerada. Las diferencias observadas entre ambos grupos indican que la distribución de la malnutrición -especialmente la desnutrición- y las infecciones parasitarias no es homogénea, sino que responden a las condiciones socioeconómicas y ambientales de los hogares, profundizando brechas dentro de un mismo territorio. En este contexto, se vuelve imprescindible fortalecer y reorientar las políticas públicas, con el fin de garantizar condiciones de vida adecuadas para el crecimiento y desarrollo infantil. En particular, es necesario avanzar en la urbanización de estos barrios mediante la ampliación y conexión segura a las redes de agua potable y saneamiento cloacal, con el objetivo de reducir la transmisión de enteroparasitosis. Asimismo, se requiere mejorar el acceso a una alimentación saludable a través de políticas escolares y departamentales que promuevan la disponibilidad y el consumo de alimentos de calidad nutricional.</p>
+    </sec>
+    <sec sec-type="conclusions">
+      <title>Conclusiones</title>
+      <p>Los resultados del presente estudio evidencian altas prevalencias de malnutrición y enteroparasitosis en niños y niñas que viven en los barrios populares de San Rafael, así como su asociación con las condiciones socioeconómicas y ambientales del entorno de residencia. La coexistencia de desnutrición y exceso de peso, junto con la elevada prevalencia parasitaria, da cuenta de la complejidad del perfil sanitario en estos contextos. Los hallazgos confirman que ambas problemáticas forman parte de un entramado de determinantes sociales, donde la precariedad habitacional, el acceso limitado a servicios públicos, la precarización laboral y el bajo nivel educativo parental resultan factores asociados. Asimismo, las diferencias observadas entre los grupos analizados muestran que, aun dentro de escenarios de vulnerabilidad generalizada, las desigualdades en salud se expresan de manera diferencial según las condiciones de vida de los hogares.</p>
+    </sec>
+    <sec sec-type="ack">
+      <title>Agradecimientos</title>
+      <p>Los autores agradecen a las autoridades escolares, padres y alumnos de los departamentos de San Rafael (Mendoza) por su participación desinteresada. A la Sra. María Cristina Muñe por la revisión general del manuscrito.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title>References</title>
+      <ref id="B1">
+        <mixed-citation>Al-Rashidi, H. S., y El-Wakil, E. S. (2024). Parasites and microbiota: Dual interactions and therapeutic perspectives. <italic>Microorganisms,</italic> 12(10), 2076. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3390/microorganisms12102076">https://doi.org/10.3390/microorganisms12102076</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Al-Rashidi</surname><given-names>H. S.</given-names></name>
+            <name><surname>El-Wakil</surname><given-names>E. S.</given-names></name>
+          </person-group>
+          <year>2024</year>
+          <source>Parasites and microbiota: Dual interactions and therapeutic perspectives</source>
+          <comment>Microorganisms, 12(10), 2076.</comment>
+          <pub-id pub-id-type="doi">10.3390/microorganisms12102076</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B2">
+        <mixed-citation>Ahmed, M. (2023). Intestinal parasitic infections in 2023. <italic>Gastroenterology Research</italic>, 16(3), 127-140. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.14740/gr1622">https://doi.org/10.14740/gr1622</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Ahmed</surname><given-names>M.</given-names></name>
+          </person-group>
+          <year>2023</year>
+          <article-title>Intestinal parasitic infections in 2023</article-title>
+          <source>Gastroenterology Research</source>
+          <volume>16</volume>
+          <issue>3</issue>
+          <fpage>127</fpage>
+          <lpage>140</lpage>
+          <pub-id pub-id-type="doi">10.14740/gr1622</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B3">
+        <mixed-citation>Alvarez Di Fino, E. M., Rubio, J., Abril, M. C., Porcasi, X., y Periago, M. V. (2020) Risk map development for soil-transmitted helminth infections in Argentina. <italic>PLOS Neglected Tropical Diseases</italic>, 14(2): e0008000. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal">https://doi.org/10.1371/journal</ext-link>. pntd.0008000</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Alvarez Di Fino</surname><given-names>E. M., Rubio, J., Abril, M. C., Porcasi, X.</given-names></name>
+            <name><surname>Periago</surname><given-names>M. V.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Risk map development for soil-transmitted helminth infections in Argentina</source>
+          <comment>PLOS Neglected Tropical Diseases, 14(2): e0008000. https://doi.org/10.1371/journal. pntd.0008000</comment>
+        </element-citation>
+      </ref>
+      <ref id="B4">
+        <mixed-citation>Arslan, A. H., Ciloglu, F. U., Yilmaz, U., Simsek, E., y Aydin, O. (2022). Discrimination of waterborne pathogens, <italic>Cryptosporidium parvum</italic> oocysts and bacteria using surface-enhanced Raman spectroscopy coupled with principal component analysis and hierarchical clustering. <italic>Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy, </italic>267, Part 1, 120475. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.saa.2021.120475">https://doi.org/10.1016/j.saa.2021.120475</ext-link></mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Arslan</surname><given-names>A. H., Ciloglu, F. U., Yilmaz, U., Simsek, E.</given-names></name>
+            <name><surname>Aydin</surname><given-names>O.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <source>Discrimination of waterborne pathogens, Cryptosporidium parvum oocysts and bacteria using surface-enhanced Raman spectroscopy coupled with principal component analysis and hierarchical clustering</source>
+          <publisher-loc>Spectrochimica Acta Part A</publisher-loc>
+          <publisher-name>Molecular and Biomolecular Spectroscopy, 267, Part 1, 120475</publisher-name>
+          <pub-id pub-id-type="doi">10.1016/j.saa.2021.120475</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B5">
+        <mixed-citation>Badparva, E., y Kheirandish, F. (2020). <italic>Blastocystis hominis</italic>: A pathogenic parasite. <italic>Archives of Clinical Infectious Diseases, </italic>15, e97388. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.5812/archcid.97388">https://doi.org/10.5812/archcid.97388</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Badparva</surname><given-names>E.</given-names></name>
+            <name><surname>Kheirandish</surname><given-names>F.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <article-title>Blastocystis hominis: A pathogenic parasite</article-title>
+          <source>Archives of Clinical Infectious Diseases</source>
+          <volume>15</volume>
+          <elocation-id>e97388</elocation-id>
+          <pub-id pub-id-type="doi">10.5812/archcid.97388</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6">
+        <mixed-citation>Balbi, A., Coppolecchia, M., Oliva, J., y Rosas, M. (2019). Diagnóstico de la peligrosidad geológica de la ciudad de San Rafael, provincia de Mendoza, Argentina. Capítulo 2: <italic>Clima </italic>(pp. 2-7). Buenos Aries: Servicio Geológico Minero Argentino.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Balbi</surname><given-names>A., Coppolecchia, M., Oliva, J.</given-names></name>
+            <name><surname>Rosas</surname><given-names>M.</given-names></name>
+          </person-group>
+          <year>2019</year>
+          <source>Diagnóstico de la peligrosidad geológica de la ciudad de San Rafael, provincia de Mendoza, Argentina. Capítulo 2: Clima (pp. 2-7)</source>
+          <publisher-loc>Buenos Aries</publisher-loc>
+          <publisher-name>Servicio Geológico Minero Argentino</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B7">
+        <mixed-citation>Baldovin Simonovich, C. (2024). <italic>Aportes al análisis del crecimiento de la ciudad oasis en el Siglo XXI: la puja de la sustentabilidad urbana. El caso de la periferia Oeste de San Rafael, Mendoza, Argentina.</italic> Universidad Nacional de Quilmes, Bernal, Argentina. <ext-link ext-link-type="uri" xlink:href="http://ridaa.unq.edu.ar/handle/20.500.11807/4285">http://ridaa.unq.edu.ar/handle/20.500.11807/4285</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <name><surname>Baldovin Simonovich</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2024</year>
+          <source>Aportes al análisis del crecimiento de la ciudad oasis en el Siglo XXI: la puja de la sustentabilidad urbana</source>
+          <comment>El caso de la periferia Oeste de San Rafael, Mendoza, Argentina. Universidad Nacional de Quilmes, Bernal, Argentina.</comment>
+          <ext-link ext-link-type="uri" xlink:href="http://ridaa.unq.edu.ar/handle/20.500.11807/4285">http://ridaa.unq.edu.ar/handle/20.500.11807/4285</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B8">
+        <mixed-citation>Cardona-Arias, J. A. (2018). Determinantes sociales del parasitismo intestinal, la desnutrición y la anemia: Revisión sistemática. <italic>Revista Panamericana de Salud </italic>Pública, 41, e143. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.26633/RPSP.2017.143">https://doi.org/10.26633/RPSP.2017.143</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Cardona-Arias</surname><given-names>J. A.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <article-title>Determinantes sociales del parasitismo intestinal, la desnutrición y la anemia: Revisión sistemática</article-title>
+          <source>Revista Panamericana de Salud Pública</source>
+          <volume>41</volume>
+          <elocation-id>e143</elocation-id>
+          <pub-id pub-id-type="doi">10.26633/RPSP.2017.143</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B9">
+        <mixed-citation>Chowdhury, T. R., Chakrabarty, S., Rakib, M., Saltmarsh, S., y Davis, K. A. (2018). Socio-economic risk factors for early childhood underweight in Bangladesh. <italic>Global Health, </italic>14, 54. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/s12992-018-0372-7">https://doi.org/10.1186/s12992-018-0372-7</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Chowdhury</surname><given-names>T. R., Chakrabarty, S., Rakib, M., Saltmarsh, S.</given-names></name>
+            <name><surname>Davis</surname><given-names>K. A.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <source>Socio-economic risk factors for early childhood underweight in Bangladesh</source>
+          <comment>Global Health, 14, 54.</comment>
+          <pub-id pub-id-type="doi">10.1186/s12992-018-0372-7</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B10">
+        <mixed-citation>Cociancic, P., Rinaldi, L., Zonta, M. L., y Navone, G. T. (2018). Formalin-ethyl acetate concentration, FLOTAC Pellet and anal swab techniques for the diagnosis of intestinal parasites. <italic>Parasitology Research</italic>, 117(11), 3567-3573.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Cociancic</surname><given-names>P., Rinaldi, L., Zonta, M. L.</given-names></name>
+            <name><surname>Navone</surname><given-names>G. T.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <article-title>Formalin-ethyl acetate concentration, FLOTAC Pellet and anal swab techniques for the diagnosis of intestinal parasites</article-title>
+          <source>Parasitology Research</source>
+          <volume>117</volume>
+          <issue>11</issue>
+          <fpage>3567</fpage>
+          <lpage>3573</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B11">
+        <mixed-citation>Cociancic, P., Torrusio, S. E., Garraza, M., Zonta, M. L., y Navone, G. T. (2021). Intestinal parasites in child and youth populations of Argentina: Environmental factors determining geographic distribution. <italic>Revista Argentina de Microbiología</italic>, 53, 225-232. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.ram.2020.11.004">https://doi.org/10.1016/j.ram.2020.11.004</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Cociancic</surname><given-names>P., Torrusio, S. E., Garraza, M., Zonta, M. L.</given-names></name>
+            <name><surname>Navone</surname><given-names>G. T.</given-names></name>
+          </person-group>
+          <year>2021</year>
+          <article-title>Intestinal parasites in child and youth populations of Argentina: Environmental factors determining geographic distribution</article-title>
+          <source>Revista Argentina de Microbiología</source>
+          <volume>53</volume>
+          <fpage>225</fpage>
+          <lpage>232</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.ram.2020.11.004</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B12">
+        <mixed-citation>Cociancic, P., Torrusio, S. E., Zonta, M. L., y Navone, G. T. (2020). Risk factors for intestinal parasitoses among children and youth of Buenos Aires, Argentina. <italic>One Health, </italic>9, 100116. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.onehlt.2019.100116">https://doi.org/10.1016/j.onehlt.2019.100116</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Cociancic</surname><given-names>P., Torrusio, S. E., Zonta, M. L.</given-names></name>
+            <name><surname>Navone</surname><given-names>G. T.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Risk factors for intestinal parasitoses among children and youth of Buenos Aires, Argentina</source>
+          <comment>One Health, 9, 100116.</comment>
+          <pub-id pub-id-type="doi">10.1016/j.onehlt.2019.100116</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B13">
+        <mixed-citation>Cranston, I., Potgieter, N., Mathebula, S., y Ensink, J. H. (2015). Transmission of <italic>Enterobius vermicularis</italic> eggs through hands of school children in rural South Africa. <italic>Acta Tropica, </italic>150, 94-96. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.actatropica.2015.07.001">https://doi.org/10.1016/j.actatropica.2015.07.001</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Cranston</surname><given-names>I., Potgieter, N., Mathebula, S.</given-names></name>
+            <name><surname>Ensink</surname><given-names>J. H.</given-names></name>
+          </person-group>
+          <year>2015</year>
+          <article-title>Transmission of Enterobius vermicularis eggs through hands of school children in rural South Africa</article-title>
+          <source>Acta Tropica</source>
+          <volume>150</volume>
+          <fpage>94</fpage>
+          <lpage>96</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.actatropica.2015.07.001</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B14">
+        <mixed-citation>Darmon, N., y Drewnowski, A. (2015). Contribución de los precios de los alimentos y el costo de la dieta a las disparidades socioeconómicas en la calidad de la dieta y la salud: Una revisión sistemática y análisis. <italic>Nutrition Reviews, </italic>73(10), 643-660. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/nutrit/nuv027">https://doi.org/10.1093/nutrit/nuv027</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Darmon</surname><given-names>N.</given-names></name>
+            <name><surname>Drewnowski</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2015</year>
+          <article-title>Contribución de los precios de los alimentos y el costo de la dieta a las disparidades socioeconómicas en la calidad de la dieta y la salud: Una revisión sistemática y análisis</article-title>
+          <source>Nutrition Reviews</source>
+          <volume>73</volume>
+          <issue>10</issue>
+          <fpage>643</fpage>
+          <lpage>660</lpage>
+          <pub-id pub-id-type="doi">10.1093/nutrit/nuv027</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B15">
+        <mixed-citation>Fauziah, N., Aviani, J. K., Agrianfanny, Y. N., y Fatimah, S. N. (2022). Intestinal parasitic infection and nutritional status in children under five years old: A systematic review. <italic>Tropical Medicine and Infectious Disease, </italic>7(11), 371. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3390/tropicalmed7110371">https://doi.org/10.3390/tropicalmed7110371</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Fauziah</surname><given-names>N., Aviani, J. K., Agrianfanny, Y. N.</given-names></name>
+            <name><surname>Fatimah</surname><given-names>S. N.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <source>Intestinal parasitic infection and nutritional status in children under five years old: A systematic review</source>
+          <comment>Tropical Medicine and Infectious Disease, 7(11), 371.</comment>
+          <pub-id pub-id-type="doi">10.3390/tropicalmed7110371</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B16">
+        <mixed-citation>Frisancho, A. R. (2018). <italic>Anthropometric standards: an interactive nutritional reference of body size and body composition for children and adults.</italic> Ann Arbor, MI: The University of Michigan Press.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Frisancho</surname><given-names>A. R.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <source>Anthropometric standards: an interactive nutritional reference of body size and body composition for children and adults</source>
+          <publisher-loc>Ann Arbor, MI</publisher-loc>
+          <publisher-name>The University of Michigan Press</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B17">
+        <mixed-citation>Gamboa MI, Zonta ML, y Navone GT. 2022. La prevalencia de geohelmintiasis se relaciona con las condiciones socioambientales. <italic>Salud(i)Ciencia,</italic> 19(1),16-21.</mixed-citation>
+        <element-citation publication-type="other">
+          <source>Gamboa MI, Zonta ML, y Navone GT. 2022. La prevalencia de geohelmintiasis se relaciona con las condiciones socioambientales. Salud(i)Ciencia, 19(1),16-21</source>
+        </element-citation>
+      </ref>
+      <ref id="B18">
+        <mixed-citation>García Lazo, R., Rohr, S., Migliore, M., Maquieyra, J., Groos, M. L., y Poy, S. (2025). De los barrios populares a la ciudad formal. Aportes para un plan nacional de integración sociourbana. <italic>Fundar</italic>. <ext-link ext-link-type="uri" xlink:href="https://fund.ar/wp-content/uploads/2025/10/Fundar_De-los-barrios-populares-a-la-ciudad-formal_CC-BY-NC-ND-4.0-1.pdf">https://fund.ar/wp-content/uploads/2025/10/Fundar_De-los-barrios-populares-a-la-ciudad-formal_CC-BY-NC-ND-4.0-1.pdf</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <name><surname>García Lazo</surname><given-names>R., Rohr, S., Migliore, M., Maquieyra, J., Groos, M. L.</given-names></name>
+            <name><surname>Poy</surname><given-names>S.</given-names></name>
+          </person-group>
+          <year>2025</year>
+          <source>De los barrios populares a la ciudad formal</source>
+          <comment>Aportes para un plan nacional de integración sociourbana. Fundar.</comment>
+          <ext-link ext-link-type="uri" xlink:href="https://fund.ar/wp-content/uploads/2025/10/Fundar_De-los-barrios-populares-a-la-ciudad-formal_CC-BY-NC-ND-4.0-1.pdf">https://fund.ar/wp-content/uploads/2025/10/Fundar_De-los-barrios-populares-a-la-ciudad-formal_CC-BY-NC-ND-4.0-1.pdf</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B19">
+        <mixed-citation>Garraza, M., y Oyhenart, E. E. (2020). Doble carga de malnutrición, composición y proporción corporal en escolares del periurbano de Guaymallén, Mendoza. <italic>Nutrición Clínica y Dietética Hospitalaria</italic>, 40(4), 99-107. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.12873/404garraza">DOI: 10.12873/404garraza</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Garraza</surname><given-names>M.</given-names></name>
+            <name><surname>Oyhenart</surname><given-names>E. E.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <article-title>Doble carga de malnutrición, composición y proporción corporal en escolares del periurbano de Guaymallén, Mendoza</article-title>
+          <source>Nutrición Clínica y Dietética Hospitalaria</source>
+          <volume>40</volume>
+          <issue>4</issue>
+          <fpage>99</fpage>
+          <lpage>107</lpage>
+          <pub-id pub-id-type="doi">10.12873/404garraza</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B20">
+        <mixed-citation>Garraza, M., Zonta, M. L., Oyhenart, E. E., y Navone, G. T. (2014). Estado nutricional, composición corporal y enteroparasitosis en escolares del departamento de San Rafael, Mendoza, Argentina. <italic>Nutrición Clínica y Dietética Hospitalaria</italic>, 34(1), 31-40. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.12873/341garraza">DOI: 10.12873/341garraza</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Garraza</surname><given-names>M., Zonta, M. L., Oyhenart, E. E.</given-names></name>
+            <name><surname>Navone</surname><given-names>G. T.</given-names></name>
+          </person-group>
+          <year>2014</year>
+          <article-title>Estado nutricional, composición corporal y enteroparasitosis en escolares del departamento de San Rafael, Mendoza, Argentina</article-title>
+          <source>Nutrición Clínica y Dietética Hospitalaria</source>
+          <volume>34</volume>
+          <issue>1</issue>
+          <fpage>31</fpage>
+          <lpage>40</lpage>
+          <pub-id pub-id-type="doi">10.12873/341garraza</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B21">
+        <mixed-citation>Garraza, M., Cesani, M. F., Navone,  G. T., y Oyhenart, E. E. (2016). Malnutrition and body composition in urban and rural schoolchildren: A cross-sectional study in San Rafael, Mendoza (Argentina). <italic>American Journal of Human Biology</italic>, 28(6), 796-803. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajhb.22869">https://doi.org/10.1002/ajhb.22869</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Garraza</surname><given-names>M., Cesani, M. F., Navone, G. T.</given-names></name>
+            <name><surname>Oyhenart</surname><given-names>E. E.</given-names></name>
+          </person-group>
+          <year>2016</year>
+          <article-title>Malnutrition and body composition in urban and rural schoolchildren: A cross-sectional study in San Rafael, Mendoza (Argentina)</article-title>
+          <source>American Journal of Human Biology</source>
+          <volume>28</volume>
+          <issue>6</issue>
+          <fpage>796</fpage>
+          <lpage>803</lpage>
+          <pub-id pub-id-type="doi">10.1002/ajhb.22869</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B22">
+        <mixed-citation>Garraza, M., Navone, G. T., y Oyhenart, E. E. (2019). Desnutrición y enteroparasitosis en escolares del departamento de Guaymallen, Mendoza. <italic>Nutrición Clínica y Dietética  Hospitalaria</italic>, 39(1), 120-127. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.12873/391garraza">DOI: 10.12873/391garraza</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Garraza</surname><given-names>M., Navone, G. T.</given-names></name>
+            <name><surname>Oyhenart</surname><given-names>E. E.</given-names></name>
+          </person-group>
+          <year>2019</year>
+          <article-title>Desnutrición y enteroparasitosis en escolares del departamento de Guaymallen, Mendoza</article-title>
+          <source>Nutrición Clínica y Dietética Hospitalaria</source>
+          <volume>39</volume>
+          <issue>1</issue>
+          <fpage>120</fpage>
+          <lpage>127</lpage>
+          <pub-id pub-id-type="doi">10.12873/391garraza</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B23">
+        <mixed-citation>Guevara, T., Marigo, P., y Wallace, J. (2018). Integración urbana y políticas públicas: el caso del registro nacional de barrios populares de Argentina: decreto n° 358/2017. <italic>Oculum Ensaios</italic>, <italic>15</italic>(3), 455-473. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.24220/2318-0919v15e2018a4183">https://doi.org/10.24220/2318-0919v15e2018a4183</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Guevara</surname><given-names>T., Marigo, P.</given-names></name>
+            <name><surname>Wallace</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <article-title>Integración urbana y políticas públicas: el caso del registro nacional de barrios populares de Argentina: decreto n° 358/2017</article-title>
+          <source>Oculum Ensaios</source>
+          <volume>15</volume>
+          <issue>3</issue>
+          <fpage>455</fpage>
+          <lpage>473</lpage>
+          <pub-id pub-id-type="doi">10.24220/2318-0919v15e2018a4183</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B24">
+        <mixed-citation>Gwela, A., Mupere, E., Berkley, J. A., y Lancioni, C. (2019). Undernutrition, host immunity and vulnerability to infection among young children. <italic>The Pediatric Infectious Disease Journal, </italic>38(8), e175–e177. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1097/INF.0000000000002363">https://doi.org/10.1097/INF.0000000000002363</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Gwela</surname><given-names>A., Mupere, E., Berkley, J. A.</given-names></name>
+            <name><surname>Lancioni</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2019</year>
+          <source>Undernutrition, host immunity and vulnerability to infection among young children</source>
+          <comment>The Pediatric Infectious Disease Journal, 38(8), e175–e177.</comment>
+          <pub-id pub-id-type="doi">10.1097/INF.0000000000002363</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B25">
+        <mixed-citation>INDEC, CNPyV Instituto Nacional de Estadistica y Censos<italic>. (2022). Censo Nacional de Población, Hogares y Viviendas (2022). Resultados del Censo 2022. </italic><ext-link ext-link-type="uri" xlink:href="https://censo.gob.ar/index.php/datos_definitivos_mendoza">https://censo.gob.ar/index.php/datos_definitivos_mendoza</ext-link><italic>/</italic></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <name><surname>INDEC</surname><given-names>CNPyV Instituto Nacional de Estadistica</given-names></name>
+            <collab>Censos.</collab>
+          </person-group>
+          <year>2022</year>
+          <source>Censo Nacional de Población, Hogares y Viviendas (2022)</source>
+          <comment>Resultados del Censo 2022.</comment>
+          <ext-link ext-link-type="uri" xlink:href="https://censo.gob.ar/index.php/datos_definitivos_mendoza/">https://censo.gob.ar/index.php/datos_definitivos_mendoza/</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B26">
+        <mixed-citation>Leung, A. K. C., Lam, J. M., Barankin, B., Wong, A. H. C., Leong, K. F., y Hon, K. L. (2025). Pinworm (<italic>Enterobius vermicularis</italic>) infestation: An updated review. <italic>Current Pediatric Reviews, </italic>21(4), 333-347. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.2174/0115733963283507240115112552">https://doi.org/10.2174/0115733963283507240115112552</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Leung</surname><given-names>A. K. C., Lam, J. M., Barankin, B., Wong, A. H. C., Leong, K. F.</given-names></name>
+            <name><surname>Hon</surname><given-names>K. L.</given-names></name>
+          </person-group>
+          <year>2025</year>
+          <article-title>Pinworm (Enterobius vermicularis) infestation: An updated review</article-title>
+          <source>Current Pediatric Reviews</source>
+          <volume>21</volume>
+          <issue>4</issue>
+          <fpage>333</fpage>
+          <lpage>347</lpage>
+          <pub-id pub-id-type="doi">10.2174/0115733963283507240115112552</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B27">
+        <mixed-citation>Lohman, T. G., Roche, A. F., y Martorell, R. (1988). <italic>Anthropometric standardization reference manual</italic>. Champaign, Illinois: Human Kinetics Books.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Lohman</surname><given-names>T. G., Roche, A. F.</given-names></name>
+            <name><surname>Martorell</surname><given-names>R.</given-names></name>
+          </person-group>
+          <year>1988</year>
+          <source>Anthropometric standardization reference manual</source>
+          <publisher-loc>Champaign, Illinois</publisher-loc>
+          <publisher-name>Human Kinetics Books</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B28">
+        <mixed-citation>López Monja, O., Bergel Sanchís, M. L., y Cesani, M. F. (2026). Hábitos alimentarios y de actividad física en el micro-entorno familiar y su relación con la malnutrición infantil en contextos socioeconómicos y ambientales vulnerables. <italic>Revista del Museo de Antropología</italic>, 19(1), 121-132. <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.31048/9nbv8y83">http://doi.org/10.31048/9nbv8y83</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>López Monja</surname><given-names>O., Bergel Sanchís, M. L.</given-names></name>
+            <name><surname>Cesani</surname><given-names>M. F.</given-names></name>
+          </person-group>
+          <year>2026</year>
+          <article-title>Hábitos alimentarios y de actividad física en el micro-entorno familiar y su relación con la malnutrición infantil en contextos socioeconómicos y ambientales vulnerables</article-title>
+          <source>Revista del Museo de Antropología</source>
+          <volume>19</volume>
+          <issue>1</issue>
+          <fpage>121</fpage>
+          <lpage>132</lpage>
+          <pub-id pub-id-type="doi">10.31048/9nbv8y83</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B29">
+        <mixed-citation>Mao, F., Li, X., Ye, S., Tang, F., Ni, B., Zhang, Q., Zhang, J., Liu, Y., Li, Y., y Cao, J. (2025). Understanding the trends, clustering, and risk factors of pinworm infection in preschool settings: A repeated cross-sectional multi-center study between 2019 and 2024. <italic>PLoS Neglected Tropical Diseases</italic>, 19(12), e0013800. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pntd.0013800">https://doi.org/10.1371/journal.pntd.0013800</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Mao</surname><given-names>F., Li, X., Ye, S., Tang, F., Ni, B., Zhang, Q., Zhang, J., Liu, Y., Li, Y.</given-names></name>
+            <name><surname>Cao</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2025</year>
+          <article-title>Understanding the trends, clustering, and risk factors of pinworm infection in preschool settings: A repeated cross-sectional multi-center study between 2019 and 2024</article-title>
+          <source>PLoS Neglected Tropical Diseases</source>
+          <volume>19</volume>
+          <issue>12</issue>
+          <elocation-id>e0013800</elocation-id>
+          <pub-id pub-id-type="doi">10.1371/journal.pntd.0013800</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B30">
+        <mixed-citation>Ministerio de Salud y Desarrollo Social. (2019). <italic>2ª Encuesta Nacional de Nutrición y Salud (ENNyS 2): Resumen ejecutivo</italic>. Argentina: Secretaría de Gobierno de Salud, Ministerio de Salud y Desarrollo Social.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <collab>Ministerio de Salud y Desarrollo Social</collab>
+          </person-group>
+          <year>2019</year>
+          <source>2ª Encuesta Nacional de Nutrición y Salud (ENNyS 2): Resumen ejecutivo</source>
+          <publisher-loc>Argentina</publisher-loc>
+          <publisher-name>Secretaría de Gobierno de Salud, Ministerio de Salud y Desarrollo Social</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B31">
+        <mixed-citation>Miño, F. y Carrara, G. (2023). Una política desde y para los barrios populares. En García Monticelli, F. y V. Pastoriza, V. (Comps.), <italic>La experiencia del Registro Nacional de Barrios Populares: De la organización popular a una política de Estado </italic>(pp. 39-70). Argentina, Quilmes; Universidad Nacional de Quilmes.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Miño</surname><given-names>F.</given-names></name>
+            <name><surname>Carrara</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2023</year>
+          <chapter-title>Una política desde y para los barrios populares</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>García Monticelli</surname><given-names>F. y V. Pastoriza, V.</given-names></name>
+          </person-group>
+          <source>La experiencia del Registro Nacional de Barrios Populares: De la organización popular a una política de Estado (pp. 39-70). Argentina, Quilmes; Universidad Nacional de Quilmes</source>
+        </element-citation>
+      </ref>
+      <ref id="B32">
+        <mixed-citation>Navone, G. T., Zonta, M. L., Cociancic, P., Garraza, M., Gamboa, M. I., Giambelluca, L. A., Dahinten, S., y Oyhenart, E. E. (2017). Estudio transversal de las parasitosis intestinales en poblaciones infantiles de Argentina. <italic>Revista Panamericana de Salud Pública</italic>, 41, e24. <ext-link ext-link-type="uri" xlink:href="https://www.scielosp.org/pdf/rpsp/2017.v41/e24/es">https://www.scielosp.org/pdf/rpsp/2017.v41/e24/es</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Navone</surname><given-names>G. T., Zonta, M. L., Cociancic, P., Garraza, M., Gamboa, M. I., Giambelluca, L. A., Dahinten, S.</given-names></name>
+            <name><surname>Oyhenart</surname><given-names>E. E.</given-names></name>
+          </person-group>
+          <year>2017</year>
+          <article-title>Estudio transversal de las parasitosis intestinales en poblaciones infantiles de Argentina</article-title>
+          <source>Revista Panamericana de Salud Pública</source>
+          <volume>41</volume>
+          <elocation-id>e24</elocation-id>
+          <ext-link ext-link-type="uri" xlink:href="https://www.scielosp.org/pdf/rpsp/2017.v41/e24/es">https://www.scielosp.org/pdf/rpsp/2017.v41/e24/es</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B33">
+        <mixed-citation>Ortale, M., Rausky, M., y Santos, J. (2024). Seguridad alimentaria y pobreza en Argentina. Desigualdades persistentes y desafíos. En Chicote, G. B. y Camou, A. (Coords.), <italic>Gran La Plata: Heterogeneidad social, conflictos sociopolíticos y políticas públicas en territorio bonaerense</italic> (pp. 69-90). Ciudad Autónoma de Buenos Aires: CLACSO. <ext-link ext-link-type="uri" xlink:href="https://www.memoria.fahce.unlp.edu.ar/libros/pm.6679/pm.6679.pdf">https://www.memoria.fahce.unlp.edu.ar/libros/pm.6679/pm.6679.pdf</ext-link></mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Ortale</surname><given-names>M., Rausky, M.</given-names></name>
+            <name><surname>Santos</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2024</year>
+          <chapter-title>Seguridad alimentaria y pobreza en Argentina. Desigualdades persistentes y desafíos</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Chicote</surname><given-names>G. B.</given-names></name>
+            <name><surname>Camou</surname><given-names>A.</given-names></name>
+          </person-group>
+          <source>Gran La Plata: Heterogeneidad social, conflictos sociopolíticos y políticas públicas en territorio bonaerense</source>
+          <fpage>69</fpage>
+          <lpage>90</lpage>
+          <publisher-loc>Ciudad Autónoma de Buenos Aires</publisher-loc>
+          <publisher-name>CLACSO</publisher-name>
+          <ext-link ext-link-type="uri" xlink:href="https://www.memoria.fahce.unlp.edu.ar/libros/pm.6679/pm.6679.pdf">https://www.memoria.fahce.unlp.edu.ar/libros/pm.6679/pm.6679.pdf</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B34">
+        <mixed-citation>Otta, S. A. (2014). <italic>Lineamientos ambientales para el ordenamiento territorial de zonas periurbanas. San Rafael, Mendoza</italic>. Tesis de Doctorado, Universidad Nacional de Cuyo.</mixed-citation>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name><surname>Otta</surname><given-names>S. A.</given-names></name>
+          </person-group>
+          <year>2014</year>
+          <source>Lineamientos ambientales para el ordenamiento territorial de zonas periurbanas</source>
+          <publisher-name>San Rafael, Mendoza. Tesis de Doctorado, Universidad Nacional de Cuyo</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B35">
+        <mixed-citation>Oyhenart, E. E., Castro, L. E., Forte, L. M., Sicre, M. L., Quintero, F. A., Luis, M. A. y Orden, A. B. (2008). Socioenvironmental conditions and nutritional status in urban and rural schoolchildren. <italic>American Journal of Human Biology</italic>, <italic>20</italic>(4), 399-405. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajhb.20738">https://doi.org/10.1002/ajhb.20738</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Oyhenart</surname><given-names>E. E., Castro, L. E., Forte, L. M., Sicre, M. L., Quintero, F. A., Luis, M. A.</given-names></name>
+            <name><surname>Orden</surname><given-names>A. B.</given-names></name>
+          </person-group>
+          <year>2008</year>
+          <article-title>Socioenvironmental conditions and nutritional status in urban and rural schoolchildren</article-title>
+          <source>American Journal of Human Biology</source>
+          <volume>20</volume>
+          <issue>4</issue>
+          <fpage>399</fpage>
+          <lpage>405</lpage>
+          <pub-id pub-id-type="doi">10.1002/ajhb.20738</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B36">
+        <mixed-citation>Oyhenart, E. E., Garraza, M., Bergel, M. L., Torres, M. F., Castro, L. E., Luis, M. A., Forte, L. M., Gamboa, M. I., Zonta, M. L., Cesani, M. F., Quintero, F. A., Luna, M. E., y Navone, G. T. (2013). Caracterización del estado nutricional, enteroparasitosis y condiciones socio-ambientales de la población infanto-juvenil del partido de La Plata. <italic>Revista Argentina de Antropología Biológica</italic>, 15(1), 47-60. <ext-link ext-link-type="uri" xlink:href="https://revistas.unlp.edu.ar/raab/article/view/691">https://revistas.unlp.edu.ar/raab/article/view/691</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Oyhenart</surname><given-names>E. E., Garraza, M., Bergel, M. L., Torres, M. F., Castro, L. E., Luis, M. A., Forte, L. M., Gamboa, M. I., Zonta, M. L., Cesani, M. F., Quintero, F. A., Luna, M. E.</given-names></name>
+            <name><surname>Navone</surname><given-names>G. T.</given-names></name>
+          </person-group>
+          <year>2013</year>
+          <article-title>Caracterización del estado nutricional, enteroparasitosis y condiciones socio-ambientales de la población infanto-juvenil del partido de La Plata</article-title>
+          <source>Revista Argentina de Antropología Biológica</source>
+          <volume>15</volume>
+          <issue>1</issue>
+          <fpage>47</fpage>
+          <lpage>60</lpage>
+          <ext-link ext-link-type="uri" xlink:href="https://revistas.unlp.edu.ar/raab/article/view/691">https://revistas.unlp.edu.ar/raab/article/view/691</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B37">
+        <mixed-citation>Pförtner, T. K., Gube, M., Koch, T., Michels, J., Dohle, S., y Demirer, I. (2025). Parental education and neighbourhood socioeconomic status in the prediction of childhood overweight: A multilevel analysis. <italic>Pediatric obesity</italic>, 20(2), e13181. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/ijpo.13181">https://doi.org/10.1111/ijpo.13181</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Pförtner</surname><given-names>T. K., Gube, M., Koch, T., Michels, J., Dohle, S.</given-names></name>
+            <name><surname>Demirer</surname><given-names>I.</given-names></name>
+          </person-group>
+          <year>2025</year>
+          <article-title>Parental education and neighbourhood socioeconomic status in the prediction of childhood overweight: A multilevel analysis</article-title>
+          <source>Pediatric obesity</source>
+          <volume>20</volume>
+          <issue>2</issue>
+          <elocation-id>e13181</elocation-id>
+          <pub-id pub-id-type="doi">10.1111/ijpo.13181</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B38">
+        <mixed-citation>Poda, G. G., Hsu, C. Y., y Chao, J. C. J. (2017). Factors associated with malnutrition among children &lt;5 years old in Burkina Faso: Evidence from the demographic and health surveys IV 2010. <italic>International Journal for Quality in Health Care, </italic>29(7), 901-908. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/intqhc/mzx129">https://doi.org/10.1093/intqhc/mzx129</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Poda</surname><given-names>G. G., Hsu, C. Y.</given-names></name>
+            <name><surname>Chao</surname><given-names>J. C. J.</given-names></name>
+          </person-group>
+          <year>2017</year>
+          <article-title>Factors associated with malnutrition among children &lt;5 years old in Burkina Faso: Evidence from the demographic and health surveys IV 2010</article-title>
+          <source>International Journal for Quality in Health Care</source>
+          <volume>29</volume>
+          <issue>7</issue>
+          <fpage>901</fpage>
+          <lpage>908</lpage>
+          <pub-id pub-id-type="doi">10.1093/intqhc/mzx129</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B39">
+        <mixed-citation>Popkin, B. M., Corvalan, C., y Grummer-Strawn, L. M. (2020). Dynamics of the double burden of malnutrition and the changing nutrition reality. <italic>The Lancet, </italic>395(10217), 65-74. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/S0140-6736(19">https://doi.org/10.1016/S0140-6736(19</ext-link>)32497-3</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Popkin</surname><given-names>B. M., Corvalan, C.</given-names></name>
+            <name><surname>Grummer-Strawn</surname><given-names>L. M.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Dynamics of the double burden of malnutrition and the changing nutrition reality</source>
+          <comment>The Lancet, 395(10217), 65-74. https://doi.org/10.1016/S0140-6736(19)32497-3</comment>
+        </element-citation>
+      </ref>
+      <ref id="B40">
+        <mixed-citation>Rajoo, Y., Ambu, S., Lim, Y. A. L., Rajoo, K., Tey, S. C., Lu, C. W., y Ngui, R. (2017). Neglected intestinal parasites, malnutrition and associated key factors: A population-based cross-sectional study among indigenous communities in Sarawak, Malaysia. <italic>PLoS ONE, </italic>12(1), e0170174. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0170174">https://doi.org/10.1371/journal.pone.0170174</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Rajoo</surname><given-names>Y., Ambu, S., Lim, Y. A. L., Rajoo, K., Tey, S. C., Lu, C. W.</given-names></name>
+            <name><surname>Ngui</surname><given-names>R.</given-names></name>
+          </person-group>
+          <year>2017</year>
+          <article-title>Neglected intestinal parasites, malnutrition and associated key factors: A population-based cross-sectional study among indigenous communities in Sarawak, Malaysia</article-title>
+          <source>PLoS ONE</source>
+          <volume>12</volume>
+          <issue>1</issue>
+          <elocation-id>e0170174</elocation-id>
+          <pub-id pub-id-type="doi">10.1371/journal.pone.0170174</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B41">
+        <mixed-citation>RENABAP. (2022). <italic>Registro Nacional de Barrios Populares</italic>. Argentina: Ministerio de Desarrollo Social de la Nación. <ext-link ext-link-type="uri" xlink:href="https://www.argentina.gob.ar/obras-publicas/sisu/renabap/mapa">https://www.argentina.gob.ar/obras-publicas/sisu/renabap/mapa</ext-link></mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <collab>RENABAP</collab>
+          </person-group>
+          <year>2022</year>
+          <source>Registro Nacional de Barrios Populares</source>
+          <publisher-loc>Argentina</publisher-loc>
+          <publisher-name>Ministerio de Desarrollo Social de la Nación</publisher-name>
+          <ext-link ext-link-type="uri" xlink:href="https://www.argentina.gob.ar/obras-publicas/sisu/renabap/mapa">https://www.argentina.gob.ar/obras-publicas/sisu/renabap/mapa</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B42">
+        <mixed-citation>Ricardo, L. I. C., Gatica-Domínguez, G., Crochemore-Silva, I., Neves, P. A. R., Dos Santos Vaz, J., Barros, A. J. D., y Gomes, C. (2021). Age patterns in overweight and wasting prevalence of under 5-year-old children from low- and middle-income countries. <italic>International Journal of Obesity, </italic>45, 2419-2424. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/s41366-021-00911-5">https://doi.org/10.1038/s41366-021-00911-5</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Ricardo</surname><given-names>L. I. C., Gatica-Domínguez, G., Crochemore-Silva, I., Neves, P. A. R., Dos Santos Vaz, J., Barros, A. J. D.</given-names></name>
+            <name><surname>Gomes</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2021</year>
+          <article-title>Age patterns in overweight and wasting prevalence of under 5-year-old children from low- and middle-income countries</article-title>
+          <source>International Journal of Obesity</source>
+          <volume>45</volume>
+          <fpage>2419</fpage>
+          <lpage>2424</lpage>
+          <pub-id pub-id-type="doi">10.1038/s41366-021-00911-5</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B43">
+        <mixed-citation>Rivero, M. R., De Angelo, C., Núñez, P., Salas, M., Motta, C. E., Chiaretta, A., Salomón, O. D., y Liang, S. (2017). Environmental and socio-demographic individual, family and neighborhood factors associated with children intestinal parasitoses at Iguazú, Argentina. <italic>PLoS Neglected Tropical Diseases, </italic>11(11), e0006098. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pntd.0006098">https://doi.org/10.1371/journal.pntd.0006098</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Rivero</surname><given-names>M. R., De Angelo, C., Núñez, P., Salas, M., Motta, C. E., Chiaretta, A., Salomón, O. D.</given-names></name>
+            <name><surname>Liang</surname><given-names>S.</given-names></name>
+          </person-group>
+          <year>2017</year>
+          <article-title>Environmental and socio-demographic individual, family and neighborhood factors associated with children intestinal parasitoses at Iguazú, Argentina</article-title>
+          <source>PLoS Neglected Tropical Diseases</source>
+          <volume>11</volume>
+          <issue>11</issue>
+          <elocation-id>e0006098</elocation-id>
+          <pub-id pub-id-type="doi">10.1371/journal.pntd.0006098</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B44">
+        <mixed-citation>Rodriguez-Martinez, A., Zhou, B., Sophiea, M. K., Bentham, J., Paciorek, C. J., Iurilli, M. L. C., Carrillo- Larco, R. M., Bennett, J. M., Di Cesare, M., Taddei, C.,      Bixby, H., Stevens, G. A., Riley, L. M., Cowan, M. J., Savin, S., Danaei, G., Chirita-Emandi, A., Kengne, A. P., Khang, Y. H.,…Ezzati, M. (2020). Height and body-mass index trajectories of school-aged children and adolescents from 1985 to 2019 in 200 countries and territories: A pooled analysis of 2181 population-based studies with 65 million participants. <italic>The Lancet</italic>, 396(10261), 1511-1524. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/S0140-">https://doi.org/10.1016/S0140-</ext-link> 6736(20)31859-6</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Rodriguez-Martinez</surname><given-names>A.</given-names></name>
+            <name><surname>Zhou</surname><given-names>B.</given-names></name>
+            <name><surname>Sophiea</surname><given-names>M. K.</given-names></name>
+            <name><surname>Bentham</surname><given-names>J.</given-names></name>
+            <name><surname>Paciorek</surname><given-names>C. J.</given-names></name>
+            <name><surname>Iurilli</surname><given-names>M. L. C.</given-names></name>
+            <name><surname>Carrillo- Larco</surname><given-names>R. M.</given-names></name>
+            <name><surname>Bennett</surname><given-names>J. M.</given-names></name>
+            <name><surname>Di Cesare</surname><given-names>M.</given-names></name>
+            <name><surname>Taddei</surname><given-names>C.</given-names></name>
+            <name><surname>Bixby</surname><given-names>H.</given-names></name>
+            <name><surname>Stevens</surname><given-names>G. A.</given-names></name>
+            <name><surname>Riley</surname><given-names>L. M.</given-names></name>
+            <name><surname>Cowan</surname><given-names>M. J.</given-names></name>
+            <name><surname>Savin</surname><given-names>S.</given-names></name>
+            <name><surname>Danaei</surname><given-names>G., Chirita-Emandi, A.</given-names></name>
+            <name><surname>Kengne</surname><given-names>A. P.</given-names></name>
+            <name><surname>Khang</surname><given-names>Y. H.,…Ezzati, M.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Height and body-mass index trajectories of school-aged children and adolescents from 1985 to 2019 in 200 countries and territories: A pooled analysis of 2181 population-based studies with 65 million participants</source>
+          <comment>The Lancet, 396(10261), 1511-1524. https://doi.org/10.1016/S0140- 6736(20)31859-6</comment>
+        </element-citation>
+      </ref>
+      <ref id="B45">
+        <mixed-citation>Rudzińska, M., Kowalewska, B., Sikorska, K. (2020). Diagnostyka laboratoryjna zarażeń <italic>Blastocystis</italic> – wyzwania i kontrowersje. <italic>Diagnostyka Laboratoryjna, </italic>56(1), 27-34. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.5604/01.3001.0014.3610">https://doi.org/10.5604/01.3001.0014.3610</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Rudzińska</surname><given-names>M.</given-names></name>
+            <name><surname>Kowalewska</surname><given-names>B.</given-names></name>
+            <name><surname>Sikorska</surname><given-names>K.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <article-title>Diagnostyka laboratoryjna zarażeń Blastocystis – wyzwania i kontrowersje</article-title>
+          <source>Diagnostyka Laboratoryjna</source>
+          <volume>56</volume>
+          <issue>1</issue>
+          <fpage>27</fpage>
+          <lpage>34</lpage>
+          <pub-id pub-id-type="doi">10.5604/01.3001.0014.3610</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B46">
+        <mixed-citation>Scrinis, G. (2020). Reframing malnutrition in all its forms: A critique of the tripartite classification of malnutrition. <italic>Global Food Security, </italic>26, 100396. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.gfs.2020.100396">https://doi.org/10.1016/j.gfs.2020.100396</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Scrinis</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Reframing malnutrition in all its forms: A critique of the tripartite classification of malnutrition</source>
+          <comment>Global Food Security, 26, 100396.</comment>
+          <pub-id pub-id-type="doi">10.1016/j.gfs.2020.100396</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B47">
+        <mixed-citation>Seum, T., Meyrose, A. K., Rabel, M., Schienkiewitz, A., y Ravens-Sieberer, U. (2022). Pathways of parental education on children's and adolescent's body mass index: The mediating roles of behavioral and psychological factors. <italic>Front Public Health</italic>, 7(10), 763789. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3389/fpubh.2022.763789">https://doi.org/10.3389/fpubh.2022.763789</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Seum</surname><given-names>T., Meyrose, A. K., Rabel, M., Schienkiewitz, A.</given-names></name>
+            <name><surname>Ravens-Sieberer</surname><given-names>U.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <source>Pathways of parental education on children's and adolescent's body mass index: The mediating roles of behavioral and psychological factors</source>
+          <comment>Front Public Health, 7(10), 763789.</comment>
+          <pub-id pub-id-type="doi">10.3389/fpubh.2022.763789</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B48">
+        <mixed-citation>Siddiqui, F., Salam, R. A., Lassi, Z. S., y Das, J. K. (2020). The intertwined relationship between malnutrition and poverty. <italic>Frontiers in Public Health, </italic>8, 453. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3389/fpubh.2020.00453">https://doi.org/10.3389/fpubh.2020.00453</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Siddiqui</surname><given-names>F., Salam, R. A., Lassi, Z. S.</given-names></name>
+            <name><surname>Das</surname><given-names>J. K.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>The intertwined relationship between malnutrition and poverty</source>
+          <comment>Frontiers in Public Health, 8, 453.</comment>
+          <pub-id pub-id-type="doi">10.3389/fpubh.2020.00453</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B49">
+        <mixed-citation>Soekatri, M. Y. E., Sandjaja, S., y Syauqy, A. (2020). Stunting was associated with reported morbidity, parental education and socioeconomic status in Indonesian children. <italic>International Journal of Environmental Research and Public Health, </italic>17, 6204. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3390/ijerph17176204">https://doi.org/10.3390/ijerph17176204</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Soekatri</surname><given-names>M. Y. E., Sandjaja, S.</given-names></name>
+            <name><surname>Syauqy</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Stunting was associated with reported morbidity, parental education and socioeconomic status in Indonesian children</source>
+          <comment>International Journal of Environmental Research and Public Health, 17, 6204.</comment>
+          <pub-id pub-id-type="doi">10.3390/ijerph17176204</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B50">
+        <mixed-citation>Taghipour, A., Olfatifar, M., Javanmard, E., Norouzi, M., Mirjalali, H., y Zali, M. R. (2020). The neglected role of <italic>Enterobius vermicularis</italic> in appendicitis: A systematic review and meta-analysis. <italic>PLoS ONE, </italic>15(4), e0232143. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0232143">https://doi.org/10.1371/journal.pone.0232143</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Taghipour</surname><given-names>A., Olfatifar, M., Javanmard, E., Norouzi, M., Mirjalali, H.</given-names></name>
+            <name><surname>Zali</surname><given-names>M. R.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <article-title>The neglected role of Enterobius vermicularis in appendicitis: A systematic review and meta-analysis</article-title>
+          <source>PLoS ONE</source>
+          <volume>15</volume>
+          <issue>4</issue>
+          <elocation-id>e0232143</elocation-id>
+          <pub-id pub-id-type="doi">10.1371/journal.pone.0232143</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B51">
+        <mixed-citation>Téllez, G. H., y Macció, J. (2020). Condiciones de vida y pobreza multidimensional en las villas del Conurbano Bonaerense: El barrio Puerta de Hierro. <italic>Ensayos de Política Económica, </italic>37, 75. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.46553/ensayos.3.2.2020.p37-75">https://doi.org/10.46553/ensayos.3.2.2020.p37-75</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Téllez</surname><given-names>G. H.</given-names></name>
+            <name><surname>Macció</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Condiciones de vida y pobreza multidimensional en las villas del Conurbano Bonaerense: El barrio Puerta de Hierro</source>
+          <comment>Ensayos de Política Económica, 37, 75.</comment>
+          <pub-id pub-id-type="doi">10.46553/ensayos.3.2.2020.p37-75</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B52">
+        <mixed-citation>UNICEF. (2019). <italic>State of the World’s Children 2019: Children, food and nutrition: Growing well in changing world. </italic>New York: UNICEF. <ext-link ext-link-type="uri" xlink:href="https://www.unicef.org/reports/state-of-worlds-children-2019">https://www.unicef.org/reports/state-of-worlds-children-2019</ext-link></mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <collab>UNICEF</collab>
+          </person-group>
+          <year>2019</year>
+          <source>State of the World’s Children 2019: Children, food and nutrition: Growing well in changing world</source>
+          <publisher-loc>New York</publisher-loc>
+          <publisher-name>UNICEF</publisher-name>
+          <ext-link ext-link-type="uri" xlink:href="https://www.unicef.org/reports/state-of-worlds-children-2019">https://www.unicef.org/reports/state-of-worlds-children-2019</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B53">
+        <mixed-citation>UNICEF - United Nations Children’s Fund. (2023). <italic>Childhood overweight on the rise in Latin America and the Caribbean? 2023 report</italic>. <ext-link ext-link-type="uri" xlink:href="https://www.unicef.org/lac">https://www.unicef.org/lac</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <collab>UNICEF - United Nations Children’s Fund</collab>
+          </person-group>
+          <year>2023</year>
+          <source>Childhood overweight on the rise in Latin America and the Caribbean? 2023 report</source>
+          <ext-link ext-link-type="uri" xlink:href="https://www.unicef.org/lac">https://www.unicef.org/lac</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B54">
+        <mixed-citation>Vila, C. C., Saracino, M. P., Pallaro, A. N., y Baldi, P. C. (2025). Impact of malnutrition on the course of helminth infection and the associated immune response. <italic>Nutrition Reviews</italic>, nuaf229. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/nutrit/nuaf229">https://doi.org/10.1093/nutrit/nuaf229</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Vila</surname><given-names>C. C., Saracino, M. P., Pallaro, A. N.</given-names></name>
+            <name><surname>Baldi</surname><given-names>P. C.</given-names></name>
+          </person-group>
+          <year>2025</year>
+          <source>Impact of malnutrition on the course of helminth infection and the associated immune response</source>
+          <comment>Nutrition Reviews, nuaf229.</comment>
+          <pub-id pub-id-type="doi">10.1093/nutrit/nuaf229</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B55">
+        <mixed-citation>Vollmer, S., Bommer, C., Krishna, A., Harttgen, K., y Subramanian, S. V. (2017). The association of parental education with childhood undernutrition in low- and middle-income countries. <italic>International Journal of Epidemiology, </italic>46(1), 312-323. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/ije/dyw133">https://doi.org/10.1093/ije/dyw133</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Vollmer</surname><given-names>S., Bommer, C., Krishna, A., Harttgen, K.</given-names></name>
+            <name><surname>Subramanian</surname><given-names>S. V.</given-names></name>
+          </person-group>
+          <year>2017</year>
+          <article-title>The association of parental education with childhood undernutrition in low- and middle-income countries</article-title>
+          <source>International Journal of Epidemiology</source>
+          <volume>46</volume>
+          <issue>1</issue>
+          <fpage>312</fpage>
+          <lpage>323</lpage>
+          <pub-id pub-id-type="doi">10.1093/ije/dyw133</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B56">
+        <mixed-citation>Walson, J. L., y Berkley, J. A. (2018). The impact of malnutrition on childhood infections. <italic>Current Opinion in Infectious Diseases, </italic>31(3), 231-236. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1097/QCO.0000000000000448">https://doi.org/10.1097/QCO.0000000000000448</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Walson</surname><given-names>J. L.</given-names></name>
+            <name><surname>Berkley</surname><given-names>J. A.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <article-title>The impact of malnutrition on childhood infections</article-title>
+          <source>Current Opinion in Infectious Diseases</source>
+          <volume>31</volume>
+          <issue>3</issue>
+          <fpage>231</fpage>
+          <lpage>236</lpage>
+          <pub-id pub-id-type="doi">10.1097/QCO.0000000000000448</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B57">
+        <mixed-citation>Wells, J. C., Sawaya, A. L., Wibaek, R., Mwangome, M., Poullas, M. S., Yajnik, C. S., y Demaio, A. (2020). The double burden of malnutrition: Aetiological pathways and consequences for health. <italic>The Lancet, </italic>395(10217), 75-88. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/S0140-6736(19">https://doi.org/10.1016/S0140-6736(19</ext-link>)32472-9</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Wells</surname><given-names>J. C., Sawaya, A. L., Wibaek, R., Mwangome, M., Poullas, M. S., Yajnik, C. S.</given-names></name>
+            <name><surname>Demaio</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>The double burden of malnutrition: Aetiological pathways and consequences for health</source>
+          <comment>The Lancet, 395(10217), 75-88. https://doi.org/10.1016/S0140-6736(19)32472-9</comment>
+        </element-citation>
+      </ref>
+      <ref id="B58">
+        <mixed-citation>World Bank. (2020). <italic>Poverty and Shared Prosperity 2020: Reversals of Fortune</italic>. World Bank Group. <ext-link ext-link-type="uri" xlink:href="https://www.worldbank.org/en/publication/poverty-and-shared-prosperity-2020">https://www.worldbank.org/en/publication/poverty-and-shared-prosperity-2020</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <collab>World Bank</collab>
+          </person-group>
+          <year>2020</year>
+          <source>Poverty and Shared Prosperity 2020: Reversals of Fortune</source>
+          <comment>World Bank Group.</comment>
+          <ext-link ext-link-type="uri" xlink:href="https://www.worldbank.org/en/publication/poverty-and-shared-prosperity-2020">https://www.worldbank.org/en/publication/poverty-and-shared-prosperity-2020</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B59">
+        <mixed-citation>WHO - World Health Organization (1991) <italic>Basic laboratory methods in medical parasitology</italic>.  <ext-link ext-link-type="uri" xlink:href="https://iris.who.int/handle/10665/40793">https://iris.who.int/handle/10665/40793</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <collab>WHO - World Health Organization</collab>
+          </person-group>
+          <year>1991</year>
+          <source>Basic laboratory methods in medical parasitology</source>
+          <ext-link ext-link-type="uri" xlink:href="https://iris.who.int/handle/10665/40793">https://iris.who.int/handle/10665/40793</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B60">
+        <mixed-citation>WHO - World Health Organization. (2006). <italic>WHO child growth standards for 0–60 months</italic>. <ext-link ext-link-type="uri" xlink:href="https://www.who.int/tools/child-growth-standards">https://www.who.int/tools/child-growth-standards</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <collab>WHO - World Health Organization</collab>
+          </person-group>
+          <year>2006</year>
+          <source>WHO child growth standards for 0–60 months</source>
+          <ext-link ext-link-type="uri" xlink:href="https://www.who.int/tools/child-growth-standards">https://www.who.int/tools/child-growth-standards</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B61">
+        <mixed-citation>WHO - World Health Organization. (2007). <italic>WHO reference for boys and girls, 5–19 years</italic>. <ext-link ext-link-type="uri" xlink:href="https://www.who.int/growthref">https://www.who.int/growthref</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <collab>WHO - World Health Organization</collab>
+          </person-group>
+          <year>2007</year>
+          <source>WHO reference for boys and girls, 5–19 years</source>
+          <ext-link ext-link-type="uri" xlink:href="https://www.who.int/growthref">https://www.who.int/growthref</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B62">
+        <mixed-citation>WHO - World Health Organization. (2024). <italic>Malnutrition: Fact sheet</italic>. <ext-link ext-link-type="uri" xlink:href="https://www.who.int/news-room/fact-sheets/detail/malnutrition">https://www.who.int/news-room/fact-sheets/detail/malnutrition</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <collab>WHO - World Health Organization</collab>
+          </person-group>
+          <year>2024</year>
+          <source>Malnutrition: Fact sheet</source>
+          <ext-link ext-link-type="uri" xlink:href="https://www.who.int/news-room/fact-sheets/detail/malnutrition">https://www.who.int/news-room/fact-sheets/detail/malnutrition</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B63">
+        <mixed-citation>Zonta, M. L., Cociancic, P., Oyhenart, E. E., y Navone, G. T. (2020). Intestinal parasitosis, undernutrition and socio-environmental factors in schoolchildren from Clorinda Formosa, Argentina. <italic>Revista de Salud Pública</italic>, 21, 224-231. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.15446/rsap.V21n2.73692">https://doi.org/10.15446/rsap.V21n2.73692</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Zonta</surname><given-names>M. L., Cociancic, P., Oyhenart, E. E.</given-names></name>
+            <name><surname>Navone</surname><given-names>G. T.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <article-title>Intestinal parasitosis, undernutrition and socio-environmental factors in schoolchildren from Clorinda Formosa, Argentina</article-title>
+          <source>Revista de Salud Pública</source>
+          <volume>21</volume>
+          <fpage>224</fpage>
+          <lpage>231</lpage>
+          <pub-id pub-id-type="doi">10.15446/rsap.V21n2.73692</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B64">
+        <mixed-citation>Zonta, M. L., Servian, A., Virgolini, B., Garraza , M., Minardi, G., y Navone, G. (2024). Malnutrition and intestinal parasitosis: current prevalences and risk factors among schoolchildren in Misiones (Argentina). <italic>American Journal of Human Biology</italic>,  36(10), e24140. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajhb24140">https://doi.org/10.1002/ajhb24140</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Zonta</surname><given-names>M. L., Servian, A., Virgolini, B., Garraza , M., Minardi, G.</given-names></name>
+            <name><surname>Navone</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2024</year>
+          <article-title>Malnutrition and intestinal parasitosis: current prevalences and risk factors among schoolchildren in Misiones (Argentina)</article-title>
+          <source>American Journal of Human Biology</source>
+          <volume>36</volume>
+          <issue>10</issue>
+          <elocation-id>e24140</elocation-id>
+          <pub-id pub-id-type="doi">10.1002/ajhb24140</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

@@ -1,0 +1,8 @@
+    return {
+        "total_citas": len(citas_detectadas),
+        "total_refs": len(refs_parsed),
+        "citas_sin_ref": list(citas_sin_ref.values()),
+        "refs_no_citadas": refs_no_citadas,
+        "posibles_duplicados": colisiones_ab,
+        "errores_formato_rma": errores_formato_rma,
+    }

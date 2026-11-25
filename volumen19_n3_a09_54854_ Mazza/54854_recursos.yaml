@@ -1,0 +1,29 @@
+figuras:
+  1:
+    ancho: columna
+    es: Ubicación de los sitios donde fueron recuperados los individuos analizados en este trabajo. 1- Cañada Saldaña; 2- Campo Morgan.
+    en: <em>Location of the sites where the individuals analyzed in this study were recovered. 1 – Cañada Saldaña; 2 – Campo Morgan.</em>
+    archivo: 54854_fig01.tiff
+  2:
+    ancho: columna
+    es: 'Patologías vertebrales en el individuo #4 de Cañada Saldaña. El gráfico de barras muestra los grados de remodelación de las zigapófisis. La columna vertebral muestra los cambios degenerativos presentes: los círculos amarillos indican osteoartrosis; los círculos rojos, nódulos de Schmorl. A) Osteoartrosis en las zigapófisis izquierdas de C2 (imagen izquierda) y C3 (imagen derecha); B) Nódulo de Schmorl en T7 con prolongación hacia el borde superior del cuerpo vertebral; C) Carillas articulares accesorias en L4 (imagen izquierda) y L5 (imagen derecha) (flechas amarillas), junto con evidencia típica del síndrome de Baastrup (flecha verde). La L5 también presenta espondilólisis bilateral (imágenes derecha e inferior). Escala 1 cm.'
+    en: '<em>Vertebral pathologies in individual #4 from Cañada Saldaña. The bar chart shows the degrees of zygapophyseal remodeling in both individuals. The vertebral column illustrates the degenerative changes present: yellow circles indicate osteoarthritis; red circles, Schmorl’s nodes; vertebrae shaded in gray, missing vertebrae. A) Osteoarthritis in the left zygapophyses of C2 (left image) and C3 (right image); B) Schmorl’s node in T7 extending toward the superior margin of the vertebral body; C) Accessory articular facets in L4 (left image) and L5 (right image) (yellow arrows), together with typical evidence of Baastrup’s syndrome (green arrow). L5 also presents bilateral spondylolysis (right and lower images). Scale 1 cm.</em>'
+    archivo: 54854_fig02.jpg
+  3:
+    ancho: columna
+    es: 'Patologías vertebrales en el individuo #1 de Campo Morgan. El gráfico de barras muestra los grados de remodelación de las zigapófisis. La columna vertebral muestra los cambios degenerativos presentes: los círculos amarillos indican osteoartrosis; las vértebras pintadas de rojo, enfermedad degenerativa de disco; las vértebras pintadas de gris, vértebras ausentes.  A) Borde de contención óseo en la zigapófisis izquierda de C5 (flecha amarilla), vista superior (imagen izquierda) y en articulación con C4 (imagen derecha); B) Espondilólisis unilateral en L5, en la que también se observan cambios degenerativos de la zigapófisis izquierda;  C) Vértebra L5 con espondilólisis y osteofitos marginales en el lado derecho del cuerpo vertebral (flecha amarilla); D) Sacro con osteofitos en el lado derecho del cuerpo de S1; E-G) Carillas articulares accesorias en L4 (E) y L5 (F) (flechas amarillas). Escala 1 cm.'
+    en: '<em>Vertebral pathologies in individual #1 from Campo Morgan. The bar chart shows the degrees of zygapophyseal remodeling in both individuals. The vertebral column illustrates the degenerative changes present: yellow circles indicate osteoarthritis; vertebrae shaded in red, degenerative disk disease; vertebrae shaded in gray, missing vertebrae. A) Bony containment ridge on the left zygapophysis of C5 (yellow arrow), superior view (left image) and in articulation with C4 (right image); B) Unilateral spondylolysis in L5, which also shows degenerative changes in the left zygapophysis; C) L5 vertebra with spondylolysis and marginal osteophytes on the right side of the vertebral body (yellow arrow); D) Sacrum with osteophytes on the right side of the S1 body; E–G) Accessory articular facets in L4 (E) and L5 (F) (yellow arrows). Scale 1 cm.</em>'
+    archivo: 54854_fig03.jpg
+  4:
+    ancho: columna
+    es: 'Facetas articulares accesorias en el sacro (izquierda) y coxales (derecha) del individuo #1 de Campo Morgan. Escala 1 cm.'
+    en: '<em>Accessory articular facets in the sacrum (left) and os coxae (right) of the Campo Morgan individual #1. Scale 1 cm.</em>'
+    archivo: 54854_fig04.jpg
+tablas:
+  1:
+    es: Completitud anatómica de la muestra.
+    en: <em>Anatomical completeness of the sample.</em>
+    archivo: 54854_tabla 1.docx
+  2:
+    es: <em>Prevalencia de patologías vertebrales.</em>
+    archivo: 54854_tabla 2.docx

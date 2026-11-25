@@ -1,0 +1,49 @@
+# Metadatos editoriales del envío OJS
+formato: tradicional
+codigo_publicacion: v19n03a08
+seccion: Antropología Biológica
+volumen: '19'
+numero: '3'
+anio: '2026'
+pagina_inicio: '01'
+paginas: ''
+doi: https://doi.org/10.31048/
+autor_corto: M. Garraza et al.
+titulo_corto: Malnutrición y enteroparasitosis
+recibido: 26-05-2026
+correcciones: 31-07-2026
+aceptado: 07-08-2026
+editor_seccion: M. Fabra
+editores_invitados: ''
+autores:
+- nombre: Mariela Garraza
+  orcid: 0000-0002-1974-6844
+  afiliacion: '1'
+- nombre: Joaquín U. Zucol
+  orcid: 0009-0004-2743-4711
+  afiliacion: '2'
+- nombre: Astor N. Avila
+  orcid: 0009-0007-2238-7866
+  afiliacion: '3'
+- nombre: Helen Escorcia Gomez
+  orcid: ''
+  afiliacion: '4'
+- nombre: María F. Cesani
+  orcid: 0000-0003-1372-9231
+  afiliacion: '5'
+afiliaciones:
+  '1':
+    texto: 'Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET), La Plata, Argentina. Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata, Argentina. E-mail: garrazam@fcnym.unlp.edu.ar'
+    ror: 03cqe8w59
+  '2':
+    texto: 01tjs6929
+    ror: 01tjs6929
+  '3':
+    texto: 01tjs6929
+    ror: ''
+  '4':
+    texto: 'Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata, Argentina. E-mail: helenescorciagomez@gmail.com'
+    ror: 01tjs6929
+  '5':
+    texto: 'Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET), La Plata, Argentina. Laboratorio de Investigaciones en Ontogenia y Adaptación (LINOA), Facultad de Ciencias Naturales y Museo (FCNyM), Universidad Nacional de La Plata (UNLP), La Plata, Argentina. E-mail: mfcesani@fcnym.unlp.edu.ar'
+    ror: 03cqe8w59

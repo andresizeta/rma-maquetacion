@@ -1,0 +1,12 @@
+figuras:
+  1:
+    ancho: "completo"
+    es: "Casco de la estancia El Leoncito, 2023."
+    en: "<em>Main house of El Leoncito estancia, 2023. </em>"
+  2:
+    ancho: "completo"
+    es: "Pobladores observando fotografías durante un taller, 2017."
+    en: "<em>Residents observing photographs during a workshop, 2017.</em>"
+
+tablas:
+  # Sin tablas registradas

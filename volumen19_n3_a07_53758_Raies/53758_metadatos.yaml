@@ -1,0 +1,27 @@
+# Metadatos editoriales del envío OJS (generado con asistente interactivo RMA)
+formato: "tradicional"
+codigo_publicacion: "v19n03a07"
+seccion: "Arqueología"
+volumen: "19"
+numero: "3"
+anio: "2026"
+pagina_inicio: "01"
+paginas: ""
+doi: "https://doi.org/10.31048/"
+autor_corto: "A. Raies"
+titulo_corto: "Cartografiar la guerra: arqueología digital..."
+recibido: "16-07-2026"
+correcciones: "10-11-2026"
+aceptado: "18-11-2026"
+editor_seccion: "R. Cattáneo & J. Mignino"
+editores_invitados: ""
+
+autores:
+  - nombre: "Alejandra Raies"
+    orcid: "0000-0002-0121-9691"
+    afiliacion: "1, 2"
+
+afiliaciones:
+  1:
+    texto: "CONICET"
+    ror: "03cqe8w59"

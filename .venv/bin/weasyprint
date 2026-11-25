@@ -1,4 +1,4 @@
-#!/home/andres/ANDRES/automatizacion_rma_ojs/.venv/bin/python3
+#!/home/andres/AndresIZETA/automatizacion_rma_ojs/.venv/bin/python3
 import sys
 from weasyprint.__main__ import main
 if __name__ == '__main__':

@@ -1,0 +1,169 @@
+def auditar_citas_y_referencias(art: dict, cuerpo_bloques: list[dict] | None = None) -> dict:
+    """
+    Cruza las citas detectadas en cuerpo, tablas, epígrafes y notas al pie con
+    las entradas de Referencias bibliográficas, y valida el formato RMA de cada entrada.
+    """
+    refs_raw_list = art.get("referencias", [])
+    errores_formato_rma, colisiones_ab = validar_formato_referencias_rma(refs_raw_list)
+
+    refs_parsed = []
+    indice_ref_por_clave = {}
+    anios_por_autor = {}
+
+    for idx, r_html in enumerate(refs_raw_list, 1):
+        txt = _limpiar_html_citas(r_html)
+        txt_sin_num = re.sub(r"^(?:\[\d+\]|\d+[.)])\s+", "", txt)
+
+        m_y = _PAT_YEAR_REF.search(txt_sin_num)
+        if not m_y:
+            refs_parsed.append({
+                "idx": idx,
+                "texto": txt_sin_num,
+                "autor_clave": "",
+                "anios": [],
+                "citada": False,
+            })
+            continue
+
+        autores_raw = txt_sin_num[: m_y.start()].strip()
+        autor_clave = _extraer_primer_apellido_ref(autores_raw)
+        bloque_anio = (m_y.group(1) or m_y.group(2) or "").strip()
+
+        encontrados = [
+            re.sub(r"\s+", "", a).lower()
+            for a in re.findall(r"\b(?:\d{4}\s*[a-z]?|s\.f\.|en prensa|in press)\b", bloque_anio, flags=re.I)
+        ]
+        anio_pub = encontrados[-1] if encontrados else ""
+        anios = list(dict.fromkeys(([anio_pub] if anio_pub else []) + encontrados))
+
+        info_ref = {
+            "idx": idx,
+            "texto": txt_sin_num,
+            "autor_clave": autor_clave,
+            "anios": anios,
+            "citada": False,
+        }
+        refs_parsed.append(info_ref)
+
+        if autor_clave and anios:
+            anios_por_autor.setdefault(autor_clave, set()).update(anios)
+            for a in anios:
+                indice_ref_por_clave.setdefault((autor_clave, a), []).append(info_ref)
+
+    fragmentos_texto = []
+    celdas_tabla = []
+    fuentes_bloques = cuerpo_bloques if cuerpo_bloques is not None else art.get("bloques_cuerpo", [])
+    for b in fuentes_bloques:
+        raw_h = b.get("html_pdf") or b.get("html_ojs") or b.get("html") or b.get("texto") or ""
+        if raw_h:
+            fragmentos_texto.append(_limpiar_html_citas(raw_h))
+            for m_td in re.finditer(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", raw_h, flags=re.I | re.S):
+                celdas_tabla.append(_limpiar_html_citas(m_td.group(1)))
+    if cuerpo_bloques is None:
+        for t_html in art.get("tablas_embebidas", []):
+            fragmentos_texto.append(_limpiar_html_citas(t_html))
+            for m_td in re.finditer(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", t_html, flags=re.I | re.S):
+                celdas_tabla.append(_limpiar_html_citas(m_td.group(1)))
+    for item_nota in art.get("notas_usadas", []):
+        n_html = item_nota[1] if isinstance(item_nota, (tuple, list)) else str(item_nota)
+        fragmentos_texto.append(_limpiar_html_citas(n_html))
+
+    texto_completo = "\n".join(fragmentos_texto)
+
+    pat_apellido = (
+        r"(?:(?:de|del|de\s+la|de\s+los|van|von|da|dos|das|le|la|Del|De\s+la)\s+)?"
+        r"[A-ZÁÉÍÓÚÑÜ][A-Za-zÁÉÍÓÚÑÜáéíóúñü'’\-]+"
+        r"(?:\s+(?:(?:de|del|de\s+la|de\s+los|van|von|da|dos|das)\s+)?[A-ZÁÉÍÓÚÑÜ][A-Za-zÁÉÍÓÚÑÜáéíóúñü'’\-]+){0,2}"
+    )
+    pat_autor_cita = (
+        rf"{pat_apellido}"
+        rf"(?:"
+        rf"\s+et\.?\s+al\s*\.?"
+        rf"|(?:,\s*{pat_apellido})*\s*(?:,?\s*(?:y|and|e|&)\s+{pat_apellido})"
+        rf")?"
+    )
+    pat_anio = r"(?:\d{4}[a-z]?|s\.f\.|en prensa|in press)"
+    pat_bloque_anios = (
+        rf"(?:\[\s*\d{{4}}(?:\s*[-–—]\s*\d{{2,4}})?\s*\]\s*)?"
+        rf"(?:{pat_anio})(?:\s*(?:,|;|y|and)\s*(?:\[\s*\d{{4}}(?:\s*[-–—]\s*\d{{2,4}})?\s*\]\s*)?(?:{pat_anio}))*"
+    )
+
+    stop_autores = {
+        "figura", "tabla", "fig", "tab", "figure", "figures", "table", "tables", "cap", "capitulo", "ano", "anos",
+        "en", "para", "desde", "hasta", "entre", "durante", "siglo", "siglos",
+    }
+    citas_detectadas = []
+
+    for m_par in re.finditer(r"\(([^()]{4,400})\)", texto_completo):
+        contenido = m_par.group(1)
+        if not re.search(pat_anio, contenido, flags=re.I):
+            continue
+        for m_c in re.finditer(
+            rf"({pat_autor_cita})(?:\s*,\s*|\s+)({pat_bloque_anios})(?=$|[\s:,.\];])",
+            contenido,
+        ):
+            autor_txt = m_c.group(1).strip()
+            anios_txt = m_c.group(2)
+            autor_cl = _extraer_primer_apellido_cita(autor_txt)
+            if not autor_cl or autor_cl in stop_autores:
+                continue
+            for a in re.findall(pat_anio, anios_txt, flags=re.I):
+                citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+    for m_nar in re.finditer(
+        rf"({pat_autor_cita})\s*\(\s*({pat_bloque_anios})(?:\s*[: ,][^)]*)?\)",
+        texto_completo,
+    ):
+        autor_txt = m_nar.group(1).strip()
+        anios_txt = m_nar.group(2)
+        autor_cl = _extraer_primer_apellido_cita(autor_txt)
+        if not autor_cl or autor_cl in stop_autores:
+            continue
+        for a in re.findall(pat_anio, anios_txt, flags=re.I):
+            citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+    for celda in celdas_tabla:
+        for m_td_c in re.finditer(
+            rf"({pat_autor_cita})(?:\s*,\s*|\s+)({pat_bloque_anios})(?=$|[\s:,.\];])",
+            celda,
+        ):
+            autor_txt = m_td_c.group(1).strip()
+            anios_txt = m_td_c.group(2)
+            autor_cl = _extraer_primer_apellido_cita(autor_txt)
+            if not autor_cl or autor_cl in stop_autores:
+                continue
+            for a in re.findall(pat_anio, anios_txt, flags=re.I):
+                citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+    citas_sin_ref = {}
+    for etiqueta, autor_cl, a_norm in citas_detectadas:
+        clave = (autor_cl, a_norm)
+        if clave in indice_ref_por_clave:
+            for r_obj in indice_ref_por_clave[clave]:
+                r_obj["citada"] = True
+        else:
+            if clave not in citas_sin_ref:
+                otros = sorted(anios_por_autor.get(autor_cl, []))
+                sugerencia = f" (en Bibliografía figura con año: {', '.join(otros)})" if otros else ""
+                citas_sin_ref[clave] = f"{etiqueta}{sugerencia}"
+
+    refs_no_citadas = []
+    for r in refs_parsed:
+        if not r["citada"]:
+            muestra = ""
+            if r["autor_clave"]:
+                m_dbg = re.search(rf".{{0,25}}\b{re.escape(r['autor_clave'].split()[0])}\b.{{0,35}}", texto_completo, flags=re.I)
+                if m_dbg:
+                    muestra = f" [en texto aparece: '{m_dbg.group(0).strip()}']"
+            refs_no_citadas.append(
+                f"[{r['idx']}] {r['texto'][:90]}{'...' if len(r['texto']) > 90 else ''}{muestra}"
+            )
+
+    return {
+        "total_citas": len(citas_detectadas),
+        "total_refs": len(refs_parsed),
+        "citas_sin_ref": list(citas_sin_ref.values()),
+        "refs_no_citadas": refs_no_citadas,
+        "posibles_duplicados": colisiones_ab,
+        "errores_formato_rma": errores_formato_rma,
+    }

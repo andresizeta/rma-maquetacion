@@ -1,0 +1,25 @@
+# Metadatos editoriales del envío OJS
+formato: tradicional
+codigo_publicacion: v19n03a23
+seccion: Dossier
+volumen: '19'
+numero: '3'
+anio: '2026'
+pagina_inicio: '01'
+paginas: ''
+doi: https://doi.org/10.31048/
+autor_corto: E. A. Alsmann López
+titulo_corto: El papel de la conservación-restauración estatal...
+recibido: 07-11-2025
+correcciones: 25-02-2026
+aceptado: 13-07-2026
+editor_seccion: M. Espinosa & G. Sora
+editores_invitados: C. Crespo & C. Benedetti
+autores:
+- nombre: Eva Astrid Alsmann López
+  orcid: 0009-0008-7553-5292
+  afiliacion: '1'
+afiliaciones:
+  '1':
+    texto: Instituto Nacional de Antropología e Historia, México, eva_alsmann@inah.gob.mx
+    ror: 0509e3289

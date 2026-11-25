@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1 20151215//EN" "JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1" specific-use="sps-1.9" xml:lang="es" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">rma</journal-id>
+      <journal-title-group>
+        <journal-title>Revista del Museo de Antropología</journal-title>
+        <abbrev-journal-title abbrev-type="publisher">Rev. Mus. Antropol.</abbrev-journal-title>
+      </journal-title-group>
+      <issn pub-type="ppub">1852-060X</issn>
+      <issn pub-type="epub">1852-4826</issn>
+      <publisher>
+        <publisher-name>IDACOR-CONICET / Facultad de Filosofía y Humanidades – Universidad Nacional de Córdoba - Argentina</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">52649</article-id>
+      <article-id pub-id-type="doi">10.31048/52649</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Arqueología</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Desafíos en la implementación de una política patrimonial en el Parque Nacional El Leoncito (San Juan, Argentina)</article-title>
+        <trans-title-group xml:lang="en">
+          <trans-title>Challenges in the implementation of a heritage policy in El Leoncito National Park (San Juan, Argentina)</trans-title>
+        </trans-title-group>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0009-0002-8365-3252</contrib-id>
+          <name>
+            <surname>Galuchi</surname>
+            <given-names>Josefina</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <institution content-type="original">Instituto de Ciencias Antropológicas, Facultad de Filosofía y Letras, Universidad de Buenos Aires, Argentina. E-mail: galuchijosefina@gmail.com</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/0081fs513</institution-id>
+          <institution content-type="orgname">Instituto de Ciencias Antropológicas, Facultad de Filosofía y Letras, Universidad de Buenos Aires</institution>
+        </institution-wrap>
+        <country country="AR">Argentina</country>
+        <email>galuchijosefina@gmail.com</email>
+      </aff>
+      <pub-date date-type="pub" publication-format="electronic">
+        <day>01</day>
+        <month>12</month>
+        <year>2026</year>
+      </pub-date>
+      <volume>19</volume>
+      <issue>3</issue>
+      <fpage>1</fpage>
+      <lpage>11</lpage>
+      <history>
+        <date date-type="received">
+          <day>06</day>
+          <month>05</month>
+          <year>2026</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>14</day>
+          <month>08</month>
+          <year>2026</year>
+        </date>
+        <date date-type="accepted">
+          <day>17</day>
+          <month>08</month>
+          <year>2026</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>Copyright © 2026 Revista del Museo de Antropología</copyright-statement>
+        <copyright-year>2026</copyright-year>
+        <copyright-holder>Revista del Museo de Antropología</copyright-holder>
+        <license license-type="open-access" xlink:href="https://creativecommons.org/licenses/by-nc-sa/4.0/" xml:lang="es">
+          <license-p>Este es un artículo publicado en acceso abierto bajo una licencia Creative Commons (CC BY-NC-SA 4.0).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>El propósito de este trabajo es analizar la gestión del patrimonio cultural en la Administración de Parques Nacionales de Argentina. En los últimos años, esta institución, que históricamente había excluido de sus políticas de conservación de la naturaleza aquello vinculado a la dimensión cultural y desalojado a sectores subalternos que habitaban muchas de las áreas protegidas, comenzó a implementar una política cultural en algunos de los parques que la conforman. En este artículo examino los lineamientos seguidos en esta política en el Parque Nacional El Leoncito (San Juan, Argentina). Exploro, desde una perspectiva etnográfica, cuáles son las concepciones de patrimonio cultural que subyacen en ella, qué tensiones y dificultades emergen en su implementación y cuáles son los desafíos que supuso proponer una perspectiva participativ de su gestión. Con este trabajo busco contribuir a la reflexión sobre una problemática poco indagada, como lo es la política del patrimonio cultural desarrollada en instituciones que han sido esquivas a la misma.</p>
+      </abstract>
+      <trans-abstract xml:lang="en">
+        <p>The purpose of this paper is to analyze the management of cultural heritage in the National Parks Administration (Argentina). In recent years, this institution, which had historically excluded the cultural dimension from its nature ‘conservation’ policies and evicted subaltern groups that inhabited many of the protected areas, began to implement a cultural policy in some of its parks. In this article, we examine the guidelines followed in this policy in El Leoncito National Park (San Juan, Argentina). I explore, from an ethnographic perspective, the conceptions of ‘cultural heritage’ that underlie it, the tensions and difficulties that emerge in its implementation, and the challenges involved in proposing a ‘participatory’ approach to its management. The work seeks to contribute to the reflection on a little-investigated problem, such as the cultural heritage policy developed in institutions that have been elusive to them.</p>
+      </trans-abstract>
+      <kwd-group xml:lang="es">
+        <title>Palabras clave</title>
+        <kwd>Patrimonio cultural</kwd>
+        <kwd>Áreas protegidas</kwd>
+        <kwd>Participación social</kwd>
+        <kwd>Parque Nacional El Leoncito</kwd>
+      </kwd-group>
+      <kwd-group xml:lang="en">
+        <title>Keywords</title>
+        <kwd>Cultural heritage</kwd>
+        <kwd>Protected areas</kwd>
+        <kwd>Social participation</kwd>
+        <kwd>El Leoncito National Park</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec sec-type="intro">
+      <title>Introducción</title>
+      <p>A partir de la década de 1990, el patrimonio cultural comenzó a ser objeto de políticas públicas en las áreas protegidas de Argentina dentro de la Administración de Parques Nacionales (APN). Esto supuso diferenciar y separar lugares, objetos, sentidos, conocimientos y prácticas del flujo de la vida social, y recontextualizarlos en una dinámica específica: la dinámica patrimonial (Crespo, 2005; Rosas Mantecón, 2005). Dentro de la institución, esta política fue llevada adelante por quienes integran el Programa Manejo de Recursos Culturales y formó parte de un interés institucional de reconocer e incluir a los pobladores locales en la administración de los espacios protegidos, pues se entendía que la conservación solo podía alcanzar resultados duraderos y significativos si se “participaba” a la población local<xref ref-type="fn" rid="fn1">1</xref>. Sin embargo, las políticas desarrollada  el Programa, entre ellas la vinculada a la activación del patrimonio cultural, enfrentaron numerosas dificultades a lo largo de su recorrido.</p>
+      <p>ste trabajo analizo el devenir de esta política y las dificultades que presenta desde una mirada etnográfica que parte de considerar que el Estado no es un ente homogéneo (Abrams, 1988). Entiendo que emprender el análisis de una política pública desde esta perspectiva, como señala Shore (2010), “nos provee de lentes para estudiar y explorar profundamente los mundos de los mismos formuladores de políticas, y no simplemente estudiar a las personas a quienes las políticas están dirigidas” (p. 33). Por otro lado, en la medida en que el proceso de diseño y concreción de las políticas estatales es complejo, desordenado y conflictivo, no sólo como producto de la interrelación con quienes son sus destinatarios ‒pues estas no se aplican linealmente de “arriba hacia abajo”‒, sino también porque entran en conflicto diferentes miradas intrainstitucionales, esta aproximación permite visualizar las tensiones entre los propósitos y las derivas en su concreción, los discursos y prácticas, los intereses ocultos y conflictos de los diversos sujetos que participan.</p>
+      <p>En lo que sigue, analizo dichas complejidades en el marco de la implementación de la política patrimonial desarrollada por la institución en el Parque Nacional El Leoncito (San Juan, Argentina), que definió, recodificó, normalizó e interpretó ciertas historias y materialidades como patrimonio cultural representativo y constitutivo de este espacio territorial. Exploro cuáles han sido las concepciones de patrimonio cultural que emergiendo en ella, qué tensiones y dificultades fueron apareciendo en su implementación y los desafíos que supuso proponer una perspectiva participativa de su gestión. El análisis se basa en observaciones participantes y entrevistas realizadas entre 2017 y 2022 a quienes participaron en estas políticas, tanto dentro de la institución como fuera de ella.</p>
+    </sec>
+    <sec>
+      <title>La inclusión de la dimensión cultural en la política de APN</title>
+      <p>Como señalé en la introducción, desde la década de 1990, la gestión de las áreas protegidas por parte de la Administración de Parques Nacionales deja de ser vista, únicamente, como una política de conservación de la naturaleza y se abren distintos programas que tienen como motor incluir a la población de las áreas protegidas o cercanas a estas, en las políticas diseñadas sobre el espacio territorial y sus “recursos” ‒sean estos delimitados como naturales o culturales<xref ref-type="fn" rid="fn2">2</xref>‒. Me refiero al Programa de Pobladores y Comunidades, el Programa de Educación Ambiental y el Programa de Manejo de Recursos Culturales en el que se inscribe la política patrimonial que analiz<xref ref-type="fn" rid="fn3">3</xref>, áreas de trabajo novedosas y sin precedentes en la institución.</p>
+      <p>El Programa Manejo de Recursos Culturales (en adelante Programa) fue coordinado por el arqueólogo Roberto Molinari, quien estableció las bases para las primeras acciones de identificación y conservación de sitios con valor cultural. Molinari, que venía de una trayectoria de formación en ciencias humanísticas, torsionó la tradición que tenían las políticas institucionales al introducir la variable humana y cultural, y retomó los enfoques sobre la conservación de espacios protegidos y del patrimonio de organismos internacionales<xref ref-type="fn" rid="fn4">4</xref>, entre ellos el paradigma participativo<xref ref-type="fn" rid="fn5">5</xref>. Durante la década de 1990, las acciones del Programa se focalizaron en lo que las instituciones han clasificado como “patrimonio material” y dentro de este, sitios arqueológicos. En particular, el trabajo se centró en la conservación de los sitios arqueológicos del Parque Nacional Perito Moreno (Provincia de Santa Cruz), El Palmar (Provincia de Entre Ríos) y Lago Puelo (Provincia de Chubut). La selección de estos parques fue producto de un interés por satisfacer la demanda de sus intendentes, quienes buscaban abrir al turismo, que hubieran sido relevados por equipos de investigación externos a la institución. Como señalaron varios autores, las políticas neoliberales promovieron un giro mercantil de la cultura y el patrimonio, entendiéndolos como “recurso” (Yúdice, 2002) o “capital” (Comaroff y Comaroff, 2011) para el desarrollo y el mercado turístico (Bendix, 2009). Los términos, de hecho, con los que se designó el Programa ‒Manejo de recursos culturales‒ son evidencia e ilustrativos de dicha articulación.</p>
+      <p>Con el correr de los años, la adhesión a la Convención de Patrimonio Cultural Inmaterial de la UNESCO en 2003 por parte de Argentina y la incorporación de antropólogas sociales al Programa impulsaron la apertura de políticas que atendiesen e investigasen no solo el patrimonio arqueológico o material situado en las áreas protegidas sino también los saberes, usos, técnicas y memorias de pobladores locales que habitaron o utilizaron lesos territorios antes de estar bajo la jurisdicción de la APN<xref ref-type="fn" rid="fn6">6</xref>; esto es, lo que las instituciones clasifican como patrimonio inmaterial. La ampliación de la concepción de patrimonio derivó en la elaboración de iniciativas de gestión que articularon la dimensión tanto material como inmaterial del mismo. Desde entonces, el Programa desarrolló un modelo de selección y conservación del patrimonio cultural constituido por tres líneas de acción que aplicó en distintos parques: la conservación de inmuebles, el relevamiento de archivos y la recopilación de testimonios orales. Estas tres líneas se fundan en la conservación física, la investigación y la participación social (APN, 2001), según la denominación institucional. La conservación física  en la evaluación del estado del “recurso patrimonial” y en su tratamiento para mitigar su deterioro. La investigación abarca el análisis de testimonios de los pobladores sobre la historia y sentidos del lugar; el registro, estudio de técnicas y tratamientos de conservación de los inmuebles a patrimonializar; y el examen de los documentos estatales relevados. Finalmente, la participación social hace referencia a las diferentes instancias que involucran a pobladores locales como al uso público del patrimonio con fines educativos o recreativos (APN, 2014).</p>
+      <p>Esta propuesta de patrimonialización (Crespo, 2005), basada en estas tres líneas de acción ‒saberes, sentidos y edificaciones‒, se implementó en distintos parques: el Parque Nacional El Palmar, con las ruinas jesuíticas; el Parque Nacional Lihue Calel, con la casona de Luis Gallardo; el Parque Nacional Mburucuyá, con la Estancia Santa Teresa y el Parque Nacional El Leoncito, con la estancia El Leoncito.</p>
+    </sec>
+    <sec>
+      <title>La política patrimonial en el Parque Nacional El Leoncito</title>
+      <p>El Parque Nacional El Leoncito se encuentra al sudoeste de la provincia de San Juan, dentro del Departamento de Calingasta. Fue constituido como Reserva Natural Estricta en 1994 (Decreto Nacional N.º 46/94)<xref ref-type="fn" rid="fn7">7</xref> y, más tarde, en 2002, designado como Parque Nacional mediante la Ley Nacional N.º 25.656. El parque se localiza en la sierra del Tontal y en el Valle de Calingasta, en la frontera con Chile, rodeado por la precordillera y la cordillera de los Andes.</p>
+      <p>Desde el siglo XVIII hasta su incorporación  la jurisdicción de Parques Nacionales, funcionaba ahí una estancia ganadera denominada El Leoncito. Durante gran parte del siglo XX, esta estancia formó parte de una economía destinada a comercializar ganado, semillas y bienes de consumo con el mercado del otro lado de la cordillera de los Andes<xref ref-type="fn" rid="fn8">8</xref>, junto a otra economía local destinada al comercio vitivinícola (Escolar, 1996: 91). La estancia tuvo diferentes dueños y administradores. Dado que sus propietarios no habitaron en estas tierras, sino que residían en la ciudad de San Juan, el administrador solía ocupar el casco o casa principal. Esta edificación, construida con varias técnicas, pero predominantemente en adobe, contaba con una sola planta y tenía varias habitaciones dispuestas en forma de semicírculo alrededor de un patio interno, donde había una galería con una frondosa parra.</p>
+      <p>La estancia tenía una producción ganadera, centrada en vacunos, cerdos y ovinos. También se cultivaban frutas y verduras –como ajo y papa− y forraje, principalmente sorgo y centeno. Algunos trabajadores vivían de forma permanente con sus familias en casillas o ranchos, donde, además de cumplir órdenes del administrador, producían sus propios alimentos y cuidaban sus animales. Niños, jóvenes, mujeres y varones asumían compromisos y obligaciones laborales a lo largo del año. Las mujeres se encargaban del ordeñe, el procesamiento de alimentos, tanto de origen animal como de los productos obtenidos de la cosecha y sus derivados, y del mantenimiento de los espacios domésticos, ya fueran los de sus propias familias o los de la casa principal. Otros trabajadores, generalmente hombres, eran contratados por temporadas para cumplir determinadas tareas, conocidos como trabajadores “golondrina”.</p>
+      <p>A mediados de la década de 1950, las tierras bajo los cielos donde transcurría la vida cotidiana de la estancia despertaron interés de la comunidad astronómica internacional, especialmente de las universidades de Estados Unidos, Yale y Columbia, para la instalación de dos centros astronómicos. El propósito era extender los estudios de la Vía Láctea al hemisferio sur con el objetivo de medir el desplazamiento de las estrellas australes. En una primera , se creó la Estación Astronómica Carlos Ulrrico Cesco, dependiente del Observatorio Astronómico Félix Aguilar(OAFA), como resultado de un proyecto conjunto de las universidades extranjeras y de la Universidad de San Juan. Décadas más tarde, a mediados de 1980, se fundó el Complejo Astronómico El Leoncito (CASLEO), que depende, hasta hoy, del Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET) y de las Universidades Nacionales de La Plata, Córdoba y San Juan.</p>
+      <p>La creación de un área protegida en este espacio, donde funcionaba la estancia, fue producto de la solicitud realizada por estos dos observatorios, que demandaban el cielo limpio y libre de la contaminación proveniente de actividades o factores humanos.</p>
+      <p>La protección del lugar desencadenó un proceso de reordenamiento territorial y expropiación de la estancia, que derivó en la expulsión de los trabajadores que allí residían, afectando profundamente su economía y vida cotidiana. Aquellos que trabajaban en el mantenimiento de la finca tuvieron que abandonar la zona, vender sus animales a un bajo costo y buscar nuevos ámbitos laborales. Este cambio produjo, además, la ruptura de los lazos que estas familias habían construido, tanto entre sí como con e espacio. Desde entonces, el acceso a la zona quedó limitado a un grupo reducido de científicos y pasantes en formación profesional pertenecientes a los observatorios, a empleados de la APN y de ambos centros astronómicos, y a turistas que vistan tanto parque como las actividades vinculadas con el cielo.</p>
+      <p>Desde 2014, en el marco de un interés por diversificar las propuestas turísticas ofrecidas por el parque ‒es decir, ir más allá de la visita del paisaje natural‒, la APN incorporó este parque a las políticas del Programa Manejo de Recursos Culturales, diseñando un proyecto titulado “Conservación de la Estancia El Leoncito”. Esta política cultural ha tenido como objetivo “conocer, valorar, conservar y difundir” aquello que se considera patrimonio, material e inmaterial, dentro del periodo de funcionamiento de la Estancia El Leoncito.</p>
+      <disp-quote>
+        <p>En el Parque Nacional El Leoncito se han registrado diversas estructuras históricas referidas a distintos momentos de funcionamiento de la Estancia El Leoncito. Estas estructuras corresponden a edificios realizados principalmente en tierra, como ranchos y casco; y en piedra como puestos y corrales. También incluye potreros, frutales y medios de comunicación como el telégrafo. Por otro lado, y referido al componente inmaterial, se entrecruzan las historias de vida, recuerdos, conocimientos y emociones de las personas que transitaron esos espacios (APN, 2014: 1).</p>
+      </disp-quote>
+      <p>Además, busca contribuir al estudio de la historia del lugar, “revalorizar” la identidad local, fortalecer el sentido de pertenencia y afianzar los lazos entre la comunidad local y el parque nacional (APN, 2014).</p>
+      <p>Sin duda, estos proyectos que combinan la selección y gestión del patrimonio cultural sea material o inmaterial en áreas protegidas, se inscriben en el marco de una inflación patrimonial o <italic>boom</italic> patrimonial de alcance internacional (Heinich, 2014), y del diseño de un nuevo paradigma de gestión, definido como participativo, que, sin dejar de construir un “discurso patrimonial autorizado” (Smith, 2006), plantea, contradictoriamente, la inclusión de nuevos actores en su definición, interpretación y protección (Quintero Morón y Sánchez Carretero, 2017). Así, las tres líneas ‒conservación física, relevamiento documental y testimonios orales‒ del Programa Manejo de Recursos Culturales derivaron, en el caso del Parque Nacional El Leoncito, en el diseño de tres subproyectos. Por un lado, el subproyecto de “Restauración y rehabilitación del antiguo casco de estancia El Leoncito”, por otro, el de “Investigación histórica del paraje El Leoncito: su desarrollo a lo largo del tiempo” y, finalmente, el de la “Revalorización del patrimonio inmaterial de la estancia El Leoncito y modo de vida local”. La integración de estos tres subproyectos ha tenido como finalidad investigar la historia del poblamiento y los usos de los diversos espacios que conformaron la estancia (APN, 2014).</p>
+      <p>Ahora bien, si part de la idea de que el patrimonio es una construcción social, histórica y culturalmente situada, donde intervienen diversos y desiguales agentes con múltiples intereses (Prats, 2004; García Canclini, 1999; Rosas Mantecón, 1998), resulta fundamental analizar qué se selecciona, oculta e invisibiliza como patrimonio en ese proceso y los conflictos que esto genera. Esto implica alejarme de la noción de patrimonio como un conjunto de bienes materiales con un valor intrínseco, histórico, científico o artístico, para problematizar las lógicas, definiciones de cultura y dinámicas de poder que se ponen en juego en esta política (Crespo, 2020). En esta línea, recupero los aportes de Macdonald (2018) para pensar el patrimonio más allá de algo</p>
+      <disp-quote>
+        <p>inherente a las cualidades de [las] formas culturales particulares, tangibles o intangibles, o un asunto de identificación, y enfocarnos, en los procesos implicados en el “hacer patrimonial” (Cox y Brumann 2010) así como en las consecuencias ‒sociales, políticas, económicas‒ que esto tiene para la vida contemporánea (Macdonald, 2018: 7).</p>
+      </disp-quote>
+      <p>En tal sentido, aun cuando la propia noción de patrimonio implica que se privilegien ciertos espacios y conocimientos, vinculados a procesos de construcción hegemónica a través de numerosas instituciones, prácticas y discursos oficiales (del Mármol y Santamarina 2019), centrar en los procesos de patrimonialización, más que el patrimonio en sí, para abordar esta política, permite reflexionar acerca del lugar que tienen aquellos patrimonios ocultos y suprimidos por el relato oficial (Crespo, 2016, 2022).</p>
+      <p>A continuación, analiz los diferentes subproyectos que componen la política cultural con el propósito de marcar cuáles son las omisiones, silenciamientos, discursos y tensiones que se gestan en la selección del patrimonio de este espacio territorial<xref ref-type="fn" rid="fn9">9</xref>.</p>
+    </sec>
+    <sec>
+      <title>El casco de la estancia como patrimonio cultural</title>
+      <p>Dentro de la política de Conservación de la Estancia El Leoncito, se incluyó una línea denominada “Restauración y rehabilitación del casco de la Estancia El Leoncito” que plasmó una propuesta de intervención para evitar el deterioro en el casco de la estancia, mientras que otros espacios, como ranchos o casillas, fueron desestimados. Esta edificación fue construida utilizando técnicas de arquitectura con tierra, una mezcla de barro y paja complementada con otros materiales como el guano o la flora vegetal<xref ref-type="fn" rid="fn10">10</xref>. Si bien antes de esta política cultural se habían desarrollado algunas iniciativas para su protección<xref ref-type="fn" rid="fn11">11</xref>, a partir del momento en que se constituye como patrimonio cultural del parque, adquiere un reconocimiento del que carecía. Además de valorizar el casco de la estancia, obtiene centralidad implementar acciones en su conservación y poner en valor la técnica de la arquitectura con tierra como práctica social (APN, 2014) que tiene muy larga data en la región.</p>
+      <p>en valor este tipo de arquitectura no era algo novedoso. A comienzos del 2010, la carrera de Arquitectura y Urbanismo de la Universidad Nacional de San Juan incluyó una asignatura denominada “Construcción con tierra” dentro de su plan de estudios, con el propósito de capacitar “a los estudiantes hacer un uso responsable de la tierra en la construcción”<xref ref-type="fn" rid="fn12">12</xref>.</p>
+      <p>En paralelo, en el mismo año, el casco fundacional del epartamento de Calingasta, donde se encuentra el Parque Nacional El Leoncito, fue declarado Patrimonio Cultural e Histórico Municipal, evidenciando un interés local en estas construcciones y técnicas que antes no eran objeto de políticas públicas. En este marco, un grupo de pobladores forma, a partir de 2015, una cooperativa integrada por artesanos locales denominada Los Horneros, dedicada a restaurar viviendas y edificios significativos, como iglesias y escuelas, construidos en tierra en las diversas localidades del departamento, así como a investigar y difundir las técnicas tradicionales<xref ref-type="fn" rid="fn13">13</xref>.</p>
+      <p>Con el propósito de incluir una perspectiva local, Los Horneros fueron convocados por los técnicos<xref ref-type="fn" rid="fn14">14</xref> del Programa Manejo de Recursos Culturales e invitados a participar de diversas recorridas por la zona del casco de la estancia. Durante estos encuentros, aportaron recomendaciones sobre cómo conservar el edificio y se mostraron entusiastas en colaborar desde su experiencia. Según un informe (APN, 2014), evaluaron las tareas necesarias y presentaron un plan de trabajo a la Administración de Parques Nacionales<xref ref-type="fn" rid="fn15">15</xref>. Sin embargo, debido a limitaciones económicas, como la falta de vehículo para los traslados, la ausencia de un seguro de trabajo, entre otras cuestiones, los constructores no pudieron ejecutar la estrategia solicitada.</p>
+      <p>En 2015 se firmó un convenio entre la APN y la Subsecretaria de Obras Públicas de la Nación (Dirección Nacional de Arquitectura), que estableció un marco de cooperación interinstitucional. Este acuerdo incluyó en las tareas de conservación del casco de la estancia a diversos actores, como los arquitectos de Parques Nacionales<xref ref-type="fn" rid="fn16">16</xref>, el grupo de constructores Los Horneros y los arquitectos de la Subsecretaría de Obras Públicas de la Nación. La investigación del suelo y el análisis de las técnicas constructivas estuvieron acompañados de medidas preventivas para evitar derrumbes, como la colocación de puntales, acordes la tierra como materia prima. No obstante, durante estos años, debido a la falta de presupuesto, los cambios de autoridades y las demoras administrativas, el deterioro continuó y varios muros colapsaron.</p>
+      <p>Además, surgió una serie de conflictos respecto a constituir el casco de la estancia como patrimonio del Parque. En notas, documentos y correos electrónicos institucionales se registran diferentes miradas y posiciones en tensión respecto a la construcción en tierra y la “puesta en valor” del casco. Los técnicos formados en arquitectura de Parques Nacionales argumentaban el sinsentido de restaurar el edificio frente al “desplome” y “deterioro avanzado” que presentaba. Sostenían que, aunque estaba ubicado en jurisdicción nacional, la normativa vigente en la Provincia de San Juan exigía construcciones antisísmicas en los edificios públicos, y el adobe no lo era<xref ref-type="fn" rid="fn17">17</xref>. Además, señalaban que el gran deterioro del casco implicaría un alto costo y una compleja intervención para un edificio “no relevante por su estilo, diseño o características especiales” (APN, 2019). También destacaban que el adobe no era un material “apto” para zonas secas donde las lluvias alternan, ya que absorbe la humedad atmosférica y pierde resistencia. Por todo ello, los arquitectos proponían su demolición y posterior reconstrucción con cemento.</p>
+      <p>Desde la dirección donde se desarrolla el Programa Manejo de Recursos Culturales –la Dirección Técnica de Conservación-, se consideraba que esta falta de valoración de los arquitectos de Parques era producto de la poca comprensión del valor que tenía esta edificación para la población de la zona:</p>
+      <disp-quote>
+        <p>[Los arquitectos de la APN] no valoran el patrimonio (...) no consideraban el patrimonio de barro del Leoncito. No lo consideraban valioso, no consideran tampoco el valor que les da la gente del lugar [en referencia a los pobladores locales]. Lo que solo valoran es el edificio en sí y por ahí un valor histórico que les dan libros, pero no el valor que le puede dar la gente local. Eso no lo consideran en absoluto. (Directora de la Dirección Técnica de Conservación, comunicación personal, 2020)</p>
+      </disp-quote>
+      <p>Por su parte, otros miembros de esta área de trabajo atribuían la falta de interés de los arquitectos de la APN sobre este inmueble a una visión elitista. Sostenían que, por lo general, estos profesionales suelen priorizar la conservación de construcciones en otras áreas protegidas que datan de los primeros años de la institución, especialmente aquellas construidas bajo la gestión de Exequiel Bustillo (presidente de APN 1934-1944). Muchas de estas edificaciones, que reflejan los ideales estéticos de las clases dominantes de comienzos del siglo XX, han sido refuncionalizadas como sedes administrativas o espacios destinados al turismo.</p>
+      <fig id="f1">
+        <label>Figura 1</label>
+        <caption>
+          <title>Casco de la estancia El Leoncito, 2023.</title>
+          <p xml:lang="en">Main house of El Leoncito estancia, 2023.</p>
+        </caption>
+        <graphic xlink:href="52649_fig01.jpg"/>
+      </fig>
+      <p>Por otra parte, los técnicos y técnicas del Programa valorizaban la construcción en adobe por el valor y la significancia que tiene actualmente el casco para los expobladores de la estancia. Así, dos miradas contrapuestas se encontraron: la revalorización de técnicas tradicionales y la propuesta de demolición del edificio. Una técnica de este Programa comentaba que los arquitectos le decían que:</p>
+      <disp-quote>
+        <p>el adobe es pobreza. Nadie quiere vivir en la pobreza y Parques [Nacionales] tiene que mostrar que llega con el “progreso”. Y ponen un montón de impedimentos por la cuestión sísmica. (...) [y agrega con ironía] Les parece bien conservar las ruinas romanas, pero conservar lo propio de la historia de este territorio no. (Técnica<xref ref-type="fn" rid="fn18">18</xref> del Programa, comunicación personal, 2020)</p>
+      </disp-quote>
+      <p>En últimos años, algunas iniciativas que parecían impulsar esta línea de trabajo no se concretaron. Por un lado, desde la Dirección de Conservación, los directivos aprobaron y financiaron la participación de arqueólogos y antropólogos en capacitaciones y congresos sobre técnicas de conservación en construcciones con tierra. Sin embargo, cuando llegó el momento de aplicar esos conocimientos e implementar lo aprendido en el casco, la institución no acompañó la propuesta por “falta de presupuesto”. Por otro lado, el presidente de Parques Nacionales de ese periodo, Eugenio Breárd (2016-2019), visitó el área protegida y, si bien al observar el estado de derrumbe del casco, estableció su conservación como prioridad, no la sostuvo en el tiempo por falta de financiamiento. Como explicó una técnica del área de patrimonio cultural:</p>
+      <disp-quote>
+        <p>se necesita una cantidad de plata para hacer el trabajo y no la tenemos. Entonces los acuerdos que se hagan de trabajo tienen que ser un convenio que no implique dinero. Entonces ¿cómo haces para trabajar en una estructura que tiene un grado de complejidad y un nivel de deterioro importante, que necesita una intervención fuerte si te dicen: “No tenemos plata”? (Técnica de conservación, comunicación personal, 2020)</p>
+      </disp-quote>
+      <p>Esta situación derivó en que muchos trabajadores de la institución asumieran como propia la tarea de buscar estrategias para llevar adelante las acciones de conservación del casco: “somos las personas quienes sostenemos [el Proyecto] y [tenemos que] buscar otras alternativas para conservar esta estructura, por ejemplo, y no es una decisión, una prioridad de la institución” (Técnica de conservación, comunicación personal, 2020).</p>
+    </sec>
+    <sec>
+      <title>Investigar desde los archivos: búsqueda y selección</title>
+      <p>La segunda línea de trabajo denominada “Investigación histórica del paraje El Leoncito: su desarrollo a lo largo del tiempo” se centra en la recopilación de documentación de distintos archivos estatales para comprender el proceso de poblamiento de la zona durante el período de funcionamiento de la estancia e identificar a sus distintos propietarios. Bajo la denominación “documentos históricos” se hace referencia a la documentación oficial producida por instancias gubernamentales, entre principios del siglo XVIII y mediados del XX, que fue seleccionada y guardada en varios archivos estatales de la provincia de San Juan.</p>
+      <p>La encargada de llevar adelante esta línea sostiene que las referencias históricas en fuentes bibliográficas vinculadas con la ocupación del paraje El Leoncito son escasas. Por esta razón, inició una búsqueda en archivos de la provincia para reconstruir las distintas etapas de ocupación de la zona entre los siglos XVIII y XX. Pero además de esta reconstrucción histórica, los documentos relevados fueron utilizados en el marco de entrevistas y talleres, que formaron parte de la tercera línea de la política patrimonial diseñada en el Parque.</p>
+      <p>Aunque no hay una fecha exacta de la conformación de la estancia, los documentos encontrados indican su origen en el siglo XVIII. A través de este relevamiento, la técnica del Programa identificó cómo fue el proceso de titularidad de las tierras, cómo variaron los límites de la estancia y cuáles eran los usos de los espacios, no solo de la zona correspondiente a la actual área protegida, sino de la región del Departamento de Calingasta.</p>
+      <p>En total, se relevaron 1200 hojas de documentos de archivos, algunas de las cuales tenían un tipo de caligrafía que hacía difícil su comprensión, por lo cual debieron ser transcritas en computadora. Las copias de los documentos fueron ordenadas por expediente y rotuladas junto a una breve descripción de su contenido, la referencia del archivo de origen y su ubicación precisa. A su vez, la información fue organizada de manera cronológica en ejes temáticos tales como: “los propietarios y límites de la estancia”, “genealogías de las familias que vivieron allí”, “conflictos por reclamos de tierras”, “el intercambio entre la estancia El Leoncito con otras estancias de la zona”, entre otros.</p>
+      <p>En un informe titulado “Relevamiento en Archivos Históricos” (APN, 2016), la técnica del área de conservación de patrimonio cultural identificó algunas dificultades, aunque solo se centró en desarrollar una:</p>
+      <disp-quote>
+        <p>Al trabajar con documentos históricos pueden presentarse una serie de dificultades que deben ser tenidas en cuenta al momento de analizarlos. En primer lugar, es que los archivos no llegaron al día de hoy de manera completa (ya sea por pérdida, vandalismo, extravío de alguna de sus partes). Por esto es que la información se presenta de manera fragmentada, dejando muchas veces vacíos cronológicos o proporcionando únicamente algunas menciones aisladas o sin poder acceder a la resolución final de un determinado trámite. (APN, 2016)</p>
+      </disp-quote>
+      <p>Aunque los documentos consultados no se encontraban completos, su ausencia y extravío no fueron objeto de reflexión. El análisis se centró en la problematización de los intereses y estrategias detrás de su elaboración. Un ejemplo de ello es la documentación vinculada a la inscripción de las marcas de ganado. Si bien el análisis de estos registros permitió identificar los principales propietarios de ganado de cada periodo en la estancia, también evidenció las diferentes estrategias desplegadas por los trabajadores para evadir el fisco. La baja cantidad de animales declarados en estos formularios resultó llamativa, ya que contrastaba con los testimonios de extrabajadores que caracterizaron a esta estancia como “una de las más productivas de la región”. La confrontación de estos documentos con los relatos orales de los expobladores –tercera línea de esta política patrimonial– permitió tener una comprensión menos literal de ellos. Lejos de pensarse como documentos estáticos o neutros, el foco estuvo puesto en las condiciones de su producción, más allá de su contenido.</p>
+      <p>El relato construido a partir de los documentos históricos por parte de la técnica del proyecto gira en torno a eventos que acontecieron en las tierras que hoy conforman el parque nacional y su entorno, incluidas las estancias linderas ‒ como lugar de paso de hacienda proveniente de Chile, la actividad del rodeo y el cobro de pastaje, entre otros‒, diferentes transacciones –como ventas, compras y sucesiones de terrenos–, y a la identificación de una serie de mapas de distintas épocas donde se hacen referencia a las denominaciones de ríos, sierras, quebradas entre otros.</p>
+      <p>Dentro de esa narrativa, no se problematizó la posibilidad de que hubiesen indígenas en la zona durante este periodo, aspecto interesante para pensar, en la medida en que, mientras el pueblo huarpe hace muchos años lucha por ser reconocidos sus derechos como pueblo indígena, el discurso académico hegemónico provincial y el discurso de los funcionarios de la provincia, propiamente dicho, ha ubicado a los pueblos indígenas en la prehistoria y extinguido a los huarpe en el siglo XVII (Escolar, 2003; Jofré y González, 2007; Jofré <italic>et al.,</italic> 2008; Jofré, 2020).</p>
+      <p>Ahora bien, la propuesta de esta política ha contemplado que las copias digitales de los documentos pasen a formar parte de un repositorio de la Administración de Parques Nacionales, tanto para consulta interna como para investigadores externos a la institución, quienes podrán acceder a este por medio de un permiso, tal como suelen proceder con otros documentos históricos. , entonces, frente a un proceso de doble selección y de construcción de un “archivo de los archivos”. Por un lado, de la selección realizada por los archivos provinciales que configuraron y alojaron estos documentos y, por otro, de APN que extrajo una parte de ello para su acumulación.</p>
+      <p>Hasta el momento, las copias de documentos relevados tienen un acceso restringido y exclusivo para los integrantes del Programa Manejo de Recursos Culturales. No obstante, como señal, en ciertos talleres en la localidad donde se sitúa el parque en los que participó la población local, la institución compartió y sociabilizó algunos de ellos en paneles con el propósito de generar reflexiones y debates. Como en el siguiente apartado, los documentos y fotografías permitieron a los expobladores de la estancia que participaron del taller identificar personas, lugares y actividades que hoy ya no están vigentes y resultó importante porque promovió el intercambio de recuerdos, anécdotas e historias, que fueron altamente por ellos. También porque les posibilitó acceder a copias de documentos y fotografías a las que nunca habían tenido acceso.</p>
+    </sec>
+    <sec>
+      <title>Los talleres y entrevistas sobre las experiencias vividas en la estancia</title>
+      <p>El tercer subproyecto, titulado “Relevamiento del patrimonio inmaterial de la Estancia El Leoncito y modo de vida local”, tiene como objetivo conocer el proceso sociohistórico que dio lugar al poblamiento y posterior consolidación de la estancia a partir de los relatos y saberes de sus expobladores, quienes habían sido expulsados con la creación del área protegida. Para ello, se llevaron a cabo entrevistas individuales y colectivas<xref ref-type="fn" rid="fn19">19</xref> a antiguos trabajadores que actualmente residen en Barreal, el pueblo más próximo al parque. Las primeras entrevistas ‒realizadas en 2014‒ fueron, en su mayoría, a varones de entre 50 y 80 años. Todos compartían haber vivido en estas tierras durante su infancia o juventud, junto a sus familias, desempeñándose en actividades agrícolas y ganaderas, o bien haber participado en tareas relevantes para la región, como la construcción de los observatorios astronómicos o la instalación del telégrafo<xref ref-type="fn" rid="fn20">20</xref>, que atraviesa gran parte del parque.</p>
+      <p>En un primer momento, los entrevistadores fueron los guardaparques locales<xref ref-type="fn" rid="fn21">21</xref>. En esas primeras entrevistas, conversaron sobre el funcionamiento de la estancia y las actividades económicas que allí se desarrollaban, siguiendo un cuestionario elaborado por integrantes del Programa Manejo de Recursos Culturales. Para muchos de ellos, esta fue su primera experiencia en este tipo de trabajo y, aunque no contaban con formación específica como entrevistadores<xref ref-type="fn" rid="fn22">22</xref>, su conocimiento del lugar y, en algunos casos, sus vínculos familiares con los entrevistados les permitieron entablar un diálogo de mayor confianza. En 2017, el personal del área protegida entregó a los entrevistados la transcripción de sus testimonios, permitiéndoles revisarlos y, al mismo tiempo, mantener el contacto con la institución.</p>
+      <p>Entre 2017 y 2018 se realizaron dos talleres, coordinados por antropólogas especialistas del Programa Manejo de Recursos Culturales y del Programa de Educación Ambiental, en conjunto con el Parque Nacional El Leoncito. Estos encuentros tuvieron como propósito generar un espacio para compartir los avances y las acciones desarrolladas por Parques Nacionales en el marco de esta política. Durante las jornadas, los invitados y sus familias revisaron fotografías, copias de títulos de propiedad y registros de marcas de ganado, documentos obtenidos a partir de búsquedas en los archivos provinciales, ya mencionados. A través de este material, pudieron reconocer lugares y familiares, y compartieron sus anécdotas y recuerdos de su vida en la estancia.</p>
+      <p>Una de las actividades del primer taller, realizado en 2017, consistió en que los participantes llevaran algo que les recordara la época en que vivieron en la estancia. Podía tratarse de un objeto material o de historias, canciones o anécdotas que quisieran compartir. En este marco, un extrabajador recitó un poema escrito por él, mientras que otro compartió un mapa que diseñó para mostrar los lugares donde había vivido. En estos intercambios, los participantes se mostraron gustosos de compartir sus recuerdos y de transmitir sus saberes a las generaciones más jóvenes de sus familias, muchas de las cuales desconocían esa historia. A partir de objetos como boleadoras, cuchillos y lazos utilizados en su juventud, relataron anécdotas e historias divertidas, pero también tristes y dolorosas. Los objetos funcionaron como un vehículo para reflexionar sobre la diversidad de formas de recordar, entendiendo que no todas las experiencias y emociones del pasado, especialmente aquellas que han sido traumáticas –como la expulsión de la estancia, que desarrollaremos más adelante‒ pueden ser fácilmente expresables a través del lenguaje. Estos bienes pueden tener un valor material, pero su relevancia radica en un valor simbólico y afectivo entrañable para quienes los guardaron. En este sentido, cuando la memoria no puede ser transmitida por prácticas discursivas, es posible analizar cómo se inscribe en imágenes, en el cuerpo o en el entorno, a través de materialidades que los sujetos emplean para recordar, para olvidar o para tomar distancia del pasado (Ramos, 2011).</p>
+      <fig id="f2">
+        <label>Figura 2</label>
+        <caption>
+          <title>Pobladores observando fotografías durante un taller, 2017.</title>
+          <p xml:lang="en">Residents observing photographs during a workshop, 2017.</p>
+        </caption>
+        <graphic xlink:href="52649_fig02.jpg"/>
+      </fig>
+      <p>El segundo taller se enfocó en conversar sobre el manzanar,<xref ref-type="fn" rid="fn23">23</xref> ubicado al ingreso al área protegida. Se trata de un espacio que los extrabajadores de la estancia rememoran no solo por la variedad y el sabor de sus manzanas sino también escenario de numerosas anécdotas allí vividas. En los últimos años, desde la gestión del parque se planteó la necesidad de impulsar una propuesta turística en este sector, como la creación de senderos o la instalación de cartelería interpretativa. Sin embargo, existía poca información documentada acerca de su uso y aprovechamiento, por lo que el objetivo era llenar este vacío a través de los testimonios de quienes fueron sus usuarios.</p>
+      <p>Aunque la convocatoria estuvo dirigida a cualquier persona interesada, la asistencia a este encuentro fue muy reducida, lo que generó entre los organizadores sensaciones de “desconcierto” y “preocupación”. Al igual que en el primer taller, la institución proporcionó un vehículo para trasladar a los invitados, aunque muchos argumentaron que no podían asistir por motivos personales<xref ref-type="fn" rid="fn24">24</xref>. Si bien tanto el personal del área protegida como los técnicos del rograma Manejo de Recursos Culturales destacaron el valor de estos espacios colectivos para dar a conocer aquello que se estaba haciendo, la baja participación motivó a (re)pensar la manera en que se estaban dirigiendo a los expobladores como representantes de la institución. A grandes rasgos, el personal del parque atribuía la escasa asistencia a la falta de tiempo y la lejanía lugar. Sin embargo, uno de los guardaparques señaló otro motivo:</p>
+      <disp-quote>
+        <p>los que hicieron críticas en las entrevistas no fueron al taller. La gente dolida no fue al taller. Tendríamos que ver por qué no fueron e indagar. Hay que respetar el tiempo de cada uno. Hay imprevistos, pero sigue habiendo heridas. (Guardaparque de la institución, comunicación personal, 2018)</p>
+      </disp-quote>
+      <p>Para aquellos que vendieron sus animales a muy bajo costo, la llegada de Parques Nacionales y la expropiación del espacio implicaron la pérdida de su vivienda, de su sustento económico, pero, sobre todo, cambios rotundos en sus formas de vida. Algunos se mudaron a trabajar a Barreal, otros comenzaron a trabajar en comercios, mientras que otros lograron obtener empleo en otras estancias. En términos generales, estas personas son las que manifestaron su mayor discrepancia, dolor y enojo respecto a la creación del parque. Como describió un guardaparque local durante una reunión, “[Parques] desconoció el lugar, tuvo el peor desembarco; esto es un coletazo de todo eso. Las heridas siguen abiertas” (Guardaparque, comunicación personal, 2018).</p>
+      <p>Esta situación generó un debate al interior de la APN acerca de aquellos pobladores que tienen una relación tensa o han quedado dolidos con la llegada de la institución. En 2018, se entrevistó a expobladores de la estancia, pero esta vez las preguntas incluyeron aspectos relacionados la experiencia de la llegada de Parques Nacionales y el significado que este espacio tiene en la actualidad<xref ref-type="fn" rid="fn25">25</xref>. Entre quienes aceptaron participar de las entrevistas, muchos no regresaron al parque, ya sea porque su ingreso estuvo prohibido durante el período en que funcionó como reserva estricta, por limitaciones económicas para acceder al lugar, o porque se sentían ajenos a un lugar que los había expulsado.</p>
+      <p>Si bien en su mayoría compartieron su historia junto con fotografías, mapas y recortes de notas periodísticas recopiladas por ellos durante estos años, otros expresaron su descontento ante la llegada de Parques Nacionales a la región, la forma en que se produjo la expropiación y la falta de vínculo que tuvieron con la institución durante el funcionamiento de la Reserva Estricta. En sus relatos emergía una imagen negativa del parque y del accionar de la institución, que respondía tanto a comentarios y opiniones que fueron circulando en la región sobre el estado en el que se encuentra hoy el lugar como a experiencias personales negativas vividas a partir de su creación. En la zona circulan versiones de que Parques Nacionales “no conserva el lugar” y que el área protegida está “arruinada” o “decaída”.</p>
+      <p>A su vez, los trabajadores del área, como guardaparques, técnicos y empleados administrativos, hicieron algunos señalamientos vinculados con la forma en que se desarrollaban los talleres y las entrevistas. Según uno de ellos, no se estaba propiciando un espacio para que los entrevistados pudiesen hablar de aquello silenciado: “[No se cuenta] toda la historia, es decir, además de la expulsión, la vida no era tan agradable en la Estancia, el sufrimiento y la vida dura en el campo. El próximo taller tienen que ver la realidad tal cual es” (Guardaparque, comunicación personal, 2018). También comentó que en los talleres: “solo se cuentan las cosas bonitas, pero hay que transmitir la verdadera historia del Leoncito, como la creación del área. Parques Nacionales es una mala palabra y hay que generar confianza” (Guardaparque, comunicación personal, 2018).</p>
+      <p>Los intercambios pusieron en discusión los efectos que continúan teniendo los procedimientos estatales operados en el pasado y sus consecuencias en la formulación de políticas que incorporan como parte del patrimonio cultural memorias de experiencias vividas que excluyen aquellas vinculadas con la violencia inscripta en el desalojo llevado adelante por la propia institución.</p>
+    </sec>
+    <sec>
+      <title>A modo de cierre</title>
+      <p>A lo largo de estas páginas, analicé las complejidades emergentes en la política patrimonial cultural llevada adelante por APN en el Parque El Leoncito, sus cambios, las reflexiones que impulsaron y sus limitaciones. Pus de manifiesto cómo las acciones del Programa Manejo de Recursos Culturales fueron pasando de una noción del patrimonio cultural centrada en la “materialidad” a una propuesta que articuló esa materialidad con las historias, valores y memorias locales. En gran medida, este desplazamiento ha sido producto de recomendaciones y normativas de organismos internacionales que inciden en las políticas estatales; pero también, como mencionamos, de la interacción de estas políticas con los sujetos locales y de aquello que puede generar atractividad para el turismo.</p>
+      <p>Sin duda, si la estancia es hoy patrimonializada es porque previamente fue discontinuada como modo de producción y reproducción por el propio parque, que ejerce el poder de decidir en qué y cómo intervenir allí y, entre estas decisiones, también delineó en qué y cómo intervenir en el terreno patrimonial, decidiendo sobre aquello que es representativo de ese espacio. Esas decisiones involucraron, no obstante, muchas discusiones internas y posiciones enfrentadas en torno a aquello que tiene valor, tal como señalamos con el casco de la estancia.</p>
+      <p>Con todo, aun cuando la incorporación de una línea de análisis que incluyó testimonios orales de pobladores y pobladoras que vivieron en la estancia junto a los documentos,  permitió superar la perspectiva del patrimonio cultural como un simple “acervo de objetos”; el recorte temporal y los modos de vida seleccionados para patrimonializar presentan silenciamientos y contradicciones significativas. En el marco de una propuesta que, al menos en la letra, buscaba reconstruir la historia del poblamiento en la región, la selección realizada pone de manifiesto la visión blanca, occidental y capitalista (Briones, 2002; Frigerio, 2006) que se expresa en la política patrimonial de la institución, más allá de sus diferencias y discusiones internas. refiero con esto último al hecho de que, a pesar de haber identificado huellas de ocupaciones previas en el territorio, como por ejemplo arte rupestre, solo visibiliza aquellas formas de producción y modo de vida vinculadas con modalidades productivas agrícola-ganaderas de grandes terratenientes, sin revisar la presencia indígena en el pasado ni hasta el presente. Asimismo, en el mismo proceso, oculta los procesos expulsivos y las relaciones de poder promovidos por la propia institución.</p>
+      <p>Con todo, y como señales en la introducción, las políticas siguen recorridos zigzagueantes, con base reflexiones que surgen de la interacción con sus destinatarios y de visiones heterogéneas de quienes las impulsan en terreno. Los relatos compartidos y las ausencias en algunos talleres dieron lugar a pensar, al menos entre algunos trabajadores, como técnicos de conservación o guardaparques del parque, acerca de la importancia de relevar y discutir las experiencias de sufrimiento vividas en la estancia y de expulsión y dolor propiciadas por la propia APN. Aunque hasta la fecha, muchos de estos materiales relevados ‒entrevistas y documentos‒ han sido escasamente difundidos y la falta de presupuesto ha sido una constante en el Programa que ha impedido “conservar la estancia en buenas condiciones”, un análisis etnográfico de la política pública desde adentro de las instituciones permite romper con algunas visiones lineales, estáticas y uniformizaciones atribuidas a las políticas.</p>
+      <p>Ciudad Autónoma de Buenos Aires, 6 de mayo 2026</p>
+    </sec>
+    <sec sec-type="ack">
+      <title>Agradecimientos</title>
+      <p>Agradezco las lecturas atentas y las sugerencias aportadas por la Dra. Carolina Crespo, tanto para la realización de este trabajo como a lo largo de todo el proceso de mi investigación.</p>
+    </sec>
+  </body>
+  <back>
+    <fn-group>
+      <fn id="fn1">
+        <label>1</label>
+        <p>La participación de las poblaciones locales en el manejo de áreas protegidas se manifiesta en diferentes niveles. Esta perspectiva busca romper con la idea de áreas protegidas como “islas de conservación”, que tuvieron los parques nacionales en sus inicios. Como sostienen Trentini (2009) y Carpinetti (2006), la política de comanejo constituye el resultado más visible de estos cambios institucionales. Otras iniciativas -como la consulta libre, previa e informada- permiten a las comunidades indígenas dar su consentimiento a ciertos proyectos o iniciativas por parte de la APN.</p>
+      </fn>
+      <fn id="fn2">
+        <label>2</label>
+        <p>Históricamente, la institución diferenció de manera nítida en sus políticas una dimensión natural y otra cultural. Sobre esta visión dicotómica entre naturaleza y cultura, véase Crespo y Galuchi (2025).</p>
+      </fn>
+      <fn id="fn3">
+        <label>3</label>
+        <p>Esta apertura fue producto tanto de reclamos indígenas dirigidos a la institución como de recomendaciones de los organismos internacionales en torno a la participación en el manejo de las áreas protegidas.</p>
+      </fn>
+      <fn id="fn4">
+        <label>4</label>
+        <p>Por ejemplo, se pueden mencionar procedimientos elaborados por la UNESCO, el Consejo Internacional de Monumentos y Sitios (ICOMOS) y la Unión Internacional para la Conservación de la Naturaleza (UICN), entre otros.</p>
+      </fn>
+      <fn id="fn5">
+        <label>5</label>
+        <p>Algunos autores distinguen, a grandes rasgos, dos modelos o paradigmas de conservación a nivel nacional e internacional que, como señala Brosius (1999), definieron en cada momento variadas formas de agencia, silenciamientos y modalidades de intervención. Por un lado, un modelo “clásico”, basado en visiones dicotómicas entre naturaleza y cultura, que excluyó a la población local de las decisiones sobre la administración de estos espacios y expulsó a quienes allí vivían. Por otro lado, un modelo de conservación más reciente, denominado “participativo” o “moderno” –según el autor–, que incorpora, entre otras cosas, la participación de la población local y la dimensión cultural de los espacios naturales (Phillips, 2003; Ferrero, 2018).</p>
+      </fn>
+      <fn id="fn6">
+        <label>6</label>
+        <p>Como sugieren del Mármol y Santamarina (2019), la incorporación de políticas vinculadas a la gestión del patrimonio inmaterial en la planificación institucional de las áreas protegidas puede entenderse como un “efecto cascada” derivada de aquella Convención de Patrimonio Inmaterial y de la relevancia que este tiene en la acumulación del capital.</p>
+      </fn>
+      <fn id="fn7">
+        <label>7</label>
+        <p>Sin embargo, recién en 1996 la provincia de San Juan cedió al Estado nacional la jurisdicción sobre la Reserva Natural Estricta El Leoncito (Ley Provincial N. º 6.764), de acuerdo con los límites establecidos en el artículo N.º 3 de la Ley Provincial N. º 4.525.</p>
+      </fn>
+      <fn id="fn8">
+        <label>8</label>
+        <p>El intercambio con quienes vivían del otro lado de la cordillera era cotidiano y frecuente no solo de productos comercializables, sino también de costumbres gastronómicas, fiestas y celebraciones. Como explica Escolar (1996), a diferencia de lo sucedido en la Patagonia argentina, en la provincia de San Juan coexistieron “hasta bien entrado el siglo XX, una suborganización de la economía ligada básicamente al mercado chileno, donde se intercambiaba ganado o semillas forrajeras por manufacturas o bienes de consumo, y otra vinculada al mercado argentino, donde se comercializaban licores y luego vinos de producción local” (p. 91).</p>
+      </fn>
+      <fn id="fn9">
+        <label>9</label>
+        <p>El trabajo de Biasatti (2016), que constituye un antecedente para esta investigación, se focaliza en el pasado indígena en el Valle de Calingasta, centrándose en objetos y sitios arqueológicos gestionados por instituciones locales como museos regionales y la Municipalidad de Calingasta, y aportando una perspectiva poco explorada en la zona en torno a la invisibilización huarpe.</p>
+      </fn>
+      <fn id="fn10">
+        <label>10</label>
+        <p>La construcción original fue realizada con tierra. La parte inferior de las paredes está hecha con la técnica de tapia y continúa con mampostería de ladrillos de adobe. Sin embargo, también hay algunas modificaciones realizadas con materiales más recientes como el cemento.</p>
+      </fn>
+      <fn id="fn11">
+        <label>11</label>
+        <p>Paradela (2001, 2003) registró el estado del casco de la Estancia luego de casi una década de “abandono” y falta de mantenimiento, y propuso una serie de recomendaciones para evitar su deterioro. En 2009, se elaboró el Plan de Gestión del Parque Nacional El Leoncito, que establece los objetivos de conservación y las acciones necesarias para alcanzarlos.</p>
+      </fn>
+      <fn id="fn12">
+        <label>12</label>
+        <p>Frase extraída de <ext-link ext-link-type="uri" xlink:href="https://www.unsj.edu.ar/transparencia/home/noticias_detalles/7702/1">https://www.unsj.edu.ar/transparencia/home/noticias_detalles/7702/1</ext-link> Fecha de consulta: 01/06/2025</p>
+      </fn>
+      <fn id="fn13">
+        <label>13</label>
+        <p>El grupo desarrolló diversas tareas en la región, como la restauración de Capilla de Nuestra Señora de la Merced (Tamberías), la Escuela de Gobernación de los Andes (Hilario), el Palomar (Tamberías), el primer Cine (Tamberías), entre otros, y fue ganando reconocimiento entre los vecinos, quienes comenzaron a valorar el trabajo realizado. Estas restauraciones de construcciones consideradas históricas forman parte de un programa de recuperación de edificios diseñado por el Municipio de Calingasta para promover el turismo en la localidad. Muchas de estas construcciones fueron declaradas Patrimonio Cultural e Histórico Municipal, por lo que la iniciativa de la APN para restaurar el casco de la estancia está alineada con las políticas de la región.</p>
+      </fn>
+      <fn id="fn14">
+        <label>14</label>
+        <p>Dentro de la administración pública se suele denominar “técnicos/as” para referirse a los profesionales que desempeñan tareas vinculadas a la gestión, la planificación y el asesoramiento técnico, en contraste con los empleados administrativos, cuyas tareas son burocráticas, o con los guardaparques.</p>
+      </fn>
+      <fn id="fn15">
+        <label>15</label>
+        <p>Además, este “rol activo” otorgado a los constructores locales constituyó una estrategia para superar el distanciamiento que muchas instituciones encargadas del patrimonio cultural y las áreas protegidas han establecido entre las poblaciones locales y su patrimonio.</p>
+      </fn>
+      <fn id="fn16">
+        <label>16</label>
+        <p>Si bien esta política se origina desde la Dirección Nacional de Conservación, dado que se trata de edificios y construcciones dentro de la jurisdicción de la APN, interviene también la Dirección Nacional de Infraestructura. Ambas Direcciones Nacionales forman parte de la estructura de la Administración de Parques Nacionales.</p>
+      </fn>
+      <fn id="fn17">
+        <label>17</label>
+        <p>Véase el Código de Edificación Provincial (1951).</p>
+      </fn>
+      <fn id="fn18">
+        <label>18</label>
+        <p>En el contexto actual de reducción de personal en la institución, se optó por mantener el anonimato de los entrevistados, así como también su profesión, para evitar comprometerlos.</p>
+      </fn>
+      <fn id="fn19">
+        <label>19</label>
+        <p>Las memorias de los expobladores fueron abordadas y profundizadas en otro trabajo (Galuchi, 2022). En este trabajo, solo haremos referencia a algunos de los temas conversados, los desafíos que introdujo los distintos grados de participación de los expobladores y las reflexiones que surgieron al interior de la institución.</p>
+      </fn>
+      <fn id="fn20">
+        <label>20</label>
+        <p>Este antiguo telégrafo fue instalado a principios del siglo XX, comunicando la ciudad de San Juan con el Departamento de Calingasta. El PN El Leoncito aún conserva un tramo importante de la línea telegráfica, y es considerado un “recurso cultural” (APN, 2009).</p>
+      </fn>
+      <fn id="fn21">
+        <label>21</label>
+        <p>El      Cuerpo de Guardaparques Nacionales     , entendido como el órgano que nuclea a todos los guardaparques en las áreas protegidas bajo la jurisdicción de la Administración de Parques Nacionales, está conformado por dos agrupamientos: los guardaparques “de escuela” o “de carrera” y los guardaparques de apoyo, también denominados “locales” o “baqueanos”.</p>
+      </fn>
+      <fn id="fn22">
+        <label>22</label>
+        <p>Con el tiempo, desde el área de patrimonio cultural se implementó una capacitación para que adquirieran cierto cuidado al momento de hacer una entrevista, y formularan las preguntas adecuadamente.</p>
+      </fn>
+      <fn id="fn23">
+        <label>23</label>
+        <p>Los estudios forestales estiman que los árboles de este manzanar tienen una antigüedad de casi 100 años. Sin embargo, al no contar con información sobre cómo funcionaba el espacio donde estaban ubicadas las plantas de manzanos, resultaba imposible elaborar materiales de difusión o construir un sendero; de ahí la importancia de organizar un taller.</p>
+      </fn>
+      <fn id="fn24">
+        <label>24</label>
+        <p>Algunos invitados señalaron que ese día coincidía con la final del campeonato de fútbol local y con un evento religioso.</p>
+      </fn>
+      <fn id="fn25">
+        <label>25</label>
+        <p>Sin embargo, no existe un documento que aborde críticamente aspectos que no surgieron en los testimonios, como el rol de las mujeres en la estancia, las ambivalencias presentes en las memorias de los ex pobladores, las miradas contrapuestas y en tensión acerca de la acción de Parques y, fundamentalmente, una historia del poblamiento de más larga duración que contemple todo el poblamiento y las transformaciones ocurridas en el lugar a lo largo del tiempo.</p>
+      </fn>
+    </fn-group>
+    <ref-list>
+      <title>Referencias bibliográficas</title>
+      <ref id="B1">
+        <mixed-citation>Abrams, P. (1988). Notes on the difficulty of studying the state. <italic>Journal of Historical Sociology</italic>, 1, 58–89.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Abrams</surname><given-names>P.</given-names></name>
+          </person-group>
+          <year>1988</year>
+          <article-title>Notes on the difficulty of studying the state</article-title>
+          <source>Journal of Historical Sociology</source>
+          <volume>1</volume>
+          <fpage>58</fpage>
+          <lpage>89</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B2">
+        <mixed-citation>Bendix, R. F. (2009). Heritage between economy and politics: An assessment from the perspective of cultural anthropology. En L. Smith y N. Akagawa (Eds.), <italic>Intangible heritage</italic> (pp. 253–269). Routledge.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Bendix</surname><given-names>R. F.</given-names></name>
+          </person-group>
+          <year>2009</year>
+          <chapter-title>Heritage between economy and politics: An assessment from the perspective of cultural anthropology</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Akagawa</surname><given-names>L. Smith y N.</given-names></name>
+          </person-group>
+          <source>Intangible heritage (pp. 253–269). Routledge</source>
+        </element-citation>
+      </ref>
+      <ref id="B3">
+        <mixed-citation>Briones, C. (2002). Viviendo a la sombra de naciones sin sombra: Poéticas y políticas de (auto)marcación de “lo indígena” en las disputas contemporáneas por el derecho a una educación intercultural. En N. Fuller (Ed.), <italic>Interculturalidad y política: Desafíos y posibilidades</italic>. Red para el Desarrollo de las Ciencias Sociales en Perú, PUCP-UP-IEP.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Briones</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2002</year>
+          <chapter-title>Viviendo a la sombra de naciones sin sombra: Poéticas y políticas de (auto)marcación de “lo indígena” en las disputas contemporáneas por el derecho a una educación intercultural</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Fuller</surname><given-names>N.</given-names></name>
+          </person-group>
+          <source>Interculturalidad y política: Desafíos y posibilidades. Red para el Desarrollo de las Ciencias Sociales en Perú, PUCP-UP-IEP</source>
+        </element-citation>
+      </ref>
+      <ref id="B4">
+        <mixed-citation>Brosius, J. P. (1999). Analyses and interventions: anthropological engagements with environmentalism. <italic>Current Anthropology</italic>, 40(3), 277–310.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Brosius</surname><given-names>J. P.</given-names></name>
+          </person-group>
+          <year>1999</year>
+          <article-title>Analyses and interventions: anthropological engagements with environmentalism</article-title>
+          <source>Current Anthropology</source>
+          <volume>40</volume>
+          <issue>3</issue>
+          <fpage>277</fpage>
+          <lpage>310</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B5">
+        <mixed-citation>Carpinetti, B. (2006). <italic>Derechos indígenas en el Parque Nacional Lanín. De la expulsión al comanejo</italic>. Administración de Parques Nacionales.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Carpinetti</surname><given-names>B.</given-names></name>
+          </person-group>
+          <year>2006</year>
+          <source>Derechos indígenas en el Parque Nacional Lanín</source>
+          <comment>De la expulsión al comanejo. Administración de Parques Nacionales.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B6">
+        <mixed-citation>Comaroff, J. L., y Comaroff, J. (2011). <italic>Etnicidad S.A.</italic> Katz.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Comaroff</surname><given-names>J. L.</given-names></name>
+            <name><surname>Comaroff</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2011</year>
+          <source>Etnicidad S.A</source>
+          <comment>Katz.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B7">
+        <mixed-citation>Crespo, C. (2005). Qué pertenece a quién: procesos de patrimonialización y pueblos originarios en Patagonia. <italic>Cuadernos de Antropología Social, 21</italic>, 133–149.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Crespo</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2005</year>
+          <article-title>Qué pertenece a quién: procesos de patrimonialización y pueblos originarios en Patagonia</article-title>
+          <source>Cuadernos de Antropología Social</source>
+          <volume>21</volume>
+          <fpage>133</fpage>
+          <lpage>149</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B8">
+        <mixed-citation>Crespo, C. (2016). Processes of indigenous heritage construction: Lines of discussion, axes of analysis and methodological approaches. En O. Kaltmeier y M. Rufer (Eds.), <italic>Entangled heritages: (Post-)colonial perspectives on the uses of the past in Latin America</italic> (pp. 153–174). Routledge.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Crespo</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2016</year>
+          <chapter-title>Processes of indigenous heritage construction: Lines of discussion, axes of analysis and methodological approaches</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Rufer</surname><given-names>O. Kaltmeier y M.</given-names></name>
+          </person-group>
+          <source>Entangled heritages: (Post-)colonial perspectives on the uses of the past in Latin America (pp. 153–174). Routledge</source>
+        </element-citation>
+      </ref>
+      <ref id="B9">
+        <mixed-citation>Crespo, C. (2020). Los lindes de la interculturalidad: patrimonio, violencia institucional y derechos humanos en la política indigenista argentina (2016–2019). <italic>Revista del Museo de Antropología, 13</italic>(2), 267–278. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.31048/1852.4826.v13.n2.27691">https://doi.org/10.31048/1852.4826.v13.n2.27691</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Crespo</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <article-title>Los lindes de la interculturalidad: patrimonio, violencia institucional y derechos humanos en la política indigenista argentina (2016–2019)</article-title>
+          <source>Revista del Museo de Antropología</source>
+          <volume>13</volume>
+          <issue>2</issue>
+          <fpage>267</fpage>
+          <lpage>278</lpage>
+          <pub-id pub-id-type="doi">10.31048/1852.4826.v13.n2.27691</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B10">
+        <mixed-citation>Crespo, C. (2022). Cuando el territorio se reclama en clave cultural y la cultura en clave de derecho. Debates sobre prácticas de conservación y exhibición de restos humanos indígenas. En C. Jofré y C. Gnecco (Eds.). <italic>Políticas patrimoniales y procesos de despojo y violencia en Latinoamérica</italic> (pp. 43-62). Tandil: Editorial de la Universidad Nacional del Centro de la Provincia de Buenos Aires (UNICEN).</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Crespo</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <chapter-title>Cuando el territorio se reclama en clave cultural y la cultura en clave de derecho. Debates sobre prácticas de conservación y exhibición de restos humanos indígenas</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Gnecco</surname><given-names>C. Jofré y C.</given-names></name>
+          </person-group>
+          <source>. Políticas patrimoniales y procesos de despojo y violencia en Latinoamérica</source>
+          <fpage>43</fpage>
+          <lpage>62</lpage>
+          <publisher-loc>Tandil</publisher-loc>
+          <publisher-name>Editorial de la Universidad Nacional del Centro de la Provincia de Buenos Aires (UNICEN)</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B11">
+        <mixed-citation>Crespo, C., y Galuchi, J. (2025). El parque que cuida el suelo para preservar el cielo: Algunas reflexiones sobre políticas de conservación-despojo y desarrollo científico en el Parque Nacional El Leoncito (San Juan, Argentina). En <italic>Territorios de naturaleza: Políticas de conservación, luchas y alianzas en las áreas naturales protegidas de Argentina</italic> (pp. 11–363). El Colectivo.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Crespo</surname><given-names>C.</given-names></name>
+            <name><surname>Galuchi</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2025</year>
+          <source>El parque que cuida el suelo para preservar el cielo: Algunas reflexiones sobre políticas de conservación-despojo y desarrollo científico en el Parque Nacional El Leoncito (San Juan, Argentina)</source>
+          <comment>En Territorios de naturaleza: Políticas de conservación, luchas y alianzas en las áreas naturales protegidas de Argentina (pp. 11–363). El Colectivo.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B12">
+        <mixed-citation>del Mármol, C., y Santamarina, M. (2019). Seeking authenticity: Heritage and value within the intangible economy. <italic>Journal of Mediterranean Studies, 28</italic>(2), 117–132.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>del Mármol</surname><given-names>C.</given-names></name>
+            <name><surname>Santamarina</surname><given-names>M.</given-names></name>
+          </person-group>
+          <year>2019</year>
+          <article-title>Seeking authenticity: Heritage and value within the intangible economy</article-title>
+          <source>Journal of Mediterranean Studies</source>
+          <volume>28</volume>
+          <issue>2</issue>
+          <fpage>117</fpage>
+          <lpage>132</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B13">
+        <mixed-citation>Escolar, D. (1996). <italic>Narraciones del “Gaucho Donoso”: bandidos pasados contranatura y anatomías nacionales en los Andes argentino-chilenos</italic>. Tesis de licenciatura, Universidad de Buenos Aires.</mixed-citation>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name><surname>Escolar</surname><given-names>D.</given-names></name>
+          </person-group>
+          <year>1996</year>
+          <source>Narraciones del “Gaucho Donoso”: bandidos pasados contranatura y anatomías nacionales en los Andes argentino-chilenos</source>
+          <publisher-name>Tesis de licenciatura, Universidad de Buenos Aires</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B14">
+        <mixed-citation>Escolar, D. (2003). Arqueólogos y brujos: la disputa por la imaginación histórica en la etnogénesis huarpe. <italic>Relaciones de la Sociedad Argentina de Antropología</italic>, 28, 23–43.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Escolar</surname><given-names>D.</given-names></name>
+          </person-group>
+          <year>2003</year>
+          <article-title>Arqueólogos y brujos: la disputa por la imaginación histórica en la etnogénesis huarpe</article-title>
+          <source>Relaciones de la Sociedad Argentina de Antropología</source>
+          <volume>28</volume>
+          <fpage>23</fpage>
+          <lpage>43</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B15">
+        <mixed-citation>Ferrero, B. (2018a). Tras una definición de las áreas protegidas: apuntes sobre la conservación de la naturaleza en Argentina. <italic>Revista Universitaria de Geografía</italic>, 27(1), 99–117.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Ferrero</surname><given-names>B.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <article-title>Tras una definición de las áreas protegidas: apuntes sobre la conservación de la naturaleza en Argentina</article-title>
+          <source>Revista Universitaria de Geografía</source>
+          <volume>27</volume>
+          <issue>1</issue>
+          <fpage>99</fpage>
+          <lpage>117</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B16">
+        <mixed-citation>Frigerio, A. (2006). “Negros” y “blancos” en Buenos Aires: repensando nuestras categorías raciales. En L. Maronese (Ed.), <italic>Buenos Aires negra. Identidad y cultura</italic> (pp. 77–98). CPPHC.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Frigerio</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2006</year>
+          <chapter-title>“Negros” y “blancos” en Buenos Aires: repensando nuestras categorías raciales</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Maronese</surname><given-names>L.</given-names></name>
+          </person-group>
+          <source>Buenos Aires negra. Identidad y cultura (pp. 77–98). CPPHC</source>
+        </element-citation>
+      </ref>
+      <ref id="B17">
+        <mixed-citation>Galuchi, J. (2022). <italic>Entre el cielo y la tierra: Una mirada antropológica de la gestión del patrimonio cultural en el Parque Nacional El Leoncito (San Juan, Argentina)</italic> Tesis de licenciatura, Universidad de Buenos Aires.</mixed-citation>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name><surname>Galuchi</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <source>Entre el cielo y la tierra: Una mirada antropológica de la gestión del patrimonio cultural en el Parque Nacional El Leoncito (San Juan, Argentina) Tesis de licenciatura, Universidad de Buenos Aires</source>
+        </element-citation>
+      </ref>
+      <ref id="B18">
+        <mixed-citation>García Canclini, N. (1999). Los usos sociales del patrimonio cultural. En E. Aguilar (Ed.), <italic>Patrimonio etnológico. Nuevas perspectivas de estudio</italic> (pp. 16–33). Consejería de Cultura de la Junta de Andalucía.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>García Canclini</surname><given-names>N.</given-names></name>
+          </person-group>
+          <year>1999</year>
+          <chapter-title>Los usos sociales del patrimonio cultural</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Aguilar</surname><given-names>E.</given-names></name>
+          </person-group>
+          <source>Patrimonio etnológico. Nuevas perspectivas de estudio (pp. 16–33). Consejería de Cultura de la Junta de Andalucía</source>
+        </element-citation>
+      </ref>
+      <ref id="B19">
+        <mixed-citation>Heinich, N. (2014). La fábrica del patrimonio. Apertura y extensión del corpus patrimonial: del gran monumento al objeto cotidiano. <italic>Apuntes, 27</italic>(2), 8–25.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Heinich</surname><given-names>N.</given-names></name>
+          </person-group>
+          <year>2014</year>
+          <article-title>La fábrica del patrimonio. Apertura y extensión del corpus patrimonial: del gran monumento al objeto cotidiano</article-title>
+          <source>Apuntes</source>
+          <volume>27</volume>
+          <issue>2</issue>
+          <fpage>8</fpage>
+          <lpage>25</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B20">
+        <mixed-citation>Jofré, I. C. (2020). Cuerpos/as que duelen: cosmopolítica y violencia sobre cuerpos/as indígenas reclamados como ancestros/as warpes. <italic>Intersticios de la política y la cultura, 9</italic>(17). <ext-link ext-link-type="uri" xlink:href="https://revistas.unc.edu.ar/index.php/intersticios/article/view/28908">https://revistas.unc.edu.ar/index.php/intersticios/article/view/28908</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <name><surname>Jofré</surname><given-names>I. C.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <source>Cuerpos/as que duelen: cosmopolítica y violencia sobre cuerpos/as indígenas reclamados como ancestros/as warpes</source>
+          <comment>Intersticios de la política y la cultura, 9(17).</comment>
+          <ext-link ext-link-type="uri" xlink:href="https://revistas.unc.edu.ar/index.php/intersticios/article/view/28908">https://revistas.unc.edu.ar/index.php/intersticios/article/view/28908</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B21">
+        <mixed-citation>Jofré, I. C., y González, G. (2007). “En la radio han dicho que no se puede tocar nada...”: reflexiones sobre el patrimonio arqueológico en la provincia de San Juan (Argentina). <italic>Revista Chilena de Antropología, 19</italic>.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Jofré</surname><given-names>I. C.</given-names></name>
+            <name><surname>González</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2007</year>
+          <source>“En la radio han dicho que no se puede tocar nada...”: reflexiones sobre el patrimonio arqueológico en la provincia de San Juan (Argentina)</source>
+          <comment>Revista Chilena de Antropología, 19.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B22">
+        <mixed-citation>Jofré, I. C., Biasatti, S., Compañy, G., y González, G. (2008). La Cayana: entre lo arqueológico y lo cotidiano. Tensiones y resistencias en las versiones locales del “patrimonio arqueológico” en el norte de San Juan. <italic>Relaciones de la Sociedad Argentina de Antropología, 33</italic>, 181–208.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Jofré</surname><given-names>I. C., Biasatti, S., Compañy, G.</given-names></name>
+            <name><surname>González</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2008</year>
+          <article-title>La Cayana: entre lo arqueológico y lo cotidiano. Tensiones y resistencias en las versiones locales del “patrimonio arqueológico” en el norte de San Juan</article-title>
+          <source>Relaciones de la Sociedad Argentina de Antropología</source>
+          <volume>33</volume>
+          <fpage>181</fpage>
+          <lpage>208</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B23">
+        <mixed-citation>Macdonald, S. (2018). Heritage. En H. Callan (Ed.), <italic>The international encyclopedia of anthropology</italic>. John Wiley &amp; Sons Ltd.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Macdonald</surname><given-names>S.</given-names></name>
+          </person-group>
+          <year>2018</year>
+          <chapter-title>Heritage</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Callan</surname><given-names>H.</given-names></name>
+          </person-group>
+          <source>The international encyclopedia of anthropology. John Wiley &amp; Sons Ltd</source>
+        </element-citation>
+      </ref>
+      <ref id="B24">
+        <mixed-citation>Prats, L. (2004). <italic>El patrimonio como construcción social.</italic> Ariel.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Prats</surname><given-names>L.</given-names></name>
+          </person-group>
+          <year>2004</year>
+          <source>El patrimonio como construcción social</source>
+          <comment>Ariel.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B25">
+        <mixed-citation>Phillips, A. (2003). Turning ideas on their head: the new paradigm for protected areas. <italic>The George Wright Forum</italic>, 20(2), 8–32.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Phillips</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2003</year>
+          <article-title>Turning ideas on their head: the new paradigm for protected areas</article-title>
+          <source>The George Wright Forum</source>
+          <volume>20</volume>
+          <issue>2</issue>
+          <fpage>8</fpage>
+          <lpage>32</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B26">
+        <mixed-citation>Quintero Morón, V., y Sánchez Carretero, C. (2017). Los verbos de la participación social y sus conjugaciones: contradicciones de un patrimonio “democratizador”. <italic>Revista Andaluza de Antropología, 12</italic>, 48–69.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Quintero Morón</surname><given-names>V.</given-names></name>
+            <name><surname>Sánchez Carretero</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2017</year>
+          <article-title>Los verbos de la participación social y sus conjugaciones: contradicciones de un patrimonio “democratizador”</article-title>
+          <source>Revista Andaluza de Antropología</source>
+          <volume>12</volume>
+          <fpage>48</fpage>
+          <lpage>69</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B27">
+        <mixed-citation>Ramos, A. (2011). Perspectivas antropológicas sobre la memoria en contextos de diversidad y desigualdad. <italic>Alteridades, 21</italic>(42), 115–130. <ext-link ext-link-type="uri" xlink:href="https://alteridades.izt.uam.mx/index.php/Alte/article/view/119">https://alteridades.izt.uam.mx/index.php/Alte/article/view/119</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Ramos</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2011</year>
+          <article-title>Perspectivas antropológicas sobre la memoria en contextos de diversidad y desigualdad</article-title>
+          <source>Alteridades</source>
+          <volume>21</volume>
+          <issue>42</issue>
+          <fpage>115</fpage>
+          <lpage>130</lpage>
+          <ext-link ext-link-type="uri" xlink:href="https://alteridades.izt.uam.mx/index.php/Alte/article/view/119">https://alteridades.izt.uam.mx/index.php/Alte/article/view/119</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B28">
+        <mixed-citation>Rosas Mantecón, A. (1998). El patrimonio cultural. Estudios contemporáneos. Presentación. <italic>Alteridades, 8</italic>(16), 3–9.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Rosas Mantecón</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>1998</year>
+          <article-title>El patrimonio cultural. Estudios contemporáneos. Presentación</article-title>
+          <source>Alteridades</source>
+          <volume>8</volume>
+          <issue>16</issue>
+          <fpage>3</fpage>
+          <lpage>9</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B29">
+        <mixed-citation>Rosas Mantecón, A. (2005). Usos y desusos del patrimonio cultural: retos para la inclusión social en la ciudad de México. <italic>Anais do Museu Paulista: História e Cultura Material, 13</italic>(2), 235–256.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Rosas Mantecón</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2005</year>
+          <article-title>Usos y desusos del patrimonio cultural: retos para la inclusión social en la ciudad de México</article-title>
+          <source>Anais do Museu Paulista: História e Cultura Material</source>
+          <volume>13</volume>
+          <issue>2</issue>
+          <fpage>235</fpage>
+          <lpage>256</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B30">
+        <mixed-citation>Shore, C. (2010). La antropología y el estudio de la política pública: reflexiones sobre la “formulación” de las políticas. <italic>Antípoda, 10</italic>, 21–49. <ext-link ext-link-type="uri" xlink:href="https://www.redalyc.org/articulo.oa?id=81415652003">https://www.redalyc.org/articulo.oa?id=81415652003</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Shore</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2010</year>
+          <article-title>La antropología y el estudio de la política pública: reflexiones sobre la “formulación” de las políticas</article-title>
+          <source>Antípoda</source>
+          <volume>10</volume>
+          <fpage>21</fpage>
+          <lpage>49</lpage>
+          <ext-link ext-link-type="uri" xlink:href="https://www.redalyc.org/articulo.oa?id=81415652003">https://www.redalyc.org/articulo.oa?id=81415652003</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B31">
+        <mixed-citation>Smith, L. (2006). <italic>Uses of heritage</italic>. Routledge.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Smith</surname><given-names>L.</given-names></name>
+          </person-group>
+          <year>2006</year>
+          <source>Uses of heritage</source>
+          <comment>Routledge.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B32">
+        <mixed-citation>Trentini, F. (2009). <italic>Relaciones interétnicas y políticas estatales en el Departamento Los Lagos, Provincia de Neuquén</italic>. Tesis de licenciatura, Universidad de Buenos Aires.</mixed-citation>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name><surname>Trentini</surname><given-names>F.</given-names></name>
+          </person-group>
+          <year>2009</year>
+          <source>Relaciones interétnicas y políticas estatales en el Departamento Los Lagos, Provincia de Neuquén</source>
+          <publisher-name>Tesis de licenciatura, Universidad de Buenos Aires</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B33">
+        <mixed-citation>Yúdice, G. (2002). <italic>El recurso de la cultura: Usos de la cultura en la era global</italic>. Gedisa.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Yúdice</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2002</year>
+          <source>El recurso de la cultura: Usos de la cultura en la era global</source>
+          <comment>Gedisa.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B34">
+        <mixed-citation><bold>Documentación consultada</bold></mixed-citation>
+        <element-citation publication-type="other">
+          <source>Documentación consultada</source>
+        </element-citation>
+      </ref>
+      <ref id="B35">
+        <mixed-citation>Administración de Parques Nacionales (APN). (2001). <italic>Política de manejo de recursos culturales: Resolución y reglamento para la preservación del patrimonio cultural en jurisdicción de la APN</italic> (Resolución N.º 115).</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <collab>Administración de Parques Nacionales (APN)</collab>
+          </person-group>
+          <year>2001</year>
+          <source>Política de manejo de recursos culturales: Resolución y reglamento para la preservación del patrimonio cultural en jurisdicción de la APN (Resolución N.º 115)</source>
+        </element-citation>
+      </ref>
+      <ref id="B36">
+        <mixed-citation>Administración de Parques Nacionales (APN). (2014). <italic>Proyecto conservación de la Estancia El Leoncito</italic>. Dirección Nacional de Conservación.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <collab>Administración de Parques Nacionales (APN)</collab>
+          </person-group>
+          <year>2014</year>
+          <source>Proyecto conservación de la Estancia El Leoncito</source>
+          <comment>Dirección Nacional de Conservación.</comment>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

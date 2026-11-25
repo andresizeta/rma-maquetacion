@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1 20151215//EN" "JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1" specific-use="sps-1.9" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">rma</journal-id>
+      <journal-title-group>
+        <journal-title>Revista del Museo de Antropología</journal-title>
+        <abbrev-journal-title abbrev-type="publisher">Rev. Mus. Antropol.</abbrev-journal-title>
+      </journal-title-group>
+      <issn pub-type="ppub">1852-060X</issn>
+      <issn pub-type="epub">1852-4826</issn>
+      <publisher>
+        <publisher-name>IDACOR-CONICET / FFyH - UNC</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">50557</article-id>
+      <article-id pub-id-type="doi">10.31048/50557</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Dossier</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Heritage "from below": Memory, community agency and re-signification of the industrial past in Sierras Bayas</article-title>
+        <trans-title-group xml:lang="es">
+          <trans-title>Patrimonio “desde abajo”: Memoria, agencia comunitaria y resignificación del pasado industrial en Sierras Bayas</trans-title>
+        </trans-title-group>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-0293-1357</contrib-id>
+          <name>
+            <surname>Recavarren</surname>
+            <given-names>Ana Pía</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">1</xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <institution content-type="original">Universidad Nacional del Centro de la Provincia de Buenos Aires, Argentina, anarecavarren@gmail.com</institution>
+        <institution-wrap>
+          <institution-id institution-id-type="ror">https://ror.org/011gakh74</institution-id>
+          <institution content-type="orgname">Universidad Nacional del Centro de la Provincia de Buenos Aires</institution>
+        </institution-wrap>
+        <country country="AR">Argentina</country>
+        <email>anarecavarren@gmail.com</email>
+      </aff>
+      <pub-date date-type="pub" publication-format="electronic">
+        <day>01</day>
+        <month>12</month>
+        <year>2026</year>
+      </pub-date>
+      <volume>19</volume>
+      <issue>3</issue>
+      <fpage>1</fpage>
+      <lpage>12</lpage>
+      <history>
+        <date date-type="received">
+          <day>03</day>
+          <month>11</month>
+          <year>2025</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>16</day>
+          <month>02</month>
+          <year>2026</year>
+        </date>
+        <date date-type="accepted">
+          <day>14</day>
+          <month>03</month>
+          <year>2026</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>Copyright © 2026 Revista del Museo de Antropología</copyright-statement>
+        <copyright-year>2026</copyright-year>
+        <copyright-holder>Revista del Museo de Antropología</copyright-holder>
+        <license license-type="open-access" xlink:href="https://creativecommons.org/licenses/by-nc-sa/4.0/" xml:lang="en">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License (CC BY-NC-SA 4.0).</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>This article reflects on the processes of community heritage preservation associated with industrial sites in the interior of Buenos Aires province. Through a dialogue between contemporary debates in heritage anthropology and recent local experiences, it analyses the forms in which the local residents of a mining village (particularly women) reactivate memories in disused industrial sites, generating new narratives of meaning and identity. These initiatives, understood as experiences of cultural heritage recovery ‘from below,’ challenge institutional hierarchies of legitimation and propose alternative modes of relationship between memory, territory, and collective action. In the context of the current boom or ‘heritage inflation,’ these practices express forms of symbolic resistance to the effects of deindustrialisation and neoliberal transformations, and highlight the potential of heritage as a tool for cohesion and dispute over the meaning of the past. In this way, the work proposes conceiving heritage as a situated social and political practice, capable of strengthening collective links, disputing official narratives, and promoting alternative forms of cultural citizenship and knowledge production.</p>
+      </abstract>
+      <trans-abstract xml:lang="es">
+        <p>El artículo reflexiona sobre los procesos de patrimonialización comunitaria vinculados a antiguos espacios industriales en el interior bonaerense. A partir del diálogo entre los debates contemporáneos de la antropología del patrimonio y experiencias locales recientes, se analizan las formas en que los habitantes de una localidad minera (en especial mujeres) reactivan memorias en espacios fabriles en desuso, generando nuevas tramas de sentido y pertenencia. Estas iniciativas, entendidas como experiencias de recuperación del patrimonio cultural “desde abajo”, cuestionan las jerarquías institucionales de legitimación y proponen modos alternativos de relación entre memoria, territorio y acción colectiva. En el contexto del actual auge o “inflación patrimonial”, estas prácticas expresan formas de resistencia simbólica frente a los efectos de la desindustrialización y las transformaciones neoliberales, y evidencian el potencial del patrimonio como herramienta de cohesión y disputa por el sentido del pasado. De este modo, el trabajo propone concebir el patrimonio como una práctica social y política situada, capaz de fortalecer vínculos colectivos, disputar narrativas oficiales y promover formas alternativas de ciudadanía cultural y producción de conocimiento.</p>
+      </trans-abstract>
+      <kwd-group xml:lang="es">
+        <title>Palabras clave</title>
+        <kwd>Patrimonio industrial</kwd>
+        <kwd>Comunidad</kwd>
+        <kwd>Participación</kwd>
+        <kwd>Minería</kwd>
+        <kwd>Memoria</kwd>
+      </kwd-group>
+      <kwd-group xml:lang="en">
+        <title>Keywords</title>
+        <kwd>Industrial heritage</kwd>
+        <kwd>Community</kwd>
+        <kwd>Participation</kwd>
+        <kwd>Mining</kwd>
+        <kwd>Memory</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec sec-type="intro">
+      <title>Introducción</title>
+      <p>En las últimas décadas, la antropología del patrimonio ha dado lugar a nuevas formas de pensar la relación entre memoria, identidad y comunidad, especialmente en contextos donde los procesos de patrimonialización surgen “desde abajo”, es decir, impulsados por actores sociales locales. En un escenario contemporáneo signado por la expansión global del dispositivo patrimonial —lo que algunos autores denominan “inflación patrimonial” (Heinich, 2009)— y por su creciente instrumentalización como recurso político y económico, resulta especialmente relevante profundizar en aquellas experiencias que, desde los márgenes, disputan los sentidos hegemónicos del reconocimiento y la conservación cultural.</p>
+      <p>En este marco, el patrimonio industrial, frecuentemente relegado o deslegitimado por las políticas tradicionales, se convierte en un terreno propicio para analizar las tensiones entre herencia material, apropiación simbólica y acción colectiva. Su estudio permite situar las dinámicas locales dentro de desarrollos más amplios vinculados a la desindustrialización, la reconfiguración territorial y las nuevas formas de agencia social que emergen en América Latina frente a los efectos del neoliberalismo.</p>
+      <p>Este escrito se desprende de una charla desarrollada en el marco del ciclo “Ciencia, Cultura y Patrimonio”, organizado por la Facultad de Ciencias Sociales de la UNICEN en septiembre de 2024, y de su posterior articulación con los planteos teóricos abordados en un seminario de posgrado<xref ref-type="fn" rid="fn1">1</xref>. Su objetivo es reflexionar sobre los vínculos entre patrimonio y comunidad a partir del análisis de un proceso de recuperación impulsado por actores locales en torno a una antigua fábrica de cal ubicada en Sierras Bayas (partido de Olavarría, provincia de Buenos Aires). El caso, documentado en una investigación de maestría (Recavarren, 2022), permite observar cómo ciertos espacios fabriles en desuso, lejos de representar un pasado olvidado, se transforman en escenarios de memoria activa, afecto territorial y disputa por el sentido del patrimonio.</p>
+      <p>A través de su análisis, se abordan las potencialidades y desafíos que emergen cuando la patrimonialización es impulsada por integrantes de la comunidad, lo cual tensiona el rol tradicional de las instituciones patrimoniales y abre preguntas sobre la relación entre ciencia y comunidad: ¿Qué implica patrimonializar “desde abajo”? ¿Qué memorias se recuperan y cuáles se silencian en estos proyectos? ¿Qué puede aportar la antropología, para construir una mirada contextualizada, participativa y crítica del patrimonio? Estos interrogantes parten de no concebir dichas experiencias como expresiones homogéneas o exentas de contradicciones, por el contrario, se propone analizarlas en tanto procesos abiertos, situados y dinámicos.</p>
+      <p>El trabajo se estructura en seis secciones. En primer lugar, a modo de apartado metodológico, se presentan brevemente los antecedentes y el devenir de la investigación. Seguidamente, se esboza un marco teórico que aborda el patrimonio como una construcción social, política y conflictiva, destacando el papel de las comunidades patrimoniales y los procesos “desde abajo”. En tercer lugar, se contextualiza históricamente a Sierras Bayas, incluyendo antecedentes de activación patrimonial en la zona que permiten pensarla bajo el termino de comunidad patrimonial. A continuación, se analiza en profundidad el caso de La Calera 1888 como experiencia concreta de recuperación comunitaria de un espacio industrial en desuso y su incidencia en la conformación de un grupo de vecinas activistas. Luego, se discute el vínculo entre ciencia, comunidad y patrimonio desde una perspectiva crítica. Finalmente, se presentan las reflexiones en torno a las potencialidades, límites y tensiones de estos.</p>
+    </sec>
+    <sec>
+      <title>Notas metodológicas</title>
+      <p>Para comprender la pertinencia del análisis que aquí se desarrolla es importante considerar que es resultado de investigaciones previas y de la vinculación de quien escribe con distintas instancias de análisis al interior del Grupo de Investigación en Antropología y Arqueología Industrial (GIAAI – NuRES –FACSO-UNICEN). Los primeros contactos con la temática y el referente empírico ocurrieron en 2018 en el marco de un proyecto de extensión que vinculó el sitio histórico recuperado La Calera 1888 y la Facultad de Ciencias Sociales de Olavarría (FACSO-UNICEN). Dicha iniciativa contempló actividades de conservación, digitalización y análisis del patrimonio material, así como entrevistas y registros fílmicos para aportar a la construcción y preservación de la memoria histórica y colectiva local. Este acercamiento derivó, posteriormente, en la realización de una investigación de posgrado (2020-2022) en el marco del Master Erasmus Mundus Techniques, Patrimoine, Territoires de l’Industrie (TPTI) y, desde 2023, se constituye en un proyecto doctoral de Antropología de la Universidad de Buenos Aires (UBA).</p>
+      <p>Desde sus inicios, la investigación ha adoptado un enfoque etnográfico (Rockwell, 2009) que busca estudiar los procesos sociales desde una perspectiva holística, centrándose en las experiencias y significados de los actores sociales en su contexto (Balbi y Boivin, 2008). Para ello, se utiliza un diseño metodológico cualitativo que integra diversas técnicas para comprender la vida cotidiana y las interacciones de la población de estudio, entre las que se destacan las entrevistas etnográficas y la observación participante (Guber, 2011), la utilización de formularios web para recopilar datos<xref ref-type="fn" rid="fn2">2</xref> y el análisis de fuentes documentales. Esta revisión se centró en documentos institucionales, publicaciones locales, fotografías históricas, material periodístico (de archivo y actual) y bibliografía especializada. A su vez, resultó clave la recuperación de registros visuales y notas de campo producidas entre 2022 y 2024, corpus que permitió reconstruir los modos en que los actores locales articulan memorias, prácticas y significados en torno a los espacios fabriles y a su devenir patrimonial. Por último, el trabajo se nutre del diálogo sostenido con integrantes de asociaciones locales y de la observación de actividades públicas y comunitarias relacionadas con la recuperación de sitios industriales.</p>
+    </sec>
+    <sec>
+      <title>Aspectos teóricos</title>
+      <p><italic>El patrimonio como construcción social </italic></p>
+      <p>En las últimas décadas, el campo de estudio del patrimonio ha sido interpelado por miradas críticas que lo entienden ya no como una categoría objetiva o técnica sino como una construcción social, histórica y política. De este modo, el patrimonio deja de ser considerado una herencia que se transmite inmutable entre generaciones, superando la perspectiva esencialista basada en aspectos técnicos y de conservación (Rosas Mantecón, 1998). Arantes (1989) focaliza en la preservación del patrimonio cultural en Brasil, la salvaguarda patrimonial debe comprenderse como una práctica social en la que intervienen actores con distintos intereses, memorias y disputas acerca del valor del pasado. El patrimonio, por tanto, no “es” sino que se construye: implica decisiones sobre qué se recuerda, qué se olvida y quién tiene autoridad para legitimar esas elecciones. Lejos de ser un reflejo neutral del pasado, el patrimonio constituye un terreno de negociación simbólica y política, donde se actualizan conflictos sociales y se disputan legitimidades desde el presente. En consecuencia, es necesario observar la patrimonialización en tanto proceso por el cual los objetos adquieren su estatus patrimonial (Davallon, 2014) para poder entender las experiencias como procesos atravesados por tensiones internas, disputas por la legitimidad de las narrativas patrimoniales o cambios en la institucionalización que reconfiguran sus sentidos iniciales (Roura-Expósito, 2023).</p>
+      <p>Siguiendo esta perspectiva, Heinich (2009) analiza la construcción del patrimonio como una “fábrica”, es decir, un dispositivo social que produce y transforma objetos en bienes patrimoniales. Este proceso, impulsado por políticas culturales (como las de la UNESCO o el Año Europeo del Patrimonio), ha ampliado progresivamente su alcance: del gran monumento al objeto cotidiano, de lo excepcional a lo común. Esta expansión supone una apertura semántica, pero también legal y conceptual. Sin embargo, introduce tensiones en torno a qué merece ser conservado y quién tiene la legitimidad para decidirlo. Al respecto, se destacan los planteos de Smith (2011) sobre el denominado “discurso patrimonial autorizado”. La autora sostiene que el patrimonio es “un proceso cultural interesado en negociar, crear y recrear recuerdos, valores y significados culturales” (Smith, 2011: 39) y critica la visión tradicional del patrimonio “espejo” que refleja una identidad fija y homogénea. Por el contrario, postula que este reflejo (promovido históricamente por arqueólogos, arquitectos, historiadores del arte, etc.) no muestra la diversidad de experiencias históricas sino sólo una visión autorizada y nostálgica del pasado. Así, propone concebir el patrimonio en tanto campo de poder donde se negocian constantemente significados, pertenencias y legitimidades. Desde esta perspectiva, “el patrimonio hace cosas, que tiene un efecto, que ‘realiza un trabajo’ social y cultural” (Smith, 2011: 41).</p>
+      <p>Dentro de esta corriente crítica, Harrison (2013) propone que el patrimonio no es pasivo ni una simple preservación de huellas del pasado sino un proceso activo de ensamblaje de objetos, lugares y prácticas seleccionados para representar el presente, asociados a un conjunto particular de valores que se desean conservar en el futuro. De este modo, el patrimonio es pensado como: “una relación creativa con el pasado en el presente [que] centra nuestra atención en nuestra capacidad de asumir un papel activo e informado en la creación de nuestro propio ‘mañana’” (Harrison, 2013: 4)<xref ref-type="fn" rid="fn3">3</xref>.</p>
+      <p><italic>Comunidades patrimoniales y su accionar “desde abajo”</italic></p>
+      <p>En dirección opuesta a las visiones centralizadas y expertas del patrimonio, distintos autores y autoras han distinguido las experiencias comunitarias que se impulsan “desde abajo” (Arrieta, 2009). Mace y Joannette (2019), por ejemplo, retoman el concepto de “comunidades patrimoniales” para dar cuenta de colectivos que no solo valoran ciertos bienes o prácticas, más bien los activan y resignifican en función de sus trayectorias, disputas y significados. Estas comunidades no son necesariamente homogéneas sino espacios de lucha donde se producen sentidos múltiples.</p>
+      <p>Inicialmente, esta conceptualizacion fue definida en <italic>El Convenio Marco del Consejo de Europa sobre el valor del Patrimonio Cultural para la Sociedad</italic>, mayormente conocido como <italic>Convención de Faro</italic>. Se trata de un documento formulado en el año 2005 con el objetivo de reconocer que el derecho al patrimonio cultural es intrínseco al derecho a participar en la vida cultural, y que por lo tanto implica responsabilidad individual y colectiva hacia dicho patrimonio. En el artículo primero de este tratado se destaca que la conservación del patrimonio cultural y su utilización sostenible persigue el fin del "desarrollo humano y la calidad de vida" y coadyuvar a la construcción de una sociedad pacífica y democrática, diversa culturalmente y donde sea posible la sinergia de competencias de los actores involucrados (agentes públicos, privados o instituciones varias). Sin embargo, los aspectos más innovadores se encuentran en el artículo 2, referido a las definiciones de patrimonio cultural y comunidad patrimonial. A saberse:</p>
+      <disp-quote>
+        <p>por patrimonio cultural se entiende un conjunto de recursos heredados del pasado que las personas identifican, con independencia de a quién pertenezcan, como reflejo y expresión de valores, creencias, conocimientos y tradiciones propios y en constante evolución. Ello abarca todos los aspectos del entorno resultantes de la interacción entre las personas y los lugares a lo largo del tiempo; b) una comunidad patrimonial está compuesta por personas que valoran aspectos específicos de un patrimonio cultural que desean conservar y transmitir a futuras generaciones, en el marco de la actuación de los poderes públicos. (Consejo de Europa, 2005: 3)</p>
+      </disp-quote>
+      <p>Esta última definición resalta la dimensión colectiva de la comunidad patrimonial: un grupo de personas que atribuyen valor a aspectos específicos del patrimonio cultural y que expresan socialmente la voluntad de apoyarlo y transmitirlo a través de la acción pública. De esta manera, la noción de comunidad patrimonial expresada por la <italic>Convención de Faro</italic> puede ser entendida como un concepto innovador pero también criticada por su perfil excesivamente abierto. Según esta definición es posible considerar, más allá del grupo primario que realiza la actividad cultural, también a las personas que la apoyan, los asistentes a las actividades, la población local, los turistas, los organismos privados, los centros de investigación, etc. Esta comunidad extendida a menudo no es el grupo de prácticas sociales cotidianas, sino un conjunto de asociados cuya membresía en la comunidad patrimonial puede ser efímera y temporal, decidida por el tiempo necesario para alcanzar ciertos objetivos.</p>
+      <p>Pero también existen críticas realizadas al modo en que los estudios sobre patrimonio han utilizado el concepto. Waterton y Smith (2010) señalan que esta apropiación suele ser simplista y romántica, asociada a imágenes de cohesión, consenso y pertenencia compartida. En cambio, las autoras formulan una conceptualización política y crítica, que la piensa como algo que (re)construye a través de experiencias, compromisos y relaciones continuas (no siempre consensuadas). La consideran más allá de su condición de sustantivo y proponen que se trata de una acción que se constituye en el presente (Waterton y Smith, 2010: 8). Jiménez-Esquinas (2020) expresa: “una comunidad no tiene por qué preexistir sino que se puede construir de facto en torno a un patrimonio y su reivindicación ya que, a su vez, el patrimonio no es una esencia sino que también es construido o reconstruido” (p. 110). En otras palabras, la mitificación, homogenización y/o globalización del concepto no inhabilita que una serie de personas se sientan conectadas con artefactos, prácticas o monumentos del pasado a nivel sentimental, histórico, económico, ritual, etc. (Adell <italic>et al.</italic>, 2015).</p>
+      <p>No obstante, en consonancia con Mace y Joannette (2019), estudiar el papel esencial que desempeñan todas estas personas en los procesos patrimoniales deviene crucial en las investigaciones. En efecto, al reconocer el patrimonio como un producto elaborado por individuos agrupados en torno a un proyecto común, resulta importante prestar especial atención a las personas responsables de construir y mantener las redes y de producir el diálogo en torno a él. Las autoras destacan la particularidad de que las comunidades operan a menudo en zonas que tradicionalmente no están reconocidas como patrimonio, por lo que pueden poner en valor un patrimonio que no está reconocido ni designado por organismos internacionales, nacionales o incluso locales (Mace y Joannette, 2019).  En otras palabras, se trataría de grupos marginales o liminales, que trabajan en los márgenes o incluso en los intersticios del patrimonio, pero unidos por valores compartidos: “estas comunidades autónomas pretenden controlar su propio destino, su identidad y, en algunos casos, ampliar los límites de lo que constituye el patrimonio”<xref ref-type="fn" rid="fn4">4</xref> (Mace y Joannette, 2019: 4).</p>
+      <p>Asimismo, expresan que el estudio de las comunidades patrimoniales representa un cambio de paradigma: del reconocimiento y la gestión del patrimonio basados en expertos se ha pasado a una cultura centrada en los grupos productores o lo que Carrera Díaz (2019) ha denominado <italic>patrimonialización expandida</italic>. Sin embargo, a pesar de las múltiples oportunidades de indagación, pocos académicos han explorado el fenómeno de estas comunidades patrimoniales, lo que significa que la producción científica sobre el tema es aún emergente (Mace y Joannette, 2019). En esta línea, Novoa (2022), introduce el concepto de <italic>patrimonios insurgentes</italic> para describir proyectos surgidos en Chile que, desde los márgenes, movilizan memorias y afectos vinculados a territorios dañados o despojados. En estos casos, el patrimonio no se impone desde el Estado, emerge desde la experiencia vivida y el cuidado comunitario, funcionando como herramienta de agencia política y reparación simbólica.</p>
+      <p><italic>El lugar del patrimonio industrial</italic></p>
+      <p>En este escenario, el patrimonio industrial constituye un campo privilegiado para analizar los procesos contemporáneos de patrimonialización. Por un lado, ofrece ejemplos de resignificación de territorios dañados o despojados y, al mismo tiempo, evidencia la progresiva revalorización de un tipo de patrimonio relegado por las narrativas tradicionales. Este campo se encuentra atravesado por una doble tensión: su histórica invisibilización en las políticas patrimoniales nacionales y su posterior resignificación por parte de actores locales que lo revalorizan como parte constitutiva de su historia social. Novelo (2005) lo demuestra al analizar el caso mexicano, donde la cultura obrera e industrial ha sido sistemáticamente excluida del relato hegemónico.</p>
+      <p>Alice Mah (2010), en su estudio sobre ruinas industriales en Newcastle, señala que estos espacios operan como marcas materiales de memorias inciertas, trayendo consigo nostalgia e incertidumbre respecto al futuro. La ruina industrial es, en este sentido, un “archivo abierto”, que puede ser leído desde múltiples perspectivas: decadencia, posibilidad, herida o herencia. A partir del caso de Sierras Bayas y de las distintas iniciativas locales, este trabajo expone cómo el patrimonio minero constituye un soporte para la construcción de memorias diversas y la generación de proyectos de activación patrimonial.</p>
+      <p>Retomando a Mah (2010), entendemos esa potencialidad también en un sentido analítico. Enfoques críticos han señalado que los discursos sobre este patrimonio no son neutrales, al contrario reproducen las relaciones de poder presentes en la sociedad. Distintos trabajos han mostrado que el patrimonio industrial se construyó históricamente desde una matriz tecnicista y androcéntrica (Smith, 2006; Shortliffe, 2015; Quiroga <italic>et al.</italic>, 2019), que privilegió las experiencias de empresarios, ingenieros y hombres trabajadores, así como los procesos productivos e innovaciones tecnológicas, mientras relegaba otras dimensiones igualmente constitutivas de la vida industrial: el trabajo reproductivo, las formas de sociabilidad cotidiana y las experiencias de las mujeres. De este modo, la perspectiva de género permite problematizar las formas en que se construyen las memorias industriales, desplazando la mirada desde los ámbitos exclusivamente productivos hacia otras dimensiones de la experiencia industrial, como las formas de habitar, cuidar, transmitir y resignificar ese pasado en la vida cotidiana (Recavarren, 2025). Para el presente estudio, esta mirada resulta pertinente para comprender el protagonismo asumido por las mujeres en los procesos contemporáneos de patrimonialización no como una excepción sino como parte de una reconfiguración más amplia de las formas de producir, representar y disputar el patrimonio industrial (Brito-Peña, 2024).</p>
+      <p>Así, las iniciativas comunitarias de recuperación que aquí se analizan pueden leerse como respuestas situadas frente a las transformaciones neoliberales que provocaron la desindustrialización en Sierras Bayas, la pérdida de empleos y la fragmentación del tejido social. Estas acciones de reapropiación material y simbólica del pasado fabril expresan formas locales de resistencia frente al despojo y al olvido, al tiempo que reponen la memoria del trabajo en una dimensión constitutiva de la identidad colectiva en el presente (Recavarren, 2022).</p>
+    </sec>
+    <sec>
+      <title>Sobre el contexto de investigación</title>
+      <p>Sierras Bayas es una localidad del partido de Olavarría, ubicada en la provincia de Buenos Aires (Argentina). Se encuentra enmarcada por cuatro cerros que constituyen el soporte físico y, durante muchos años, el soporte económico de la población ya que se compone geológicamente de rocas para explotación industrial tales como: dolomita, caliza, cuarcita y granito. Así, su historia minera puede ser definida en dos grandes periodos: uno proto industrial —o preindustrial— y otro de complejidad tecnológica y productiva —o etapa industrial—. Como señala Paz (2009), el primero abarca la producción de cal y granito entre 1870 y 1917, mientras que el segundo comprende el período 1917-2019, delimitado por la instalación y el cierre definitivo de la fábrica de cemento portland.</p>
+      <p>Aunque la zona estuvo habitada previamente a 1849, la fecha simbólica de su fundación es 1879, cuando se realizó el primer catastro producto del decreto del gobierno provincial y la estableció “reserva fiscal minera para la industria extractiva”. Dicha normativa definió las áreas de explotación de canteras (art. 1), el procedimiento para solicitar la adjudicación/préstamo de yacimientos (art. 2), la reglamentación para construir las viviendas obreras (art, 11), entre otros. El Estado se convirtió en la única entidad encargada de otorgar derechos de producción y obligaciones impositivas, porque los yacimientos se catalogaron como fiscales (bienes públicos) (Paz, 2022). Los primeros pobladores fueron mayoritariamente inmigrantes europeos que extrajeron piedras con fines ornamentales mediante explotaciones a pequeña escala, de carácter familiar, con mano de obra mayormente doméstica, con escaso dinamismo comercial (primero local, posteriormente fue escalando a la región y al país) y con reducido impacto ambiental (Paz, 2001).</p>
+      <p>Esta localidad, al igual que el resto del distrito de Olavarría, fue uno de los destinos elegidos por los inmigrantes de ultramar durante los movimientos migratorios del siglo XIX. Estos tuvieron la oportunidad de aplicar sus saberes-hacer mineros sobre las rocas locales, asentándose alrededor de dos grandes canteras e instalando sus respectivas fábricas en el actual casco urbano.</p>
+      <fig id="f1">
+        <label>Figure 1</label>
+        <caption>
+          <title>Vista de Calle Roca y Calera Victoria. s/f. Postal.</title>
+        </caption>
+        <graphic xlink:href="Figura+1.jpg"/>
+      </fig>
+      <p>Durante la Primera Guerra Mundial, este modelo sufrió una gran crisis debido al aumento de los costes de producción, especialmente el carbón importado, haciendo que empresarios caleros de la ciudad se endeudaran, vendieran sus propiedades o crearan asociaciones (Paz, 2022). En este contexto, se conformó la Compañía Argentina de Cemento Portland (CACP) con el propósito de construir una fábrica de cemento en Argentina (Pérez, 2008). En el marco de su plan de expansión hacia algunos países latinoamericanos (Cuba, Brasil y Uruguay) la firma estadounidense <italic>International Cement Corporation</italic> (ICC)<xref ref-type="fn" rid="fn5">5</xref> adquirió en 1916 terrenos estratégicos frente a la estación ferroviaria (Carri de Riggi, 1939), pertenecientes al empresario calero Alfonso Aust<xref ref-type="fn" rid="fn6">6</xref>, para instalar la primera fábrica moderna de cemento portland del país<xref ref-type="fn" rid="fn7">7</xref>. El primer despacho en 1919, inauguró la producción a gran escala (Paz, 2022) y la competencia con el producto importado<xref ref-type="fn" rid="fn8">8</xref>.</p>
+      <fig id="f2">
+        <label>Figure 2</label>
+        <caption>
+          <title>Vista de Sierras Bayas. s/f. Fotografía. Museo y Archivo Histórico de Sierras Bayas</title>
+        </caption>
+        <graphic xlink:href="Figura+2.jpg"/>
+      </fig>
+      <p>Este momento productivo significó la consolidación de la ciudad debido a la inversión de la fábrica en estructura residencial y civil (hospital, escuela, club social y deportivo, etc.), bienes, servicios y actividades comunitarias. Es decir que Sierras Bayas creció a la luz de los avances de la CACP, alcanzando altos niveles de producción durante el período 1927-1990 gracias a innovaciones técnicas como la mecanización del envasado<xref ref-type="fn" rid="fn9">9</xref>. En 1992, la fábrica fue adquirida por Loma Negra, la principal cementera del país en ese momento. En 2001, se especializó exclusivamente en la molienda y envasado de cementos especiales y luego, en 2005, pasó a ser propiedad del grupo brasileño Camargo Corrêa, iniciando una paulatina reducción de personal y operaciones hasta su cierre definitivo en 2019.</p>
+      <p>Esta desindustrialización dotó de nuevos significados al patrimonio industrial, inaugurando un momento de valorización de las estructuras en desuso denominada “período de producción de sentido(s) sobre el patrimonio industrial” (Recavarren, 2022). De este modo, los habitantes de Sierras Bayas comenzaron a preocuparse por el futuro de los espacios mineros iniciando proyectos de puesta en valor que pretenden recuperar, refuncionalizar y convertir en símbolos identitarios las instalaciones. Por ese motivo, en la actualidad podemos identificar casos de recuperación y reconversión de antiguos hornos de cal, instalaciones ferroviarias y fábricas familiares, así como también la creación de monumentos.</p>
+      <p><italic>Algunos antecedentes de activación patrimonial</italic></p>
+      <p>La localidad presenta numerosos casos de puesta en valor del patrimonio industrial vinculados a las memorias de su pasado minero. Frente a un contexto de desindustrialización y crisis de las actividades productivas los habitantes activan mecanismos de memoria y puesta en valor de estructuras industriales que remontan a ese pasado de configuración de la ciudad, de pleno empleo, de actividades sociales promovidas por la empresa, etc. De esta manera, las representaciones sociales de “pueblo minero”, “laboriosidad” y “progreso” asociadas históricamente a la localidad se convierten en sentidos recuperados y resignificados desde el presente a través de la patrimonialización de escenarios productivos desactivados. Sierras Bayas deviene así en un paisaje cultural que escenifica esta convergencia entre pasado y presente (Paz, 2022), con eje en la producción minera, el trabajo y la productividad (Recavarren, 2023). En este marco, es posible identificar iniciativas centradas en la creación de instituciones (principalmente museísticas) y de monumentos</p>
+      <p>Al interior del primer tipo, se puede destacar el caso del Museo y Archivo Histórico de Sierras Bayas. En el año 1994, mediante la ordenanza municipal nº 1771/94, se determinó su creación con “el objeto de recopilar y custodiar toda la documentación, objetos y elementos con valor histórico de dicha localidad y su zona de influencia”. Para ello, la Comisión de Turismo y Cultura, un grupo de vecinos e instituciones locales (Rotary Club, agrupación Scouts "Cristo Rey", entre otras), solicitaron la cesión del edificio abandonado de la estación ferroviaria. Todos ellos realizaron las tareas de restauración, sumando aportes materiales de diferentes empresas y mano de obra de los mismos habitantes. El museo fue inaugurado formalmente el 20 de octubre de 1994, en el 115° aniversario de la localidad, y continúa en funcionamiento (bajo órbita y dependencia municipal)<xref ref-type="fn" rid="fn10">10</xref>.</p>
+      <p>Algo similar sucedió con la creación del Museo de Sitio Histórico Calera La Libertadora, en el año 2005. El mismo fue montado en antigua construcción piedra que data de 1894 y funcionó como calera, bajo la Sociedad Campagnale y Bonetti, hasta 1985. El inmueble comprende cuatro hornos que confluyen en una gran sala común donde se instaló una muestra permanente con la historia del lugar y los trabajadores y además de desarrollarse actividades culturales, artísticas y desfiles históricos.  La idea de convertir el sitio en museo inició a principios del año 2000 por iniciativa de la familia Ragnoli (actual propietaria del establecimiento) en conjunto con la Comisión de Turismo y Cultura y de la Delegación Municipal de Sierras Bayas. Actualmente este museo ya no existe ya que desde mayo de 2015 se decidió unificarlo con el emplazado en la antigua estación ferroviaria. Su cierre se dio por dos motivos: “se cumplió el plazo de alquiler, pero a la vez demandaba obras ‘muy costosas’ de reparación. Por eso, resolvieron el traslado al Museo Municipal de la Estación de Sierras Bayas” (El PopularHoy, 2015)<xref ref-type="fn" rid="fn11">11</xref>.</p>
+      <p>En cuanto a la creación de monumentos, se destacan el <italic>Monumento de Homenaje al Trabajador del Cemento</italic> y aquel que conmemora <italic>Aniversario N° 100 del Primer Despacho de Cemento Portland</italic>. Ambos comparten la característica de incorporar piezas integrantes de las maquinarias pertenecientes a la fábrica de cemento. El primero se inauguró el 11 de febrero de 2010, fecha del 91º aniversario del inicio de la producción de cemento, aunque el proyecto se remonta a algunos años antes. Tras la adquisición de la fábrica en el año 1992, la compañía Loma Negra llevó a cabo una importante remodelación y modernización de estructuras. Como resultado de este proceso se desmantelaron los antiguos hornos de la empresa, incluidas partes del horno nº 1 que produjo la primera bolsa de cemento. Ante esta situación, el presidente del Rotary Club a la época (Eduardo Ricciardi) solicitó la entrega de parte del horno, con la idea de recuperarlo y hacerlo visible en un espacio público en tanto testimonio cultural y homenaje. A partir de ese momento, miembros del Rotary, diversas instituciones, empresas y particulares planificaron la creación de un monumento basado en esta pieza histórica. El diseño de la obra fue del artista local Daniel Fitte y fue emplazada en un lugar panorámico de la localidad. Por su parte, la escultura conmemorativa del centenario (inaugurada en 2019), realizada por el artista Ignacio Cardiello, se compone de tres elementos simbólicos: una pieza de una antigua moledora de caliza como base, el número “100” en cemento y una réplica de la emblemática bolsa de cemento San Martín esculpida en piedra dolomita (recurso identitario de la zona).</p>
+      <p>Otra intervención relevante en el espacio público la constituye el<italic> Paseo de las Vagonetas</italic>, un sitio turístico-patrimonial de Sierras Bayas que remite al pasado minero pre industrial. Mediante la reutilización de tres antiguas vagonetas, cargadas con rocas de la zona, se conformó un monumento emplazado sobre la estructura de lo que fue el primer cargadero de cal y piedra del pueblo. Inaugurado en 1996, este conjunto se ubica en un predio frente al local de la Asociación Obrera Minera Argentina y al domicilio de su principal impulsor (el ex delegado municipal Antonio Macaione). La intervención no solo recupera elementos materiales del pasado extractivo, también visibiliza una dimensión frecuentemente omitida en las narrativas oficiales: la cotidianeidad del trabajo en las canteras, la logística productiva y los circuitos locales de trabajo.</p>
+      <fig id="f3">
+        <label>Figure 3</label>
+        <caption>
+          <title>Paseo de Las Vagonetas visto desde abajo. 2023. Fotografía tomada por la autora.</title>
+        </caption>
+        <graphic xlink:href="Figura+3.jpg"/>
+      </fig>
+    </sec>
+    <sec>
+      <title>El caso de La Calera 1888</title>
+      <p>Otro caso de recuperación patrimonial en la localidad de Sierras Bayas es La Calera 1888, proyecto que desde 2009 busca refuncionalizar una antigua fábrica de cal de fines del siglo XIX, inactiva desde 1990. El inmueble perteneció a diversos emprendedores locales —destacando a Manuel Mouriño y sus descendientes—, quienes, tras alquilarlo para diferentes fines, lo cedieron en comodato para usos culturales en 2008.</p>
+      <p>La iniciativa surgió de una declaración pública sobre una posible reforma municipal para demoler antiguas fábricas del centro de la ciudad y destinar los terrenos a la construcción de viviendas sociales. Frente a este escenario, una vecina contactó a las familias propietarias y advirtió a vecinos de las consecuencias que esto podría tener. Tras acordar un comodato de la fábrica, esta mujer (junto a familiares y amigos cercanos) comenzaron los trabajos de recuperación el 1 de mayo de 2009. Tales tareas fueron autogestionadas y financiadas por sus propios medios, definiéndose en la actualidad como “sitio histórico recuperado por iniciativa privada”. El 1 de mayo de 2011, se le dio el nombre de La Calera 1888, y se colocó una insignia identificatoria.</p>
+      <p>La refuncionalización comenzó sin un proyecto planificado y se definió en el acto mismo de conocer la historia del sitio (Recavarren, 2022). En un primer momento, ante la falta de documentos escritos, utilizaron relatos orales de antiguos obreros para reconstruir los principales acontecimientos tales como el año de la fundación de la fábrica (que dio nombre al proyecto), los usos de cada lugar (usina, galpón de almacenamiento, hornos, etc.), cronología de propietarios, etc. Posteriormente, durante las labores de acondicionamiento, el hallazgo de herramientas, correspondencia y libros contables o de empleados transformó a la fábrica en un verdadero “archivo abierto” (Mah, 2010), donde las ruinas y la materialidad recuperada permitieron reconstruir la administración calera, la vida cotidiana de los trabajadores y sus tramas de interacción con la industria cementera local.</p>
+      <p>En 2012 se iniciaron las primeras actividades públicas, entre las que destacaron las ferias artesanales impulsadas principalmente por emprendedoras locales. Este colectivo femenino fue el pionero en habitar, dinamizar y refuncionalizar el predio (Recavarren, 2022). Desde entonces, en La Calera 1888 acontecieron numerosos eventos, además de visitas guiadas para escuelas y turistas por lo que podemos reconocer que el espacio ha establecido vínculos con instituciones educativas de nivel primario, secundario y universitario, realizando visitas guiadas, colaborando en proyectos educativos e investigaciones científicas. Actualmente es la única calera del período artesanal recuperada y accesible al público. Esto la convierte en un lugar de referencia y, en consecuencia, recibe un flujo continuo de visitantes.</p>
+      <p>Este proyecto patrimonial resulta distintivo en tanto fue impulsado desde el nivel comunitario, sin respaldo institucional, y puede ser leído como un caso paradigmático de proceso “desde abajo”. Es que el grupo de promotoras del espacio se organizó en torno a la idea de que la fábrica no debía ser simplemente conservada estructuralmente sino reactivada en un espacio de memoria y producción cultural. En este sentido, podemos afirmar que se reconfiguró como un “lugar de memoria” (Nora, 2009). Pero uno de los elementos más relevantes del caso es el rol central de las mujeres en la gestión del sitio. Al igual que en el caso analizado por Brito Peña (2024) en Chile, las mujeres se constituyeron en cuidadoras de la memoria, sosteniendo cotidianamente el espacio, articulando narrativas afectivas y promoviendo instancias de participación vecinal. Esta dimensión de género visibiliza formas de agencia patrimonial no institucionalizada, que desafían la mirada técnica del patrimonio (Recavarren, 2025), pero también pone en tensión los discursos construidos históricamente para el patrimonio industrial local: androcéntricos y tecnicistas, focalizado en la historia de hombres obreros y/o empresarios.</p>
+      <p>En suma, La Calera 1888 encarna una experiencia de “patrimonio insurgente” (Novoa, 2022), donde las ruinas industriales son resignificadas desde los márgenes no como mera nostalgia sino como una práctica política de memoria, cuidado comunitario y reapropiación territorial que interpela los sentidos hegemónicos de la activación patrimonial y se plantea nuevas formas de participación.</p>
+      <p><italic>Ellas activan “desde abajo”: Grupo Patrimonio Sierras Bayas</italic></p>
+      <p>En este mismo sentido, y en consecuencia de las actividades realizadas en La Calera 1888 (pero también por haber sido participes de algunas de las iniciativas patrimoniales descritas anteriormente), un grupo de vecinas comenzó a consolidarse en el año 2022. Primeramente, bajo la denominación de <italic>Grupo Patrimonio Sierras Bayas</italic>, se autodefinieron: “un grupo de vecinas reunidas bajo un objetivo común: El patrimonio cultural de Sierras Bayas”<xref ref-type="fn" rid="fn12">12</xref>. Sus primeras intervenciones públicas estuvieron ligadas a la exigencia de participación en la toma de decisiones presupuestarias derivadas de la “desafectación de fracciones de inmuebles del dominio público y afectación al dominio privado a favor de la firma Cementos Avellaneda S.A"<xref ref-type="fn" rid="fn13">13</xref>. Por decreto municipal, se estableció que las ganancias obtenidas de la venta de una calle serían destinadas en 50% del mismo al “desarrollo de infraestructura turística de las localidades serranas del Partido de Olavarría” y el 50% restante “al desarrollo de infraestructura de las localidades serranas y de los parques industriales del Partido de Olavarría”. Desde un primer momento, este grupo de vecinas tuvo interés de participar en las decisiones, reuniéndose reiteradas veces con la Comisión de Control y Seguimiento creada mediante la Ordenanza 4806/21. En paralelo, impulsaron acciones orientadas a la recuperación de la memoria industrial, destacándose el abrazo simbólico a la antigua planta de Cemento Portland en mayo de 2023. Esta convocatoria congregó a vecinos, ex personal de la fábrica y autoridades locales con el fin de promover la declaración del conjunto fabril como Monumento Histórico Nacional, iniciativa que se acompañó con la presentación de proyectos formales ante el Concejo Deliberante para la preservación material e inmaterial de esta industria fundacional para la localidad.</p>
+      <fig id="f4">
+        <label>Figure 4</label>
+        <caption>
+          <title>Vecinas en la Calera 1888. 2025. Fotografía. Luis Molina.</title>
+        </caption>
+        <graphic xlink:href="Figura+4.jpg"/>
+      </fig>
+      <p>Con el tiempo, el grupo precisó sus objetivos, entre los que destacan: a) Contribuir activamente al enriquecimiento de la vida cultural de Sierras Bayas y los alrededores; b) Promover iniciativas de carácter cultural y social en general; c) Promover el cuidado y la conservación del Patrimonio local, de bienes muebles e inmuebles,  tangibles e intangibles, que, por su significación definan la identidad y la memoria de sus habitantes; d) Generar acciones para la dinamización de los Museos locales, apoyar la gestión y mantenimiento de los mismos; e) Propiciar la creación, corrección o derogación, según corresponda de leyes, reglamentaciones y normas, así como la gestión de medidas administrativas, tendientes a la preservación del Patrimonio local; f) Estrechar vínculos con asociaciones similares, nacionales y/o extranjeras.</p>
+      <p>Asimismo, definieron que todas sus actuaciones tendrían carácter no lucrativo y contarían, de ser necesario, con asesoramiento técnico o profesional idóneo. Para 2024, el colectivo articuló sus líneas de trabajo en tres ejes prioritarios: a) Puesta en valor del casco antiguo de Sierras Bayas con los hornos de cal: actividades de limpieza, iluminación y señalización y mobiliario urbano; b) Fábrica de Cemento Portland: concretar la creación del Museo del Cemento Portland y la declaración de Monumento Histórico Nacional al conjunto fabril; c) Difusión del Patrimonio y su significación local.</p>
+      <p>Para finales de ese mismo año, este grupo de vecinas autoconvocadas fue reconocido legalmente como Asociación Civil, recibiendo el nombre de <italic>Paisaje Cultural Minero</italic>. Desde entonces ha desempeñado un rol activo en la construcción de memoria colectiva y en la reivindicación del patrimonio industrial local. En febrero de 2025, la asociación organizó un acto conmemorativo del 106º aniversario del primer despacho de cemento Portland (realizado el 11 de febrero de 1919) mediante un almuerzo y la proyección de material audiovisual, con presencia de ex gerentes, antiguos trabajadores y familiares, lo que reafirmó la dimensión relacional e intergeneracional del patrimonio. Más recientemente, en mayo de 2025, la entidad integró las actividades del Día Internacional de los Museos, organizando un recorrido guiado por el circuito minero, consolidando la noción de Sierras Bayas en “museo a cielo abierto” que enlaza territorio, memoria y educación.</p>
+      <p>A partir de las actividades que promueve y su forma de intervenir en el espacio público, la <italic>Asociación Civil Paisaje Cultural Minero</italic> puede definirse como un actor patrimonial comunitario con un enfoque integral de la memoria industrial. Su accionar trasciende la conservación de objetos o sitios materiales, para activar el patrimonio como un recurso simbólico y político en el presente: organiza actos conmemorativos, moviliza a la comunidad en torno a lugares significativos (la cementera), y busca inscribir esa memoria en instancias oficiales (por ejemplo, promoviendo la declaración de monumento) y comunitarias (la celebración del despacho del cemento).</p>
+    </sec>
+    <sec>
+      <title>Ciencia, comunidad y patrimonialización</title>
+      <p>Las experiencias comunitarias analizadas en Sierras Bayas evidencia cómo los espacios industriales en ruinas pueden ser reactivados desde prácticas sociales afectivas, políticas y territoriales. En conjunto, estos casos expresan la potencia del «patrimonio insurgente» (Novoa, 2022), donde la patrimonialización no surge como una imposición o propuesta institucional, más bien es una respuesta situada y colectiva frente a experiencias de posible pérdida y olvido.</p>
+      <p>A diferencia de las políticas patrimoniales tradicionales, centradas en criterios técnico-estéticos o en narrativas oficiales de importancia nacional, los proyectos llevados adelante por vecinos y vecinas de Sierras Bayas responden a una lógica distinta: la de la salvaguardia, la pertenencia y la memoria territorializada. Se trata de una comunidad que no sólo reclama el valor del bien material: lo re-significa en tanto parte integral de su identidad colectiva.</p>
+      <p>En este marco, el caso de esta localidad bonaerense puede inscribirse también en lo que Mace y Joannette (2019) denominan comunidades patrimoniales: colectivos sociales que no son simplemente “usuarios” del patrimonio sino productores activos de sentido, capaces de movilizar recursos simbólicos, organizativos y afectivos para preservar, reinterpretar y activar lo que consideran valioso. Si se analizan las practicas patrimoniales ligadas a lo industrial podemos afirmar que la dimensión comunitaria no implica homogeneidad, es un entramado de relaciones que permiten sostener prácticas patrimoniales vivas y duraderas (o no) en el tiempo.</p>
+      <p>Una dimensión central que aparece en La Calera 1888 —y que también destaca Brito-Peña (2024) y Novoa (2022) en el caso chileno— es el rol de las mujeres en la defensa del patrimonio industrial (Recavarren, 2025). En ambos casos, las tareas de cuidado, memoria y transmisión intergeneracional están profundamente feminizadas. Esto interpela una visión tecnocrática del patrimonio y sugiere la necesidad de pensar los patrimonios industriales no sólo desde su valor económico o arquitectónico sino desde su potencia para activar vínculos comunitarios, afectos territoriales y formas alternativas de ciudadanía cultural.</p>
+      <p>Ahora bien, este tipo de activaciones comunitarias no exentas de tensiones pueden interrogar directamente la relación entre el saber local y el conocimiento científico. Sánchez Carretero (2012) sostiene que el patrimonio no es un terreno armónico, es una arena de disputa en la que diferentes actores —comunidad, Estado, academia, sector privado— proyectan intereses, sentidos y memorias a veces incompatibles. En este punto, se vuelve clave interrogar el rol de la ciencia y de la universidad en estos procesos. Si bien el acompañamiento académico puede brindar herramientas valiosas —desde el registro histórico hasta estrategias de preservación—, también puede reforzar desigualdades simbólicas cuando impone marcos interpretativos externos o ritmos de trabajo ajenos a la vida comunitaria. Como señala Smith (2011), el saber patrimonial hegemónico tiende a invisibilizar otros modos de saber y recordar, relegando a las comunidades al rol de “informantes” en lugar de co-productores de conocimiento.</p>
+      <p>Desde esta perspectiva, la antropología del patrimonio enfrenta el desafío de construir vínculos más horizontales con las comunidades, reconociendo su capacidad epistemológica, su agencia política y su capacidad de intervenir en la producción de memorias colectivas. La experiencia de La Calera 1888 y el rol activo de la reciente Asociación Civil invita, en este sentido, a repensar el papel del trabajo etnográfico no sólo como observación sino como práctica implicada, ética y situada, en diálogo con los saberes y luchas que reivindican los actores locales:</p>
+      <disp-quote>
+        <p>El patrimonio insurgente impulsa a académicos y responsables políticos a considerar las experiencias vividas por las personas, incluidas sus prácticas y narrativas creativas, los afectos relacionados con los paisajes y las comunidades patrimoniales, y la forma en que hablan y cuidan los lugares, para crear marcos de planificación y patrimonio más apropiados que aquellos que siguen legitimando múltiples formas de exclusión y olvido (Novoa, 2022: 1032).</p>
+      </disp-quote>
+    </sec>
+    <sec>
+      <title>Pensar procesos para redefinir “la comunidad”</title>
+      <p>En esta clave, leer las experiencias de Sierras Bayas exige abordar la activación patrimonial “desde abajo” (Arrieta, 2009) no como un objeto estático sino como proceso socio histórico dinámico donde la particularidad radica en que la identificación, activación y resignificación del patrimonio son impulsadas por actores locales. En coincidencia con este enfoque, las iniciativas locales emergen al margen de los organismos especializados e institucionales, integrando un universo heterogéneo de actores atravesados por tensiones, relaciones de poder e intereses diversos, donde la comunidad no preexiste, se constituye en la propia acción. En este marco, los casos analizados se articulan sobre tres premisas analíticas complementarias que demuestran su complejidad.</p>
+      <p>En primer lugar, desde una perspectiva antropológica o relativista moderada (Davallon, 2014) se privilegia el análisis del proceso mediante el cual determinados objetos, lugares y memorias industriales adquieren estatus patrimonial antes que asumirlo como una cualidad inherente. Esto permite advertir que, aun cuando las iniciativas analizadas remiten a un mismo pasado industrial y se desarrollan en un mismo contexto no constituyen expresiones semejantes de patrimonialización. Por el contrario, muestran que un mismo referente histórico puede dar lugar a proyectos con objetivos, narrativas y estrategias de intervención diferentes. En consecuencia, reconocemos la coexistencia de diversas formas de “hacer patrimonio” (Davallon, 2014) sobre un mismo pasado industrial minero.</p>
+      <p>En segundo lugar, esta perspectiva relativista supone reconocer que la patrimonialización solo adquiere sentido en la medida en que determinados actores atribuyen valor a un bien, práctica o memoria y manifiestan la voluntad de preservarlo y transmitirlo (Davallon, 2014). En ese marco, recuperar la noción de comunidad patrimonial (Mace y Joannette, 2019) de manera operativa permite referirse a colectivos que atribuyen valor a dichos bienes y buscan recuperarlos, sostenerlos o transmitirlos mediante la acción pública. La adopción del concepto se da en los términos críticos de Waterton y Smith (2010), ya que más que entender la comunidad como algo único y estable, las distintas iniciativas desarrolladas en Sierras Bayas muestran la existencia de grupos que se conforman de manera situada en torno a objetivos específicos y cuya composición se transforma a lo largo del tiempo. La recuperación de La Calera 1888, por ejemplo, comenzó por iniciativa de una vecina e incorporó progresivamente nuevos actores hasta dar lugar a la Asociación Civil. Otras experiencias siguieron recorridos distintos e incluso modificaron profundamente su organización, como ocurrió con el Museo de la Estación al pasar de una gestión vecinal al ámbito municipal. De manera que, antes que asumir la existencia de una comunidad <italic>a priori</italic>, proponemos comprender la activación patrimonial en tanto desarrollo complejo que origina, reorganiza y redefine continuamente los colectivos que la hacen posible.</p>
+      <p>Por último, enriquecido por los aportes críticos del patrimonio (Harrison, 2013; Carrera Díaz, 2019; Sánchez-Carretero, 2012; Roura-Expósito, 2023), el proceso de patrimonialización debe comprenderse como un campo de disputas por la representación, la legitimidad y la participación, donde emergen nuevos liderazgos y formas de institucionalización. De esta forma, se observa que determinadas iniciativas trascienden acciones puntuales para constituirse en actores colectivos con capacidad de interlocución (incluso frente al Estado y otros organismos) ampliando su incidencia sobre las decisiones relativas al patrimonio (Roura-Expósito, 2023). Como se mencionó para el caso de La Calera, una iniciativa inicialmente individual derivó en la conformación de un colectivo activista y, posteriormente, de una asociación civil. Aunque hoy constituyen proyectos independientes, la asociación se nutrió del proyecto iniciado de manera más informal en La Calera, incorporando integrantes y anclándose materialmente en él (con el domicilio legal o utilizando el espacio para sus reuniones).</p>
+      <p>De este modo, podemos afirmar que en las iniciativas analizadas no solo se produce patrimonio y comunidades también crea nuevos agentes del patrimonio (Ramos, 2017), es decir, actores capaces de disputar decisiones patrimoniales. La constitución de una figura jurídica como la Asociación trasciende la inmediatez y particularidad del grupo de vecinas autoconvocadas: se amplía el campo de acción al habilitar la gestión de subsidios, la presentación de proyectos, la firma de convenios y la negociación directa con el Estado. De esta forma, se identifica aquí una “Oportunidad Política del Patrimonio” (Santamarina y Mompó, 2021) donde lo patrimonial deviene un instrumento estratégico para la legitimación de los sujetos dentro de contextos neoliberales y de desindustrializacion. Asistimos, en definitiva, a una dinámica dialéctica donde: “por un lado, los activistas contribuyen a la construcción del patrimonio y por otro, la declaración de patrimonio conduce al surgimiento de un estilo singular de activismo cívico” (Roura-Expósito, 2023: 234).</p>
+      <p>Sin embargo, se vuelve un pendiente analizar si la traducción de las demandas al lenguaje patrimonial desencadena otros modos de “hacer patrimonio”. Esta redefinición de la comunidad podría implicar también una transformación en los modos de enmarcar (framing) las demandas locales. Siguiendo a Roura-Expósito (2023), resulta clave observar las etapas de la patrimonialización para identificar, en este caso, si la preocupación local por la pérdida de la memoria industrial se desplaza paulatinamente hacia un lenguaje patrimonial e institucionalizado (o hiperpatrimonialización). Cabe preguntarse entonces qué transformaciones se producen al pasar de la acción vecinal directa a la conformación de una figura jurídica: si bien estos pasos pueden otorgar mayor legitimidad pública y formalidad frente al Estado, también pueden tensionar o modificar los márgenes de autonomía y radicalidad iniciales del grupo.</p>
+    </sec>
+    <sec>
+      <title>Reflexiones finales</title>
+      <p>La perspectiva adoptada en este artículo permite comprender que el pasado industrial de Sierras Bayas no dio lugar a un único modo de patrimonializar sino a diversas iniciativas que, aunque comparten un mismo referente histórico, construyen objetos patrimoniales, memorias y formas de participación diferentes. Aunque considerar a la comunidad de Sierras Bayas toda como una comunidad patrimonial inalterable e históricamente activa suena tentador, eso sería incurrir en un error. Los casos analizados muestran que no se trata de un colectivo homogéneo sino un entramado de actores que se articula de manera diferente en torno a proyectos. La persistencia del activismo local resulta innegable; sin embargo, el análisis evidencia que las formas de reivindicar la memoria industrial, así como los colectivos que las impulsan, se reconfiguran a lo largo del tiempo, integrando actores con trayectorias, responsabilidades e intereses diversos.</p>
+      <p>Al intentar forzar esta inscripción encontramos los límites que proponen Waterton y Smith (2010): la comunidad no es estática, más bien, se reconstruye en el tiempo y en torno a un patrimonio específico y a su reivindicación (Jiménez-Esquinas, 2020). En este sentido, resulta pertinente profundizar a futuro en las tensiones internas que atraviesan estos proyectos, las disputas por la legitimidad de las narrativas y los modos en que la institucionalización puede reconfigurar los sentidos iniciales de las iniciativas (Roura-Expósito, 2023).</p>
+      <p>Estas iniciativas impulsadas por actores locales invitan a repensar el lugar del patrimonio en contextos atravesados por la desindustrialización asociada a transformaciones neoliberales. En el marco de lo que Heinich (2009) ha denominado “inflación patrimonial”, las experiencias evidencian que la expansión del campo patrimonial no se limita a una ampliación de objetos o categorías, habilita también nuevas formas de acción y resistencia. Frente a narrativas oficiales que tienden a homogeneizar el pasado, las comunidades locales recuperan memorias relegadas y resignifican los espacios fabriles como territorios vivos, atravesados por significaciones, vínculos y disputas. En esta línea, uno de los aspectos más significativos de este caso es el protagonismo de las mujeres como cuidadoras o agentes de la memoria (Brito Peña, 2024; Recavarren, 2025) y del espacio, lo que revela un modo de activación patrimonial encarnado en prácticas afectivas, de cuidado y de transmisión intergeneracional. Estas formas de agencia feminizada tensionan las narrativas técnicas y masculinizadas que han dominado históricamente los discursos autorizados sobre patrimonio industrial local.</p>
+      <p>Asimismo, interpelan los modos en que la ciencia y la universidad se vinculan con los procesos patrimoniales. Como se intenta demostrar con el caso de La Calera 1888, el rol de la antropología no debería limitarse al registro o a la interpretación externa sino pensarse en una práctica colaborativa y éticamente situada, que reconozca a las comunidades siendo co-productoras de conocimiento y no solo informantes. Así, los proyectos “desde abajo” (Arrieta, 2009) puede dar lugar a formas de agencia colectiva que producen conocimiento y construyen agenda. En consecuencia, analizar de manera situada la patrimonialización de la comunidad puede abrir nuevos ejes de debate teórico (como lo es el rol de las mujeres en la ciudad industrial) pero, también, llevar a cabo investigaciones que reflejen los intereses y activismos de quienes habitan en los lugares de estudio. Así, la disciplina encuentra en estos procesos un escenario propicio para pensar críticamente los modos en que se producen las memorias, se tramitan las desigualdades y se construyen las pertenencias en el contexto del actual boom patrimonial.</p>
+      <p>En contextos de desindustrialización y crisis de sentido, el patrimonio activado desde lo comunitario se convierte en un recurso clave, no obstante, más que determinar si una iniciativa es o no "desde abajo”, interesa desarrollar estudios que aborden la patrimonialización comunitaria no necesariamente como una experiencia emancipadora en sí misma proceso dinámico atravesado por interrogantes centrales: cómo se configuran las comunidades patrimoniales, qué relaciones de poder atraviesan, qué memorias logran adquirir visibilidad y cuáles permanecen relegadas, así como las negociaciones y conflictos que acompañan la construcción social del patrimonio.</p>
+      <p>Olavarría, 12 de junio de 2025</p>
+    </sec>
+    <sec sec-type="ack">
+      <title>Agradecimientos</title>
+      <p>Al Consejo Nacional de Investigaciones Científicas y Técnicas (CONICET) por el financiamiento para realizar la investigación doctoral en la que se enmarca este trabajo.</p>
+    </sec>
+  </body>
+  <back>
+    <fn-group>
+      <fn id="fn1">
+        <label>1</label>
+        <p>Hace referencia al seminario “Antropología, patrimonio y cultura” de la Maestría en Antropología Social de la Universidad de Buenos Aires.</p>
+      </fn>
+      <fn id="fn2">
+        <label>2</label>
+        <p>Hace referencia a un formulario web desarrollado en el año 2022 en un contexto de investigación signado por la distancia geográfica entre quién investiga y sus informantes.</p>
+      </fn>
+      <fn id="fn3">
+        <label>3</label>
+        <p>Traducción propia.</p>
+      </fn>
+      <fn id="fn4">
+        <label>4</label>
+        <p>Traducción propia.</p>
+      </fn>
+      <fn id="fn5">
+        <label>5</label>
+        <p>Si bien en reiterados textos académicos se ha mencionado que esta compra fue realizada bajo el nombre <italic>Lone Star</italic>, es preciso señalar que fue en el año 1936 que la firma <italic>Internacional Cement Corporation</italic> adquirió en nombre de <italic>Lone Star Cement Corporation</italic>. Este dato fue reconstruido recientemente a través de un documento titulado “Brief Description of the Dallas Plant of the Lone Star Cement Corporation”, fechado el 29 de septiembre de 1947. Se trata de un informe, realizado por L.J.Wheeler (superintendente General de la división Texas de la Lone Star Cement Corporation), presentado en la Reunión regional del Comité Técnico General del mencionado año. Actualmente, forma parte del fondo documental de la Biblioteca de la <italic>American Cement Association</italic> y está disponible en línea: <ext-link ext-link-type="uri" xlink:href="http://www2.cement.org/DVD025/code/reports/Manufacturing/M106.pdf">http://www2.cement.org/DVD025/code/reports/Manufacturing/M106.pdf</ext-link></p>
+      </fn>
+      <fn id="fn6">
+        <label>6</label>
+        <p>Según Villafañe (2000), este empresario fue el primero en producir cal hidráulica pulverizada y apagada mediante métodos similares a los empleados en Europa. A él se le atribuye, asimismo, el descubrimiento del potencial de la caliza local para la fabricación de cemento portland. Tal como señala la autora, aunque contaba con el conocimiento técnico, la materia prima y el impulso necesario para concretar el proyecto, la falta de recursos financieros lo llevó a gestionar inversiones provenientes de Estados Unidos.</p>
+      </fn>
+      <fn id="fn7">
+        <label>7</label>
+        <p>Esta afirmación se sustenta tanto en antecedentes académicos como en un documento emitido por el Ministerio de Economía y Producción, con fecha 11 de octubre de 2005. En dicho informe, que da cuenta de la venta de Loma Negra al grupo Camargo Corrêa, el apartado IV (titulado “Características de la industria en Argentina”) incluye una reseña histórica en la que se señala que: “la primera fábrica moderna de cemento portland se estableció en la localidad de Sierras Bayas, Provincia de Buenos Aires” (p. 10 del documento original). <ext-link ext-link-type="uri" xlink:href="https://cndc.produccion.gob.ar/sites/default/files/cndcfiles/512_0.pdf">https://cndc.produccion.gob.ar/sites/default/files/cndcfiles/512_0.pdf</ext-link></p>
+      </fn>
+      <fn id="fn8">
+        <label>8</label>
+        <p>Estas afirmaciones se condicen con documentos de época que detallan la calidad y competitividad del producto. Ejemplo de ello es Magazine Geográfico Argentino del año 1933: “(…) en las primeras semanas de 1919, puede decirse que se iniciaba en la Argentina la fabricación de cemento en gran escala, y con ello se abría un rumbo de progreso a las construcciones en el país. En efecto, por su calidad y servicio, el Cemento San Martín está considerado como uno de los mejores del mundo” (p. 5).</p>
+      </fn>
+      <fn id="fn9">
+        <label>9</label>
+        <p>Esta afirmación se corresponde a lo descrito en un suplemento especial del Diario El Popular publicado en el año 2019 con motivo de los 100 años del primer despacho de cemento. Allí se mencionan las distintas ampliaciones de la fábrica e incorporaciones de nuevos hornos de calcinación (acontecidas en los años: 1927, 1930, 1958, 1970 y 1989) así como también la capacidad de producción: “con la última tecnología de nivel mundial la capacidad de producción sería de 1.600 toneladas de clínker por día” (p. 4).</p>
+      </fn>
+      <fn id="fn10">
+        <label>10</label>
+        <p>Recientemente, el jueves 21 de agosto de 2025, tras una puesta en valor del edificio este museo fue reabierto con una nueva muestra permanente. Tal como se expresa en el sitio web oficial del Municipio de Olavarría se trató de “un extenso trabajo interdisciplinario que integró las capacidades del Instituto de Investigaciones Antropológicas del Municipio de Olavarría (IIAO), investigadores e investigadoras de la Facultad de Ciencias Sociales de la UNICEN, la Asociación Civil Paisaje Cultural Minero Sierras Bayas, la Delegación Municipal de Sierras Bayas y la Dirección de Patrimonio Cultural a través de sus equipos de conservación en museos, montaje y equipo educativo. Este proyecto además cuenta con el valioso aporte de vecinos y vecinas de la localidad”. (ver: <ext-link ext-link-type="uri" xlink:href="https://www.olavarria.gov.ar/el-municipio-invita-a-participar-de-la-reapertura-del-museo-de-la-estacion-de-sierras-bayas/">https://www.olavarria.gov.ar/el-municipio-invita-a-participar-de-la-reapertura-del-museo-de-la-estacion-de-sierras-bayas/</ext-link>)</p>
+      </fn>
+      <fn id="fn11">
+        <label>11</label>
+        <p><ext-link ext-link-type="uri" xlink:href="https://www.elpopularhoy.com/argentina/provincia/ciudad/unifican-los-museos-de-sierras-bayas--mudan-la-calera-a-la-estacion--donde-haran-refacciones_a64eb08dfddd2c423af261540">https://www.elpopularhoy.com/argentina/provincia/ciudad/unifican-los-museos-de-sierras-bayas--mudan-la-calera-a-la-estacion--donde-haran-refacciones_a64eb08dfddd2c423af261540</ext-link></p>
+      </fn>
+      <fn id="fn12">
+        <label>12</label>
+        <p>Descripción tomada del perfil público de la agrupación en la red social Instagram</p>
+      </fn>
+      <fn id="fn13">
+        <label>13</label>
+        <p><ext-link ext-link-type="uri" xlink:href="https://hcd.olavarria.gov.ar/wp-content/uploads/2022/02/SES.-EXTRAOR.-CONV.-DCTO.-079-21-28-12-21.pdf">https://hcd.olavarria.gov.ar/wp-content/uploads/2022/02/SES.-EXTRAOR.-CONV.-DCTO.-079-21-28-12-21.pdf</ext-link></p>
+      </fn>
+    </fn-group>
+    <ref-list>
+      <title>References</title>
+      <ref id="B1">
+        <mixed-citation>Adell, N.; Bendix, R. F.; Bortolotto, C.; Tauschek, M. (2015). <italic>Between Imagined Communities and Communities of Practice: Participation, Territory and the Making of Heritage. </italic>Göetingen: Universitätsverlag Göttingen.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Adell</surname><given-names>N.</given-names></name>
+            <name><surname>Bendix</surname><given-names>R. F.</given-names></name>
+            <name><surname>Bortolotto</surname><given-names>C.</given-names></name>
+            <name><surname>Tauschek</surname><given-names>M.</given-names></name>
+          </person-group>
+          <year>2015</year>
+          <source>Between Imagined Communities and Communities of Practice: Participation, Territory and the Making of Heritage</source>
+          <publisher-loc>Göetingen</publisher-loc>
+          <publisher-name>Universitätsverlag Göttingen</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B2">
+        <mixed-citation>Arantes, A. (1989). La preservación del patrimonio como práctica social. En R. Ceballos (Ed.), <italic>Antropología y Políticas Culturales. Patrimonio e Identidad</italic> (pp. 29-40).  Buenos Aires: Departamento Nacional de Antropología y Folklore.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Arantes</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>1989</year>
+          <chapter-title>La preservación del patrimonio como práctica social</chapter-title>
+          <person-group person-group-type="editor">
+            <name><surname>Ceballos</surname><given-names>R.</given-names></name>
+          </person-group>
+          <source>Antropología y Políticas Culturales. Patrimonio e Identidad</source>
+          <fpage>29</fpage>
+          <lpage>40</lpage>
+          <publisher-loc>Buenos Aires</publisher-loc>
+          <publisher-name>Departamento Nacional de Antropología y Folklore</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B3">
+        <mixed-citation>Arrieta, I. (2009). Comunidades, científicos y especialistas en los proyectos patrimoniales y museísticos: de «arriba-abajo», de «abajo-arriba». En I. Arrieta (ed.) <italic>Activaciones patrimoniales e iniciativas museísticas: ¿por quién?, ¿para qué? </italic>(pp.11-19). Bilbao: Servicio de Publicaciones de la Universidad del País Vasco. <ext-link ext-link-type="uri" xlink:href="https://addi.ehu.eus/bitstream/handle/10810/15083/UHWEB090599.pdf?sequence=1&amp;isAllowed=y">https://addi.ehu.eus/bitstream/handle/10810/15083/UHWEB090599.pdf?sequence=1&amp;isAllowed=y</ext-link></mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Arrieta</surname><given-names>I.</given-names></name>
+          </person-group>
+          <year>2009</year>
+          <source>Comunidades, científicos y especialistas en los proyectos patrimoniales y museísticos: de «arriba-abajo», de «abajo-arriba». En I. Arrieta (ed.) Activaciones patrimoniales e iniciativas museísticas: ¿por quién?, ¿para qué? (pp.11-19)</source>
+          <publisher-loc>Bilbao</publisher-loc>
+          <publisher-name>Servicio de Publicaciones de la Universidad del País Vasco</publisher-name>
+          <ext-link ext-link-type="uri" xlink:href="https://addi.ehu.eus/bitstream/handle/10810/15083/UHWEB090599.pdf?sequence=1&amp;isAllowed=y">https://addi.ehu.eus/bitstream/handle/10810/15083/UHWEB090599.pdf?sequence=1&amp;isAllowed=y</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B4">
+        <mixed-citation>Balbi, F. y Boivin, M. (2008). La perspectiva etnográfica en los estudios sobre política, Estado y gobierno. <italic>Cuadernos de Antropología Social</italic>, 27, 7-17. <ext-link ext-link-type="uri" xlink:href="https://www.redalyc.org/pdf/1809/180913917001.pdf">https://www.redalyc.org/pdf/1809/180913917001.pdf</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Balbi</surname><given-names>F.</given-names></name>
+            <name><surname>Boivin</surname><given-names>M.</given-names></name>
+          </person-group>
+          <year>2008</year>
+          <article-title>La perspectiva etnográfica en los estudios sobre política, Estado y gobierno</article-title>
+          <source>Cuadernos de Antropología Social</source>
+          <volume>27</volume>
+          <fpage>7</fpage>
+          <lpage>17</lpage>
+          <ext-link ext-link-type="uri" xlink:href="https://www.redalyc.org/pdf/1809/180913917001.pdf">https://www.redalyc.org/pdf/1809/180913917001.pdf</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B5">
+        <mixed-citation>Brito-Peña, A. (2024). Cuidadoras de Memorias: las mujeres y la defensa del Patrimonio Industrial Minero en el sur de Chile.<italic> Revista EURE - Revista de Estudios Urbano Regionales</italic>, vol.50, nº 150, 1-25. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.7764/EURE.50.150.03">https://doi.org/10.7764/EURE.50.150.03</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Brito-Peña</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2024</year>
+          <source>Cuidadoras de Memorias: las mujeres y la defensa del Patrimonio Industrial Minero en el sur de Chile</source>
+          <comment>Revista EURE - Revista de Estudios Urbano Regionales, vol.50, nº 150, 1-25.</comment>
+          <pub-id pub-id-type="doi">10.7764/EURE.50.150.03</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B6">
+        <mixed-citation>Carrera Díaz, G. (2019). Participación social, patrimonialización «expandida» y nuevos sujetos patrimoniales. En C. Sánchez-Carretero, J. Muñoz-Albaladejo, A. Ruiz-Blanch y J. Roura-Expósito (eds.), <italic>El imperativo de la participación en la gestión patrimonial </italic>(pp. 217-235). Madrid: Editorial del Consejo Superior de Investigaciones Científicas.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Carrera Díaz</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2019</year>
+          <source>Participación social, patrimonialización «expandida» y nuevos sujetos patrimoniales. En C. Sánchez-Carretero, J. Muñoz-Albaladejo, A. Ruiz-Blanch y J. Roura-Expósito (eds.), El imperativo de la participación en la gestión patrimonial (pp. 217-235)</source>
+          <publisher-loc>Madrid</publisher-loc>
+          <publisher-name>Editorial del Consejo Superior de Investigaciones Científicas</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B7">
+        <mixed-citation>Carri de Riggi, M.T. (1939). <italic>Datos sobre las Canteras visitadas en la Provincia de Buenos Aires, Cantera de Calcáreo y Arcilla de la Compañía Argentina de Cemento Portland</italic>. Buenos Aires, Dirección de Minas y Geología. <ext-link ext-link-type="uri" xlink:href="https://repositorio.segemar.gov.ar/handle/308849217/2979">https://repositorio.segemar.gov.ar/handle/308849217/2979</ext-link>.</mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <name><surname>Carri de Riggi</surname><given-names>M.T.</given-names></name>
+          </person-group>
+          <year>1939</year>
+          <source>Datos sobre las Canteras visitadas en la Provincia de Buenos Aires, Cantera de Calcáreo y Arcilla de la Compañía Argentina de Cemento Portland</source>
+          <comment>Buenos Aires, Dirección de Minas y Geología.</comment>
+          <ext-link ext-link-type="uri" xlink:href="https://repositorio.segemar.gov.ar/handle/308849217/2979">https://repositorio.segemar.gov.ar/handle/308849217/2979</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B8">
+        <mixed-citation>Consejo de Europa (2005). Convenio Marco del Consejo de Europa sobre el valor del Patrimonio Cultural para la sociedad. Faro, Portugal. <ext-link ext-link-type="uri" xlink:href="https://rm.coe.int/16806a18d3">https://rm.coe.int/16806a18d3</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <collab>Consejo de Europa</collab>
+          </person-group>
+          <year>2005</year>
+          <source>Convenio Marco del Consejo de Europa sobre el valor del Patrimonio Cultural para la sociedad</source>
+          <comment>Faro, Portugal.</comment>
+          <ext-link ext-link-type="uri" xlink:href="https://rm.coe.int/16806a18d3">https://rm.coe.int/16806a18d3</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B9">
+        <mixed-citation>Davallon, J. (2014). El juego de la patrimonialización. En X. Roigé, J. Frigolé y C. del Mármol (eds.), <italic>Construyendo el patrimonio cultural y natural. Parques, museos y patrimonio rural</italic> (pp. 47-76). Alcira: Editorial Germania.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Davallon</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2014</year>
+          <source>El juego de la patrimonialización. En X. Roigé, J. Frigolé y C. del Mármol (eds.), Construyendo el patrimonio cultural y natural. Parques, museos y patrimonio rural (pp. 47-76)</source>
+          <publisher-loc>Alcira</publisher-loc>
+          <publisher-name>Editorial Germania</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B10">
+        <mixed-citation>Guber, R. (2011). <italic>La etnografía. Método, campo y reflexibilidad</italic>. Buenos Aires: Siglo XXI editores.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Guber</surname><given-names>R.</given-names></name>
+          </person-group>
+          <year>2011</year>
+          <source>La etnografía. Método, campo y reflexibilidad</source>
+          <publisher-loc>Buenos Aires</publisher-loc>
+          <publisher-name>Siglo XXI editores</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B11">
+        <mixed-citation>Harrison, R. (2013). Introduction: Heritage everywhere. En. R. Harrison (ed.), <italic>Heritage. Critical approaches</italic> (pp.1-12). Londres: Routledge.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Harrison</surname><given-names>R.</given-names></name>
+          </person-group>
+          <year>2013</year>
+          <source>Introduction: Heritage everywhere. En. R. Harrison (ed.), Heritage. Critical approaches (pp.1-12)</source>
+          <publisher-loc>Londres</publisher-loc>
+          <publisher-name>Routledge</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B12">
+        <mixed-citation>Heinich, N. (2009). <italic>La fabrique du patrimoine « De la cathédrale à la petite cuillère »</italic>. Paris : Éditions de la Maison des sciences de l’homme, Ministère de la culture.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Heinich</surname><given-names>N.</given-names></name>
+          </person-group>
+          <year>2009</year>
+          <source>La fabrique du patrimoine « De la cathédrale à la petite cuillère »</source>
+          <publisher-loc>Paris</publisher-loc>
+          <publisher-name>Éditions de la Maison des sciences de l’homme, Ministère de la culture</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B13">
+        <mixed-citation>Jiménez-Esquinas, G. (2020).  <italic>El papel de las comunidades en el patrimonio: una reflexión en torno al patrimonio </italic>arqueológico. <italic>Revista PH</italic>, 101, 100-121. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.33349/2020.101.4648">https://doi.org/10.33349/2020.101.4648</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Jiménez-Esquinas</surname><given-names>G.</given-names></name>
+          </person-group>
+          <year>2020</year>
+          <article-title>El papel de las comunidades en el patrimonio: una reflexión en torno al patrimonio arqueológico</article-title>
+          <source>Revista PH</source>
+          <volume>101</volume>
+          <fpage>100</fpage>
+          <lpage>121</lpage>
+          <pub-id pub-id-type="doi">10.33349/2020.101.4648</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B14">
+        <mixed-citation>Mace, J. y  Joannette, M. (2019). Introduction. En M. Joannette y J. Mace (dir.), <italic>Les communautés patrimoniales </italic>(pp.1-17). Québec: Presses de l’Université du Québec.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Mace</surname><given-names>J.</given-names></name>
+            <name><surname>Joannette</surname><given-names>M.</given-names></name>
+          </person-group>
+          <year>2019</year>
+          <source>Introduction. En M. Joannette y J. Mace (dir.), Les communautés patrimoniales (pp.1-17)</source>
+          <publisher-loc>Québec</publisher-loc>
+          <publisher-name>Presses de l’Université du Québec</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B15">
+        <mixed-citation>Mah, A. (2010). Memory, uncertainty and industrial ruination: Walker riverside, Newcastle upon Tyne. <italic>International Journal of Urban and Regional Research</italic> 34 (2), 398–413. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1468-2427.2010.00898.x">https://doi.org/10.1111/j.1468-2427.2010.00898.x</ext-link></mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Mah</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>2010</year>
+          <source>Memory, uncertainty and industrial ruination: Walker riverside, Newcastle upon Tyne</source>
+          <comment>International Journal of Urban and Regional Research 34 (2), 398–413.</comment>
+          <pub-id pub-id-type="doi">10.1111/j.1468-2427.2010.00898.x</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B16">
+        <mixed-citation>Nora, P. (1997). <italic>Les lieux de mémoire</italic>. Paris: Gallimard.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Nora</surname><given-names>P.</given-names></name>
+          </person-group>
+          <year>1997</year>
+          <source>Les lieux de mémoire</source>
+          <publisher-loc>Paris</publisher-loc>
+          <publisher-name>Gallimard</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B17">
+        <mixed-citation>Novelo, V. (2005). Herencias culturales desconocidas, el caso del patrimonio industrial mexicano. <italic>Cuadernos de Antropología Social</italic>, 21, 37-49. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.34096/cas.i21.4465">https://doi.org/10.34096/cas.i21.4465</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Novelo</surname><given-names>V.</given-names></name>
+          </person-group>
+          <year>2005</year>
+          <article-title>Herencias culturales desconocidas, el caso del patrimonio industrial mexicano</article-title>
+          <source>Cuadernos de Antropología Social</source>
+          <volume>21</volume>
+          <fpage>37</fpage>
+          <lpage>49</lpage>
+          <pub-id pub-id-type="doi">10.34096/cas.i21.4465</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B18">
+        <mixed-citation>Novoa, M. (2022) Insurgent Heritage: Mobilizing Memory, Place-Based Care And Cultural Citizenships. En <italic>International Journal of Urban and Regional Research</italic>, 46, 1016-1034. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/1468-2427.13143">https://doi.org/10.1111/1468-2427.13143</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Novoa</surname><given-names>M.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <article-title>Insurgent Heritage: Mobilizing Memory, Place-Based Care And Cultural Citizenships</article-title>
+          <source>En International Journal of Urban and Regional Research</source>
+          <volume>46</volume>
+          <fpage>1016</fpage>
+          <lpage>1034</lpage>
+          <pub-id pub-id-type="doi">10.1111/1468-2427.13143</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B19">
+        <mixed-citation>Paz, C. (2001). <italic>Capitalismo, tecnología e impacto ambiental. Un análisis de las Transformaciones Socioeconómicas, Estructurales y Ambientales del Subsistema Minero de Olavarría. Provincia de Buenos Aires</italic>. Argentina. Tesis de Maestría. Facultad de Arquitectura, Urbanismo y Diseño-UNMDP.</mixed-citation>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name><surname>Paz</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2001</year>
+          <source>Capitalismo, tecnología e impacto ambiental</source>
+          <publisher-name>Un análisis de las Transformaciones Socioeconómicas, Estructurales y Ambientales del Subsistema Minero de Olavarría. Provincia de Buenos Aires. Argentina. Tesis de Maestría. Facultad de Arquitectura, Urbanismo y Diseño-UNMDP</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B20">
+        <mixed-citation>Paz, C. (2009). El desarrollo de la minería en el Partido de Olavarría. Su abordaje desde la Arqueología Industrial. En: Endere, M. y Prado, J. (eds.). <italic>Patrimonio, Ciencia y Comunidad. Su abordaje en los partidos de azul, Olavarría y Tandil</italic>, (pp. 145-165). Tandil: Universidad Nacional del Centro de la Provincia de Buenos Aires.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Paz</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2009</year>
+          <source>El desarrollo de la minería en el Partido de Olavarría. Su abordaje desde la Arqueología Industrial. En: Endere, M. y Prado, J. (eds.). Patrimonio, Ciencia y Comunidad. Su abordaje en los partidos de azul, Olavarría y Tandil, (pp. 145-165)</source>
+          <publisher-loc>Tandil</publisher-loc>
+          <publisher-name>Universidad Nacional del Centro de la Provincia de Buenos Aires</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B21">
+        <mixed-citation>Paz, C. (2022). <italic>Arqueología Industrial, Inmigración Italiana y Culturas del Trabajo en las Sierras de Olavarría: una mirada antropológica del territorio</italic>. Tandil: Universidad Nacional del Centro de la Provincia de Buenos Aires. <ext-link ext-link-type="uri" xlink:href="https://www.soc.unicen.edu.ar/images/editorial/ebooks/cpazarqueologiaindustrial.pdf">https://www.soc.unicen.edu.ar/images/editorial/ebooks/cpazarqueologiaindustrial.pdf</ext-link></mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Paz</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <source>Arqueología Industrial, Inmigración Italiana y Culturas del Trabajo en las Sierras de Olavarría: una mirada antropológica del territorio</source>
+          <publisher-loc>Tandil</publisher-loc>
+          <publisher-name>Universidad Nacional del Centro de la Provincia de Buenos Aires</publisher-name>
+          <ext-link ext-link-type="uri" xlink:href="https://www.soc.unicen.edu.ar/images/editorial/ebooks/cpazarqueologiaindustrial.pdf">https://www.soc.unicen.edu.ar/images/editorial/ebooks/cpazarqueologiaindustrial.pdf</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B22">
+        <mixed-citation>Quiroga, C., Quiroga, M., Lapadula, M. y Alonso, J. (2019). Patrimonio, imágenes y género: nuevos criterios de validación e intervención patrimonial. <italic>XXXIII Jornadas de Investigación y XV Encuentro Regional Si+Imágenes</italic>, Ciudad Autónoma de Buenos Aires, FADU-UBA.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Quiroga</surname><given-names>C., Quiroga, M., Lapadula, M.</given-names></name>
+            <name><surname>Alonso</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2019</year>
+          <source>Patrimonio, imágenes y género: nuevos criterios de validación e intervención patrimonial</source>
+          <comment>XXXIII Jornadas de Investigación y XV Encuentro Regional Si+Imágenes, Ciudad Autónoma de Buenos Aires, FADU-UBA.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B23">
+        <mixed-citation>Ramos, D. (2017), “Sobre la construcción del patrimonio cultural y el proceso de patrimonialización”, en: Mito. Revista Cultural, 40. <ext-link ext-link-type="uri" xlink:href="http://revistamito.com/la-construccion-del-patrimonio-cultural-proceso-patrimonializacion/">http://revistamito.com/la-construccion-del-patrimonio-cultural-proceso-patrimonializacion/</ext-link></mixed-citation>
+        <element-citation publication-type="webpage">
+          <person-group person-group-type="author">
+            <name><surname>Ramos</surname><given-names>D.</given-names></name>
+          </person-group>
+          <year>2017</year>
+          <source>, “Sobre la construcción del patrimonio cultural y el proceso de patrimonialización”, en: Mito</source>
+          <comment>Revista Cultural, 40.</comment>
+          <ext-link ext-link-type="uri" xlink:href="http://revistamito.com/la-construccion-del-patrimonio-cultural-proceso-patrimonializacion/">http://revistamito.com/la-construccion-del-patrimonio-cultural-proceso-patrimonializacion/</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B24">
+        <mixed-citation>Recavarren, A. P. (2022). <italic>Récupération, valorisation et réappropriation communautaire du patrimoine industriel de Sierras Bayas (Argentine) : le cas de « La Calera 1888 ».</italic> Tesis de máster, Università degli studi di Padova. <ext-link ext-link-type="uri" xlink:href="https://thesis.unipd.it/handle/20.500.12608/33795">https://thesis.unipd.it/handle/20.500.12608/33795</ext-link></mixed-citation>
+        <element-citation publication-type="thesis">
+          <person-group person-group-type="author">
+            <name><surname>Recavarren</surname><given-names>A. P.</given-names></name>
+          </person-group>
+          <year>2022</year>
+          <source>Récupération, valorisation et réappropriation communautaire du patrimoine industriel de Sierras Bayas (Argentine) : le cas de « La Calera 1888 »</source>
+          <publisher-name>Tesis de máster, Università degli studi di Padova</publisher-name>
+          <ext-link ext-link-type="uri" xlink:href="https://thesis.unipd.it/handle/20.500.12608/33795">https://thesis.unipd.it/handle/20.500.12608/33795</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B25">
+        <mixed-citation>Recavarren, A. P (2023). Patrimonio y comunidad. Cronología de la patrimonialización en la localidad minera de Sierras Bayas. <italic>VII Jornadas de Antropología Social del Centro Prof. Hugo Ratier</italic>. Facultad de Ciencias Sociales, Universidad Nacional del Centro de la Provincia de Buenos Aires, Olavarría, Argentina.</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Recavarren</surname><given-names>A. P</given-names></name>
+          </person-group>
+          <year>2023</year>
+          <source>Patrimonio y comunidad</source>
+          <comment>Cronología de la patrimonialización en la localidad minera de Sierras Bayas. VII Jornadas de Antropología Social del Centro Prof. Hugo Ratier. Facultad de Ciencias Sociales, Universidad Nacional del Centro de la Provincia de Buenos Aires, Olavarría, Argentina.</comment>
+        </element-citation>
+      </ref>
+      <ref id="B26">
+        <mixed-citation>Recavarren, A. P. (2025). Patrimonio industrial y género: las mujeres como agentes de memoria. <italic>H-Industria. Revista de Historia de la Industria y el desarrollo en América Latina</italic>, 36, 45-62. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.56503/H-Industria/n.36(19">https://doi.org/10.56503/H-Industria/n.36(19</ext-link>)/3289</mixed-citation>
+        <element-citation publication-type="other">
+          <person-group person-group-type="author">
+            <name><surname>Recavarren</surname><given-names>A. P.</given-names></name>
+          </person-group>
+          <year>2025</year>
+          <source>Patrimonio industrial y género: las mujeres como agentes de memoria</source>
+          <comment>H-Industria. Revista de Historia de la Industria y el desarrollo en América Latina, 36, 45-62. https://doi.org/10.56503/H-Industria/n.36(19)/3289</comment>
+        </element-citation>
+      </ref>
+      <ref id="B27">
+        <mixed-citation>Rockwell, E. (2009). La relevancia de la etnografía. En E. Rockwell (ed.), <italic>La experiencia etnográfica. Historia y cultura en los procesos educativos</italic> (pp. 17-38). Buenos Aires: Paidós.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Rockwell</surname><given-names>E.</given-names></name>
+          </person-group>
+          <year>2009</year>
+          <source>La relevancia de la etnografía. En E. Rockwell (ed.), La experiencia etnográfica. Historia y cultura en los procesos educativos (pp. 17-38)</source>
+          <publisher-loc>Buenos Aires</publisher-loc>
+          <publisher-name>Paidós</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B28">
+        <mixed-citation>Rosas Mantecón, A. (1998). Presentación. <italic>Alteridades</italic>, 16, 3-9. <ext-link ext-link-type="uri" xlink:href="https://alteridades.izt.uam.mx/index.php/Alte/article/view/470/469">https://alteridades.izt.uam.mx/index.php/Alte/article/view/470/469</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Rosas Mantecón</surname><given-names>A.</given-names></name>
+          </person-group>
+          <year>1998</year>
+          <article-title>Presentación</article-title>
+          <source>Alteridades</source>
+          <volume>16</volume>
+          <fpage>3</fpage>
+          <lpage>9</lpage>
+          <ext-link ext-link-type="uri" xlink:href="https://alteridades.izt.uam.mx/index.php/Alte/article/view/470/469">https://alteridades.izt.uam.mx/index.php/Alte/article/view/470/469</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B29">
+        <mixed-citation>Roura-Expósito, J. (2023). A rampant heritage? Problematising heritage activism through the Casa del Pumarejo social movement. <italic>International Journal of Heritage Studies</italic>, 29 (3), 220-238. <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1080/13527258.2023.2179099">https://doi.org/10.1080/13527258.2023.2179099</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Roura-Expósito</surname><given-names>J.</given-names></name>
+          </person-group>
+          <year>2023</year>
+          <article-title>A rampant heritage? Problematising heritage activism through the Casa del Pumarejo social movement</article-title>
+          <source>International Journal of Heritage Studies</source>
+          <volume>29</volume>
+          <issue>3</issue>
+          <fpage>220</fpage>
+          <lpage>238</lpage>
+          <pub-id pub-id-type="doi">10.1080/13527258.2023.2179099</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="B30">
+        <mixed-citation>Sánchez Carretero, C. (2012). Hacia una antropología del conflicto aplicada al patrimonio. En B. Santamarina (coord.), <italic>Geopolíticas patrimoniales. De culturas, naturalezas e inmaterialidades. Una mirada etnográfica</italic>. Valencia: Editorial Germania.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Sánchez Carretero</surname><given-names>C.</given-names></name>
+          </person-group>
+          <year>2012</year>
+          <source>Hacia una antropología del conflicto aplicada al patrimonio. En B. Santamarina (coord.), Geopolíticas patrimoniales. De culturas, naturalezas e inmaterialidades. Una mirada etnográfica</source>
+          <publisher-loc>Valencia</publisher-loc>
+          <publisher-name>Editorial Germania</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B31">
+        <mixed-citation>Santamarina, B. y Mompó, E.  (2021). The Political Opportunity of Heritage: Appropriations, Memories, and Identities in Cabanyal. <italic>Anthropological Quarterly</italic>, 94, 313-344. <ext-link ext-link-type="uri" xlink:href="https://muse.jhu.edu/article/806032">https://muse.jhu.edu/article/806032</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Santamarina</surname><given-names>B.</given-names></name>
+            <name><surname>Mompó</surname><given-names>E.</given-names></name>
+          </person-group>
+          <year>2021</year>
+          <article-title>The Political Opportunity of Heritage: Appropriations, Memories, and Identities in Cabanyal</article-title>
+          <source>Anthropological Quarterly</source>
+          <volume>94</volume>
+          <fpage>313</fpage>
+          <lpage>344</lpage>
+          <ext-link ext-link-type="uri" xlink:href="https://muse.jhu.edu/article/806032">https://muse.jhu.edu/article/806032</ext-link>
+        </element-citation>
+      </ref>
+      <ref id="B32">
+        <mixed-citation>Shortliffe, S. (2015). Gender and (World) Heritage: The Myth of a Gender Neutral Heritage. En L. Bourdeau y M. Gravari-Barbas, M. (eds.), <italic>World Heritage, Tourism, and Identity: Inscription and Co-Production</italic> (pp. 107-120). Londes: Routledge.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Shortliffe</surname><given-names>S.</given-names></name>
+          </person-group>
+          <year>2015</year>
+          <source>Gender and (World) Heritage: The Myth of a Gender Neutral Heritage. En L. Bourdeau y M. Gravari-Barbas, M. (eds.), World Heritage, Tourism, and Identity: Inscription and Co-Production (pp. 107-120)</source>
+          <publisher-loc>Londes</publisher-loc>
+          <publisher-name>Routledge</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B33">
+        <mixed-citation>Smith, L. (2006). Heritage, Gender and Identity. En B. Graham y P. Howard (eds.). <italic>The Ashgate Research Companion to Heritage and Identity</italic> (pp. 159-178). Farnham: Ashgate Publishing.</mixed-citation>
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name><surname>Smith</surname><given-names>L.</given-names></name>
+          </person-group>
+          <year>2006</year>
+          <source>Heritage, Gender and Identity. En B. Graham y P. Howard (eds.). The Ashgate Research Companion to Heritage and Identity (pp. 159-178)</source>
+          <publisher-loc>Farnham</publisher-loc>
+          <publisher-name>Ashgate Publishing</publisher-name>
+        </element-citation>
+      </ref>
+      <ref id="B34">
+        <mixed-citation>Smith, L. (2011). El “espejo patrimonial”. ¿Ilusión narcista o reflexiones múltiples? <italic>Antípoda</italic>, 12, 39-63.</mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Smith</surname><given-names>L.</given-names></name>
+          </person-group>
+          <year>2011</year>
+          <article-title>El “espejo patrimonial”</article-title>
+          <source>¿Ilusión narcista o reflexiones múltiples? Antípoda</source>
+          <volume>12</volume>
+          <fpage>39</fpage>
+          <lpage>63</lpage>
+        </element-citation>
+      </ref>
+      <ref id="B35">
+        <mixed-citation>Waterton, E. y Smith, L. (2010). The recognition and misrecognition of community heritage. <italic>International Journal of Heritage Studies</italic>, 16(1), 4-15. <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1080/13527250903441671">http://dx.doi.org/10.1080/13527250903441671</ext-link></mixed-citation>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name><surname>Waterton</surname><given-names>E.</given-names></name>
+            <name><surname>Smith</surname><given-names>L.</given-names></name>
+          </person-group>
+          <year>2010</year>
+          <article-title>The recognition and misrecognition of community heritage</article-title>
+          <source>International Journal of Heritage Studies</source>
+          <volume>16</volume>
+          <issue>1</issue>
+          <fpage>4</fpage>
+          <lpage>15</lpage>
+          <pub-id pub-id-type="doi">10.1080/13527250903441671</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

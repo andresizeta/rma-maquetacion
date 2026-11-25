@@ -1,0 +1,25 @@
+# Metadatos editoriales del envío OJS
+formato: tradicional
+codigo_publicacion: v19n03a22
+seccion: Dossier
+volumen: '19'
+numero: '3'
+anio: '2026'
+pagina_inicio: '01'
+paginas: ''
+doi: https://doi.org/10.31048/
+autor_corto: N. Fuenzalida Bahamondes
+titulo_corto: El auge patrimonial de los sitios de memoria en Chile
+recibido: 17-10-2025
+correcciones: 25-02-2026
+aceptado: 13-07-2026
+editor_seccion: M. Espinosa & G. Sora
+editores_invitados: C. Crespo & C. Benedetti
+autores:
+- nombre: Nicole Fuenzalida Bahamondes
+  orcid: 0000-0003-4096-4384
+  afiliacion: '1'
+afiliaciones:
+  '1':
+    texto: 'Departamento de Antropología, Universidad de Chile, Chile. E-mail: npfuenzalida@uchile.cl'
+    ror: 047gc3g35

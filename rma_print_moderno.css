@@ -136,17 +136,18 @@ a {
     box-sizing: border-box;
 }
 .pie-p1-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 3mm;
+    display: table;
+    table-layout: fixed;
     width: 100%;
+    border-collapse: collapse;
 }
 .pie-p1-cc {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: table-cell;
+    width: 31mm;
+    vertical-align: middle;
+    text-align: left;
+    padding-right: 1.5mm;
+    box-sizing: border-box;
 }
 .pie-p1-cc a {
     border-bottom: none;
@@ -157,8 +158,12 @@ a {
     display: block;
 }
 .pie-p1-centro {
-    flex: 1 1 auto;
+    display: table-cell;
+    width: auto;
+    vertical-align: middle;
     text-align: center;
+    padding: 0 1mm;
+    box-sizing: border-box;
 }
 .pie-p1-centro p {
     margin: 0;
@@ -168,12 +173,16 @@ a {
     color: #181c20;
 }
 .pie-p1-editores {
-    flex: 0 0 auto;
+    display: table-cell;
+    width: 31mm;
+    vertical-align: middle;
     text-align: right;
-    max-width: 46mm;
-    font-size: 6.8pt;
-    line-height: 1.25;
+    padding-left: 1.5mm;
+    box-sizing: border-box;
+    font-size: 6.5pt;
+    line-height: 1.22;
     color: #1f2328;
+    overflow-wrap: break-word;
 }
 .pie-p1-editores p {
     margin: 0;
@@ -566,11 +575,6 @@ figcaption {
     font-size: 7pt;
     line-height: 1.2;
 }
-a.cita-enlace {
-    color: #0066cc;
-    text-decoration: none;
-    border-bottom: none;
-}
 .rma-tabla.tabla-compacta th,
 .rma-tabla.tabla-compacta td {
     padding: 1mm 1.1mm;
@@ -607,34 +611,21 @@ a.cita-enlace {
     text-indent: -6mm;
     font-size: 8.8pt;
     line-height: 1.34;
-    text-align: left;
+    text-align: justify;
     margin: 0 0 2mm 0;
     orphans: 2;
     widows: 2;
     hyphens: none;
     overflow-wrap: break-word;
 }
-
-.par-figuras-columnas {
-    display: flex;
-    gap: 6mm;
-    align-items: flex-start;
-    width: 100%;
-    margin: 6mm auto 6.5mm auto;
-    break-inside: avoid;
-    page-break-inside: avoid;
-}
-.par-figuras-columnas > .rma-figura {
-    flex: 1 1 0;
-    min-width: 0;
-    margin: 0;
+.referencias .ref-item a {
+    overflow-wrap: anywhere;
 }
 
 .enlace-id {
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
-    border-bottom: none;
     margin-left: 0.8mm;
     line-height: 1;
 }
@@ -649,4 +640,10 @@ a.cita-enlace {
     width: auto;
     vertical-align: -0.5mm;
     display: inline-block;
+}
+
+a.cita-bib {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
 }

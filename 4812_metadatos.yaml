@@ -1,0 +1,25 @@
+# Metadatos editoriales del envío OJS
+formato: tradicional
+codigo_publicacion: v19n03a01
+seccion: Antropología Biológica
+volumen: '19'
+numero: '3'
+anio: '2026'
+pagina_inicio: '01'
+paginas: ''
+doi: https://doi.org/10.31048/
+autor_corto: ''
+titulo_corto: ''
+recibido: ''
+correcciones: ''
+aceptado: ''
+editor_seccion: ''
+editores_invitados: ''
+autores:
+- nombre: ''
+  orcid: ''
+  afiliacion: '1'
+afiliaciones:
+  '1':
+    texto: ''
+    ror: ''

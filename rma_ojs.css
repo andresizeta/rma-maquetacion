@@ -26,7 +26,7 @@ body {
 
 .portada-articulo { order: 1; }
 .divisor-portada { order: 2; }
-.cuerpo-articulo { order: 3; }
+.cuerpo-articulo, main { order: 3; }
 .pie-primera-pagina { order: 4; }
 
 a {
@@ -38,8 +38,7 @@ a:hover {
     color: #521d11;
 }
 
-.meta-running-left, .meta-running-right, .meta-running-doi, .meta-running-issn,
-.running-header-left, .running-header-right {
+.running-header-left, .running-header-right, .meta-running-left, .meta-running-right, .meta-running-doi, .meta-running-issn {
     display: none;
 }
 
@@ -253,8 +252,7 @@ span.footnote {
     border-radius: 6px;
 }
 .ancho-completo { width: 100%; box-sizing: border-box; }
-.ancho-centrado,
-.ancho-columna { width: 78%; box-sizing: border-box; }
+.ancho-centrado { width: 78%; box-sizing: border-box; }
 
 .rma-figura img {
     width: 100%;
@@ -292,30 +290,13 @@ figcaption, .tabla-caption {
     margin-top: 0.7rem;
 }
 
-.referencias .ref-item,
-.referencias p {
+.referencias .ref-item {
     padding-left: 1.8rem;
     text-indent: -1.8rem;
     font-size: 0.93rem;
     line-height: 1.5;
     text-align: left;
     margin-bottom: 0.65rem;
-}
-
-.referencias .ref-item:target,
-.referencias p:target {
-    background-color: var(--rma-sand);
-    border-radius: 3px;
-}
-
-a.cita-enlace {
-    color: #0066cc;
-    text-decoration: none;
-    border-bottom: 1px dotted var(--rma-accent);
-}
-a.cita-enlace:hover {
-    color: var(--rma-accent);
-    border-bottom-style: solid;
 }
 
 .pie-primera-pagina {
@@ -329,11 +310,13 @@ a.cita-enlace:hover {
     color: var(--rma-muted);
 }
 .pie-p1-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr) 150px;
     align-items: center;
     gap: 1rem;
+}
+.pie-p1-cc {
+    justify-self: start;
 }
 .logo-cc-img {
     height: 31px;
@@ -341,11 +324,11 @@ a.cita-enlace:hover {
     display: block;
 }
 .pie-p1-centro {
-    flex: 1 1 360px;
     text-align: center;
 }
 .pie-p1-centro p { margin: 0.15rem 0; }
 .pie-p1-editores {
+    justify-self: end;
     text-align: right;
 }
 .pie-p1-editores p { margin: 0.15rem 0; }
@@ -386,4 +369,10 @@ a.cita-enlace:hover {
     width: auto;
     vertical-align: -2px;
     display: inline-block;
+}
+
+a.cita-bib {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
 }

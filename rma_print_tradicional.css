@@ -117,15 +117,18 @@ a {
     box-sizing: border-box;
 }
 .pie-p1-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2.5mm;
+    display: table;
+    table-layout: fixed;
     width: 100%;
+    border-collapse: collapse;
 }
 .pie-p1-cc {
-    flex: 0 0 auto;
-    padding-top: 0.5mm;
+    display: table-cell;
+    width: 31mm;
+    vertical-align: top;
+    text-align: left;
+    padding: 0.5mm 1.5mm 0 0;
+    box-sizing: border-box;
 }
 .logo-cc-img {
     height: 6.2mm;
@@ -133,8 +136,12 @@ a {
     display: block;
 }
 .pie-p1-centro {
-    flex: 1 1 auto;
+    display: table-cell;
+    width: auto;
+    vertical-align: top;
     text-align: center;
+    padding: 0 1mm;
+    box-sizing: border-box;
 }
 .pie-p1-centro p {
     margin: 0;
@@ -144,12 +151,16 @@ a {
     color: #141414;
 }
 .pie-p1-editores {
-    flex: 0 0 auto;
+    display: table-cell;
+    width: 31mm;
+    vertical-align: top;
     text-align: right;
-    max-width: 44mm;
-    font-size: 6.8pt;
-    line-height: 1.24;
+    padding: 0 0 0 1.5mm;
+    box-sizing: border-box;
+    font-size: 6.5pt;
+    line-height: 1.22;
     color: #141414;
+    overflow-wrap: break-word;
 }
 .pie-p1-editores p {
     margin: 0;
@@ -219,13 +230,13 @@ a {
 }
 
 .bloque-titulos {
-    margin-top: -8mm;
+    margin-top: -2mm;
     margin-left: 28mm;
     margin-bottom: 3mm;
     text-align: right;
 }
 .titulo-es {
-    font-size: 14.5pt;
+    font-size: 13.6pt;
     line-height: 1.18;
     font-weight: 700;
     color: #111111;
@@ -325,7 +336,7 @@ hr.divisor-portada {
     page-break-after: avoid;
     hyphens: none;
 }
-.cuerpo-articulo > h2:first-child {
+.cuerpo-articulo:not(.cuerpo-articulo-cont) > h2:first-child {
     margin-top: 0;
 }
 
@@ -446,6 +457,10 @@ span.footnote {
     margin: 0 auto;
     display: block;
 }
+.rma-figura.ancho-columna img {
+    width: 100%;
+    max-height: 185mm;
+}
 .rma-figura.ancho-completo img {
     max-height: 100mm;
 }
@@ -563,12 +578,15 @@ figcaption {
     text-indent: -4.5mm;
     font-size: 8pt;
     line-height: 1.26;
-    text-align: left;
+    text-align: justify;
     margin: 0 0 1.4mm 0;
     orphans: 2;
     widows: 2;
     hyphens: none;
     overflow-wrap: break-word;
+}
+.referencias .ref-item a {
+    overflow-wrap: anywhere;
 }
 
 .enlace-id {
@@ -584,14 +602,35 @@ figcaption {
     vertical-align: -0.5mm;
     display: inline-block;
 }
-a.cita-enlace {
-    color: #0066cc;
-    text-decoration: none;
-    border-bottom: none;
-}
 .icono-ror {
     height: 3.1mm;
     width: auto;
     vertical-align: -0.5mm;
     display: inline-block;
+}
+
+.cuerpo-articulo-tabla-ancha {
+    width: 100%;
+    text-align: justify;
+    hyphens: none;
+}
+.cuerpo-articulo-tabla-ancha > .rma-tabla {
+    column-span: none;
+    width: 100%;
+}
+
+/* Compactación automática progresiva para que tablas extensas entren en 1 página sin cortarse */
+.rma-tabla.tabla-compacta-1 table { font-size: 6.7pt; line-height: 1.12; }
+.rma-tabla.tabla-compacta-1 th, .rma-tabla.tabla-compacta-1 td { padding-top: 0.65mm !important; padding-bottom: 0.65mm !important; }
+.rma-tabla.tabla-compacta-2 table { font-size: 6.2pt; line-height: 1.08; }
+.rma-tabla.tabla-compacta-2 th, .rma-tabla.tabla-compacta-2 td { padding-top: 0.48mm !important; padding-bottom: 0.48mm !important; }
+.rma-tabla.tabla-compacta-3 table { font-size: 5.8pt; line-height: 1.05; }
+.rma-tabla.tabla-compacta-3 th, .rma-tabla.tabla-compacta-3 td { padding-top: 0.36mm !important; padding-bottom: 0.36mm !important; }
+
+.bloque-titulos,.titulo-es,.titulo-en{orphans:2;widows:2;break-inside:avoid;page-break-inside:avoid;}
+
+a.cita-bib {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
 }

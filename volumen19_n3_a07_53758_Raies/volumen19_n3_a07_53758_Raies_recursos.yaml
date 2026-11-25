@@ -1,0 +1,28 @@
+figuras:
+  1:
+    ancho: "columna"
+    es: "A. Ubicación de los campos de batalla de Monte Longdon y Monte Tumbledown en las Islas Malvinas. B. Sistema defensivo de las Fuerzas Armadas Argentinas en torno a Puerto Argentino durante junio de 1982 (elaborado a partir de las directrices del Capitán (R) Héctor Tessey). Fuente: elaboración propia sobre la base de Landa <em>et al.</em> 2025."
+    en: "<em>A. Location of the Mount Longdon and Mount Tumbledown battlefields in the Malvinas/Falkland Islands. B. Defensive system of the Argentine Armed Forces around Puerto Argentino/Stanley in June 1982 (prepared following the guidelines provided by Captain (R) Héctor Tessey). Source: Prepared by the author based on Landa et al. 2025.</em>"
+  2:
+    ancho: "completo"
+    es: "Paisaje de los campos de batalla. A) Ladera occidental de Monte Longdon. B) Vista de Monte Tumbledown desde el sur. Fuente: fotografías de la autora."
+    en: "<em>Landscape of the battlefields. A) Western slope of Mount Longdon. B) View of Mount Tumbledown from the south. Source: photographs by the author.</em>"
+  3:
+    ancho: "completo"
+    es: "Metodología de adquisición y procesamiento fotogramétrico. A y B. Diseño de las grillas sistemáticas de prospección arqueológica en Monte Longdon y Monte Tumbledown. C. Adquisición fotogramétrica aérea mediante VANT. D. Adquisición fotogramétrica terrestre. E y F. Visualización del alineamiento de cámaras y del modelo tridimensional generado durante el procesamiento. Fuentes: A y B, elaboración propia sobre la base de Landa et al., 2025; C, fotografía cortesía de Carlos Landa; D, fotografía cortesía de Sebastián Ávila; E y F, elaboración propia."
+    en: "<em>Photogrammetric acquisition and processing methodology. A and B. Design of the systematic archaeological survey grids at Mount Longdon and Mount Tumbledown. C. Aerial photogrammetric acquisition using an UAV. D. Terrestrial photogrammetric acquisition. E and F. Visualization of camera alignment and the three-dimensional model generated during processing. Sources: A and B, authors&#x27; elaboration based on Landa et al. 2025; C, photograph courtesy of Carlos Landa; D, photograph courtesy of Sebastián Ávila; E and F, authors&#x27; elaboration</em>."
+  4:
+    ancho: "completo"
+    es: "Repositorio digital interactivo para la consulta del registro arqueológico. A. Colección de modelos 3D disponibles en Sketchfab. B. Modelo 3D de Monte Longdon con anotaciones e hipervínculos asociados. C. Ejemplo de integración de fotografías históricas, testimonios y documentación histórica. D. Modelo 3D del Puesto Comando de la Compañía B del Regimiento de Infantería 7. Fuente: elaboración propia."
+    en: "<em>Interactive digital repository for accessing the archaeological record. A. Collection of 3D models available on Sketchfab. B. 3D model of Mount Longdon with associated annotations and hyperlinks. C. Example of the integration of historical photographs, veterans&#x27; testimonies, and historical documentation. D. 3D model of the Company B Command Post, Infantry Regiment 7. Source: Authors&#x27; elaboration.</em>"
+  5:
+    ancho: "columna"
+    es: "Flujo metodológico para la materialización del paisaje arqueológico mediante impresión 3D. A. Modelo fotogramétrico georreferenciado en <em>Agisoft Metashape Pro</em>. B. Preparación y optimización del modelo en <em>Blender</em>. C. Impresoras 3D empleadas. D. Módulos impresos en PLA. E. Ensamblaje, pintura y ambientación del diorama. F. Detalles de la escena en escala 1:35. G. Vista general del diorama y expuesto. Fuentes: A y B, elaboración propia; C y D, cortesía del Instituto Nacional de Educación Tecnológica (INET); E, F y G, fotografías de la autora."
+    en: "<em>Methodological workflow for the materialization of the archaeological landscape through 3D printing. A.Georeferenced photogrammetric model in Agisoft Metashape Pro. B. Model preparation and optimization in Blender. C. 3D printers used for fabrication. D. PLA-printed modules. E. Assembly, painting, and scenic detailing of the diorama. F. Details of the 1:35 scale scene. G. General view of the completed diorama on display. Sources: A and B, authors&#x27; elaboration; C and D, courtesy of the National Institute of Technological Education (INET); E, F, and G, photographs by the author.</em>"
+
+tablas:
+  1:
+    ancho: "completo"
+    archivo: "volumen19_n3_a07_53758_Raies_tabla01.docx"
+    es: "Características técnicas de los modelos tridimensionales correspondientes a los campos de batalla de Monte Longdon y Monte Tumbledown disponibles en Sketchfab (https://sketchfab.com/alejandraraies/collections). Abreviaturas: O: ortomosaico; DEM: modelo digital de elevación; 3D: modelo tridimensional; STL: archivo para impresión tridimensional; Anim.: imágenes derivadas del modelo y animación."
+    en: "<em>Technical characteristics of the three-dimensional models corresponding to the battlefields of Mount Longdon and Mount Tumbledown available on Sketchfab (https://sketchfab.com/alejandraraies/collections). Abbreviations: O: orthomosaic; DEM: digital elevation model; 3D: three-dimensional model; STL: file for three-dimensional printing; Anim.: rendered images and animation.</em>"

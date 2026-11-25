@@ -1,0 +1,79 @@
+citas_detectadas = []
+
+# --- 1) Citas entre paréntesis: (Autor, 2020) ---
+for m_par in re.finditer(r"\(([^()]{4,400})\)", texto_completo):
+    contenido = m_par.group(1)
+    if not re.search(pat_anio, contenido, flags=re.I):
+        continue
+    for m_c in re.finditer(
+        rf"({pat_autor_cita})(?:\s*,\s*|\s+)({pat_bloque_anios})(?=$|[\s:,.\];])",
+        contenido,
+    ):
+        autor_txt = m_c.group(1).strip()
+        anios_txt = m_c.group(2)
+        autor_cl = _extraer_apellido_probable_cita(autor_txt)
+        if not autor_cl or autor_cl.lower() in stop_autores:
+            continue
+        for a in re.findall(pat_anio, anios_txt, flags=re.I):
+            citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+# --- 2) Citas narrativas: Autor (2020) ---
+for m_nar in re.finditer(
+    rf"({pat_autor_cita})\s*\(\s*({pat_bloque_anios})(?:\s*[: ,][^)]*)?\)",
+    texto_completo,
+):
+    autor_txt = m_nar.group(1).strip()
+    anios_txt = m_nar.group(2)
+    autor_cl = _extraer_apellido_probable_cita(autor_txt)
+    if not autor_cl or autor_cl.lower() in stop_autores:
+        continue
+    for a in re.findall(pat_anio, anios_txt, flags=re.I):
+        citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+# --- 3) Citas dentro de celdas de tabla ---
+for celda in celdas_tabla:
+    for m_td_c in re.finditer(
+        rf"({pat_autor_cita})(?:\s*,\s*|\s+)({pat_bloque_anios})(?=$|[\s:,.\];])",
+        celda,
+    ):
+        autor_txt = m_td_c.group(1).strip()
+        anios_txt = m_td_c.group(2)
+        autor_cl = _extraer_primer_apellido_cita(autor_txt)
+        if not autor_cl or autor_cl.lower() in stop_autores:
+            continue
+        for a in re.findall(pat_anio, anios_txt, flags=re.I):
+            citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+# --- 4) Marcar referencias citadas ---
+citas_sin_ref = {}
+for etiqueta, autor_cl, a_norm in citas_detectadas:
+    clave = (autor_cl, a_norm)
+    if clave in indice_ref_por_clave:
+        for r_obj in indice_ref_por_clave[clave]:
+            r_obj["citada"] = True
+    else:
+        if clave not in citas_sin_ref:
+            otros = sorted(anios_por_autor.get(autor_cl, []))
+            sugerencia = f" (en Bibliografía figura con año: {', '.join(otros)})" if otros else ""
+            citas_sin_ref[clave] = f"{etiqueta}{sugerencia}"
+
+refs_no_citadas = []
+for r in refs_parsed:
+    if not r["citada"]:
+        muestra = ""
+        if r["autor_clave"]:
+            m_dbg = re.search(rf".{{0,25}}\b{re.escape(r['autor_clave'].split()[0])}\b.{{0,35}}", texto_completo, flags=re.I)
+            if m_dbg:
+                muestra = f" [en texto aparece: '{m_dbg.group(0).strip()}']"
+        refs_no_citadas.append(
+            f"[{r['idx']}] {r['texto'][:90]}{'...' if len(r['texto']) > 90 else ''}{muestra}"
+        )
+
+return {
+    "total_citas": len(citas_detectadas),
+    "total_refs": len(refs_parsed),
+    "citas_sin_ref": list(citas_sin_ref.values()),
+    "refs_no_citadas": refs_no_citadas,
+    "posibles_duplicados": colisiones_ab,
+    "errores_formato_rma": errores_formato_rma,
+}

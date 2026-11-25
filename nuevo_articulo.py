@@ -1,1033 +1,305 @@
 #!/usr/bin/env python3
-"""
-Asistente Interactivo de Artículos OJS - Revista del Museo de Antropología (RMA)
-
-Detecta automáticamente carpetas de artículos creadas ad-hoc (ej. volumen19_n3_54854),
-identifica archivos Word (.docx), tablas separadas (.docx / .xlsx / .csv) e imágenes
-con cualquier nombre, pregunta qué es cada archivo, los estandariza con el ID de OJS
-y compila PDF + HTML (OJS) + XML (SciELO).
-
-Modos de uso:
-  python asistente.py
-  python nuevo_articulo.py
-  python nuevo_articulo.py 54854 volumen19_n3_54854
-"""
+"""Asistente interactivo completo para configurar metadatos, ORCID/ROR, recursos y compilar artículos RMA."""
+from __future__ import annotations
 
 import re
-import shutil
-import sys
 from pathlib import Path
-from docx import Document
-from maquetar_rma import (
-    _parsear_yaml_basico,
-    buscar_archivo_epigrafes,
-    es_archivo_epigrafes,
-    normalizar_orcid,
-    normalizar_ror,
-    parsear_autores_y_afiliaciones_docx,
-    parsear_epigrafes_docx,
-)
+import yaml
 
-try:
-    import yaml
-except ImportError:
-    yaml = None
+SECCIONES = ['Arqueología', 'Antropología Biológica', 'Antropología Social', 'Museología', 'Dossier']
 
-SECCIONES_PREDEFINIDAS = [
-    "Arqueología",
-    "Antropología Social",
-    "Bioantropología",
-    "Dossier",
-    "Editorial",
-    "Foro",
-    "Notas",
-    "Reseñas",
-]
-
-EXTS_IMAGEN = (".png", ".jpg", ".jpeg", ".tif", ".tiff", ".webp")
-EXTS_TABLA = (".docx", ".xlsx", ".csv")
-CARPETAS_IGNORADAS = {
-    ".venv",
-    "venv",
-    "env",
-    "__pycache__",
-    "assets",
-    "ejemplo_ojs",
-    "ejemplo_fasciculo",
-    "salida",
-    "figuras",
-    "figura",
-    "figures",
-    "imagenes",
-    "imágenes",
-    "tablas",
-    "tabla",
-    "tables",
-    "cuadros",
-    "epigrafes",
-    "epígrafes",
-    "epigrafe",
-    "leyendas",
-    "captions",
-}
+EXT_IMAGEN = (".png", ".jpg", ".jpeg", ".tif", ".tiff", ".webp")
+EXT_TABLA = (".docx", ".xlsx", ".csv")
 
 
-def _natural_key(texto: str):
-    return [int(tok) if tok.isdigit() else tok.lower() for tok in re.split(r"(\d+)", texto)]
+def _pedir(prompt: str, defecto: str = "") -> str:
+    suf = f" [{defecto}]" if str(defecto).strip() != "" else ""
+    val = input(f"{prompt}{suf}: ").strip()
+    return val if val != "" else str(defecto)
 
 
-def _cargar_yaml_simple(ruta: Path) -> dict:
-    if not ruta.exists():
-        return {}
-    txt = ruta.read_text(encoding="utf-8")
-    if yaml is not None:
-        return yaml.safe_load(txt) or {}
-    return _parsear_yaml_basico(txt)
+def _sugerir_autor_corto(autores: list[dict]) -> str:
+    nombres = [str(a.get("nombre", "")).strip() for a in autores if str(a.get("nombre", "")).strip()]
+    if not nombres:
+        return ""
+
+    def _abreviar(full: str) -> str:
+        partes = [p for p in full.split() if p]
+        if len(partes) == 1:
+            return partes[0]
+        ini = f"{partes[0][0].upper()}."
+        apellido = " ".join(partes[1:])
+        return f"{ini} {apellido}"
+
+    if len(nombres) == 1:
+        return _abreviar(nombres[0])
+    if len(nombres) == 2:
+        return f"{_abreviar(nombres[0])} y {_abreviar(nombres[1])}"
+    return f"{_abreviar(nombres[0])} et al."
 
 
-def _escapar_yaml(valor: str) -> str:
-    return str(valor).replace("\\", "\\\\").replace('"', '\\"')
-
-
-def preguntar(etiqueta: str, defecto: str = "", obligatorio: bool = False) -> str:
-    while True:
-        sufijo = f" [{defecto}]" if defecto != "" else ""
-        try:
-            resp = input(f"  {etiqueta}{sufijo}: ").strip()
-        except EOFError:
-            resp = ""
-        if resp == "":
-            if defecto != "" or not obligatorio:
-                return defecto
-            print("    ! Este dato es obligatorio. Ingresá un valor.")
+def _detectar_id_ojs(carpeta: Path) -> str:
+    for p in sorted(carpeta.glob("*_manuscrito.docx")):
+        if p.name.startswith(("~$", ".~")):
             continue
-        if resp == "-":
-            return ""
-        return resp
+        return p.name[: -len("_manuscrito.docx")]
+    return ""
 
 
-def preguntar_si_no(etiqueta: str, defecto_si: bool = True) -> bool:
-    hint = "S/n" if defecto_si else "s/N"
-    try:
-        resp = input(f"\n{etiqueta} [{hint}]: ").strip().lower()
-    except EOFError:
-        resp = ""
-    if not resp:
-        return defecto_si
-    return resp in ("s", "si", "sí", "y", "yes")
+def _defaults_desde_carpeta(nombre_carpeta: str, rev: dict) -> dict:
+    vol = str(rev.get("volumen_actual", "19"))
+    num = str(rev.get("numero_actual", "3"))
+    anio = str(rev.get("anio_actual", "2026"))
+    cod = ""
+    m = re.search(r"volumen(\d+)[_-]n(\d+)[_-](a\d+)", nombre_carpeta, re.I)
+    if m:
+        vol = str(int(m.group(1)))
+        num = str(int(m.group(2)))
+        cod = f"v{int(vol):02d}n{int(num):02d}{m.group(3).lower()}"
+    return {"volumen": vol, "numero": num, "anio": anio, "codigo_publicacion": cod}
 
 
-def elegir_seccion(defecto: str = "Arqueología") -> str:
-    print("\n  Secciones disponibles:")
-    for idx, sec in enumerate(SECCIONES_PREDEFINIDAS, start=1):
-        print(f"    {idx}. {sec}")
-    resp = preguntar("Sección (número o nombre)", defecto=defecto)
-    if resp.isdigit():
-        n = int(resp)
-        if 1 <= n <= len(SECCIONES_PREDEFINIDAS):
-            return SECCIONES_PREDEFINIDAS[n - 1]
-    return resp
-
-
-def elegir_formato(defecto: str = "tradicional") -> str:
-    print("\n  Perfil de maquetación:")
-    print("    1. tradicional (2 columnas, márgenes angostos 20 mm — número actual)")
-    print("    2. moderno     (1 columna, bloques pastel — próximo año)")
-    def_num = "2" if defecto == "moderno" else "1"
-    resp = preguntar("Formato (1 o 2)", defecto=def_num).lower()
-    if resp in ("2", "moderno", "1col"):
-        return "moderno"
-    return "tradicional"
-
-
-def detectar_carpetas_articulos(raiz: Path) -> list[dict]:
-    """Escanea subcarpetas creadas por el usuario (ej. volumen19_n3_54854) en 'raiz'."""
-    encontradas = []
-    if not raiz.exists():
-        return encontradas
-    for sub in sorted(raiz.iterdir(), key=lambda p: _natural_key(p.name)):
-        if not sub.is_dir() or sub.name.startswith(".") or sub.name in CARPETAS_IGNORADAS:
-            continue
-        n_docx = len([p for p in sub.glob("*.docx") if not p.name.startswith("~$")])
-        n_imgs = len([p for p in sub.iterdir() if p.is_file() and p.suffix.lower() in EXTS_IMAGEN])
-        for sub_fig in sub.iterdir():
-            if sub_fig.is_dir() and sub_fig.name.lower() in ("figuras", "figura", "figures", "imagenes", "imágenes"):
-                n_imgs += len([p for p in sub_fig.iterdir() if p.is_file() and p.suffix.lower() in EXTS_IMAGEN])
-        tiene_salida = (sub / "salida").is_dir()
-        encontradas.append({
-            "path": sub,
-            "nombre": sub.name,
-            "n_docx": n_docx,
-            "n_imgs": n_imgs,
-            "tiene_salida": tiene_salida,
-        })
-    return encontradas
-
-
-def extraer_datos_de_nombre_carpeta(carpeta: Path) -> dict:
-    """
-    Si la carpeta se llama por ej. 'volumen19_n3_54854' o 'v19n03_54854' o '54854',
-    deduce automáticamente id_ojs='54854', volumen='19', numero='3'.
-    """
-    nombre = carpeta.name
-    datos = {"id_ojs": "", "volumen": "", "numero": ""}
-
-    m_vol = re.search(r"(?:volumen|vol|v)[\s_-]*(\d{1,3})", nombre, re.I)
-    if m_vol:
-        datos["volumen"] = str(int(m_vol.group(1)))
-
-    m_num = re.search(r"(?<![a-zA-Z])(?:numero|num|n)[\s_-]*(\d{1,2})", nombre, re.I)
-    if m_num:
-        datos["numero"] = str(int(m_num.group(1)))
-
-    m_id_end = re.search(r"(?:^|[_\-\s])(\d{4,7})$", nombre)
-    if m_id_end:
-        datos["id_ojs"] = m_id_end.group(1)
-    else:
-        nums_largos = re.findall(r"\d{4,7}", nombre)
-        for n in nums_largos:
-            if not (n.startswith("20") and len(n) == 4):
-                datos["id_ojs"] = n
-                break
-
-    return datos
-
-
-def _resumen_docx(ruta_docx: Path) -> tuple[int, int]:
-    """Devuelve (cantidad_parrafos_no_vacios, cantidad_tablas) de un archivo Word."""
-    try:
-        doc = Document(str(ruta_docx))
-        n_paras = sum(1 for p in doc.paragraphs if p.text.strip())
-        n_tabs = len(doc.tables)
-        return n_paras, n_tabs
-    except Exception:
-        return 0, 0
-
-
-def _seleccionar_de_lista(respuesta: str, candidatos: list[Path]) -> Path | None:
-    r = respuesta.strip()
-    if not r or r == "-":
-        return None
-    if r.isdigit():
-        idx = int(r) - 1
-        if 0 <= idx < len(candidatos):
-            return candidatos[idx]
-    for c in candidatos:
-        if c.name.lower() == r.lower() or c.stem.lower() == r.lower():
-            return c
-    return None
-
-
-def detectar_y_estandarizar_manuscrito(destino: Path, art_id: str) -> tuple[Path, Path, Path | None]:
-    """
-    Detecta los archivos .docx en 'destino' (con cualquier nombre: texto.docx, paper.docx, etc.),
-    pregunta cuál es el manuscrito principal y lo estandariza como {id}_manuscrito.docx.
-    Devuelve (destino_final, ruta_manuscrito_std, ruta_archivo_origen_manuscrito).
-    """
-    destino.mkdir(parents=True, exist_ok=True)
-    ruta_ms_std = destino / f"{art_id}_manuscrito.docx"
-
-    def _listar_docx_sueltos(carpeta_b: Path) -> list[Path]:
-        return sorted(
-            [
-                p
-                for p in carpeta_b.glob("*.docx")
-                if not p.name.startswith("~$")
-                and not re.match(r"^\d+_(manuscrito|tablas|tabla\d+|epigrafes)\.docx$", p.name, re.I)
-                and not es_archivo_epigrafes(p.name, art_id)
-            ],
-            key=lambda p: _natural_key(p.name),
-        )
-
-    todos_docx = _listar_docx_sueltos(destino)
-
-    if ruta_ms_std.exists() and not todos_docx:
-        print(f"  Manuscrito ya estandarizado detectado: {ruta_ms_std.name}")
-        return destino, ruta_ms_std, None
-
-    while not ruta_ms_std.exists() and not todos_docx:
-        print(f"\n  [Atención] No encontré ningún archivo .docx en: {destino}")
-        subcarpetas = detectar_carpetas_articulos(destino)
-        if subcarpetas:
-            print("  Sin embargo, detecté estas subcarpetas aquí dentro:")
-            for idx, sc in enumerate(subcarpetas, start=1):
-                print(f"    {idx}. {sc['nombre']}  ({sc['n_docx']} .docx, {sc['n_imgs']} imágenes)")
-            resp_alt = preguntar(
-                "Ingresá el número o nombre de la subcarpeta (o el nombre del .docx si lo copiaste aquí)",
-                defecto="1" if len(subcarpetas) == 1 else "",
-            )
-            if resp_alt.isdigit() and 1 <= int(resp_alt) <= len(subcarpetas):
-                destino = subcarpetas[int(resp_alt) - 1]["path"].resolve()
-                ruta_ms_std = destino / f"{art_id}_manuscrito.docx"
-                todos_docx = _listar_docx_sueltos(destino)
-                print(f"  -> Cambiando carpeta de trabajo a: {destino}")
-                break
-            elif resp_alt and (destino / resp_alt).is_dir():
-                destino = (destino / resp_alt).resolve()
-                ruta_ms_std = destino / f"{art_id}_manuscrito.docx"
-                todos_docx = _listar_docx_sueltos(destino)
-                print(f"  -> Cambiando carpeta de trabajo a: {destino}")
-                break
-            elif resp_alt and Path(resp_alt).expanduser().is_dir():
-                destino = Path(resp_alt).expanduser().resolve()
-                ruta_ms_std = destino / f"{art_id}_manuscrito.docx"
-                todos_docx = _listar_docx_sueltos(destino)
-                print(f"  -> Cambiando carpeta de trabajo a: {destino}")
-                break
-        else:
-            print("  Copiá el archivo Word del artículo en esa carpeta (puede llamarse paper.docx, texto.docx, etc.)")
-            resp_alt = preguntar("Nombre del archivo .docx (o ruta a la carpeta donde está)", defecto="")
-
-        if resp_alt:
-            cand_dir = Path(resp_alt).expanduser()
-            if not cand_dir.is_absolute():
-                cand_dir = (destino / resp_alt).resolve()
-            if cand_dir.is_dir():
-                destino = cand_dir
-                ruta_ms_std = destino / f"{art_id}_manuscrito.docx"
-                todos_docx = _listar_docx_sueltos(destino)
-                continue
-            cand_file = destino / resp_alt
-            if cand_file.exists() and cand_file.suffix.lower() == ".docx":
-                shutil.copy2(cand_file, ruta_ms_std)
-                print(f"  Estandarizado como: {ruta_ms_std.name}")
-                return destino, ruta_ms_std, cand_file
-            print(f"    ! No encuentro '{resp_alt}' en {destino}.")
-        else:
-            todos_docx = _listar_docx_sueltos(destino)
-
-    if ruta_ms_std.exists() and not todos_docx:
-        return destino, ruta_ms_std, None
-
-    print("\n  --- Detección de archivos Word (.docx) en la carpeta ---")
-    info_docx = []
-    for idx, p in enumerate(todos_docx, start=1):
-        np, nt = _resumen_docx(p)
-        info_docx.append((p, np, nt))
-        print(f"    {idx}. {p.name}  ({np} párrafos, {nt} tablas)")
-
-    origen_ms = None
-    if not ruta_ms_std.exists():
-        if len(info_docx) == 1:
-            unico = info_docx[0][0]
-            if preguntar_si_no(f"¿'{unico.name}' es el MANUSCRITO (texto principal) del envío #{art_id}?", defecto_si=True):
-                shutil.copy2(unico, ruta_ms_std)
-                origen_ms = unico
-                print(f"  -> Guardado estándar: {ruta_ms_std.name}")
-        else:
-            idx_sug_ms = max(range(len(info_docx)), key=lambda i: info_docx[i][1]) + 1
-            while not ruta_ms_std.exists():
-                resp_ms = preguntar(
-                    "¿Cuál archivo es el MANUSCRITO (texto principal)? (número o nombre)",
-                    defecto=str(idx_sug_ms),
-                    obligatorio=True,
-                )
-                elegido_ms = _seleccionar_de_lista(resp_ms, todos_docx)
-                if elegido_ms is not None:
-                    shutil.copy2(elegido_ms, ruta_ms_std)
-                    origen_ms = elegido_ms
-                    print(f"  -> Manuscrito estandarizado: {ruta_ms_std.name}")
-                else:
-                    print("    ! Opción no válida. Elegí un número de la lista.")
-
-    return destino, ruta_ms_std, origen_ms
-
-
-def detectar_y_estandarizar_tablas(
-    destino: Path,
-    art_id: str,
-    tabs_en_texto: int,
-    tabs_embebidas: int,
-    origen_ms: Path | None,
-    formato: str,
-    epigrafes_tablas: dict | None = None,
-) -> dict:
-    """
-    Detecta archivos de tablas (.docx, .xlsx, .csv) en 'destino' o 'destino/tablas',
-    soportando tanto:
-      - Un único archivo con todas las tablas (estandarizado como {id}_tablas.docx)
-      - Cada tabla en un archivo distinto (estandarizado como {id}_tabla01.docx / .xlsx / .csv)
-      - Tablas ya embebidas dentro del manuscrito principal
-    """
-    carpeta_tab = destino / "tablas"
-
-    # Revisar archivos ya estandarizados previamente
-    ya_std_ind = {}
-    auto_tabs = {}
-    for carpeta_busq in _carpetas_recursos_ci(destino, ('tablas', 'tabla', 'tables', 'cuadros')):
-        if not carpeta_busq.exists():
-            continue
-        for p in carpeta_busq.iterdir():
-            m = re.match(rf"^{re.escape(art_id)}_tabla0*(\d+)\.(docx|xlsx|csv)$", p.name, re.I)
-            if m:
-                ya_std_ind[int(m.group(1))] = p
-
-    # Buscar archivos candidatos a tablas (excluyendo el manuscrito y archivos ya estandarizados)
-    candidatos = []
-    for carpeta_busq in _carpetas_recursos_ci(destino, ('tablas', 'tabla', 'tables', 'cuadros')):
-        if not carpeta_busq.exists():
-            continue
-        for p in sorted(carpeta_busq.iterdir(), key=lambda x: _natural_key(x.name)):
-            if not p.is_file() or p.name.startswith("~$"):
-                continue
-            if p.suffix.lower() not in EXTS_TABLA:
-                continue
-            if origen_ms is not None and p.resolve() == origen_ms.resolve():
-                continue
-            if re.match(r"^\d+_(manuscrito|tablas|tabla\d+|epigrafes)\.", p.name, re.I):
-                continue
-            if p.suffix.lower() == ".docx" and es_archivo_epigrafes(p.name, art_id):
-                continue
-            num_t = _extraer_num_recurso_ojs(p.stem, art_id, ("tabla", "tab", "table", "cuadro"))
-            if num_t is not None and num_t not in ya_std_ind:
-                nombre_std = f"{art_id}_tabla{num_t:02d}{p.suffix.lower()}"
-                shutil.copy2(p, destino / nombre_std)
-                ya_std_ind[num_t] = destino / nombre_std
-                auto_tabs[num_t] = p.name
-            else:
-                candidatos.append(p)
-    candidatos = sorted(candidatos, key=lambda p: _natural_key(p.name))
-
-    ruta_lote_std = destino / f"{art_id}_tablas.docx"
-    tabs_en_lote = 0
-    if ruta_lote_std.exists():
-        _, tabs_en_lote = _resumen_docx(ruta_lote_std)
-
-    epigrafes_tablas = epigrafes_tablas or {}
-    total_objetivo = max(
-        tabs_en_texto,
-        tabs_embebidas,
-        tabs_en_lote,
-        len(ya_std_ind),
-        max(epigrafes_tablas.keys(), default=0),
+def _yaml_dump_limpio(data: dict) -> str:
+    return yaml.safe_dump(
+        data,
+        allow_unicode=True,
+        sort_keys=False,
+        default_flow_style=False,
+        width=1000,
     )
-    if total_objetivo == 0 and not candidatos:
-        return {}
-
-    print("\n  --- Detección y asignación de Tablas ---")
-    if tabs_en_texto > 0:
-        print(f"  El manuscrito menciona {tabs_en_texto} tabla(s) (TABLA 1 .. TABLA {tabs_en_texto}).")
-    if tabs_embebidas > 0:
-        print(f"  (El propio manuscrito ya contiene {tabs_embebidas} tabla(s) insertada(s) adentro).")
-    if ya_std_ind:
-        print("  Tablas individuales ya estandarizadas: " + ", ".join(ya_std_ind[k].name for k in sorted(ya_std_ind)))
-    if candidatos:
-        print("  Archivos externos de tablas disponibles:")
-        for idx, p in enumerate(candidatos, start=1):
-            if p.suffix.lower() == ".docx":
-                np, nt = _resumen_docx(p)
-                det = f"{nt} tabla(s), {np} párrafos"
-            else:
-                det = p.suffix.lower()
-            ubic = "tablas/" if p.parent == carpeta_tab else "carpeta raíz"
-            print(f"    {idx}. {p.name}  ({det} — {ubic})")
-
-    if total_objetivo == 0 and candidatos:
-        cant_raw = preguntar(
-            "¿Cuántas tablas querés incorporar al artículo?",
-            defecto=str(len(candidatos)),
-        )
-        total_objetivo = int(cant_raw) if cant_raw.isdigit() else 0
-
-    if total_objetivo == 0:
-        return {}
-
-    if not preguntar_si_no(
-        f"¿Querés asignar los archivos y títulos bilingües de las {total_objetivo} tabla(s) ahora?",
-        defecto_si=True,
-    ):
-        return {}
-
-    # Caso especial: 1 solo archivo externo que ya contiene todas las tablas juntas (ej. cuadros.docx con 3 tablas)
-    usar_lote_unico = False
-    if len(candidatos) == 1 and candidatos[0].suffix.lower() == ".docx" and total_objetivo > 1:
-        _, nt_unico = _resumen_docx(candidatos[0])
-        if nt_unico >= total_objetivo:
-            if preguntar_si_no(
-                f"¿Todas las {total_objetivo} tablas están juntas dentro de '{candidatos[0].name}'?",
-                defecto_si=True,
-            ):
-                shutil.copy2(candidatos[0], ruta_lote_std)
-                print(f"  -> Archivo conjunto guardado como: {ruta_lote_std.name}")
-                usar_lote_unico = True
-
-    if formato == "tradicional":
-        prompt_ancho = "Ancho (1 = completo 2 columnas, 2 = 1 columna)"
-    else:
-        prompt_ancho = "Ancho (1 = completo 100%, 2 = centrado 74%)"
-
-    tablas_cfg = {}
-    usados = set()
-
-    for num in range(1, total_objetivo + 1):
-        print(f"\n  --- Tabla {num} ---")
-        archivo_asignado = ""
-
-        if num in ya_std_ind:
-            archivo_asignado = ya_std_ind[num].name
-            print(f"  Archivo ya asignado: {archivo_asignado}")
-        elif not usar_lote_unico and candidatos:
-            sug_idx = ""
-            for idx, c in enumerate(candidatos, start=1):
-                if c not in usados:
-                    sug_idx = str(idx)
-                    break
-            if tabs_embebidas >= num and not sug_idx:
-                sug_idx = "-"
-            resp_t = preguntar(
-                f"Archivo para Tabla {num} (número de lista, nombre, o '-' si va embebida en el Word)",
-                defecto=sug_idx,
-            )
-            elegido = _seleccionar_de_lista(resp_t, candidatos)
-            if elegido is not None:
-                usados.add(elegido)
-                nombre_std = f"{art_id}_tabla{num:02d}{elegido.suffix.lower()}"
-                shutil.copy2(elegido, destino / nombre_std)
-                archivo_asignado = nombre_std
-                print(f"  -> Copiada como: {nombre_std}")
-
-        ancho_in = preguntar(prompt_ancho, defecto="1")
-        if ancho_in in ("2", "columna", "centrado", "74%", "70%"):
-            ancho = "columna" if formato == "tradicional" else "centrado"
-        else:
-            ancho = "completo"
-        ep_t = epigrafes_tablas.get(num, {})
-        if ep_t.get("es") or ep_t.get("en"):
-            print(f"  Epígrafes precargados desde {art_id}_epigrafes.docx")
-        es_def = ep_t.get("es") or f"Descripción de la Tabla {num}."
-        en_def = ep_t.get("en") or f"Description of Table {num}."
-        notas_def = ep_t.get("notas") or ""
-        es = preguntar(f"Título/epígrafe en ESPAÑOL (Tabla {num})", defecto=es_def)
-        en = preguntar(f"Título/epígrafe en INGLÉS (Table {num})", defecto=en_def)
-        notas = preguntar(f"Notas al pie de la Tabla {num} (opcional, Enter para omitir)", defecto=notas_def)
-
-        item_cfg = {"ancho": ancho, "es": es, "en": en, "notas": notas}
-        if archivo_asignado:
-            item_cfg["archivo"] = archivo_asignado
-        tablas_cfg[num] = item_cfg
-
-    return tablas_cfg
 
 
-def _extraer_num_recurso_ojs(stem: str, art_id: str, palabras: tuple[str, ...]) -> int | None:
-    """
-    Si el nombre empieza con el ID de OJS y luego dice 'Figura+1', 'figura_1', 'fig 02', 'Tabla+1', etc.,
-    devuelve el número entero de recurso (ej. 1, 2).
-    """
+def _buscar_candidatos_recurso(
+    carpeta: Path,
+    art_id: str,
+    num: int,
+    palabras: tuple[str, ...],
+    extensiones: tuple[str, ...],
+    subdirs: tuple[str, ...],
+) -> list[str]:
+    """Busca archivos candidatos para Figura N o Tabla N, con o sin prefijo art_id."""
+    dirs = [carpeta]
+    for sub in sorted(carpeta.iterdir(), key=lambda p: p.name.lower()):
+        if sub.is_dir() and sub.name.lower() in subdirs:
+            dirs.append(sub)
+
     pal_re = "|".join(re.escape(w) for w in palabras)
     sep = r"(?:[\s_\-\.\+]|%20)*"
-    m = re.match(rf"^{re.escape(art_id)}{sep}(?:{pal_re}){sep}0*(\d+)(?!\d)", stem.strip(), re.I)
-    return int(m.group(1)) if m else None
+    pat_con_id = re.compile(rf"^{re.escape(art_id)}{sep}(?:{pal_re}){sep}0*{num}(?!\d)", re.I)
+    pat_sin_id = re.compile(rf"^(?:{pal_re}){sep}0*{num}(?!\d)", re.I)
 
+    exactos: list[str] = []
+    flexibles: list[str] = []
 
-def _carpetas_recursos_ci(destino: Path, nombres_sub: tuple[str, ...]) -> list[Path]:
-    """Devuelve subcarpetas coincidentes (sin importar mayúsculas/minúsculas) más la carpeta raíz."""
-    dirs = []
-    if destino.exists():
-        for p in sorted(destino.iterdir(), key=lambda x: x.name.lower()):
-            if p.is_dir() and p.name.lower() in nombres_sub:
-                dirs.append(p)
-        dirs.append(destino)
-    return dirs
-
-
-def detectar_y_estandarizar_imagenes(
-    destino: Path,
-    art_id: str,
-    figs_en_texto: int,
-    formato: str,
-    epigrafes_figuras: dict | None = None,
-) -> dict:
-    """
-    Busca imágenes en 'destino', 'destino/figuras', 'destino/Figuras', etc.
-    Reconoce automáticamente nombres estilo OJS como 54854_Figura+1.tiff o 54854_Figura+2.jpg,
-    las estandariza a figuras/{id}_fig01.<ext> y recoge sus anchos y epígrafes bilingües.
-    """
-    carpeta_fig = destino / "figuras"
-    carpeta_fig.mkdir(parents=True, exist_ok=True)
-    dirs_busqueda = _carpetas_recursos_ci(destino, ("figuras", "figura", "figures", "imagenes", "imágenes"))
-
-    ya_std = {}
-    auto_detectadas = {}
-    candidatas = []
-
-    # 1) Revisar figuras ya estandarizadas en figuras/
-    for p in sorted(carpeta_fig.iterdir(), key=lambda x: _natural_key(x.name)):
-        if p.is_file() and p.suffix.lower() in EXTS_IMAGEN:
-            m = re.match(rf"^{re.escape(art_id)}_fig0*(\d+)\.", p.name, re.I)
-            if m:
-                ya_std[int(m.group(1))] = p
-
-    # 2) Revisar imágenes en figuras/, Figuras/ y la carpeta raíz del artículo
-    for carpeta_busq in dirs_busqueda:
-        if not carpeta_busq.exists():
-            continue
-        for p in sorted(carpeta_busq.iterdir(), key=lambda x: _natural_key(x.name)):
-            if not p.is_file() or p.suffix.lower() not in EXTS_IMAGEN:
+    for d in dirs:
+        for f in sorted(d.iterdir(), key=lambda p: p.name.lower()):
+            if not f.is_file() or f.name.startswith(("~$", ".~")):
                 continue
-            if re.match(rf"^{re.escape(art_id)}_fig\d+\.", p.name, re.I):
+            if f.suffix.lower() not in extensiones:
                 continue
-            num_fig = _extraer_num_recurso_ojs(p.stem, art_id, ("figura", "fig", "figure"))
-            if num_fig is not None and num_fig not in ya_std and num_fig not in auto_detectadas:
-                nombre_std = f"{art_id}_fig{num_fig:02d}{p.suffix.lower()}"
-                shutil.copy2(p, carpeta_fig / nombre_std)
-                ya_std[num_fig] = carpeta_fig / nombre_std
-                rel_origen = p.name if p.parent == destino else f"{p.parent.name}/{p.name}"
-                auto_detectadas[num_fig] = rel_origen
-            else:
-                candidatas.append(p)
+            stem = f.stem.strip()
+            rel = f.name if d == carpeta else f"{d.name}/{f.name}"
+            if pat_con_id.match(stem):
+                exactos.append(f.name)
+            elif pat_sin_id.match(stem):
+                flexibles.append(f.name)
 
-    epigrafes_figuras = epigrafes_figuras or {}
-    total_objetivo = max(
-        figs_en_texto,
-        max(ya_std.keys(), default=0),
-        max(epigrafes_figuras.keys(), default=0),
+    vistos: set[str] = set()
+    ordenados: list[str] = []
+    for item in exactos + flexibles:
+        if item not in vistos:
+            vistos.add(item)
+            ordenados.append(item)
+    return ordenados
+
+
+def _listar_archivos_por_ext(carpeta: Path, extensiones: tuple[str, ...], subdirs: tuple[str, ...]) -> list[str]:
+    dirs = [carpeta]
+    for sub in sorted(carpeta.iterdir(), key=lambda p: p.name.lower()):
+        if sub.is_dir() and sub.name.lower() in subdirs:
+            dirs.append(sub)
+    vistos: set[str] = set()
+    res: list[str] = []
+    for d in dirs:
+        for f in sorted(d.iterdir(), key=lambda p: p.name.lower()):
+            if f.is_file() and not f.name.startswith(("~$", ".~")) and f.suffix.lower() in extensiones:
+                if f.name not in vistos:
+                    vistos.add(f.name)
+                    res.append(f.name)
+    return res
+
+
+def ejecutar_flujo_interactivo(carpeta: str | Path, id_ojs: str = "") -> tuple[Path, str]:
+    from maquetar_rma import (
+        buscar_archivo_epigrafes,
+        cargar_config,
+        normalizar_orcid,
+        normalizar_rors,
+        parsear_autores_y_afiliaciones_docx,
+        parsear_epigrafes_docx,
+        parsear_manuscrito,
+        sugerir_titulo_corto,
     )
-    if total_objetivo == 0 and not candidatas:
-        return {}
 
-    print("\n  --- Detección y asignación de Imágenes / Figuras ---")
-    if figs_en_texto > 0:
-        print(f"  El manuscrito menciona {figs_en_texto} figura(s) (FIGURA 1 .. FIGURA {figs_en_texto}).")
-    if auto_detectadas:
-        print("  Figuras emparejadas automáticamente por código OJS:")
-        for k in sorted(auto_detectadas):
-            print(f"    - Figura {k}: {auto_detectadas[k]}  ->  figuras/{ya_std[k].name}")
-    elif ya_std:
-        print("  Ya estandarizadas en figuras/: " + ", ".join(ya_std[k].name for k in sorted(ya_std)))
-    if candidatas:
-        print("  Otras imágenes disponibles para asignar:")
-        for idx, img_p in enumerate(candidatas, start=1):
-            ubic = "figuras/" if img_p.parent == carpeta_fig else "carpeta raíz"
-            print(f"    {idx}. {img_p.name}  ({ubic})")
-
-    if total_objetivo == 0 and candidatas:
-        cant_raw = preguntar(
-            "¿Cuántas figuras querés incorporar al artículo?",
-            defecto=str(len(candidatas)),
-        )
-        total_objetivo = int(cant_raw) if cant_raw.isdigit() else 0
-
-    if total_objetivo == 0:
-        return {}
-
-    if not preguntar_si_no(
-        f"¿Querés cargar ahora los anchos y epígrafes bilingües de las {total_objetivo} figura(s)?",
-        defecto_si=True,
-    ):
-        return {}
-
-    if formato == "tradicional":
-        prompt_ancho = "Ancho (1 = completo 2 columnas, 2 = 1 columna)"
-    else:
-        prompt_ancho = "Ancho (1 = completo 100%, 2 = centrado 74%)"
-
-    figuras_cfg = {}
-    usadas = set()
-
-    for num in range(1, total_objetivo + 1):
-        print(f"\n  --- Figura {num} ---")
-        if num in ya_std:
-            orig_txt = f" (desde {auto_detectadas[num]})" if num in auto_detectadas else ""
-            print(f"  Archivo asignado: figuras/{ya_std[num].name}{orig_txt}")
-        elif candidatas:
-            sug_idx = ""
-            for idx, c in enumerate(candidatas, start=1):
-                if c not in usadas:
-                    sug_idx = str(idx)
-                    break
-            resp_img = preguntar(
-                f"Archivo de imagen para Figura {num} (número de lista, nombre, o '-' si aún no la tenés)",
-                defecto=sug_idx,
-            )
-            elegida = _seleccionar_de_lista(resp_img, candidatas)
-            if elegida is not None:
-                usadas.add(elegida)
-                nombre_std = f"{art_id}_fig{num:02d}{elegida.suffix.lower()}"
-                shutil.copy2(elegida, carpeta_fig / nombre_std)
-                print(f"  -> Copiada como: figuras/{nombre_std}")
-            else:
-                print(f"  -> Sin archivo por ahora (se usará recuadro provisional hasta que agregues {art_id}_figura_{num}.png)")
-
-        defecto_ancho = "1"
-        if num in ya_std and ya_std[num].exists():
-            try:
-                from PIL import Image as _PILImage
-                with _PILImage.open(ya_std[num]) as _im:
-                    _w, _h = _im.size
-                    if _h > 0:
-                        _ratio = _w / _h
-                        if _ratio < 1.28:
-                            defecto_ancho = "2"
-                            orient_txt = f"vertical/cuadrada ({_w}x{_h} px)"
-                        else:
-                            defecto_ancho = "1"
-                            orient_txt = f"apaisada ({_w}x{_h} px)"
-                        print(f"  Orientación detectada: {orient_txt} -> sugerido: {defecto_ancho}")
-            except Exception:
-                pass
-        ancho_in = preguntar(prompt_ancho, defecto=defecto_ancho)
-        if ancho_in in ("2", "columna", "centrado", "74%", "70%"):
-            ancho = "columna" if formato == "tradicional" else "centrado"
-        else:
-            ancho = "completo"
-        ep_f = epigrafes_figuras.get(num, {})
-        if ep_f.get("es") or ep_f.get("en"):
-            print(f"  Epígrafes precargados desde {art_id}_epigrafes.docx")
-        es_def = ep_f.get("es") or f"Descripción de la Figura {num}."
-        en_def = ep_f.get("en") or f"Description of Figure {num}."
-        es = preguntar(f"Epígrafe en ESPAÑOL (Figura {num})", defecto=es_def)
-        en = preguntar(f"Epígrafe en INGLÉS (Figure {num})", defecto=en_def)
-        figuras_cfg[num] = {"ancho": ancho, "es": es, "en": en}
-
-    return figuras_cfg
-
-
-def inspeccionar_manuscrito_existente(ruta_docx: Path) -> dict:
-    """Lee el Word del autor para detectar cantidad de figuras, tablas, título y autor."""
-    info = {"figs": 0, "tabs_texto": 0, "tabs_embebidas": 0, "titulo_sugerido": "", "autor_sugerido": ""}
-    if not ruta_docx.exists():
-        return info
-    try:
-        doc = Document(str(ruta_docx))
-        parrafos = [p.text.strip() for p in doc.paragraphs if p.text.strip() and p.text.strip() != "."]
-        if parrafos:
-            t0 = parrafos[0]
-            info["titulo_sugerido"] = (t0[:42] + " ...") if len(t0) > 45 else t0
-        if len(parrafos) >= 3:
-            aut = re.sub(r"[\*\d]+", "", parrafos[2]).strip()
-            partes = [a.strip() for a in re.split(r",|\sy\s", aut) if a.strip()]
-            if len(partes) == 1:
-                tokens = partes[0].split()
-                info["autor_sugerido"] = f"{tokens[0][0]}. {' '.join(tokens[1:])}" if len(tokens) > 1 else partes[0]
-            elif len(partes) == 2:
-                t1, t2 = partes[0].split(), partes[1].split()
-                a1 = f"{t1[0][0]}. {' '.join(t1[1:])}" if len(t1) > 1 else partes[0]
-                a2 = f"{t2[0][0]}. {' '.join(t2[1:])}" if len(t2) > 1 else partes[1]
-                info["autor_sugerido"] = f"{a1} y {a2}"
-            elif len(partes) > 2:
-                t1 = partes[0].split()
-                a1 = f"{t1[0][0]}. {' '.join(t1[1:])}" if len(t1) > 1 else partes[0]
-                info["autor_sugerido"] = f"{a1} et al."
-
-        max_fig = 0
-        max_tab = 0
-        for p in doc.paragraphs:
-            t = p.text.strip()
-            mf = re.match(r"^FIGURA\s+(\d+)\s*$", t, re.I)
-            if mf:
-                max_fig = max(max_fig, int(mf.group(1)))
-            mt = re.match(r"^TABLA\s+(\d+)\s*$", t, re.I)
-            if mt:
-                max_tab = max(max_tab, int(mt.group(1)))
-        info["figs"] = max_fig
-        info["tabs_texto"] = max_tab
-        info["tabs_embebidas"] = len(doc.tables)
-    except Exception:
-        pass
-    return info
-
-
-def inferir_valores_contexto(destino: Path) -> dict:
-    """Detecta formato, volumen, número, año, editor y siguiente página disponible."""
+    carpeta_path = Path(carpeta).resolve()
+    carpeta_path.mkdir(parents=True, exist_ok=True)
     dir_script = Path(__file__).resolve().parent
-    rev = _cargar_yaml_simple(destino / "revista.yaml") or _cargar_yaml_simple(dir_script / "revista.yaml")
-    info = {
-        "formato": str(rev.get("formato") or "tradicional"),
-        "volumen": "19",
-        "numero": "2",
-        "anio": "2026",
-        "pagina_inicio": "01",
-        "editor_seccion": "",
-        "siguiente_orden": 1,
-    }
+    rev = cargar_config(dir_script / "revista", obligatorio=False)
 
-    desde_nombre = extraer_datos_de_nombre_carpeta(destino)
-    if desde_nombre["volumen"]:
-        info["volumen"] = desde_nombre["volumen"]
-    if desde_nombre["numero"]:
-        info["numero"] = desde_nombre["numero"]
+    id_detectado = id_ojs.strip() or _detectar_id_ojs(carpeta_path)
+    id_ojs = _pedir("ID de envío OJS", id_detectado)
+    if not id_ojs:
+        raise ValueError("Se requiere un ID de envío OJS.")
 
-    fasc = _cargar_yaml_simple(destino / "fasciculo.yaml")
-    if fasc:
-        if fasc.get("formato"):
-            info["formato"] = str(fasc["formato"])
-        if fasc.get("volumen"):
-            info["volumen"] = str(fasc["volumen"])
-        if fasc.get("numero"):
-            info["numero"] = str(fasc["numero"])
-        if fasc.get("anio"):
-            info["anio"] = str(fasc["anio"])
-        if fasc.get("pagina_inicial_numero"):
-            info["pagina_inicio"] = f"{int(fasc['pagina_inicial_numero']):02d}"
+    ruta_meta = carpeta_path / f"{id_ojs}_metadatos.yaml"
+    meta_prev = cargar_config(carpeta_path / f"{id_ojs}_metadatos", obligatorio=False) if ruta_meta.exists() else {}
+    defs_carpeta = _defaults_desde_carpeta(carpeta_path.name, rev)
 
-    metas_existentes = sorted(destino.glob("*_metadatos.yaml"))
-    max_pag_fin = 0
-    for m_path in metas_existentes:
-        m = _cargar_yaml_simple(m_path)
-        if m.get("volumen"):
-            info["volumen"] = str(m["volumen"])
-        if m.get("numero"):
-            info["numero"] = str(m["numero"])
-        if m.get("anio"):
-            info["anio"] = str(m["anio"])
-        if m.get("editor_seccion"):
-            info["editor_seccion"] = str(m["editor_seccion"])
-        p_fin = str(m.get("pagina_fin", "")).strip()
-        if p_fin.isdigit():
-            max_pag_fin = max(max_pag_fin, int(p_fin))
-        else:
-            pags = str(m.get("paginas", "")).strip()
-            match = re.match(r"^\d+\s*[-–]\s*(\d+)$", pags)
-            if match:
-                max_pag_fin = max(max_pag_fin, int(match.group(1)))
+    ruta_ms = carpeta_path / f"{id_ojs}_manuscrito.docx"
+    autores_docx: list[dict] = []
+    afiliaciones_docx: dict[str, dict] = {}
+    titulo_sugerido = ""
+    bloques_ms: list[dict] = []
 
-    if max_pag_fin > 0:
-        info["pagina_inicio"] = f"{max_pag_fin + 1:02d}"
-
-    info["siguiente_orden"] = len(metas_existentes) + 1
-    return info
-
-
-def escribir_metadatos_yaml(ruta_yaml: Path, meta: dict):
-    lineas = [
-        "# Metadatos editoriales del envío OJS (generado con asistente interactivo RMA)",
-        f'formato: "{_escapar_yaml(meta.get("formato", "tradicional"))}"',
-        f'codigo_publicacion: "{_escapar_yaml(meta.get("codigo_publicacion", ""))}"',
-        f'seccion: "{_escapar_yaml(meta.get("seccion", "Arqueología"))}"',
-        f'volumen: "{_escapar_yaml(meta.get("volumen", ""))}"',
-        f'numero: "{_escapar_yaml(meta.get("numero", ""))}"',
-        f'anio: "{_escapar_yaml(meta.get("anio", ""))}"',
-        f'pagina_inicio: "{_escapar_yaml(meta.get("pagina_inicio", "01"))}"',
-        f'paginas: "{_escapar_yaml(meta.get("paginas", ""))}"',
-        f'doi: "{_escapar_yaml(meta.get("doi", ""))}"',
-        f'autor_corto: "{_escapar_yaml(meta.get("autor_corto", ""))}"',
-        f'titulo_corto: "{_escapar_yaml(meta.get("titulo_corto", ""))}"',
-        f'recibido: "{_escapar_yaml(meta.get("recibido", ""))}"',
-        f'correcciones: "{_escapar_yaml(meta.get("correcciones", ""))}"',
-        f'aceptado: "{_escapar_yaml(meta.get("aceptado", ""))}"',
-        f'editor_seccion: "{_escapar_yaml(meta.get("editor_seccion", ""))}"',
-        f'editores_invitados: "{_escapar_yaml(meta.get("editores_invitados", ""))}"',
-    ]
-
-    autores_list = meta.get("autores") or []
-    if autores_list:
-        lineas.append("")
-        lineas.append("autores:")
-        for aut in autores_list:
-            if not isinstance(aut, dict):
-                continue
-            nom = _escapar_yaml(aut.get("nombre", ""))
-            oid = _escapar_yaml(aut.get("orcid", ""))
-            af = _escapar_yaml(aut.get("afiliacion", ""))
-            lineas.append(f'  - nombre: "{nom}"')
-            lineas.append(f'    orcid: "{oid}"')
-            lineas.append(f'    afiliacion: "{af}"')
-
-    afils_cfg = meta.get("afiliaciones") or {}
-    if afils_cfg:
-        lineas.append("")
-        lineas.append("afiliaciones:")
-        if isinstance(afils_cfg, dict):
-            for clave_af, datos_af in afils_cfg.items():
-                if isinstance(datos_af, dict):
-                    txt_af = _escapar_yaml(datos_af.get("texto", ""))
-                    ror_af = _escapar_yaml(datos_af.get("ror", ""))
-                else:
-                    txt_af = ""
-                    ror_af = _escapar_yaml(datos_af)
-                lineas.append(f"  {clave_af}:")
-                if txt_af:
-                    lineas.append(f'    texto: "{txt_af}"')
-                lineas.append(f'    ror: "{ror_af}"')
-        elif isinstance(afils_cfg, list):
-            for idx_af, datos_af in enumerate(afils_cfg, start=1):
-                if isinstance(datos_af, dict):
-                    clave_af = datos_af.get("clave") or idx_af
-                    txt_af = _escapar_yaml(datos_af.get("texto", ""))
-                    ror_af = _escapar_yaml(datos_af.get("ror", ""))
-                    lineas.append(f"  {clave_af}:")
-                    if txt_af:
-                        lineas.append(f'    texto: "{txt_af}"')
-                    lineas.append(f'    ror: "{ror_af}"')
-
-    ruta_yaml.write_text("\n".join(lineas) + "\n", encoding="utf-8")
-
-
-def escribir_recursos_yaml(ruta_yaml: Path, figuras_cfg: dict, tablas_cfg: dict):
-    lineas = ["figuras:"]
-    if not figuras_cfg:
-        lineas.append("  # Sin figuras registradas")
-    for num in sorted(figuras_cfg):
-        item = figuras_cfg[num]
-        lineas.extend([
-            f"  {num}:",
-            f'    ancho: "{_escapar_yaml(item.get("ancho", "completo"))}"',
-            f'    es: "{_escapar_yaml(item.get("es", f"Descripción de la Figura {num}."))}"',
-            f'    en: "{_escapar_yaml(item.get("en", f"Description of Figure {num}."))}"',
-        ])
-
-    lineas.append("\ntablas:")
-    if not tablas_cfg:
-        lineas.append("  # Sin tablas registradas")
-    for num in sorted(tablas_cfg):
-        item = tablas_cfg[num]
-        lineas.extend([
-            f"  {num}:",
-            f'    ancho: "{_escapar_yaml(item.get("ancho", "completo"))}"',
-        ])
-        if item.get("archivo"):
-            lineas.append(f'    archivo: "{_escapar_yaml(item["archivo"])}"')
-        lineas.extend([
-            f'    es: "{_escapar_yaml(item.get("es", f"Descripción de la Tabla {num}."))}"',
-            f'    en: "{_escapar_yaml(item.get("en", f"Description of Table {num}."))}"',
-        ])
-        if item.get("notas"):
-            lineas.append(f'    notas: "{_escapar_yaml(item["notas"])}"')
-
-    ruta_yaml.write_text("\n".join(lineas) + "\n", encoding="utf-8")
-    print(f"  Recursos guardados en: {ruta_yaml.name}")
-
-
-def registrar_en_fasciculo(destino: Path, art_id: str, cod_pub: str, seccion: str):
-    ruta_fasc = destino / "fasciculo.yaml"
-    if not ruta_fasc.exists():
-        return
-    txt = ruta_fasc.read_text(encoding="utf-8")
-    if re.search(rf'id:\s*["\']?{re.escape(art_id)}["\']?\b', txt):
-        return
-    bloque = (
-        f'  - id: "{_escapar_yaml(art_id)}"\n'
-        f'    codigo_publicacion: "{_escapar_yaml(cod_pub)}"\n'
-        f'    seccion: "{_escapar_yaml(seccion)}"\n'
-    )
-    if not txt.endswith("\n"):
-        txt += "\n"
-    ruta_fasc.write_text(txt + bloque, encoding="utf-8")
-    print(f"  Agregado ID '{art_id}' al orden de {ruta_fasc.name}")
-
-
-def ejecutar_flujo_interactivo(destino: Path, art_id: str) -> tuple[Path, dict]:
-    """Flujo completo: detecta y estandariza manuscrito, imágenes y tablas (juntas o por separado)."""
-    destino.mkdir(parents=True, exist_ok=True)
-    (destino / "figuras").mkdir(exist_ok=True)
-
-    print("\n" + "=" * 68)
-    print(f"  ASISTENTE EDITORIAL RMA — ENVÍO OJS #{art_id}")
-    print(f"  Carpeta de trabajo: {destino}")
-    print("=" * 68)
-
-    # 1. Detectar y estandarizar el manuscrito principal
-    destino, ruta_ms, origen_ms = detectar_y_estandarizar_manuscrito(destino, art_id)
-    ms_info = inspeccionar_manuscrito_existente(ruta_ms)
-
-    # 2. Inferir contexto editorial
-    ruta_meta = destino / f"{art_id}_metadatos.yaml"
-    actual = _cargar_yaml_simple(ruta_meta)
-    ctx = inferir_valores_contexto(destino)
-
-    fmt_def = str(actual.get("formato") or ctx["formato"])
-    vol_def = str(actual.get("volumen") or ctx["volumen"])
-    num_def = str(actual.get("numero") or ctx["numero"])
-    anio_def = str(actual.get("anio") or ctx["anio"])
-    sec_def = str(actual.get("seccion") or "Arqueología")
-
-    cod_def = str(actual.get("codigo_publicacion", "")).strip()
-    if not cod_def and vol_def.isdigit() and num_def.isdigit():
-        cod_def = f"v{int(vol_def)}n{int(num_def):02d}a{ctx['siguiente_orden']:02d}"
-
-    p_ini_def = str(actual.get("pagina_inicio") or ctx["pagina_inicio"]).strip()
-    if p_ini_def.isdigit():
-        p_ini_def = f"{int(p_ini_def):02d}"
-
-    autor_def = str(actual.get("autor_corto") or ms_info["autor_sugerido"])
-    titulo_def = str(actual.get("titulo_corto") or ms_info["titulo_sugerido"])
-
-    print("\n  --- Metadatos editoriales del artículo ---")
-    print("  (Presioná Enter para aceptar el valor entre [corchetes], o '-' para dejar vacío)")
-
-    formato = elegir_formato(defecto=fmt_def)
-    seccion = elegir_seccion(defecto=sec_def)
-    volumen = preguntar("Volumen", defecto=vol_def)
-    numero = preguntar("Número", defecto=num_def)
-    anio = preguntar("Año", defecto=anio_def)
-    codigo_pub = preguntar("Código de publicación (ej. v19n02a02, '-' para vacío)", defecto=cod_def)
-    pagina_inicio = preguntar("Página inicial (ej. 07 o 27)", defecto=p_ini_def)
-    if pagina_inicio.isdigit():
-        pagina_inicio = f"{int(pagina_inicio):02d}"
-
-    doi_in = preguntar("DOI (URL completa o 10.31048/...)", defecto=str(actual.get("doi") or "https://doi.org/10.31048/"))
-    if doi_in and not doi_in.startswith(("http://", "https://")):
-        doi_clean = re.sub(r"^doi:\s*", "", doi_in, flags=re.I)
-        doi_in = f"https://doi.org/{doi_clean}"
-
-    autor_corto = preguntar("Autor corto para encabezado par (ej. M. Gómez et al.)", defecto=autor_def)
-    titulo_corto = preguntar("Título corto para encabezado impar", defecto=titulo_def)
-    recibido = preguntar("Fecha de recibido (DD-MM-AAAA)", defecto=str(actual.get("recibido") or ""))
-    correcciones = preguntar("Fecha recibido con correcciones (DD-MM-AAAA)", defecto=str(actual.get("correcciones") or ""))
-    aceptado = preguntar("Fecha de aceptado (DD-MM-AAAA)", defecto=str(actual.get("aceptado") or ""))
-    editor_sec = preguntar("Editor/a de sección (ej. R. Cattáneo)", defecto=str(actual.get("editor_seccion") or ctx["editor_seccion"]))
-    editores_inv = preguntar("Editores invitados (opcional, Enter si no aplica)", defecto=str(actual.get("editores_invitados") or ""))
-
-    # 2b. Identificadores persistentes de autoría e instituciones (ORCID y ROR)
-    aut_af_docx = parsear_autores_y_afiliaciones_docx(ruta_ms)
-    autores_detectados = aut_af_docx.get("autores", [])
-    afils_detectadas = aut_af_docx.get("afiliaciones", [])
-
-    # Combinar con valores previos ya guardados en {id}_metadatos.yaml
-    autores_prev = actual.get("autores") if isinstance(actual.get("autores"), list) else []
-    afils_prev = actual.get("afiliaciones") if isinstance(actual.get("afiliaciones"), dict) else {}
-
-    autores_finales = []
-    if autores_detectados:
-        print("\n  --- Identificadores ORCID de autores/as ---")
-        print("  (Ingresá los 16 dígitos o la URL de orcid.org; Enter para aceptar/omitir, '-' para borrar)")
-        for idx_a, aut in enumerate(autores_detectados):
-            prev_item = autores_prev[idx_a] if idx_a < len(autores_prev) and isinstance(autores_prev[idx_a], dict) else {}
-            nom_a = str(prev_item.get("nombre") or aut.get("nombre") or "").strip()
-            af_a = str(prev_item.get("afiliacion") or aut.get("afiliacion") or "").strip()
-            oid_def = normalizar_orcid(prev_item.get("orcid") or aut.get("orcid") or "")[0]
-            oid_in = preguntar(f"ORCID de {nom_a}", defecto=oid_def)
-            oid_norm, _ = normalizar_orcid(oid_in)
-            autores_finales.append({
-                "nombre": nom_a,
-                "orcid": oid_norm,
-                "afiliacion": af_a,
-            })
-    elif autores_prev:
-        autores_finales = autores_prev
-
-    afiliaciones_finales = {}
-    if afils_detectadas:
-        print("\n  --- Identificadores ROR de afiliaciones institucionales ---")
-        print("  (Ingresá el código ROR de 9 caracteres o la URL de ror.org; Enter para aceptar/omitir, '-' para borrar)")
-        for af in afils_detectadas:
-            clave_af = str(af.get("clave", "1")).strip()
-            prev_af = afils_prev.get(clave_af) or afils_prev.get(int(clave_af) if clave_af.isdigit() else clave_af) or {}
-            if not isinstance(prev_af, dict):
-                prev_af = {"ror": str(prev_af)}
-            txt_af = str(prev_af.get("texto") or af.get("texto") or "").strip()
-            ror_def = normalizar_ror(prev_af.get("ror") or af.get("ror") or "")[0]
-            resumen_af = (txt_af[:56] + "...") if len(txt_af) > 59 else txt_af
-            ror_in = preguntar(f"ROR afiliación {clave_af} [{resumen_af}]", defecto=ror_def)
-            ror_norm, _ = normalizar_ror(ror_in)
-            afiliaciones_finales[clave_af] = {
-                "texto": txt_af,
-                "ror": ror_norm,
+    if ruta_ms.exists():
+        print(f"  -> Leyendo manuscrito: {ruta_ms.name} ...")
+        extraido = parsear_autores_y_afiliaciones_docx(ruta_ms)
+        autores_docx = extraido.get("autores", [])
+        for idx, af in enumerate(extraido.get("afiliaciones", []), 1):
+            clave = str(af.get("clave") or idx)
+            afiliaciones_docx[clave] = {
+                "texto": str(af.get("texto", "")).strip(),
+                "ror": str(af.get("ror", "")).strip(),
             }
-    elif afils_prev:
-        afiliaciones_finales = afils_prev
+        try:
+            art_tmp = parsear_manuscrito(ruta_ms)
+            bloques_ms = art_tmp.get("bloques_cuerpo", [])
+            titulo_plano = re.sub(r"<[^>]+>", "", art_tmp.get("titulo_es", "")).strip()
+            titulo_sugerido = sugerir_titulo_corto(titulo_plano)
+        except Exception:
+            pass
 
-    meta_final = {
+    # --- 1. Datos editoriales ---
+    print("\nSecciones disponibles:")
+    for i, sec in enumerate(rev.get("secciones") or SECCIONES, 1):
+        print(f"  {i}. {sec}")
+    sec_def = str(meta_prev.get("seccion") or "Antropología Biológica")
+    sel_sec = _pedir("Sección (número o nombre)", sec_def)
+    if sel_sec.isdigit() and 1 <= int(sel_sec) <= len(rev.get("secciones") or SECCIONES):
+        seccion = (rev.get("secciones") or SECCIONES)[int(sel_sec) - 1]
+    else:
+        seccion = sel_sec
+
+    formato = _pedir("Formato (tradicional / moderno)", str(meta_prev.get("formato") or "tradicional"))
+    volumen = _pedir("Volumen", str(meta_prev.get("volumen") or defs_carpeta["volumen"]))
+    numero = _pedir("Número", str(meta_prev.get("numero") or defs_carpeta["numero"]))
+    anio = _pedir("Año", str(meta_prev.get("anio") or defs_carpeta["anio"]))
+    pagina_inicio = _pedir("Página inicial", str(meta_prev.get("pagina_inicio") or "01"))
+
+    cod_prev = str(meta_prev.get("codigo_publicacion") or "").strip()
+    cod_carpeta = defs_carpeta["codigo_publicacion"]
+    cod_def = cod_carpeta if (cod_carpeta and cod_prev != cod_carpeta) else (cod_prev or cod_carpeta or f"v{int(volumen):02d}n{int(numero):02d}a01")
+    codigo_pub = _pedir("Código de publicación", cod_def)
+    doi = _pedir("DOI", str(meta_prev.get("doi") or "https://doi.org/10.31048/"))
+
+    # --- 2. Autores y ORCID ---
+    autores_prev = meta_prev.get("autores") or []
+    tiene_autores_prev = any(str(a.get("nombre", "")).strip() for a in autores_prev if isinstance(a, dict))
+    autores_base = autores_prev if tiene_autores_prev else autores_docx
+
+    print(f"\n--- Autores y ORCID ({len(autores_base)} detectado/s) ---")
+    autores_final: list[dict] = []
+    idx_aut = 1
+    while True:
+        base_a = autores_base[idx_aut - 1] if (idx_aut - 1) < len(autores_base) else {}
+        def_nom = str(base_a.get("nombre", "")).strip()
+        etiqueta_nom = f"Autor {idx_aut} - Nombre completo (Enter para terminar)" if not def_nom else f"Autor {idx_aut} - Nombre completo"
+        nom = _pedir(etiqueta_nom, def_nom)
+        if not nom:
+            break
+        def_orcid = str(base_a.get("orcid", "")).strip()
+        raw_orcid = _pedir(f"  ORCID de {nom} (ID o URL, '-' para limpiar)", def_orcid)
+        if raw_orcid == "-":
+            orcid_norm = ""
+        else:
+            orcid_norm, _ = normalizar_orcid(raw_orcid)
+        def_af = str(base_a.get("afiliacion", "1")).strip() or "1"
+        af_num = _pedir(f"  N° de afiliación de {nom} (ej. 1 o 1, 2)", def_af)
+        autores_final.append({
+            "nombre": nom,
+            "orcid": orcid_norm,
+            "afiliacion": af_num,
+        })
+        idx_aut += 1
+        if idx_aut > len(autores_base):
+            mas = _pedir("¿Agregar otro autor? [s/N]", "N")
+            if mas.lower() not in ("s", "si", "sí"):
+                break
+
+    if not autores_final:
+        autores_final = [{"nombre": "", "orcid": "", "afiliacion": "1"}]
+
+    # --- 3. Afiliaciones y ROR ---
+    af_prev = meta_prev.get("afiliaciones") or {}
+    tiene_af_prev = isinstance(af_prev, dict) and any(
+        str(v.get("texto", "")).strip() for v in af_prev.values() if isinstance(v, dict)
+    )
+    af_base = af_prev if tiene_af_prev else afiliaciones_docx
+
+    claves_necesarias: list[str] = []
+    for a in autores_final:
+        for tok in str(a.get("afiliacion", "")).split(","):
+            t = tok.strip()
+            if t and t not in claves_necesarias:
+                claves_necesarias.append(t)
+    for k in af_base.keys():
+        ks = str(k).strip()
+        if ks and ks not in claves_necesarias:
+            claves_necesarias.append(ks)
+    if not claves_necesarias:
+        claves_necesarias = ["1"]
+
+    print(f"\n--- Afiliaciones y ROR ({len(claves_necesarias)} afiliación/es) ---")
+    afiliaciones_final: dict[str, dict] = {}
+    for clave in claves_necesarias:
+        info_af = af_base.get(clave) or af_base.get(int(clave)) if clave.isdigit() else af_base.get(clave)
+        info_af = info_af if isinstance(info_af, dict) else {}
+        def_txt = str(info_af.get("texto", "")).strip()
+        txt_af = _pedir(f"Afiliación [{clave}] - Institución / país / email", def_txt)
+        def_ror = str(info_af.get("ror", "")).strip()
+        raw_ror = _pedir(f"  ROR de afiliación [{clave}] (ID o URL, ej. 03x524c58, '-' para limpiar)", def_ror)
+        if raw_ror == "-":
+            ror_norm = ""
+        else:
+            pares_ror = normalizar_rors(raw_ror)
+            ror_norm = ", ".join(r[0] for r in pares_ror) if pares_ror else ""
+        afiliaciones_final[str(clave)] = {
+            "texto": txt_af,
+            "ror": ror_norm,
+        }
+
+    # --- 4. Encabezados y fechas ---
+    autor_corto_def = _sugerir_autor_corto(autores_final) or str(meta_prev.get("autor_corto") or "")
+    autor_corto = _pedir("\nAutor corto (encabezado)", autor_corto_def)
+    titulo_corto_def = str(meta_prev.get("titulo_corto") or titulo_sugerido)
+    titulo_corto = _pedir("Título corto (encabezado)", titulo_corto_def)
+
+    recibido = _pedir("Fecha recibido (DD-MM-AAAA)", str(meta_prev.get("recibido") or ""))
+    correcciones = _pedir("Fecha correcciones (DD-MM-AAAA)", str(meta_prev.get("correcciones") or ""))
+    aceptado = _pedir("Fecha aceptado (DD-MM-AAAA)", str(meta_prev.get("aceptado") or ""))
+    editor_sec = _pedir("Editor/a de sección", str(meta_prev.get("editor_seccion") or ""))
+    editores_inv = _pedir("Editores invitados (si aplica)", str(meta_prev.get("editores_invitados") or ""))
+
+    meta_out = {
         "formato": formato,
         "codigo_publicacion": codigo_pub,
         "seccion": seccion,
-        "volumen": volumen,
-        "numero": numero,
-        "anio": anio,
-        "pagina_inicio": pagina_inicio,
-        "paginas": str(actual.get("paginas") or ""),
-        "doi": doi_in,
+        "volumen": str(volumen),
+        "numero": str(numero),
+        "anio": str(anio),
+        "pagina_inicio": str(pagina_inicio),
+        "paginas": str(meta_prev.get("paginas") or ""),
+        "doi": doi,
         "autor_corto": autor_corto,
         "titulo_corto": titulo_corto,
         "recibido": recibido,
@@ -1035,107 +307,128 @@ def ejecutar_flujo_interactivo(destino: Path, art_id: str) -> tuple[Path, dict]:
         "aceptado": aceptado,
         "editor_seccion": editor_sec,
         "editores_invitados": editores_inv,
-        "autores": autores_finales,
-        "afiliaciones": afiliaciones_finales,
+        "autores": autores_final,
+        "afiliaciones": afiliaciones_final,
     }
-    escribir_metadatos_yaml(ruta_meta, meta_final)
-    print(f"\n  Metadatos guardados en: {ruta_meta.name}")
+    ruta_meta.write_text("# Metadatos editoriales del envío OJS\n" + _yaml_dump_limpio(meta_out), encoding="utf-8")
+    print(f"  [OK] Guardado: {ruta_meta.name}")
 
-    # 3. Detectar y estandarizar archivo Word de epígrafes (ej. 54854_epigrafes.docx) si existe
-    epigrafes_doc = {"figuras": {}, "tablas": {}}
-    ruta_epig_encontrada = buscar_archivo_epigrafes(destino, art_id)
-    if ruta_epig_encontrada is not None:
-        ruta_epig_std = destino / f"{art_id}_epigrafes.docx"
-        if ruta_epig_encontrada.resolve() != ruta_epig_std.resolve():
-            shutil.copy2(ruta_epig_encontrada, ruta_epig_std)
-            print(f"\n  Archivo de epígrafes detectado: {ruta_epig_encontrada.name} -> {ruta_epig_std.name}")
-        else:
-            print(f"\n  Archivo de epígrafes detectado: {ruta_epig_std.name}")
-        epigrafes_doc = parsear_epigrafes_docx(ruta_epig_std)
-        n_ef = len(epigrafes_doc.get("figuras", {}))
-        n_et = len(epigrafes_doc.get("tablas", {}))
-        print(f"  -> Epígrafes extraídos automáticamente: {n_ef} de figura(s), {n_et} de tabla(s).")
+    # --- 5. Recursos: figuras, tablas y epígrafes ---
+    ruta_rec = carpeta_path / f"{id_ojs}_recursos.yaml"
+    rec_prev = cargar_config(carpeta_path / f"{id_ojs}_recursos", obligatorio=False) if ruta_rec.exists() else {}
+    figs_out: dict[int, dict] = {}
+    for k, v in (rec_prev.get("figuras") or {}).items():
+        if str(k).isdigit():
+            figs_out[int(k)] = dict(v or {})
+    tabs_out: dict[int, dict] = {}
+    for k, v in (rec_prev.get("tablas") or {}).items():
+        if str(k).isdigit():
+            tabs_out[int(k)] = dict(v or {})
 
-    # 4. Detectar y estandarizar imágenes y tablas (precargando epígrafes si existen)
-    figuras_cfg = detectar_y_estandarizar_imagenes(
-        destino,
-        art_id,
-        ms_info["figs"],
-        formato,
-        epigrafes_figuras=epigrafes_doc.get("figuras", {}),
-    )
-    tablas_cfg = detectar_y_estandarizar_tablas(
-        destino,
-        art_id,
-        ms_info["tabs_texto"],
-        ms_info["tabs_embebidas"],
-        origen_ms,
-        formato,
-        epigrafes_tablas=epigrafes_doc.get("tablas", {}),
-    )
+    ruta_epi = buscar_archivo_epigrafes(carpeta_path, id_ojs)
+    if ruta_epi and ruta_epi.exists():
+        print(f"  -> Leyendo epígrafes desde: {ruta_epi.name}")
+        epi = parsear_epigrafes_docx(ruta_epi)
+        for num_f, datos_f in (epi.get("figuras") or {}).items():
+            nf = int(num_f)
+            prev_f = dict(figs_out.get(nf) or {})
+            prev_f.setdefault("ancho", "columna")
+            if datos_f.get("es"):
+                prev_f["es"] = datos_f["es"]
+            if datos_f.get("en"):
+                prev_f["en"] = datos_f["en"]
+            figs_out[nf] = prev_f
+        for num_t, datos_t in (epi.get("tablas") or {}).items():
+            nt = int(num_t)
+            prev_t = dict(tabs_out.get(nt) or {})
+            if datos_t.get("es"):
+                prev_t["es"] = datos_t["es"]
+            if datos_t.get("en"):
+                prev_t["en"] = datos_t["en"]
+            if datos_t.get("notas"):
+                prev_t["notas"] = datos_t["notas"]
+            tabs_out[nt] = prev_t
 
-    ruta_rec = destino / f"{art_id}_recursos.yaml"
-    if figuras_cfg or tablas_cfg or not ruta_rec.exists():
-        escribir_recursos_yaml(ruta_rec, figuras_cfg, tablas_cfg)
+    nums_fig_ms = [int(b["num"]) for b in bloques_ms if b.get("tipo") == "FIGURA"]
+    nums_tab_ms = [int(b["num"]) for b in bloques_ms if b.get("tipo") == "TABLA"]
+    todas_figs = sorted(set(figs_out.keys()) | set(nums_fig_ms))
+    todas_tabs = sorted(set(tabs_out.keys()) | set(nums_tab_ms))
 
-    if (destino / "fasciculo.yaml").exists():
-        registrar_en_fasciculo(destino, art_id, codigo_pub, seccion)
+    imgs_disponibles = _listar_archivos_por_ext(carpeta_path, EXT_IMAGEN, ("figuras", "figura", "figures", "imagenes", "imágenes"))
+    tabs_disponibles = _listar_archivos_por_ext(carpeta_path, EXT_TABLA, ("tablas", "tabla", "tables", "cuadros"))
 
-    return destino, meta_final
+    if todas_figs:
+        print(f"\n--- Vinculación de Figuras ({len(todas_figs)}) ---")
+        if imgs_disponibles:
+            print("  Imágenes en carpeta:", ", ".join(imgs_disponibles))
+        for nf in todas_figs:
+            entry_f = dict(figs_out.get(nf) or {})
+            cands = _buscar_candidatos_recurso(
+                carpeta_path, id_ojs, nf, ("figura", "fig", "figure"), EXT_IMAGEN,
+                ("figuras", "figura", "figures", "imagenes", "imágenes"),
+            )
+            def_arch = str(entry_f.get("archivo") or (cands[0] if cands else "")).strip()
+            arch_sel = _pedir(f"  Figura {nf} - Archivo de imagen", def_arch)
+            if arch_sel:
+                entry_f["archivo"] = arch_sel
+            ancho_sel = _pedir(f"  Figura {nf} - Ancho (columna / completo)", str(entry_f.get("ancho") or "columna"))
+            entry_f["ancho"] = ancho_sel
+            figs_out[nf] = entry_f
+
+    if todas_tabs:
+        print(f"\n--- Vinculación de Tablas ({len(todas_tabs)}) ---")
+        if tabs_disponibles:
+            print("  Archivos de tabla en carpeta:", ", ".join(tabs_disponibles))
+        for nt in todas_tabs:
+            entry_t = dict(tabs_out.get(nt) or {})
+            cands_t = _buscar_candidatos_recurso(
+                carpeta_path, id_ojs, nt, ("tabla", "tab", "table", "cuadro"), EXT_TABLA,
+                ("tablas", "tabla", "tables", "cuadros"),
+            )
+            def_arch_t = str(entry_t.get("archivo") or (cands_t[0] if cands_t else "")).strip()
+            arch_sel_t = _pedir(f"  Tabla {nt} - Archivo (.docx/.xlsx/.csv)", def_arch_t)
+            if arch_sel_t:
+                entry_t["archivo"] = arch_sel_t
+            tabs_out[nt] = entry_t
+
+    rec_out = {"figuras": figs_out, "tablas": tabs_out}
+    ruta_rec.write_text(_yaml_dump_limpio(rec_out), encoding="utf-8")
+    print(f"  [OK] Guardado: {ruta_rec.name} ({len(figs_out)} figuras, {len(tabs_out)} tablas)")
+
+    return carpeta_path, id_ojs
 
 
 def main():
-    args = [a for a in sys.argv[1:] if a not in ("-i", "--interactivo")]
+    from maquetar_rma import compilar_articulo
 
-    print("=== Asistente de Maquetación Editorial — Revista del Museo de Antropología (RMA) ===")
-    if not args:
-        cwd = Path(".").resolve()
-        subcarpetas = detectar_carpetas_articulos(cwd)
-        if subcarpetas:
-            print("\n  Carpetas de artículos detectadas aquí:")
-            for idx, sc in enumerate(subcarpetas, start=1):
-                estado = " [ya compilada]" if sc["tiene_salida"] else ""
-                print(f"    {idx}. {sc['nombre']}  ({sc['n_docx']} .docx, {sc['n_imgs']} imágenes){estado}")
-            sin_compilar = [i + 1 for i, sc in enumerate(subcarpetas) if not sc["tiene_salida"]]
-            def_carp = str(sin_compilar[-1] if sin_compilar else len(subcarpetas))
-            resp_c = preguntar(
-                "Carpeta del artículo (número de lista, nombre de carpeta, o '.')",
-                defecto=def_carp,
-            )
-            if resp_c.isdigit() and 1 <= int(resp_c) <= len(subcarpetas):
-                destino = subcarpetas[int(resp_c) - 1]["path"].resolve()
-            else:
-                p_cand = Path(resp_c).expanduser()
-                destino = p_cand.resolve() if p_cand.is_absolute() else (cwd / resp_c).resolve()
+    base = Path(".").resolve()
+    carpetas = sorted(
+        [
+            d for d in base.iterdir()
+            if d.is_dir() and not d.name.startswith((".", "_")) and (list(d.glob("*_manuscrito.docx")) or d.name.startswith("volumen"))
+        ],
+        key=lambda p: p.name.lower(),
+    )
+
+    print("=== Asistente de Maquetación RMA ===")
+    if carpetas:
+        print("\nCarpetas de artículos disponibles:")
+        for idx, c in enumerate(carpetas, 1):
+            ms = _detectar_id_ojs(c)
+            etiqueta = f" (ID: {ms})" if ms else ""
+            print(f"  {idx:2d}. {c.name}{etiqueta}")
+        sel = _pedir("\nElegí número de carpeta o escribí la ruta", "1")
+        if sel.isdigit() and 1 <= int(sel) <= len(carpetas):
+            carpeta_sel = carpetas[int(sel) - 1]
         else:
-            destino_str = preguntar("Carpeta donde pusiste los archivos del artículo", defecto=".")
-            p_cand = Path(destino_str).expanduser()
-            destino = p_cand.resolve() if p_cand.is_absolute() else (cwd / destino_str).resolve()
-
-        datos_carpeta = extraer_datos_de_nombre_carpeta(destino)
-        art_id = preguntar(
-            "ID numérico del envío en OJS (ej. 54854)",
-            defecto=datos_carpeta["id_ojs"],
-            obligatorio=True,
-        )
-    elif len(args) == 1 and Path(args[0]).is_dir():
-        destino = Path(args[0]).resolve()
-        datos_carpeta = extraer_datos_de_nombre_carpeta(destino)
-        art_id = preguntar(
-            "ID numérico del envío en OJS (ej. 54854)",
-            defecto=datos_carpeta["id_ojs"],
-            obligatorio=True,
-        )
+            carpeta_sel = Path(sel).resolve()
     else:
-        art_id = args[0].strip()
-        destino_str = args[1].strip() if len(args) > 1 else "."
-        destino = Path(destino_str).expanduser().resolve()
+        carpeta_sel = Path(_pedir("Carpeta del artículo", ".")).resolve()
 
-    destino, _ = ejecutar_flujo_interactivo(destino, art_id)
-
-    if preguntar_si_no("¿Querés compilar el PDF, HTML (OJS) y XML (SciELO) ahora mismo?", defecto_si=True):
-        from maquetar_rma import compilar_articulo
-        compilar_articulo(destino, art_id)
+    carpeta_obj, id_ojs = ejecutar_flujo_interactivo(carpeta_sel, "")
+    compilar_ahora = _pedir("\n¿Compilar ahora PDF + HTML OJS + XML SciELO? [S/n]", "S")
+    if compilar_ahora.lower() not in ("n", "no"):
+        compilar_articulo(carpeta_obj, id_ojs)
 
 
 if __name__ == "__main__":
