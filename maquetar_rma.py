@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
 Automatizador de Maquetación Editorial - Revista del Museo de Antropología (RMA)
-Soporta tres perfiles de maquetación con los mismos archivos de entrada:
+Soporta dos perfiles de maquetación con los mismos archivos de entrada:
   - "tradicional": diseño clásico a 2 columnas con márgenes angostos (20 mm) para el número actual
-  - "moderno": rediseño a 1 columna con bloques pastel y lectura cómoda
-  - "secciones": rediseño a 1 columna con paleta cromática diferenciada por sección (PDF + galería HTML5 OJS)
+  - "moderno": rediseño a 1 columna con bloques pastel y lectura cómoda para el próximo año
 
 Exporta simultáneamente:
   - PDF editorial maquetado con paginación consecutiva
@@ -16,7 +15,6 @@ Modos de uso:
   python maquetar_rma.py carpeta_fasciculo 4812
   python maquetar_rma.py carpeta_fasciculo 4812 --formato tradicional
   python maquetar_rma.py carpeta_fasciculo 4812 --formato moderno --pagina-inicio 7
-  python maquetar_rma.py carpeta_fasciculo 4812 --formato secciones --pagina-inicio 7
   python maquetar_rma.py carpeta_fasciculo 4812 -i
 """
 
@@ -34,13 +32,13 @@ from pathlib import Path
 from docx import Document
 from PIL import Image, ImageDraw
 from weasyprint import HTML
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from rma_citaciones import MotorCitacionesRMA
 
 try:
     import yaml
 except ImportError:
     yaml = None
+
+from rma_citaciones import MotorCitacionesRMA
 
 W_NS = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 
@@ -68,8 +66,8 @@ def resolver_destino(args: list) -> tuple[Path, str, int | None, str | None, boo
 
     if not posicionales:
         raise SystemExit(
-            "Uso: python maquetar_rma.py <id_ojs> [--formato tradicional|moderno|secciones] [--pagina-inicio N] [-i]\n"
-            "  ó: python maquetar_rma.py <carpeta> <id_ojs> [--formato tradicional|moderno|secciones] [--pagina-inicio N] [-i]\n"
+            "Uso: python maquetar_rma.py <id_ojs> [--formato tradicional|moderno] [--pagina-inicio N] [-i]\n"
+            "  ó: python maquetar_rma.py <carpeta> <id_ojs> [--formato tradicional|moderno] [--pagina-inicio N] [-i]\n"
             "  ó: python maquetar_rma.py <ruta/al/4812_manuscrito.docx>"
         )
     primero = Path(posicionales[0])
@@ -189,6 +187,81 @@ def formatear_rango_paginas(p_ini: int, p_fin: int, digitos: int = 2) -> str:
     return f"{p_ini:0{digitos}d}-{p_fin:0{digitos}d}"
 
 
+
+_PALABRAS_VACIAS_FIN_TITULO = {
+    "a", "al", "ante", "bajo", "con", "contra", "de", "del", "desde", "durante",
+    "en", "entre", "hacia", "hasta", "mediante", "para", "por", "según", "segun",
+    "sin", "sobre", "tras", "versus", "vs", "vs.",
+    "el", "la", "los", "las", "un", "una", "unos", "unas", "lo",
+    "y", "e", "o", "u", "ni", "que", "quien", "quienes", "cual", "cuales",
+    "cuyo", "cuya", "cuyos", "cuyas", "donde", "cuando", "como", "si", "sino",
+    "pero", "aunque", "mientras",
+    "este", "esta", "estos", "estas", "ese", "esa", "esos", "esas",
+    "aquel", "aquella", "aquellos", "aquellas", "su", "sus", "nuestro", "nuestra",
+    "nuestros", "nuestras",
+    "an", "the", "of", "in", "on", "at", "to", "for", "with", "by", "from",
+    "into", "during", "among", "towards", "upon", "and", "or", "but", "nor",
+    "as", "that", "which", "who", "whose", "where", "when", "while",
+}
+
+
+def sugerir_titulo_corto(titulo: str, max_len: int = 55) -> str:
+    """
+    Acorta un título largo para encabezados de página respetando palabras completas
+    y evitando terminar en preposiciones, artículos o conjunciones antes de '...'.
+    """
+    t = re.sub(r"\s+", " ", (titulo or "")).strip()
+    if not t or len(t) <= max_len:
+        return t
+
+    m_sub = re.match(r"^(.{18," + str(max_len) + r"}?)\s*(?::|—|–|\s-\s)\s*.+$", t)
+    if m_sub:
+        base_sub = m_sub.group(1).strip(" ,;:-–—")
+        palabras_sub = base_sub.split()
+        while len(palabras_sub) > 2 and palabras_sub[-1].lower().strip(".,;:()[]\"'“”‘’") in _PALABRAS_VACIAS_FIN_TITULO:
+            palabras_sub.pop()
+        cand_sub = " ".join(palabras_sub).strip(" ,;:-–—")
+        if len(cand_sub) >= 18:
+            return cand_sub
+
+    limite = max_len - 3
+    recorte = t[:limite]
+    if len(t) > limite and not t[limite].isspace():
+        ultimo_esp = recorte.rfind(" ")
+        if ultimo_esp > 12:
+            recorte = recorte[:ultimo_esp]
+
+    recorte = recorte.strip(" ,;:-–—([\"“‘")
+    palabras = recorte.split()
+
+    while len(palabras) > 2:
+        ultima_norm = palabras[-1].lower().strip(".,;:!?()[]\"'“”‘’")
+        if ultima_norm in _PALABRAS_VACIAS_FIN_TITULO:
+            palabras.pop()
+        else:
+            break
+
+    resultado = " ".join(palabras).strip(" ,;:-–—([\"“‘")
+    return f"{resultado}..." if resultado else (t[:limite].rstrip() + "...")
+
+
+
+def normalizar_codigo_idioma(valor: str) -> str:
+    v = str(valor or "").strip().lower()
+    if v in ("es", "spa", "esp", "español", "espanol", "spanish") or v.startswith(("es-", "es_")): return "es"
+    if v in ("en", "eng", "ing", "ingles", "inglés", "english") or v.startswith(("en-", "en_")): return "en"
+    if v in ("pt", "por", "portugues", "portugués", "portuguese") or v.startswith(("pt-", "pt_")): return "pt"
+    return ""
+
+def detectar_idioma_texto(texto: str) -> str:
+    t = f" {(texto or '').lower()} "
+    en_h = len(re.findall(r"\b(?:the|and|of|in|with|from|for|that|this|were|was|between|abstract|keywords|references|figure|table|into|during)\b", t))
+    es_h = len(re.findall(r"\b(?:el|la|los|las|del|en|con|fueron|fue|resumen|palabras|referencias|tabla|son|una|un|al|como|más|sobre|también)\b", t)) + len(re.findall(r"[ñ¿¡]", t)) * 2
+    pt_h = len(re.findall(r"\b(?:o|os|as|do|da|dos|das|no|na|nos|nas|em|com|foram|foi|resumo|palavras|referências|tabela|são|não|uma|um|ao|aos|pelo|pela|também|através)\b", t)) + len(re.findall(r"[ãõç]", t)) * 2
+    if en_h > max(es_h, pt_h) * 1.15: return "en"
+    return "pt" if pt_h > es_h * 1.10 else "es"
+
+
 def determinar_pagina_inicio(meta: dict, pagina_inicio_override: int | None = None) -> int:
     """Resuelve el número de página inicial desde CLI/fascículo, 'pagina_inicio' o 'paginas'."""
     if pagina_inicio_override is not None:
@@ -206,42 +279,16 @@ def determinar_pagina_inicio(meta: dict, pagina_inicio_override: int | None = No
 
 
 def resolver_perfil_formato(formato_override: str | None, meta: dict, rev: dict) -> str:
-    """Determina si se compila con perfil 'tradicional' (2 cols), 'moderno' (1 col) o 'secciones' (1 col cromático)."""
+    """Determina si se compila con perfil 'tradicional' (2 cols) o 'moderno' (1 col)."""
     cand = (
         formato_override
         or str(meta.get("formato", "")).strip().lower()
         or str(rev.get("formato", "")).strip().lower()
         or "tradicional"
     )
-    if cand in ("secciones", "seccion", "colores", "cromatica", "cromática", "moderno-secciones"):
-        return "secciones"
     if cand in ("moderno", "1col", "1-columna", "nuevo"):
         return "moderno"
     return "tradicional"
-
-
-def resolver_slugs_seccion(seccion_raw: str) -> tuple[str, str]:
-    """
-    Devuelve (slug_css_print, data_seccion_ojs) a partir del nombre de sección en metadatos.yaml.
-    Ej.: 'Antropología Biológica' -> ('antropologia-biologica', 'biologica')
-    """
-    base = unicodedata.normalize("NFD", str(seccion_raw or "Artículos"))
-    sin_tildes = "".join(c for c in base if unicodedata.category(c) != "Mn").lower()
-    slug_print = re.sub(r"[^a-z0-9]+", "-", sin_tildes).strip("-") or "articulos"
-
-    if "arqueolog" in slug_print:
-        data_sec = "arqueologia"
-    elif "biolog" in slug_print or "bioantropolog" in slug_print:
-        data_sec = "biologica"
-    elif "social" in slug_print or "etnolog" in slug_print:
-        data_sec = "social"
-    elif "museolog" in slug_print or "patrimoni" in slug_print:
-        data_sec = "museologia"
-    elif "dossier" in slug_print or "dosier" in slug_print or "simposio" in slug_print:
-        data_sec = "dossier"
-    else:
-        data_sec = slug_print
-    return slug_print, data_sec
 
 
 def normalizar_orcid(valor: str) -> tuple[str, str]:
@@ -259,19 +306,53 @@ def normalizar_orcid(valor: str) -> tuple[str, str]:
     return limpio, f"https://orcid.org/{limpio}"
 
 
-def normalizar_ror(valor: str) -> tuple[str, str]:
-    """Devuelve (id_ror, url_ror) normalizados (ej. ('03x524c58', 'https://ror.org/03x524c58'))."""
+def normalizar_rors(valor: str) -> list[tuple[str, str]]:
+    """Devuelve lista de tuplas (id_ror, url_ror) normalizadas (soporta múltiples ROR separados por coma/espacio)."""
     raw = str(valor or "").strip()
     if not raw:
-        return "", ""
-    m = re.search(r"(?:ror\.org/)?(0[a-z0-9]{6}\d{2})\b", raw, flags=re.I)
-    if m:
+        return []
+    encontrados: list[tuple[str, str]] = []
+    vistos: set[str] = set()
+    for m in re.finditer(r"(?:https?://(?:www\.)?ror\.org/)?(0[a-z0-9]{6}\d{2})\b", raw, flags=re.I):
         rid = m.group(1).lower()
-        return rid, f"https://ror.org/{rid}"
-    limpio = re.sub(r"^https?://(www\.)?ror\.org/", "", raw, flags=re.I).strip("/")
-    if not limpio:
-        return "", ""
-    return limpio, f"https://ror.org/{limpio}"
+        if rid not in vistos:
+            vistos.add(rid)
+            encontrados.append((rid, f"https://ror.org/{rid}"))
+    if encontrados:
+        return encontrados
+    for trozo in re.split(r"[,;\s]+", raw):
+        limpio = re.sub(r"^https?://(www\.)?ror\.org/", "", trozo.strip(), flags=re.I).strip("/")
+        if limpio and limpio.lower() not in vistos:
+            vistos.add(limpio.lower())
+            encontrados.append((limpio, f"https://ror.org/{limpio}"))
+    return encontrados
+
+
+def normalizar_rors(valor: str) -> list[tuple[str, str]]:
+    """Devuelve lista de tuplas (id_ror, url_ror) normalizadas (soporta múltiples ROR)."""
+    raw = str(valor or "").strip()
+    if not raw:
+        return []
+    res, vistos = [], set()
+    for m in re.finditer(r"(?:https?://(?:www\.)?ror\.org/)?(0[a-z0-9]{6}\d{2})\b", raw, flags=re.I):
+        rid = m.group(1).lower()
+        if rid not in vistos:
+            vistos.add(rid)
+            res.append((rid, f"https://ror.org/{rid}"))
+    if res:
+        return res
+    for t in re.split(r"[,;\s]+", raw):
+        c = re.sub(r"^https?://(www\.)?ror\.org/", "", t.strip(), flags=re.I).strip("/")
+        if c and c.lower() not in vistos:
+            vistos.add(c.lower())
+            res.append((c, f"https://ror.org/{c}"))
+    return res
+
+
+def normalizar_ror(valor: str) -> tuple[str, str]:
+    """Devuelve (id_ror, url_ror) normalizados."""
+    lista = normalizar_rors(valor)
+    return lista[0] if lista else ("", "")
 
 
 def _limpiar_urls_orcid_ror_en_html(fragmento_html: str) -> tuple[str, list[str], list[str]]:
@@ -351,51 +432,91 @@ def parsear_autores_y_afiliaciones_docx(ruta_docx: Path) -> dict:
         txt = run.text or ""
         if not txt:
             continue
-        if run.font.superscript:
-            tokens_aut.append(("sup", txt))
+        kind = "sup" if run.font.superscript else "txt"
+        if tokens_aut and tokens_aut[-1][0] == kind == "sup":
+            tokens_aut[-1] = ("sup", tokens_aut[-1][1] + txt)
         else:
-            tokens_aut.append(("txt", txt))
+            tokens_aut.append((kind, txt))
 
-    marcada = ""
+    sup_blocks, marcada_parts = [], []
     for kind, val in tokens_aut:
         if kind == "sup":
-            marcada += f"[[SUP:{val}]]"
+            marcada_parts.append(f"__SUP_{len(sup_blocks)}__")
+            sup_blocks.append(val)
         else:
-            marcada += val
+            marcada_parts.append(val)
+    marcada = "".join(marcada_parts)
 
-    partes_aut = [p.strip() for p in re.split(r",|;|\sy\s|\sand\s", marcada) if p.strip()]
+    partes_aut = [p.strip() for p in re.split(r"(?!(?<=\d),\s*\d),|;|\r?\n|\sy\s|\sand\s|\se\s(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ])", marcada) if p.strip()]
     autores_lista = []
-    for idx_a, parte in enumerate(partes_aut, start=1):
-        sups = re.findall(r"\[\[SUP:(.*?)\]\]", parte)
-        sin_sup = re.sub(r"\[\[SUP:.*?\]\]", "", parte).strip()
-        if not sups:
-            m_peg = re.match(r"^(.*?)([\d,\*]+)$", sin_sup)
+    for idx_a, parte_mask in enumerate(partes_aut, start=1):
+        sups = [sup_blocks[int(m.group(1))] for m in re.finditer(r"__SUP_(\d+)__", parte_mask)]
+        sin_sup = re.sub(r"__SUP_\d+__", "", parte_mask).strip()
+        orcid_det = ""
+        m_oid = re.search(r"(?:https?://(?:www\.)?orcid\.org/)?(\d{4}-\d{4}-\d{4}-\d{3}[\dXx])", sin_sup, flags=re.I)
+        if m_oid:
+            orcid_det = normalizar_orcid(m_oid.group(1))[0]
+            sin_sup = re.sub(r"[\(\[\{]?\s*(?:ORCID\s*:?\s*)?(?:https?://(?:www\.)?orcid\.org/)?\d{4}-\d{4}-\d{4}-\d{3}[\dXx]\s*[\)\]\}]?", "", sin_sup, flags=re.I).strip()
+        af_claves = []
+        for s in sups:
+            m_os = re.search(r"(?:https?://(?:www\.)?orcid\.org/)?(\d{4}-\d{4}-\d{4}-\d{3}[\dXx])", s, flags=re.I)
+            if m_os and not orcid_det:
+                orcid_det = normalizar_orcid(m_os.group(1))[0]
+            s_clean = re.sub(r"(?:https?://(?:www\.)?orcid\.org/)?\d{4}-\d{4}-\d{4}-\d{3}[\dXx]", "", s, flags=re.I)
+            for tok in re.split(r"[,;\s:]+", s_clean):
+                tc = tok.strip("()[]{}.")
+                if tc and tc not in af_claves:
+                    af_claves.append(tc)
+        sin_sup = sin_sup.rstrip(" :;,").strip()
+        if not af_claves:
+            m_peg = re.match(r"^(.*?)([\d,\*\s]+)$", sin_sup)
             if m_peg and m_peg.group(1).strip():
                 sin_sup = m_peg.group(1).strip()
-                sups = [m_peg.group(2).strip()]
-        afil_ref = ",".join(s.strip() for s in sups if s.strip())
+                af_claves = [x.strip() for x in m_peg.group(2).split(",") if x.strip()]
         if sin_sup:
             autores_lista.append({
                 "nombre": sin_sup,
-                "afiliacion": afil_ref or (str(idx_a) if len(partes_aut) > 1 else "1"),
-                "orcid": "",
+                "afiliacion": ", ".join(af_claves) or (str(idx_a) if len(partes_aut) > 1 else "1"),
+                "orcid": orcid_det,
             })
+
+    claves_esperadas = {
+        c.strip()
+        for a in autores_lista
+        for c in str(a.get("afiliacion", "")).split(",")
+        if c.strip()
+    }
+    re_fin_afiliaciones = re.compile(
+        r"^(resumen|abstract|sumario|summary|palabras\s*clave|keywords|key\s*words|introducci[oó]n|introduction|1[\.\)\s])\b",
+        re.I,
+    )
 
     afiliaciones_lista = []
     for idx_af, p in enumerate(parrafos[3:], start=1):
         t = p.text.strip()
-        if t.lower() == "resumen":
+        if re_fin_afiliaciones.match(t):
             break
+
         clave = str(idx_af)
         texto_sin_num = t
+        tiene_marca_clave = False
         if p.runs and p.runs[0].font.superscript and p.runs[0].text.strip():
             clave = p.runs[0].text.strip()
             texto_sin_num = "".join(r.text or "" for r in p.runs[1:]).strip()
+            tiene_marca_clave = True
         else:
             m_ini = re.match(r"^(\d+|\*+)\s*(.+)$", t)
             if m_ini:
                 clave = m_ini.group(1)
                 texto_sin_num = m_ini.group(2).strip()
+                tiene_marca_clave = True
+
+        if afiliaciones_lista and claves_esperadas and claves_esperadas.issubset({a["clave"] for a in afiliaciones_lista}):
+            if not tiene_marca_clave or clave not in claves_esperadas:
+                break
+
+        if len(texto_sin_num) > 260 and not tiene_marca_clave and "ror.org" not in texto_sin_num.lower():
+            break
 
         orcids_enc = [
             normalizar_orcid(u)[0]
@@ -430,7 +551,7 @@ def parsear_autores_y_afiliaciones_docx(ruta_docx: Path) -> dict:
         afiliaciones_lista.append({
             "clave": clave,
             "texto": texto_limpio,
-            "ror": rors_enc[0] if rors_enc else "",
+            "ror": ", ".join(rors_enc) if rors_enc else "",
         })
 
     resultado["autores"] = autores_lista
@@ -517,11 +638,11 @@ def es_archivo_epigrafes(nombre_archivo: str, art_id: str = "") -> bool:
     if p.suffix.lower() != ".docx" or p.name.startswith("~$"):
         return False
     stem_norm = _quitar_tildes(p.stem).lower()
-    if re.search(r"\b(epigrafes?|leyendas?|captions?)\b", stem_norm):
+    if re.search(r"(?:^|[^a-z0-9])(epigrafes?|leyendas?|captions?|pies?(?:[\s_-]*de[\s_-]*figuras?)?)(?:$|[^a-z0-9])", stem_norm):
         return True
     if art_id:
         sep = r"(?:[\s_\-\.\+]|%20)*"
-        if re.match(rf"^{re.escape(art_id)}{sep}(epigraf|leyend|caption)", stem_norm):
+        if re.match(rf"^{re.escape(art_id)}{sep}(epigraf|leyend|caption|pie)", stem_norm):
             return True
     return False
 
@@ -537,7 +658,7 @@ def buscar_archivo_epigrafes(carpeta: Path, art_id: str) -> Path | None:
     candidatos = []
     dirs_busq = [carpeta]
     for sub in sorted(carpeta.iterdir(), key=lambda x: x.name.lower()):
-        if sub.is_dir() and _quitar_tildes(sub.name).lower() in ("epigrafes", "epigrafe", "leyendas", "captions"):
+        if sub.is_dir() and re.search(r"(epigraf|leyend|caption)", _quitar_tildes(sub.name).lower()):
             dirs_busq.append(sub)
 
     for d in dirs_busq:
@@ -601,34 +722,24 @@ def _run_paragraph_epigrafe_a_html(paragraph) -> str:
 def _limpiar_prefijo_recurso_html(html_str: str) -> str:
     """
     Quita prefijos iniciales reiterados como 'Figura 1.', 'Figura 1. Figura 1.',
-    'Figure 3. <strong>Figure </strong><strong>3</strong><strong>.</strong>',
-    'Tabla 2.', 'Table 2:' y puntuación residual al inicio (como '<strong>.</strong>').
+    'Figure 1:', 'Fig. 1 -', 'Tabla 2.', 'Table 2:' incluso si están envueltos en <strong> o <em>.
     """
-    s = re.sub(r"^[\s\ufeff\u200b\u200c\u200d\u2060]+", "", (html_str or ""))
+    s = (html_str or "").strip()
     patron = re.compile(
-        r"^(?:<(?:strong|em|b|i|u|span|font)\b[^>]*>|[\s\xa0])*"
+        r"^(?:<(?:strong|em|b|i)>\s*)*"
         r"(?:figuras?|figures?|figs?\.?|tablas?|tables?|tabs?\.?|cuadros?)"
-        r"(?:</?(?:strong|em|b|i|u|span|font)\b[^>]*>|[\s\xa0])*"
-        r"0*\d+"
-        r"(?:</?(?:strong|em|b|i|u|span|font)\b[^>]*>|[\s\xa0])*"
-        r"[\.\:\-\–\—]?"
-        r"(?:</(?:strong|em|b|i|u|span|font)\b[^>]*>|[\s\xa0])*"
-        r"[\.\:\-\–\—]?[\s\xa0]*",
+        r"\s*0*\d+\s*[\.\:\-\–\—]?\s*"
+        r"(?:</(?:strong|em|b|i)>\s*)*"
+        r"[\.\:\-\–\—]?\s*",
         flags=re.I,
     )
     while True:
         s_nuevo = patron.sub("", s, count=1).strip()
-        s_nuevo = re.sub(
-            r"^(?:<(?:strong|em|b|i|u|span|font)\b[^>]*>[\s\xa0\.\:\-\–\—]*</(?:strong|em|b|i|u|span|font)>\s*)+",
-            "",
-            s_nuevo,
-            flags=re.I,
-        ).strip()
-        s_nuevo = re.sub(r"^[\.\:\-\–\—]+[\s\xa0]*", "", s_nuevo).strip()
+        s_nuevo = re.sub(r"^<(strong|em|b|i)>\s*</\1>\s*", "", s_nuevo, flags=re.I).strip()
         if s_nuevo == s:
             break
         s = s_nuevo
-    return _consolidar_tags_inline_html(s)
+    return s
 
 
 def parsear_epigrafes_docx(ruta_docx: Path) -> dict:
@@ -716,13 +827,13 @@ def parsear_epigrafes_docx(ruta_docx: Path) -> dict:
 
             if tipo_raw.startswith(("figure", "table")):
                 idioma = "en"
-            elif tipo_raw.startswith(("figura", "tabla", "cuadro")):
+            elif tipo_raw.startswith(("figura", "tabla", "tabela", "cuadro")):
                 idioma = "es"
             else:
                 bucket_tmp = "tablas" if tipo_raw.startswith("tab") else "figuras"
                 idioma = "en" if "es" in resultado[bucket_tmp].get(num, {}) else "es"
 
-            bucket = "tablas" if tipo_raw.startswith(("tabla", "table", "tab", "cuadro")) else "figuras"
+            bucket = "tablas" if tipo_raw.startswith(("tabla", "tabela", "table", "tab", "cuadro")) else "figuras"
             actual_bucket = bucket
             actual_num = num
             entry = resultado[bucket].setdefault(num, {})
@@ -750,10 +861,10 @@ def parsear_epigrafes_docx(ruta_docx: Path) -> dict:
                 continue
 
             if esperando_idioma == "es":
-                entry["es"] = _limpiar_prefijo_recurso_html(html_p)
+                entry["es"] = html_p
                 esperando_idioma = "en"
             elif esperando_idioma == "en":
-                entry["en"] = _limpiar_prefijo_recurso_html(html_p)
+                entry["en"] = html_p
                 esperando_idioma = None
             else:
                 if "en" in entry:
@@ -988,6 +1099,7 @@ def extraer_tabla_docx(table, notas_docx: dict, notas_usadas: list) -> str:
     return f"<table>{thead}{tbody}</table>"
 
 
+
 def _leer_xlsx_a_html(ruta_xlsx: Path) -> str:
     """Convierte la primera hoja de un archivo .xlsx a tabla HTML sin requerir dependencias externas."""
     ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
@@ -1121,7 +1233,7 @@ def resolver_html_tabla(
 
 
 def parsear_manuscrito(ruta_docx: Path) -> dict:
-    """Extrae metadatos del frente, cuerpo estructurado, notas al pie y bibliografía."""
+    # Extrae metadatos del frente, cuerpo estructurado, notas al pie y bibliografía (ES y EN).
     doc = Document(ruta_docx)
     notas_docx = extraer_notas_al_pie(ruta_docx)
     notas_usadas = []
@@ -1130,42 +1242,70 @@ def parsear_manuscrito(ruta_docx: Path) -> dict:
     if len(parrafos) < 6:
         raise ValueError(f"El manuscrito {ruta_docx.name} tiene muy pocos párrafos para extraer la estructura RMA.")
 
+    t0_html = limpiar_enfasis_externo(paragraph_a_html(parrafos[0], notas_docx, notas_usadas))
+    t1_html = limpiar_enfasis_externo(paragraph_a_html(parrafos[1], notas_docx, notas_usadas))
+    if detectar_idioma_texto(parrafos[0].text) == "en" and detectar_idioma_texto(parrafos[1].text) in ("es", "pt"):
+        titulo_es, titulo_en = t1_html, t0_html
+    else:
+        titulo_es, titulo_en = t0_html, t1_html
+
     data = {
-        "titulo_es": limpiar_enfasis_externo(paragraph_a_html(parrafos[0], notas_docx, notas_usadas)),
-        "titulo_en": limpiar_enfasis_externo(paragraph_a_html(parrafos[1], notas_docx, notas_usadas)),
+        "titulo_es": titulo_es,
+        "titulo_en": titulo_en,
         "autores": limpiar_enfasis_externo(paragraph_a_html(parrafos[2], notas_docx, notas_usadas)),
         "afiliaciones": [],
         "resumen": "",
         "palabras_clave": "",
         "abstract": "",
         "keywords": "",
+        "idioma_resumen_local": "",
         "bloques_cuerpo": [],
         "referencias": [],
         "notas_usadas": notas_usadas,
         "tablas_embebidas": [extraer_tabla_docx(t, notas_docx, notas_usadas) for t in doc.tables],
     }
 
+    re_refs = re.compile(
+        r"^(?:\d+(?:\.\d+)*\.?\s+)?(?:refer[eê]ncias(?:\s+bibliogr[aá]ficas)?|bibliograf[ií]a|references(?:\s+cited)?|literature\s+cited|bibliography)\s*[.:]?$",
+        re.I,
+    )
+    re_inicio_cuerpo = re.compile(
+        r"^(?:(?:\d+(?:\.\d+)*|[ivx]+)\.?\s+)?"
+        r"(?:introduction|introducci[oó]n|introdu[cç][aã]o|background|antecedentes|study\s+area|[aá]rea\s+de\s+estudio|"
+        r"materials?\s+and\s+methods|materiales\s+y\s+m[eé]todos|materiais?\s+e\s+m[eé]todos|methodology|metodolog[ií]a|metodologia|"
+        r"theoretical\s+framework|marco\s+te[oó]rico|results|resultados|discussion|discusi[oó]n|discuss[aã]o|"
+        r"conclusions?|conclusiones|conclus[aã]o|conclus[oõ]es|considera[cç][oõ]es\s+finais|acknowledgments?|acknowledgements?|agradecimientos|agradecimentos)\s*[.:]?$",
+        re.I,
+    )
+
     estado = "afiliaciones"
     for p in parrafos[3:]:
         texto_plano = p.text.strip()
+        low = re.sub(r"\s+", " ", texto_plano).strip().lower()
         html_p = enlazar_urls_y_correos(paragraph_a_html(p, notas_docx, notas_usadas))
 
-        if texto_plano.lower() == "resumen":
+        if low in ("resumen", "resumen:", "resumo", "resumo:"):
             estado = "resumen"
+            data["idioma_resumen_local"] = "pt" if low.startswith("resumo") else (data["idioma_resumen_local"] or "es")
             continue
-        elif texto_plano.lower().startswith("palabras clave:"):
+        elif re.match(r"^pala[bv]ras[\s-]+cha?ves?\s*:", texto_plano, re.I) or ((low.startswith("palabras clave") or low.startswith("palavras-chave") or low.startswith("palavras chave")) and len(texto_plano) < 300):
             data["palabras_clave"] = html_p
+            if low.startswith("palavras"): data["idioma_resumen_local"] = "pt"
+            estado = "cuerpo"
             continue
-        elif texto_plano.lower() == "abstract":
+        elif low in ("abstract", "abstract:"):
             estado = "abstract"
             continue
-        elif texto_plano.lower().startswith("keywords:"):
+        elif re.match(r"^key\s*-?\s*words?\s*:", texto_plano, re.I) or (low.startswith("keywords") and len(texto_plano) < 300):
             data["keywords"] = html_p
             estado = "cuerpo"
             continue
-        elif texto_plano.lower() in ("referencias bibliográficas", "referencias", "bibliografía"):
+        elif re_refs.match(texto_plano):
             estado = "referencias"
             continue
+
+        if estado in ("resumen", "abstract") and (re_inicio_cuerpo.match(texto_plano) or es_subtitulo(p, texto_plano)):
+            estado = "cuerpo"
 
         if estado == "afiliaciones":
             data["afiliaciones"].append(html_p)
@@ -1176,34 +1316,25 @@ def parsear_manuscrito(ruta_docx: Path) -> dict:
         elif estado == "referencias":
             data["referencias"].append(html_p)
         elif estado == "cuerpo":
-            m_recurso = re.match(r"^(FIGURA|TABLA)\s+(\d+)\s*$", texto_plano, re.I)
+            m_recurso = re.match(r"^(FIGURA|FIGURE|TABLA|TABLE|TABELA|QUADRO)\s+(\d+)\s*$", texto_plano, re.I)
             if m_recurso:
+                tipo_rec = "FIGURA" if m_recurso.group(1).upper().startswith("FIG") else "TABLA"
                 data["bloques_cuerpo"].append({
-                    "tipo": m_recurso.group(1).upper(),
+                    "tipo": tipo_rec,
                     "num": int(m_recurso.group(2)),
                 })
-            elif re.match(
-                r"^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+,\s+\d{1,2}\s+de\s+[a-z]+\s+de\s+\d{4}\.?$",
-                texto_plano,
-            ):
+            elif re.match(r"^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+,\s+\d{1,2}\s+de\s+[a-z]+\s+de\s+\d{4}\.?$", texto_plano):
                 data["bloques_cuerpo"].append({"tipo": "fecha", "html": html_p})
             elif es_subtitulo(p, texto_plano):
                 data["bloques_cuerpo"].append({
                     "tipo": "h2",
                     "html": limpiar_enfasis_externo(html_p),
                 })
+            elif p.paragraph_format.left_indent and p.paragraph_format.left_indent.pt > 15:
+                data["bloques_cuerpo"].append({"tipo": "blockquote", "html": html_p})
             else:
-                tiene_sangria_cita = bool(
-                    p.paragraph_format.left_indent and p.paragraph_format.left_indent.pt > 15
-                )
-                es_posible_subtitulo_breve = (
-                    len(texto_plano) <= 110
-                    and not texto_plano.endswith((".", ":", ";", "?", "!"))
-                )
-                if tiene_sangria_cita and not es_posible_subtitulo_breve:
-                    data["bloques_cuerpo"].append({"tipo": "blockquote", "html": html_p})
-                else:
-                    data["bloques_cuerpo"].append({"tipo": "p", "html": html_p})
+                data["bloques_cuerpo"].append({"tipo": "p", "html": html_p})
+
     return data
 
 
@@ -1290,11 +1421,38 @@ def _etiquetar_filas_tabla_pdf(tabla_html: str, blk_id: str) -> str:
     return "".join(partes)
 
 
-def _construir_fragmentos_tabla_dividida(
-    blk_tab: dict,
-    row_pages: dict[int, int],
-    pagina_inicio: int,
-) -> list[str] | None:
+def _html_caption_bilingue(etiq_es: str, etiq_en: str, num, cap_es: str, cap_en: str, idioma_art: str | bool) -> str:
+    if (idioma_art == "en") if isinstance(idioma_art, str) else bool(idioma_art):
+        return (
+            f'    <span class="cap-en"><strong>{etiq_en} {num}.</strong> {cap_en}</span>\n'
+            f'    <span class="cap-es"><em>{etiq_es} {num}. {cap_es}</em></span>'
+        )
+    return (
+        f'    <span class="cap-es"><strong>{etiq_es} {num}.</strong> {cap_es}</span>\n'
+        f'    <span class="cap-en"><em>{etiq_en} {num}. {cap_en}</em></span>'
+    )
+
+
+def _segmentar_cuerpo_multicolumna(lista_cuerpo: list[str], cierre_final: str, perfil: str) -> list[str]:
+    if perfil != "tradicional":
+        return [f'<main class="cuerpo-articulo">\n{chr(10).join(lista_cuerpo)}\n{cierre_final}\n    </main>']
+    partes, buf, primera = [], [], True
+    for item in lista_cuerpo:
+        if "rma-tabla" in item and "ancho-completo" in item and ("tabla-divisible" in item or "tabla-fragmento-" in item):
+            if buf:
+                cls = "cuerpo-articulo" if primera else "cuerpo-articulo cuerpo-articulo-cont"
+                partes.append(f'<div class="{cls}">\n{chr(10).join(buf)}\n</div>\n')
+                buf, primera = [], False
+            partes.append(f'<div class="cuerpo-articulo-tabla-ancha">\n{item}\n</div>\n')
+            primera = False
+        else:
+            buf.append(item)
+    cls = "cuerpo-articulo" if primera else "cuerpo-articulo cuerpo-articulo-cont"
+    partes.append(f'<div class="{cls}">\n{chr(10).join(buf)}\n{cierre_final}\n</div>')
+    return partes
+
+
+def _construir_fragmentos_tabla_dividida(blk_tab: dict, row_pages: dict[int, int], pagina_inicio: int, idioma_art: str = "es") -> list[str] | None:
     """
     Si una tabla divisible se partió en 2 o más páginas, devuelve la lista de fragmentos HTML
     con 'Continúa en página X' al pie de cada corte y 'Continuación de Tabla N' + encabezado
@@ -1369,20 +1527,19 @@ def _construir_fragmentos_tabla_dividida(
         folio_sig = pagina_inicio + pidx + 1
 
         sup_html = (
-            f'<div class="tabla-cont-sup">Continuación de Tabla {num}</div>'
+            f'<div class="tabla-cont-sup">{"Continuation of Table" if idioma_art == "en" else ("Continuação da Tabela" if idioma_art == "pt" else "Continuación de Tabla")} {num}</div>'
             if not es_primera
             else ""
         )
         inf_html = (
-            f'<div class="tabla-cont-inf">Continúa en página {folio_sig}</div>'
+            f'<div class="tabla-cont-inf">{"Continued on page" if idioma_art == "en" else ("Continua na página" if idioma_art == "pt" else "Continúa en página")} {folio_sig}</div>'
             if not es_ultima
             else ""
         )
         pie_final_html = (
             f"{notas_t}\n"
             f'  <div class="tabla-caption">\n'
-            f'    <span class="cap-es"><strong>Tabla {num}.</strong> {cap_es}</span>\n'
-            f'    <span class="cap-en"><em>Table {num}. {cap_en}</em></span>\n'
+            f'{_html_caption_bilingue("Tabela" if idioma_art == "pt" else "Tabla", "Table", num, cap_es, cap_en, idioma_art)}\n'
             f"  </div>"
             if es_ultima
             else ""
@@ -1411,11 +1568,11 @@ def preparar_tabla_responsive(tabla_html: str) -> tuple[str, int, str, int, int]
     """
     m_table = re.search(r"<table\b[^>]*>(.*)</table>", tabla_html, flags=re.I | re.DOTALL)
     if not m_table:
-        return tabla_html, 1, "tabla-normal", 0, 0
+        return (tabla_html, 1, "tabla-normal", 0, 0)
 
     filas = re.findall(r"<tr\b[^>]*>(.*?)</tr>", m_table.group(1), flags=re.I | re.DOTALL)
     if not filas:
-        return tabla_html, 1, "tabla-normal", 0, 0
+        return (tabla_html, 1, "tabla-normal", 0, 0)
 
     anchos_col: list[int] = []
     for fila in filas:
@@ -1468,136 +1625,13 @@ def preparar_tabla_responsive(tabla_html: str) -> tuple[str, int, str, int, int]
     return tabla_html, num_cols, clase_densidad, num_filas_cuerpo, largo_texto_tabla
 
 
-CSS_OJS_MAESTRA = '/* ==========================================================================\n   PLANTILLA MAESTRA HTML5 + CSS3 · REVISTA DEL MUSEO DE ANTROPOLOGÍA (OJS)\n   Sin JavaScript · Preservación digital a largo plazo · Accesibilidad WCAG AA\n   ========================================================================== */\n\n:root {\n  /* Capa 1: Base editorial compartida en toda la revista */\n  --rma-bg: #FAF9F6;\n  --rma-surface: #F2EFE9;\n  --rma-text: #21201E;\n  --rma-text-muted: #59554E;\n  --rma-border: #D8D2C7;\n\n  /* Capa 2: Valores por defecto (Antropología Social) */\n  --rma-primary: #264966;\n  --rma-accent: #8A4F19;\n  --rma-highlight: #DFE8F2;\n}\n\n/* Modificadores cromáticos por sección (atributo data-seccion en <body>) */\n[data-seccion="arqueologia"] {\n  --rma-primary: #8B3A2B;\n  --rma-accent: #1F5E66;\n  --rma-highlight: #F4E3D7;\n}\n\n[data-seccion="biologica"] {\n  --rma-primary: #234E52;\n  --rma-accent: #8C4A27;\n  --rma-highlight: #DCECE9;\n}\n\n[data-seccion="social"] {\n  --rma-primary: #264966;\n  --rma-accent: #8A4F19;\n  --rma-highlight: #DFE8F2;\n}\n\n[data-seccion="museologia"] {\n  --rma-primary: #4B3B5A;\n  --rma-accent: #2A5C4E;\n  --rma-highlight: #EAE4F0;\n}\n\n[data-seccion="dossier"] {\n  --rma-primary: #732638;\n  --rma-accent: #785216;\n  --rma-highlight: #F3E1E5;\n}\n\n/* Desplazamiento suave y margen de anclaje */\nhtml {\n  scroll-behavior: smooth;\n}\n\n[id] {\n  scroll-margin-top: 1.5rem;\n}\n\n/* Resaltado visual automático al saltar a cualquier destino (:target) */\n:target {\n  background-color: var(--rma-highlight) !important;\n  outline: 2px solid var(--rma-primary);\n  outline-offset: 3px;\n  border-radius: 4px;\n  transition: background-color 0.3s ease;\n}\n\nbody {\n  font-family: "Source Sans 3", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;\n  font-size: 17px;\n  line-height: 1.68;\n  color: var(--rma-text);\n  background-color: var(--rma-bg);\n  max-width: 820px;\n  margin: 0 auto;\n  padding: 2rem 1.5rem 4rem 1.5rem;\n  display: flex;\n  flex-direction: column;\n}\n\n.portada-articulo { order: 1; }\n.divisor-portada { order: 2; }\n.cuerpo-articulo { order: 3; }\n.pie-primera-pagina { order: 4; }\n\n.meta-running-left, .meta-running-right, .meta-running-doi, .meta-running-issn, .running-header-left, .running-header-right { display: none !important; }\n\n/* Hipervínculos */\na {\n  color: var(--rma-accent);\n  text-decoration: underline;\n  text-underline-offset: 3px;\n  text-decoration-thickness: 1.2px;\n}\n\na:hover,\na:focus-visible {\n  color: var(--rma-primary);\n  background-color: var(--rma-highlight);\n  border-radius: 2px;\n}\n\na.cita-enlace {\n  text-decoration-style: dotted;\n}\n\na.recurso-enlace {\n  font-weight: 600;\n}\n\n/* ==========================================================================\n   CABEZAL INSTITUCIONAL Y PORTADA\n   ========================================================================== */\n.cabezal-revista {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  align-items: flex-end;\n  gap: 1rem;\n  background-color: var(--rma-surface);\n  border: 1px solid var(--rma-border);\n  border-top: 4px solid var(--rma-primary);\n  border-bottom: 2px solid var(--rma-primary);\n  border-radius: 6px 6px 0 0;\n  padding: 1.1rem 1.35rem;\n  margin-bottom: 1.75rem;\n}\n\n.marca-rma-vertical {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  min-width: 110px;\n}\n\n.logo-rma-img {\n  height: 54px;\n  width: auto;\n  display: block;\n  margin-bottom: 4px;\n}\n\n.sigla-rma {\n  font-weight: 900;\n  font-size: 1.25rem;\n  line-height: 1.05;\n  letter-spacing: 0.05em;\n  color: var(--rma-text);\n}\n\n.seccion-rma {\n  display: inline-block;\n  margin-top: 5px;\n  padding: 0.2rem 0.6rem;\n  background-color: var(--rma-primary);\n  color: #FAF9F6;\n  font-weight: 700;\n  font-size: 0.72rem;\n  text-transform: uppercase;\n  letter-spacing: 0.06em;\n  border-radius: 3px;\n}\n\n.datos-cabezal-der {\n  text-align: right;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 0.3rem;\n}\n\n.nombre-revista-cabezal {\n  font-weight: 700;\n  font-size: 1.02rem;\n  color: var(--rma-primary);\n}\n\n.edicion-cabezal,\n.issn-cabezal {\n  font-size: 0.85rem;\n  color: var(--rma-text-muted);\n}\n\n.doi-rma {\n  font-size: 0.84rem;\n  font-weight: 600;\n  background-color: var(--rma-bg);\n  border: 1px solid var(--rma-border);\n  padding: 0.2rem 0.65rem;\n  border-radius: 4px;\n}\n\n.doi-rma a {\n  text-decoration: none;\n}\n\n/* Jerarquía de títulos */\n.bloque-titulos {\n  margin-bottom: 1.5rem;\n}\n\n.titulo-es {\n  font-size: clamp(1.55rem, 3vw, 1.95rem);\n  line-height: 1.24;\n  font-weight: 700;\n  color: var(--rma-primary);\n  margin: 0 0 0.75rem 0;\n}\n\n.acento-titulo {\n  width: 76px;\n  height: 3.5px;\n  background-color: var(--rma-accent);\n  margin: 0 0 0.75rem 0;\n}\n\n.titulo-en {\n  font-size: clamp(1.12rem, 2.2vw, 1.3rem);\n  line-height: 1.35;\n  font-style: italic;\n  color: var(--rma-text-muted);\n  margin: 0;\n}\n\n/* Autoría e identificadores persistentes (ORCID / ROR) */\n.bloque-autoria {\n  background-color: var(--rma-surface);\n  border: 1px solid var(--rma-border);\n  border-left: 4px solid var(--rma-primary);\n  padding: 0.95rem 1.25rem;\n  margin-bottom: 1.5rem;\n  border-radius: 0 6px 6px 0;\n}\n\n.autores {\n  font-size: 1.08rem;\n  font-weight: 700;\n  color: var(--rma-text);\n  margin-bottom: 0.5rem;\n}\n\n.afiliaciones {\n  font-size: 0.88rem;\n  line-height: 1.5;\n  color: var(--rma-text-muted);\n}\n\n.afil { margin: 0 0 0.3rem 0; }\n.afil:last-child { margin-bottom: 0; }\n\n.enlace-id {\n  display: inline-flex;\n  align-items: center;\n  vertical-align: middle;\n  text-decoration: none;\n  margin-left: 0.24rem;\n}\n\n.icono-orcid { width: 15px; height: 15px; vertical-align: -2px; }\n.icono-ror { height: 15px; width: auto; vertical-align: -2px; }\n\n/* Resúmenes */\n.bloque-resumenes {\n  background-color: var(--rma-surface);\n  border: 1px solid var(--rma-border);\n  border-left: 5px solid var(--rma-accent);\n  padding: 1.25rem 1.5rem;\n  margin-bottom: 1.35rem;\n  border-radius: 0 6px 6px 0;\n  font-size: 0.96rem;\n}\n\n.bloque-resumenes h3 {\n  margin: 0 0 0.4rem 0;\n  font-size: 0.95rem;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  color: var(--rma-primary);\n}\n\n.bloque-resumenes p { margin: 0 0 0.65rem 0; }\n.bloque-resumenes .keywords { font-size: 0.9rem; margin-bottom: 0; }\n\nhr.divisor-resumen {\n  border: none;\n  border-top: 1px solid var(--rma-border);\n  margin: 1rem 0;\n}\n\n/* Bloques desplegables nativos (<details>) */\ndetails.caja-interactiva {\n  background-color: var(--rma-surface);\n  border: 1px solid var(--rma-border);\n  border-radius: 6px;\n  padding: 0.75rem 1.15rem;\n  margin-bottom: 1rem;\n  font-size: 0.9rem;\n}\n\ndetails.caja-interactiva summary {\n  cursor: pointer;\n  font-weight: 700;\n  color: var(--rma-primary);\n  list-style: none;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\ndetails.caja-interactiva summary::-webkit-details-marker {\n  display: none;\n}\n\ndetails.caja-interactiva summary::after {\n  content: "▾";\n  font-size: 1rem;\n  color: var(--rma-accent);\n}\n\ndetails.caja-interactiva[open] summary::after {\n  content: "▴";\n}\n\n.indice-grid {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.45rem;\n  margin-top: 0.75rem;\n  padding-top: 0.75rem;\n  border-top: 1px solid var(--rma-border);\n}\n\n.indice-grid a {\n  display: inline-block;\n  padding: 0.25rem 0.65rem;\n  background-color: var(--rma-bg);\n  border: 1px solid var(--rma-border);\n  border-radius: 4px;\n  font-size: 0.84rem;\n  font-weight: 600;\n  text-decoration: none;\n  color: var(--rma-primary);\n}\n\n.indice-grid a.pill-recurso {\n  color: var(--rma-accent);\n  border-color: var(--rma-accent);\n}\n\n.indice-grid a:hover {\n  background-color: var(--rma-highlight);\n}\n\n.cita-sugerida-texto {\n  margin: 0.75rem 0 0 0;\n  padding-top: 0.75rem;\n  border-top: 1px solid var(--rma-border);\n  font-size: 0.88rem;\n  color: var(--rma-text);\n}\n\nhr.divisor-portada {\n  border: none;\n  border-top: 2px solid var(--rma-primary);\n  margin: 0.75rem 0 1.75rem 0;\n}\n\n/* ==========================================================================\n   CUERPO DEL ARTÍCULO Y JERARQUÍA DE TEXTO\n   ========================================================================== */\n.cuerpo-articulo h2 {\n  font-size: 1.38rem;\n  line-height: 1.3;\n  font-weight: 700;\n  color: var(--rma-primary);\n  border-top: 1px solid var(--rma-border);\n  border-left: 4px solid var(--rma-primary);\n  padding: 0.85rem 0 0.2rem 0.75rem;\n  margin: 2.3rem 0 0.95rem 0;\n}\n\n.cuerpo-articulo > h2:first-child {\n  border-top: none;\n  margin-top: 0;\n}\n\n.cuerpo-articulo h3 {\n  font-size: 1.12rem;\n  line-height: 1.35;\n  font-weight: 700;\n  font-style: italic;\n  color: var(--rma-accent);\n  margin: 1.5rem 0 0.6rem 0;\n}\n\n.cuerpo-articulo p {\n  margin: 0 0 1.12rem 0;\n  text-align: justify;\n  hyphens: auto;\n}\n\n.cuerpo-articulo p.fecha-manuscrito {\n  text-align: right;\n  font-style: italic;\n  color: var(--rma-text-muted);\n  margin-top: 1.5rem;\n}\n\nblockquote {\n  margin: 1.4rem 1.5rem;\n  padding: 0.8rem 1.2rem;\n  border-left: 3.5px solid var(--rma-accent);\n  background-color: var(--rma-surface);\n  color: var(--rma-text-muted);\n  font-size: 0.95rem;\n  border-radius: 0 4px 4px 0;\n}\n\n/* ==========================================================================\n   FIGURAS INTERACTIVAS Y VISOR EMERGENTE (:target LIGHTBOX PURO CSS3)\n   ========================================================================== */\n.rma-figura,\n.rma-tabla {\n  margin: 2rem auto;\n  padding: 1.1rem;\n  background-color: var(--rma-surface);\n  border: 1px solid var(--rma-border);\n  border-radius: 6px;\n}\n\n.ancho-completo,\n.ancho-centrado,\n.ancho-columna {\n  width: 100%;\n  box-sizing: border-box;\n}\n\n.rma-img-trigger {\n  position: relative;\n  display: block;\n  text-decoration: none;\n  cursor: zoom-in;\n  overflow: hidden;\n  border-radius: 4px;\n  border: 1px solid var(--rma-border);\n  background-color: #FFFFFF;\n}\n\n.rma-img-trigger img {\n  width: 100%;\n  height: auto;\n  display: block;\n  transition: transform 0.25s ease;\n}\n\n.rma-img-trigger:hover img {\n  transform: scale(1.01);\n}\n\n.rma-zoom-badge {\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n  background-color: rgba(35, 78, 82, 0.94);\n  color: #FAF9F6;\n  font-size: 0.78rem;\n  font-weight: 600;\n  padding: 0.32rem 0.7rem;\n  border-radius: 4px;\n  letter-spacing: 0.02em;\n}\n\n/* Ventana emergente en pantalla completa (solo CSS3 :target) */\n.rma-visor {\n  display: none;\n  position: fixed;\n  inset: 0;\n  z-index: 9999;\n  background-color: rgba(18, 22, 22, 0.94);\n  padding: 1.25rem;\n  box-sizing: border-box;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 0.85rem;\n}\n\n.rma-visor:target {\n  display: flex;\n  background-color: rgba(18, 22, 22, 0.94) !important;\n  outline: none;\n}\n\n.rma-visor-barra {\n  width: 100%;\n  max-width: 1120px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 1rem;\n  color: #FAF9F6;\n  font-size: 0.92rem;\n}\n\n.rma-visor-cerrar {\n  display: inline-block;\n  padding: 0.38rem 0.9rem;\n  background-color: var(--rma-accent);\n  color: #FAF9F6 !important;\n  text-decoration: none;\n  font-weight: 700;\n  border-radius: 4px;\n  white-space: nowrap;\n}\n\n.rma-visor-cerrar:hover {\n  background-color: var(--rma-primary) !important;\n}\n\n.rma-visor img {\n  max-width: 94vw;\n  max-height: 74vh;\n  width: auto;\n  height: auto;\n  object-fit: contain;\n  background-color: #FFFFFF;\n  border-radius: 4px;\n  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);\n}\n\n.rma-visor-epigrafe {\n  max-width: 960px;\n  max-height: 14vh;\n  overflow-y: auto;\n  color: #EAE6DF;\n  font-size: 0.86rem;\n  line-height: 1.45;\n  text-align: left;\n  padding: 0.55rem 0.8rem;\n  background-color: rgba(255, 255, 255, 0.08);\n  border-radius: 4px;\n}\n\nfigcaption,\n.tabla-caption {\n  font-size: 0.9rem;\n  line-height: 1.48;\n  margin-top: 0.95rem;\n  color: var(--rma-text-muted);\n}\n\n.cap-es,\n.cap-en {\n  display: block;\n  margin-bottom: 0.3rem;\n}\n\n.retorno-texto {\n  display: inline-block;\n  margin-top: 0.25rem;\n  margin-right: 0.5rem;\n  font-size: 0.8rem;\n  font-weight: 600;\n  text-decoration: none;\n}\n\n/* ==========================================================================\n   TABLAS ACADÉMICAS\n   ========================================================================== */\n.rma-tabla {\n  overflow-x: auto;\n}\n\n.rma-tabla table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 0.88rem;\n  background-color: #FFFFFF;\n}\n\n.rma-tabla th,\n.rma-tabla td {\n  border: 1px solid var(--rma-border);\n  padding: 0.45rem 0.55rem;\n  text-align: left;\n}\n\n.rma-tabla th {\n  background-color: var(--rma-surface);\n  color: var(--rma-primary);\n  border-bottom: 2px solid var(--rma-primary);\n  font-weight: 700;\n}\n\n.rma-tabla tbody tr:nth-child(even) {\n  background-color: #FAF9F6;\n}\n\n.rma-tabla tbody tr:hover {\n  background-color: var(--rma-highlight);\n}\n\n/* ==========================================================================\n   REFERENCIAS BIBLIOGRÁFICAS BIDIRECCIONALES Y PIE EDITORIAL\n   ========================================================================== */\n.referencias .ref-item {\n  padding-left: 1.8rem;\n  text-indent: -1.8rem;\n  font-size: 0.92rem;\n  line-height: 1.52;\n  text-align: left;\n  margin-bottom: 0.65rem;\n}\n\n.ref-backlink {\n  display: inline-block;\n  margin-left: 0.35rem;\n  padding: 0 0.32rem;\n  font-size: 0.78rem;\n  font-weight: 700;\n  text-decoration: none;\n  background-color: var(--rma-surface);\n  border: 1px solid var(--rma-border);\n  border-radius: 3px;\n  text-indent: 0;\n}\n\n.pie-primera-pagina {\n  margin-top: 3rem;\n  padding: 1.2rem 1.35rem;\n  background-color: var(--rma-surface);\n  border: 1px solid var(--rma-border);\n  border-top: 3px solid var(--rma-primary);\n  border-radius: 0 0 6px 6px;\n  font-size: 0.85rem;\n  color: var(--rma-text-muted);\n}\n\n.pie-p1-grid {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  align-items: center;\n  gap: 1rem;\n}\n\n.logo-cc-img { height: 31px; width: auto; display: block; }\n.pie-p1-centro { flex: 1 1 360px; text-align: center; }\n.pie-p1-centro p { margin: 0.15rem 0; }\n.pie-p1-editores { text-align: right; }\n.pie-p1-editores .editor-principal { font-weight: 700; color: var(--rma-primary); }\n\n/* ==========================================================================\n   VERSIÓN IMPRESA (@media print)\n   ========================================================================== */\n@media print {\n  body {\n    background-color: #FFFFFF;\n    color: #000000;\n    max-width: 100%;\n    padding: 0;\n    font-size: 11pt;\n  }\n  details.caja-interactiva,\n  .rma-zoom-badge,\n  .rma-visor,\n  .retorno-texto,\n  .ref-backlink {\n    display: none !important;\n  }\n  .cabezal-revista,\n  .bloque-autoria,\n  .bloque-resumenes,\n  .rma-figura,\n  .rma-tabla,\n  .pie-primera-pagina {\n    background-color: #FFFFFF;\n    break-inside: avoid;\n  }\n}'
-
-
-def _enlazar_llamados_recursos_en_texto(
-    fragmento_html: str,
-    figuras_disponibles: set[int],
-    tablas_disponibles: set[int],
-    llamados_fig_registrados: set[int],
-    llamados_tab_registrados: set[int],
-) -> str:
-    """
-    Convierte menciones textuales a Figura(s) N y Tabla(s) N en enlaces internos (#fig-N / #tab-N)
-    con anclas únicas id='llamado-fig-N' / id='llamado-tab-N' para el botón de retorno exacto.
-    """
-    if not fragmento_html:
-        return fragmento_html
-
-    partes = re.split(r"(<[^>]+>)", fragmento_html)
-    en_enlace = 0
-
-    def _reemplazar_mencion(m: re.Match) -> str:
-        etiqueta = m.group(1)
-        num_str = m.group(2)
-        num = int(num_str)
-        es_fig = etiqueta.lower().startswith("fig")
-        if es_fig:
-            if num not in figuras_disponibles:
-                return m.group(0)
-            attr_id = ""
-            if num not in llamados_fig_registrados:
-                llamados_fig_registrados.add(num)
-                attr_id = f' id="llamado-fig-{num}"'
-            return (
-                f'<a{attr_id} class="recurso-enlace" href="#fig-{num}" '
-                f'title="Ir a Figura {num}">{etiqueta} {num_str}</a>'
-            )
-        else:
-            if num not in tablas_disponibles:
-                return m.group(0)
-            attr_id = ""
-            if num not in llamados_tab_registrados:
-                llamados_tab_registrados.add(num)
-                attr_id = f' id="llamado-tab-{num}"'
-            return (
-                f'<a{attr_id} class="recurso-enlace" href="#tab-{num}" '
-                f'title="Ir a Tabla {num}">{etiqueta} {num_str}</a>'
-            )
-
-    patron_recurso = re.compile(r"\b(Figuras?|Figs?\.|Tablas?|Tabs?\.)\s*(\d+)\b")
-    for idx_p, parte in enumerate(partes):
-        if parte.startswith("<"):
-            if re.match(r"^<a\b", parte, flags=re.I):
-                en_enlace += 1
-            elif re.match(r"^</a\b", parte, flags=re.I) and en_enlace > 0:
-                en_enlace -= 1
-        elif en_enlace == 0:
-            partes[idx_p] = patron_recurso.sub(_reemplazar_mencion, parte)
-    return "".join(partes)
-
-
-def _construir_cita_apa7(
-    autores_est: list[dict],
-    autores_planos: str,
-    anio: str,
-    titulo_plano: str,
-    titulo_revista: str,
-    vol: str,
-    num_rev: str,
-    pags_rango: str,
-    doi_href: str,
-) -> str:
-    """Genera la cita sugerida en formato APA 7.ª edición."""
-    autores_apa = []
-    if autores_est:
-        for aut in autores_est:
-            nom = str(aut.get("nombre", "")).strip()
-            if not nom:
-                continue
-            partes = nom.split()
-            if len(partes) >= 2:
-                apellido = partes[-1]
-                iniciales = " ".join(f"{p[0].upper()}." for p in partes[:-1] if p)
-                autores_apa.append(f"{apellido}, {iniciales}")
-            else:
-                autores_apa.append(nom)
-    elif autores_planos:
-        for raw_a in re.split(r",|;|\by\b", autores_planos):
-            partes = raw_a.strip().split()
-            if len(partes) >= 2:
-                iniciales = " ".join(f"{p[0].upper()}." for p in partes[:-1] if p)
-                autores_apa.append(f"{partes[-1]}, {iniciales}")
-            elif partes:
-                autores_apa.append(partes[0])
-
-    if len(autores_apa) == 0:
-        aut_str = ""
-    elif len(autores_apa) == 1:
-        aut_str = autores_apa[0]
-    elif len(autores_apa) == 2:
-        aut_str = f"{autores_apa[0]}, y {autores_apa[1]}"
-    else:
-        aut_str = ", ".join(autores_apa[:-1]) + f", y {autores_apa[-1]}"
-
-    pags_apa = pags_rango.replace("-", "–")
-    ed_str = f"{html.escape(vol)}({html.escape(num_rev)})" if num_rev else html.escape(vol)
-    doi_part = f" {html.escape(doi_href)}" if doi_href else ""
-    pref_aut = f"{html.escape(aut_str)} " if aut_str else ""
-    return (
-        f"{pref_aut}({html.escape(anio)}). {html.escape(titulo_plano)}. "
-        f"<em>{html.escape(titulo_revista)}</em>, {ed_str}, {html.escape(pags_apa)}.{doi_part}"
-    )
-
-
-def empaquetar_html_autocontenido(
-    html_str: str,
-    carpeta_base: Path,
-    ruta_css: Path,
-    css_fallback: str = "",
-) -> str:
+def empaquetar_html_autocontenido(html_str: str, carpeta_base: Path, ruta_css: Path) -> str:
     """
     Incrusta la hoja de estilos CSS en <style> y convierte todas las imágenes locales
     (logos y figuras) a data URIs Base64 para generar un único archivo HTML autocontenido.
     """
-    css_contenido = ""
-    if css_fallback:
-        css_contenido = css_fallback.strip()
-    elif ruta_css.exists():
+    if ruta_css.exists():
         css_contenido = ruta_css.read_text(encoding="utf-8").strip()
-
-    if css_contenido:
         html_str = re.sub(
             r'<link\s+rel=["\']stylesheet["\']\s+href=["\']rma_ojs\.css["\']\s*/?>',
             lambda _: f"<style>\n{css_contenido}\n    </style>",
@@ -1836,7 +1870,7 @@ def _parsear_fecha_dmy(fecha_str: str) -> tuple[str, str, str] | None:
     return None
 
 
-def _detectar_pais_afiliacion(texto_sin_email: str, emails: list[str], ror_id: str = "") -> tuple[str, str]:
+def _detectar_pais_afiliacion_orig(texto_sin_email: str, emails: list[str], ror_id: str = "") -> tuple[str, str]:
     """Devuelve (codigo_iso2, nombre_pais) a partir del ROR ID, texto institucional o dominio de correo."""
     ror_code, _ = normalizar_ror(ror_id)
     ror_paises = {
@@ -1961,6 +1995,61 @@ def _detectar_pais_afiliacion(texto_sin_email: str, emails: list[str], ror_id: s
         return "MX", "México"
 
     return "", ""
+_EXTRA_PAISES_RMA = {
+    "malta": ("MT", "Malta"), "republic of malta": ("MT", "Malta"), "republica de malta": ("MT", "Malta"),
+    "chipre": ("CY", "Chipre"), "cyprus": ("CY", "Cyprus"),
+    "irlanda": ("IE", "Irlanda"), "ireland": ("Ireland", "IE"),
+    "grecia": ("GR", "Grecia"), "greece": ("Greece", "GR"),
+    "belgica": ("BE", "Bélgica"), "belgium": ("Belgium", "BE"),
+    "paises bajos": ("NL", "Países Bajos"), "netherlands": ("Netherlands", "NL"),
+    "suiza": ("CH", "Suiza"), "switzerland": ("Switzerland", "CH"),
+    "austria": ("AT", "Austria"), "suecia": ("Suecia", "SE"), "sweden": ("Sweden", "SE"),
+    "noruega": ("Noruega", "NO"), "norway": ("Norway", "NO"),
+    "dinamarca": ("Dinamarca", "DK"), "denmark": ("Denmark", "DK"),
+    "polonia": ("Polonia", "PL"), "poland": ("Poland", "PL"),
+    "portugal": ("Portugal", "PT"), "italia": ("Italia", "IT"), "italy": ("Italy", "IT"),
+    "francia": ("Francia", "FR"), "france": ("France", "FR"),
+    "alemania": ("Alemania", "DE"), "germany": ("Germany", "DE"),
+    "espana": ("España", "ES"), "spain": ("Spain", "ES"),
+    "reino unido": ("Reino Unido", "GB"), "united kingdom": ("United Kingdom", "GB"),
+    "uk": ("United Kingdom", "GB"), "england": ("United Kingdom", "GB"), "scotland": ("United Kingdom", "GB"),
+    "estados unidos": ("Estados Unidos", "US"), "united states": ("United States", "US"),
+    "united states of america": ("United States", "US"), "usa": ("United States", "US"),
+    "canada": ("Canada", "CA"), "australia": ("Australia", "AU"),
+    "nueva zelanda": ("Nueva Zelanda", "NZ"), "new zealand": ("New Zealand", "NZ"),
+    "argentina": ("Argentina", "AR"), "brasil": ("Brasil", "BR"), "brazil": ("Brazil", "BR"),
+    "chile": ("Chile", "CL"), "uruguay": ("Uruguay", "UY"), "paraguay": ("Paraguay", "PY"),
+    "bolivia": ("Bolivia", "BO"), "peru": ("Perú", "PE"), "ecuador": ("Ecuador", "EC"),
+    "colombia": ("Colombia", "CO"), "venezuela": ("Venezuela", "VE"), "mexico": ("México", "MX"),
+}
+_EXTRA_PISTAS_RMA = [
+    ("MT", "Malta", ("malta", "university of malta", "msida", "valletta", "gozo", "heritage malta", "superintendence of cultural heritage", "birkirkara", "sliema", "mdina")),
+    ("AR", "Argentina", ("conicet", "unc", "uba", "unlp", "unt", "unr", "unsa", "unmdp", "buenos aires", "cordoba", "tucuman", "salta", "mendoza", "santa fe", "la plata", "rosario", "idacor", "inapl")),
+    ("US", "United States", ("arizona", "california", "texas", "new york", "new mexico", "colorado", "florida", "massachusetts", "illinois", "washington", "michigan", "pennsylvania", "virginia", "smithsonian", "harvard", "stanford", "berkeley", "ucla", "yale")),
+    ("GB", "United Kingdom", ("oxford", "cambridge", "ucl", "london", "edinburgh", "manchester", "bristol", "durham", "sheffield", "york", "british museum")),
+]
+
+def _detectar_pais_afiliacion_ext(texto_af: str, emails=None, ror_id: str = "") -> tuple[str, str]:
+    iso, nom = _detectar_pais_afiliacion_orig(texto_af, emails, ror_id=ror_id)
+    if iso and nom:
+        return iso, nom
+    norm_full = "".join(c for c in unicodedata.normalize("NFD", (texto_af or "").lower()) if unicodedata.category(c) != "Mn")
+    norm_full = re.sub(r"\s+", " ", re.sub(r"[^a-z0-9\s]", " ", norm_full)).strip()
+    for p in reversed([x.strip() for x in re.split(r"[,.;()]", texto_af or "") if x.strip()][-5:]):
+        pn = "".join(c for c in unicodedata.normalize("NFD", p.lower()) if unicodedata.category(c) != "Mn")
+        pn = re.sub(r"\s+", " ", re.sub(r"[^a-z0-9\s]", " ", pn)).strip()
+        if pn in _EXTRA_PAISES_RMA:
+            return _EXTRA_PAISES_RMA[pn]
+    padded = f" {norm_full} "
+    for iso_c, nom_c, pistas in _EXTRA_PISTAS_RMA:
+        if any(f" {pt} " in padded for pt in pistas):
+            return iso_c, nom_c
+    for em in (emails or []):
+        if str(em).lower().endswith(".mt"):
+            return "MT", "Malta"
+    return "", ""
+
+_detectar_pais_afiliacion = _detectar_pais_afiliacion_ext
 
 
 def _desglosar_afiliacion_jats(clave_af: str, txt_af_html: str, ror_id: str, indent: str = "      ") -> str:
@@ -1999,14 +2088,13 @@ def _desglosar_afiliacion_jats(clave_af: str, txt_af_html: str, ror_id: str, ind
         f'{indent}  <label>{_xml_escape_text(clave_af)}</label>',
         f'{indent}  <institution content-type="original">{_xml_escape_text(orig_txt)}</institution>',
     ]
-    if ror_id:
-        _, ror_url = normalizar_ror(ror_id)
-        partes.extend([
-            f'{indent}  <institution-wrap>',
-            f'{indent}    <institution-id institution-id-type="ror">{_xml_escape_text(ror_url)}</institution-id>',
-            f'{indent}    <institution content-type="orgname">{_xml_escape_text(orgname)}</institution>',
-            f'{indent}  </institution-wrap>',
-        ])
+    rors_list = normalizar_rors(ror_id)
+    if rors_list:
+        partes.append(f'{indent}  <institution-wrap>')
+        for _, ror_url in rors_list:
+            partes.append(f'{indent}    <institution-id institution-id-type="ror">{_xml_escape_text(ror_url)}</institution-id>')
+        partes.append(f'{indent}    <institution content-type="orgname">{_xml_escape_text(orgname)}</institution>')
+        partes.append(f'{indent}  </institution-wrap>')
     else:
         partes.append(f'{indent}  <institution content-type="orgname">{_xml_escape_text(orgname)}</institution>')
 
@@ -2434,6 +2522,8 @@ def generar_xml_scielo(
     cuerpo_bloques: list | None = None,
 ) -> str:
     """Genera un archivo XML JATS 1.1 completo compatible con SciELO Publishing Schema (SPS 1.9)."""
+    idioma_art = normalizar_codigo_idioma((meta or {}).get("idioma", "")) or detectar_idioma_texto(f"{(art or {}).get('titulo_es', '')} {(art or {}).get('titulo_en', '')} {(art or {}).get('resumen', '')} {(art or {}).get('abstract', '')}")
+    idioma_local_xml = "pt" if (idioma_art == "pt" or (art or {}).get("idioma_resumen_local") == "pt") else "es"
     nl = chr(10)
 
     titulo_es_jats = _limpiar_titulo_jats(_html_inline_a_jats(art.get("titulo_es", "")))
@@ -2576,8 +2666,8 @@ def generar_xml_scielo(
         f'        <copyright-statement>Copyright © {_xml_escape_text(anio_str)} {_xml_escape_text(titulo_rev)}</copyright-statement>{nl}'
         f'        <copyright-year>{_xml_escape_text(anio_str)}</copyright-year>{nl}'
         f'        <copyright-holder>{_xml_escape_text(titulo_rev)}</copyright-holder>{nl}'
-        f'        <license license-type="open-access" xlink:href="{_xml_escape_attr(url_lic)}" xml:lang="es">{nl}'
-        f'          <license-p>Este es un artículo publicado en acceso abierto bajo una licencia Creative Commons ({_xml_escape_text(licencia_txt)}).</license-p>{nl}'
+        f'        <license license-type="open-access" xlink:href="{_xml_escape_attr(url_lic)}" xml:lang="{idioma_art}">{nl}'
+        f'          <license-p>{"This is an open-access article distributed under the terms of the Creative Commons Attribution License" if idioma_art == "en" else ("Este é um artigo publicado em acesso aberto sob uma licença Creative Commons" if idioma_art == "pt" else "Este es un artículo publicado en acceso abierto bajo una licencia Creative Commons")} ({_xml_escape_text(licencia_txt)}).</license-p>{nl}'
         f'        </license>{nl}'
         f'      </permissions>'
     )
@@ -2617,7 +2707,7 @@ def generar_xml_scielo(
         cap_linea = f"{cap_xml}{nl}" if cap_xml else ""
         return (
             f'{indent}<fig id="f{num_f}">{nl}'
-            f'{indent}  <label>Figura {num_f}</label>{nl}'
+            f'{indent}  <label>{"Figure" if idioma_art == "en" else "Figura"} {num_f}</label>{nl}'
             f'{cap_linea}'
             f'{indent}  <graphic xlink:href="{_xml_escape_attr(nombre_img)}"/>{nl}'
             f'{indent}</fig>'
@@ -2642,7 +2732,7 @@ def generar_xml_scielo(
             )
         return (
             f'{indent}<table-wrap id="t{num_t}">{nl}'
-            f'{indent}  <label>Tabla {num_t}</label>{nl}'
+            f'{indent}  <label>{"Table" if idioma_art == "en" else ("Tabela" if idioma_art == "pt" else "Tabla")} {num_t}</label>{nl}'
             f'{cap_linea}'
             f'{tbl_xml}{foot_xml}{nl}'
             f'{indent}</table-wrap>'
@@ -2704,7 +2794,7 @@ def generar_xml_scielo(
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1 20151215//EN" "JATS-journalpublishing1.dtd">
-<article article-type="{article_type}" dtd-version="1.1" specific-use="sps-1.9" xml:lang="es" xmlns:xlink="http://www.w3.org/1999/xlink">
+<article article-type="{article_type}" dtd-version="1.1" specific-use="sps-1.9" xml:lang="{idioma_art}" xmlns:xlink="http://www.w3.org/1999/xlink">
   <front>
     <journal-meta>
       <journal-id journal-id-type="publisher-id">rma</journal-id>
@@ -2726,9 +2816,9 @@ def generar_xml_scielo(
         </subj-group>
       </article-categories>
       <title-group>
-        <article-title>{titulo_es_jats}</article-title>
-        <trans-title-group xml:lang="en">
-          <trans-title>{titulo_en_jats}</trans-title>
+        <article-title>{titulo_en_jats if idioma_art == "en" else titulo_es_jats}</article-title>
+        <trans-title-group xml:lang="{idioma_local_xml if idioma_art == "en" else "en"}">
+          <trans-title>{titulo_es_jats if idioma_art == "en" else titulo_en_jats}</trans-title>
         </trans-title-group>
       </title-group>{contrib_group_block}{affs_block}
       <pub-date date-type="pub" publication-format="electronic">
@@ -2740,13 +2830,13 @@ def generar_xml_scielo(
       <issue>{_xml_escape_text(str(meta.get('numero', '')))}</issue>
       <fpage>{_xml_escape_text(fpage_num)}</fpage>{lpage_tag}{history_block}{permissions_block}
       <abstract>
-{resumen_jats}
+{abstract_jats if idioma_art == "en" else resumen_jats}
       </abstract>
-      <trans-abstract xml:lang="en">
-{abstract_jats}
+      <trans-abstract xml:lang="{idioma_local_xml if idioma_art == "en" else "en"}">
+{resumen_jats if idioma_art == "en" else abstract_jats}
       </trans-abstract>
-      <kwd-group xml:lang="es">
-        <title>Palabras clave</title>
+      <kwd-group xml:lang="{idioma_local_xml}">
+        <title>{"Palavras-chave" if idioma_local_xml == "pt" else "Palabras clave"}</title>
 {kw_es_xml}
       </kwd-group>
       <kwd-group xml:lang="en">
@@ -2760,232 +2850,12 @@ def generar_xml_scielo(
   </body>
   <back>
 {fn_group_block}    <ref-list>
-      <title>Referencias bibliográficas</title>
+      <title>{"References" if idioma_art == "en" else ("Referências bibliográficas" if idioma_art == "pt" else "Referencias bibliográficas")}</title>
 {nl.join(refs_xml)}
     </ref-list>
   </back>
 </article>
 """
-
-
-def _normalizar_clave_autor(texto: str) -> str:
-    t = _quitar_tildes(texto or "").lower()
-    t = re.sub(r"[^a-z\s\-]", " ", t)
-    t = re.sub(r"\s+", " ", t).strip()
-    return t
-
-
-def construir_indice_referencias(referencias_html: list[str]) -> dict[tuple[str, str], str]:
-    """Construye un mapa (apellido_normalizado, anio) -> 'ref-N' a partir de la bibliografía."""
-    indice: dict[tuple[str, str], str] = {}
-    re_anio = re.compile(r"\b((?:19|20)\d{2}[a-z]?|s\s*/\s*f|s\.\s*f\.|en\s+prensa|in\s+press)\b", flags=re.I)
-    for idx, r_html in enumerate(referencias_html, start=1):
-        plano = html.unescape(re.sub(r"<[^>]+>", " ", r_html))
-        plano = re.sub(r"\s+", " ", plano).strip()
-        m_anio = re_anio.search(plano)
-        if not m_anio:
-            continue
-        anio = re.sub(r"[\s\.]+", "", m_anio.group(1).lower())
-        cabecera = plano[:m_anio.start()].strip(" ,.;:()")
-        primer_bloque = re.split(r"\s+(?:y|e|and|&)\s+|et\s+al\.?", cabecera, maxsplit=1, flags=re.I)[0]
-        apellido = primer_bloque.split(",")[0].strip()
-        clave = _normalizar_clave_autor(apellido)
-        if clave:
-            indice.setdefault((clave, anio), f"ref-{idx}")
-            partes = clave.split()
-            if len(partes) > 1:
-                indice.setdefault((partes[-1], anio), f"ref-{idx}")
-                if len(partes[0]) >= 3:
-                    indice.setdefault((partes[0], anio), f"ref-{idx}")
-    return indice
-
-
-def _mapear_texto_plano_html(seg_html: str) -> tuple[str, list[tuple[int, int]], list[bool]]:
-    """Convierte HTML con etiquetas inline en texto plano, spans originales y máscara de exclusión."""
-    token_re = re.compile(r"<[^>]+>|&(?:#\d+|#x[0-9a-fA-F]+|[a-zA-Z]+);|.", flags=re.S)
-    plain_chars: list[str] = []
-    spans: list[tuple[int, int]] = []
-    protegido: list[bool] = []
-    prof_excl = 0
-    for m in token_re.finditer(seg_html):
-        tok = m.group(0)
-        s, e = m.span()
-        if tok.startswith("<"):
-            if re.match(r"^<(?:a|sup|sub)\b", tok, flags=re.I) and not tok.endswith("/>"):
-                prof_excl += 1
-            elif re.match(r"^<\/(?:a|sup|sub)\b", tok, flags=re.I) and prof_excl > 0:
-                prof_excl -= 1
-            elif re.match(r"^<(?:br|p|div|li|tr|td|th)\b", tok, flags=re.I):
-                plain_chars.append(" ")
-                spans.append((s, e))
-                protegido.append(prof_excl > 0)
-            continue
-        esta_prot = prof_excl > 0
-        if tok.startswith("&"):
-            dec = html.unescape(tok)
-            for ch in dec:
-                plain_chars.append(ch)
-                spans.append((s, e))
-                protegido.append(esta_prot)
-        else:
-            plain_chars.append(tok)
-            spans.append((s, e))
-            protegido.append(esta_prot)
-    return "".join(plain_chars), spans, protegido
-
-
-def _balancear_etiquetas_inline(fragmento: str) -> str:
-    """Asegura que etiquetas inline (em, i, strong, b) queden balanceadas dentro de un enlace."""
-    tag_re = re.compile(r"<(/?)(em|i|strong|b)\b[^>]*>", flags=re.I)
-    pila: list[str] = []
-    prefijo = ""
-    for m in tag_re.finditer(fragmento):
-        es_cierre = bool(m.group(1))
-        tag = m.group(2).lower()
-        if not es_cierre:
-            pila.append(tag)
-        else:
-            if pila and pila[-1] == tag:
-                pila.pop()
-            elif tag in pila:
-                while pila and pila[-1] != tag:
-                    pila.pop()
-                if pila:
-                    pila.pop()
-            else:
-                prefijo = f"<{tag}>" + prefijo
-    sufijo = "".join(f"</{t}>" for t in reversed(pila))
-    return prefijo + fragmento + sufijo
-
-
-def enlazar_citas_en_fragmento(fragmento_html: str, indice_refs: dict[tuple[str, str], str]) -> str:
-    """Convierte citas en texto (narrativas y parentéticas, incluso con <em>et al.</em> o años múltiples) en enlaces."""
-    if not indice_refs or not fragmento_html:
-        return fragmento_html
-
-    re_anio = r"(?:(?:19|20)\d{2}[a-z]?|s\s*/\s*f|s\.\s*f\.|en\s+prensa|in\s+press)"
-    re_pag = r"(?:\s*:\s*\d+(?:\s*[-–]\s*\d+)?|\s*,\s*pp?\.\s*\d+(?:\s*[-–]\s*\d+)?)?"
-    re_sufijo_autor = r"(?:\s+(?:et\s+al\.?|y\s+(?:coautores|colaboradores|otros)|and\s+colleagues))?"
-    re_word = r"[A-ZÁÉÍÓÚÑÜ][a-záéíóúñüA-ZÁÉÍÓÚÑÜ'\-]+"
-    re_particula = r"(?:de|del|la|las|los|van|von|der|den|y|e|and|&)"
-    re_autor = rf"{re_word}(?:\s+(?:{re_particula}\s+)?{re_word})*{re_sufijo_autor}"
-    re_prefijo_paren = r"(?:(?:e\.?\s*g\.?|i\.?\s*e\.?|por\s+ejemplo|véase|ver|cf\.?|cfr\.?|sensu|entre\s+otros|en)\s*,?\s*)*"
-
-    pat_narrativa = re.compile(
-        rf"\b({re_autor})\s*\(({re_anio}{re_pag}(?:\s*[,;]\s*{re_anio}{re_pag})*)\)",
-        flags=re.UNICODE,
-    )
-    pat_item_paren = re.compile(
-        rf"({re_autor})[\s,]*({re_anio}{re_pag}(?:\s*,\s*{re_anio}{re_pag})*)",
-        flags=re.UNICODE,
-    )
-    pat_anio_item = re.compile(rf"({re_anio})({re_pag})", flags=re.I)
-
-    def _buscar_ref_id(autor_txt: str, anio_txt: str) -> str | None:
-        anio_norm = re.sub(r"[\s\.]+", "", anio_txt.lower())
-        primer = re.split(
-            r"\s+(?:y|e|and|&)\s+|et\s+al\.?|y\s+(?:coautores|colaboradores|otros)|and\s+colleagues",
-            autor_txt,
-            maxsplit=1,
-            flags=re.I,
-        )[0].strip()
-        clave = _normalizar_clave_autor(primer)
-        if not clave:
-            return None
-        if (clave, anio_norm) in indice_refs:
-            return indice_refs[(clave, anio_norm)]
-        partes = clave.split()
-        if len(partes) > 1:
-            if (partes[-1], anio_norm) in indice_refs:
-                return indice_refs[(partes[-1], anio_norm)]
-            if len(partes[0]) >= 3 and (partes[0], anio_norm) in indice_refs:
-                return indice_refs[(partes[0], anio_norm)]
-        return None
-
-    plain, spans, protegido = _mapear_texto_plano_html(fragmento_html)
-    if not plain or not re.search(re_anio, plain, flags=re.I):
-        return fragmento_html
-
-    reemplazos: list[tuple[int, int, str]] = []
-    paren_spans: list[tuple[int, int]] = []
-
-    # 1) Citas dentro de paréntesis: (Autor, 2020, 2026; Otro et al., 2019; Figura 1)
-    for m_par in re.finditer(r"\(([^()]+)\)", plain):
-        paren_spans.append(m_par.span())
-        c_start, _ = m_par.span(1)
-        contenido = m_par.group(1)
-        if not re.search(re_anio, contenido, flags=re.I):
-            continue
-        for mi in pat_item_paren.finditer(contenido):
-            autor_raw = mi.group(1)
-            autor_limpio = re.sub(rf"^{re_prefijo_paren}", "", autor_raw, flags=re.I).strip()
-            offset_pref = len(autor_raw) - len(autor_limpio)
-            anios_bloque = mi.group(2)
-            anios_start_rel = mi.start(2)
-            anios_matches = list(pat_anio_item.finditer(anios_bloque))
-            if not anios_matches:
-                continue
-            m_a0 = anios_matches[0]
-            rid0 = _buscar_ref_id(autor_limpio, m_a0.group(1))
-            if rid0:
-                s0 = c_start + mi.start(1) + offset_pref
-                e0 = c_start + anios_start_rel + m_a0.end()
-                reemplazos.append((s0, e0, rid0))
-            for m_ax in anios_matches[1:]:
-                ridx = _buscar_ref_id(autor_limpio, m_ax.group(1))
-                if ridx:
-                    sx = c_start + anios_start_rel + m_ax.start()
-                    ex = c_start + anios_start_rel + m_ax.end()
-                    reemplazos.append((sx, ex, ridx))
-
-    # 2) Citas narrativas fuera de paréntesis: Autor (2020), Autor y coautores (2022), Waldron (1991, 2019)
-    for mn in pat_narrativa.finditer(plain):
-        ns, ne = mn.span()
-        if any(not (ne <= ps or ns >= pe) for ps, pe in paren_spans):
-            continue
-        autor_limpio = mn.group(1).strip()
-        anios_bloque = mn.group(2)
-        anios_start_rel = mn.start(2)
-        anios_matches = list(pat_anio_item.finditer(anios_bloque))
-        if not anios_matches:
-            continue
-        m_a0 = anios_matches[0]
-        rid0 = _buscar_ref_id(autor_limpio, m_a0.group(1))
-        if rid0:
-            e0 = (ns + anios_start_rel + m_a0.end() + 1) if len(anios_matches) == 1 else (ns + anios_start_rel + m_a0.end())
-            reemplazos.append((ns, min(e0, ne), rid0))
-        for idx_a, m_ax in enumerate(anios_matches[1:], start=1):
-            ridx = _buscar_ref_id(autor_limpio, m_ax.group(1))
-            if ridx:
-                sx = ns + anios_start_rel + m_ax.start()
-                ex = (ns + anios_start_rel + m_ax.end() + 1) if idx_a == len(anios_matches) - 1 else (ns + anios_start_rel + m_ax.end())
-                reemplazos.append((sx, min(ex, ne), ridx))
-
-    if not reemplazos:
-        return fragmento_html
-
-    reemplazos.sort(key=lambda x: (x[0], -x[1]))
-    filtrados: list[tuple[int, int, str]] = []
-    ultimo_e = -1
-    for s, e, rid in reemplazos:
-        if s >= ultimo_e and s < e and e <= len(spans):
-            if not any(protegido[k] for k in range(s, e)):
-                filtrados.append((s, e, rid))
-                ultimo_e = e
-
-    partes_out: list[str] = []
-    cursor_orig = 0
-    for s_p, e_p, rid in filtrados:
-        s_o = spans[s_p][0]
-        e_o = spans[e_p - 1][1]
-        if s_o < cursor_orig:
-            continue
-        partes_out.append(fragmento_html[cursor_orig:s_o])
-        inner = _balancear_etiquetas_inline(fragmento_html[s_o:e_o])
-        partes_out.append(f'<a href="#{rid}" class="cita-enlace">{inner}</a>')
-        cursor_orig = e_o
-    partes_out.append(fragmento_html[cursor_orig:])
-    return "".join(partes_out)
 
 
 def compilar_articulo(
@@ -3016,12 +2886,7 @@ def compilar_articulo(
                 meta[k] = v
 
     perfil = resolver_perfil_formato(formato_override, meta, rev)
-    mapa_css_print = {
-        "tradicional": "rma_print_tradicional.css",
-        "moderno": "rma_print_moderno.css",
-        "secciones": "rma_print_secciones.css",
-    }
-    css_origen = dir_script / mapa_css_print[perfil]
+    css_origen = dir_script / ("rma_print_tradicional.css" if perfil == "tradicional" else "rma_print_moderno.css")
 
     rec = cargar_config(carpeta / f"{art_id}_recursos", obligatorio=False)
     art = parsear_manuscrito(ruta_manuscrito)
@@ -3101,76 +2966,37 @@ def compilar_articulo(
         shutil.copy2(ruta_ror_svg, carpeta_salida_assets / "ror.svg")
         tiene_icono_ror = True
 
-    motor_citas = MotorCitacionesRMA(art["referencias"], estilo_id="semantico")
     cuerpo_bloques = []
     figuras_usadas = []
-    visores_ojs = []
-    secciones_toc = []
-    tablas_toc = []
-    ids_usados = set()
 
-    figuras_disponibles = {
-        int(b["num"]) for b in art["bloques_cuerpo"] if b.get("tipo") == "FIGURA"
-    }
-    tablas_disponibles = {
-        int(b["num"]) for b in art["bloques_cuerpo"] if b.get("tipo") == "TABLA"
-    }
-    llamados_fig_registrados = set()
-    llamados_tab_registrados = set()
+    idioma_art = normalizar_codigo_idioma(meta.get("idioma", "")) or detectar_idioma_texto(" ".join(re.sub(r"<[^>]+>", " ", x.get("html", "")) for x in art["bloques_cuerpo"][:8]) or f"{art.get('titulo_es', '')} {art.get('titulo_en', '')}")
+    idioma_local_art = "pt" if (idioma_art == "pt" or art.get("idioma_resumen_local") == "pt") else "es"
+    es_ingles = (idioma_art == "en")
+    etiq_figura = "Figure" if es_ingles else "Figura"
+    etiq_tabla = "Table" if es_ingles else ("Tabela" if idioma_art == "pt" else "Tabla")
+    etiq_refs = "References" if es_ingles else ("Referências bibliográficas" if idioma_art == "pt" else "Referencias bibliográficas")
+    etiq_notas = "Notes" if es_ingles else "Notas"
 
-    def _crear_slug_unico(texto_html: str, prefijo: str) -> str:
-        plano = re.sub(r"<[^<]+?>", "", texto_html).strip()
-        norm = unicodedata.normalize("NFD", plano)
-        sin_t = "".join(c for c in norm if unicodedata.category(c) != "Mn").lower()
-        base = re.sub(r"[^a-z0-9]+", "-", sin_t).strip("-") or "seccion"
-        cand = f"{prefijo}-{base}"
-        n_dup = 2
-        while cand in ids_usados:
-            cand = f"{prefijo}-{base}-{n_dup}"
-            n_dup += 1
-        ids_usados.add(cand)
-        return cand
-
+    motor_citas = MotorCitacionesRMA(art["referencias"], estilo_id="semantico")
     for idx_b, b in enumerate(art["bloques_cuerpo"]):
         blk_id = f"blk-{idx_b}"
         if b["tipo"] == "h2":
-            sec_id = _crear_slug_unico(b["html"], "sec")
-            titulo_sec_plano = re.sub(r"<[^<]+?>", "", b["html"]).strip()
-            secciones_toc.append((sec_id, titulo_sec_plano))
             cuerpo_bloques.append({
                 "id": blk_id,
                 "tipo": "h2",
                 "html": b["html"],
                 "movible": True,
-                "html_ojs": f'<h2 id="{sec_id}">{b["html"]}</h2>',
-                "html_pdf": f'<h2 id="{sec_id}" data-blk="{blk_id}">{b["html"]}</h2>',
-            })
-        elif b["tipo"] == "h3":
-            sub_id = _crear_slug_unico(b["html"], "sub")
-            cuerpo_bloques.append({
-                "id": blk_id,
-                "tipo": "h3",
-                "html": b["html"],
-                "movible": True,
-                "html_ojs": f'<h3 id="{sub_id}">{b["html"]}</h3>',
-                "html_pdf": f'<h3 id="{sub_id}" data-blk="{blk_id}">{b["html"]}</h3>',
+                "html_ojs": f"<h2>{b['html']}</h2>",
+                "html_pdf": f'<h2 data-blk="{blk_id}">{b["html"]}</h2>',
             })
         elif b["tipo"] == "blockquote":
-            html_citado = motor_citas.enlazar_fragmento(b["html"])
-            html_ojs_bq = _enlazar_llamados_recursos_en_texto(
-                html_citado,
-                figuras_disponibles,
-                tablas_disponibles,
-                llamados_fig_registrados,
-                llamados_tab_registrados,
-            )
             cuerpo_bloques.append({
                 "id": blk_id,
                 "tipo": "blockquote",
-                "html": html_citado,
+                "html": b["html"],
                 "movible": True,
-                "html_ojs": f"<blockquote>{html_ojs_bq}</blockquote>",
-                "html_pdf": f'<blockquote data-blk="{blk_id}">{html_citado}</blockquote>',
+                "html_ojs": f"<blockquote>{motor_citas.enlazar_fragmento(b['html'])}</blockquote>",
+                "html_pdf": f'<blockquote data-blk="{blk_id}">{motor_citas.enlazar_fragmento(b["html"])}</blockquote>',
             })
         elif b["tipo"] == "fecha":
             cuerpo_bloques.append({
@@ -3182,48 +3008,28 @@ def compilar_articulo(
                 "html_pdf": f'<p class="fecha-manuscrito" data-blk="{blk_id}">{b["html"]}</p>',
             })
         elif b["tipo"] == "p":
-            html_citado = motor_citas.enlazar_fragmento(b["html"])
-            html_ojs_p = _enlazar_llamados_recursos_en_texto(
-                html_citado,
-                figuras_disponibles,
-                tablas_disponibles,
-                llamados_fig_registrados,
-                llamados_tab_registrados,
-            )
             cuerpo_bloques.append({
                 "id": blk_id,
                 "tipo": "p",
-                "html": html_citado,
+                "html": b["html"],
                 "movible": True,
-                "html_ojs": f"<p>{html_ojs_p}</p>",
-                "html_pdf": f'<p data-blk="{blk_id}">{html_citado}</p>',
+                "html_ojs": f"<p>{motor_citas.enlazar_fragmento(b['html'])}</p>",
+                "html_pdf": f'<p data-blk="{blk_id}">{motor_citas.enlazar_fragmento(b["html"])}</p>',
             })
         elif b["tipo"] == "FIGURA":
-            num = int(b["num"])
+            num = b["num"]
             info = figuras_cfg.get(num) or figuras_cfg.get(str(num)) or {}
             nombre_img = obtener_imagen_figura(carpeta, carpeta_salida_fig, art_id, num, info.get("archivo", ""))
             clase_ancho = clase_ancho_recurso(info, perfil, ruta_img=carpeta_salida_fig / nombre_img)
+            alto_max_cfg = str(info.get("alto_max") or info.get("max_height") or "").strip()
             ruta_rel_html = f"figuras/{nombre_img}"
             flujo_fijo = str(info.get("flujo", "")).strip().lower() in ("fijo", "fixed", "anclado", "estatico", "estático")
 
-            cap_es_raw = _limpiar_prefijo_recurso_html(info.get("es", f"Descripción de la Figura {num}."))
-            cap_en_raw = _limpiar_prefijo_recurso_html(info.get("en", f"Description of Figure {num}."))
+            cap_es_raw = info.get("pt") or info.get("es") or (f"Descrição da Figura {num}." if idioma_art == "pt" else f"Descripción de la Figura {num}.")
+            cap_en_raw = info.get("en", f"Description of Figure {num}.")
             cap_es = enlazar_urls_y_correos(cap_es_raw)
             cap_en = enlazar_urls_y_correos(cap_en_raw)
             figuras_usadas.append((num, nombre_img, cap_es_raw, cap_en_raw))
-
-            ext_img = Path(nombre_img).suffix.lower()
-            etiqueta_res = "SVG vectorial" if ext_img == ".svg" else "alta resolución"
-            visores_ojs.append(
-                f'<div class="rma-visor" id="visor-fig-{num}" role="dialog" aria-modal="true" aria-label="Vista ampliada Figura {num}">\n'
-                f'  <div class="rma-visor-barra">\n'
-                f'    <strong>Figura {num} · Vista ampliada en {etiqueta_res}</strong>\n'
-                f'    <a class="rma-visor-cerrar" href="#fig-{num}">✕ Cerrar vista ampliada</a>\n'
-                f'  </div>\n'
-                f'  <img src="{html.escape(ruta_rel_html)}" alt="Figura {num} ampliada en alta resolución">\n'
-                f'  <div class="rma-visor-epigrafe"><strong>Figura {num}.</strong> {cap_es}</div>\n'
-                f'</div>'
-            )
 
             cuerpo_bloques.append({
                 "id": blk_id,
@@ -3236,30 +3042,23 @@ def compilar_articulo(
                 "movible": not flujo_fijo,
                 "html_ojs": (
                     f'<figure class="rma-figura {clase_ancho}" id="fig-{num}">\n'
-                    f'  <a class="rma-img-trigger" href="#visor-fig-{num}" title="Clic para abrir Figura {num} en ventana emergente de alta resolución">\n'
-                    f'    <img src="{html.escape(ruta_rel_html)}" alt="Figura {num}">\n'
-                    f'    <span class="rma-zoom-badge">🔍 Ampliar en ventana emergente</span>\n'
-                    f'  </a>\n'
+                    f'  <img src="{html.escape(ruta_rel_html)}" alt="{etiq_figura} {num}">\n'
                     f'  <figcaption>\n'
-                    f'    <span class="cap-es"><strong>Figura {num}.</strong> {cap_es}</span>\n'
-                    f'    <span class="cap-en"><em>Figure {num}. {cap_en}</em></span>\n'
-                    f'    __RETORNO_FIG_{num}__\n'
+                    f'{_html_caption_bilingue("Figura", "Figure", num, cap_es, cap_en, idioma_art)}\n'
                     f'  </figcaption>\n'
                     f'</figure>'
                 ),
                 "html_pdf": (
                     f'<figure class="rma-figura {clase_ancho}" id="fig-{num}" data-blk="{blk_id}">\n'
-                    f'  <img src="{html.escape(ruta_rel_html)}" alt="Figura {num}">\n'
+                    f'  <img src="{html.escape(ruta_rel_html)}" alt="{etiq_figura} {num}">\n'
                     f'  <figcaption>\n'
-                    f'    <span class="cap-es"><strong>Figura {num}.</strong> {cap_es}</span>\n'
-                    f'    <span class="cap-en"><em>Figure {num}. {cap_en}</em></span>\n'
+                    f'{_html_caption_bilingue("Figura", "Figure", num, cap_es, cap_en, idioma_art)}\n'
                     f'  </figcaption>\n'
                     f'</figure>'
                 ),
             })
         elif b["tipo"] == "TABLA":
-            num = int(b["num"])
-            tablas_toc.append(num)
+            num = b["num"]
             info = tablas_cfg.get(num) or tablas_cfg.get(str(num)) or {}
             tabla_raw = resolver_html_tabla(
                 carpeta, art_id, num, info, tablas_html, art["tablas_embebidas"]
@@ -3288,10 +3087,8 @@ def compilar_articulo(
                         else "divisible"
                     )
 
-            cap_es_raw = _limpiar_prefijo_recurso_html(info.get("es", f"Descripción de la Tabla {num}."))
-            cap_en_raw = _limpiar_prefijo_recurso_html(info.get("en", f"Description of Table {num}."))
-            cap_es = enlazar_urls_y_correos(cap_es_raw)
-            cap_en = enlazar_urls_y_correos(cap_en_raw)
+            cap_es = enlazar_urls_y_correos(info.get("pt") or info.get("es") or (f"Descrição da Tabela {num}." if idioma_art == "pt" else f"Descripción de la Tabla {num}."))
+            cap_en = enlazar_urls_y_correos(info.get("en", f"Description of Table {num}."))
             notas_t = (
                 f'<div class="tabla-notas">{enlazar_urls_y_correos(info["notas"])}</div>'
                 if info.get("notas")
@@ -3313,8 +3110,8 @@ def compilar_articulo(
                 "tabla_code_pdf": tabla_code_pdf,
                 "notas_raw": str(info.get("notas", "") or "").strip(),
                 "notas_html": notas_t,
-                "cap_es_html": cap_es_raw,
-                "cap_en_html": cap_en_raw,
+                "cap_es_html": str(info.get("pt") or info.get("es") or (f"Descrição da Tabela {num}." if idioma_art == "pt" else f"Descripción de la Tabla {num}.")),
+                "cap_en_html": str(info.get("en", f"Description of Table {num}.")),
                 "cap_es": cap_es,
                 "cap_en": cap_en,
                 "movible": not flujo_fijo,
@@ -3323,9 +3120,7 @@ def compilar_articulo(
                     f'  {tabla_code}\n'
                     f'  {notas_t}\n'
                     f'  <div class="tabla-caption">\n'
-                    f'    <span class="cap-es"><strong>Tabla {num}.</strong> {cap_es}</span>\n'
-                    f'    <span class="cap-en"><em>Table {num}. {cap_en}</em></span>\n'
-                    f'    __RETORNO_TAB_{num}__\n'
+                    f'{_html_caption_bilingue("Tabela" if idioma_art == "pt" else "Tabla", "Table", num, cap_es, cap_en, idioma_art)}\n'
                     f'  </div>\n'
                     f'</div>'
                 ),
@@ -3334,31 +3129,11 @@ def compilar_articulo(
                     f'  {tabla_code_pdf}\n'
                     f'  {notas_t}\n'
                     f'  <div class="tabla-caption">\n'
-                    f'    <span class="cap-es"><strong>Tabla {num}.</strong> {cap_es}</span>\n'
-                    f'    <span class="cap-en"><em>Table {num}. {cap_en}</em></span>\n'
+                    f'{_html_caption_bilingue("Tabela" if idioma_art == "pt" else "Tabla", "Table", num, cap_es, cap_en, idioma_art)}\n'
                     f'  </div>\n'
                     f'</div>'
                 ),
             })
-
-    # Resolver marcadores de retorno exacto (#llamado-fig-N / #llamado-tab-N) una vez recorrido todo el cuerpo
-    for blk in cuerpo_bloques:
-        if blk["tipo"] == "FIGURA":
-            n_fig = blk["num"]
-            enlace_ret = (
-                f'<a class="retorno-texto" href="#llamado-fig-{n_fig}">↑ Volver al llamado en el texto</a>'
-                if n_fig in llamados_fig_registrados
-                else ""
-            )
-            blk["html_ojs"] = blk["html_ojs"].replace(f"__RETORNO_FIG_{n_fig}__", enlace_ret)
-        elif blk["tipo"] == "TABLA":
-            n_tab = blk["num"]
-            enlace_ret = (
-                f'<a class="retorno-texto" href="#llamado-tab-{n_tab}">↑ Volver al llamado en el texto</a>'
-                if n_tab in llamados_tab_registrados
-                else ""
-            )
-            blk["html_ojs"] = blk["html_ojs"].replace(f"__RETORNO_TAB_{n_tab}__", enlace_ret)
 
     cuerpo_render_ojs = [x["html_ojs"] for x in cuerpo_bloques]
 
@@ -3369,32 +3144,23 @@ def compilar_articulo(
 
     meta_autores = meta.get("autores")
     if isinstance(meta_autores, list) and meta_autores:
-        if autores_est:
-            for idx_a, ma in enumerate(meta_autores):
-                if isinstance(ma, dict):
-                    if idx_a < len(autores_est):
-                        if ma.get("nombre"):
-                            autores_est[idx_a]["nombre"] = str(ma["nombre"]).strip()
-                        if ma.get("afiliacion") not in (None, ""):
-                            autores_est[idx_a]["afiliacion"] = str(ma["afiliacion"]).strip()
-                        if ma.get("orcid"):
-                            autores_est[idx_a]["orcid"] = normalizar_orcid(ma["orcid"])[0]
-                    else:
-                        autores_est.append({
-                            "nombre": str(ma.get("nombre", "")).strip(),
-                            "afiliacion": str(ma.get("afiliacion", "")).strip(),
-                            "orcid": normalizar_orcid(ma.get("orcid", ""))[0],
-                        })
-        else:
-            autores_est = [
-                {
-                    "nombre": str(ma.get("nombre", "")).strip(),
-                    "afiliacion": str(ma.get("afiliacion", "")).strip(),
-                    "orcid": normalizar_orcid(ma.get("orcid", ""))[0],
-                }
-                for ma in meta_autores
-                if isinstance(ma, dict) and str(ma.get("nombre", "")).strip()
-            ]
+        autores_curados = []
+        for idx_a, ma in enumerate(meta_autores):
+            if not isinstance(ma, dict):
+                continue
+            base_det = autores_est[idx_a] if idx_a < len(autores_est) else {}
+            nom_m = str(ma.get("nombre") or base_det.get("nombre") or "").strip()
+            if not nom_m:
+                continue
+            af_m = str(ma.get("afiliacion") if ma.get("afiliacion") not in (None, "") else base_det.get("afiliacion", "")).strip()
+            oid_m = normalizar_orcid(ma.get("orcid") or base_det.get("orcid") or "")[0]
+            autores_curados.append({
+                "nombre": nom_m,
+                "afiliacion": af_m,
+                "orcid": oid_m,
+            })
+        if autores_curados:
+            autores_est = autores_curados
 
     meta_afils = meta.get("afiliaciones")
     ror_por_clave = {}
@@ -3402,19 +3168,19 @@ def compilar_articulo(
         for k_af, v_af in meta_afils.items():
             clave_s = str(k_af).strip()
             if isinstance(v_af, dict):
-                rid, _ = normalizar_ror(v_af.get("ror", ""))
-                if rid:
-                    ror_por_clave[clave_s] = rid
+                rids_str = ", ".join(r[0] for r in normalizar_rors(v_af.get("ror", "")))
+                if rids_str:
+                    ror_por_clave[clave_s] = rids_str
                 for af_item in afiliaciones_est:
                     if str(af_item.get("clave", "")).strip() == clave_s:
-                        if rid:
-                            af_item["ror"] = rid
+                        if rids_str:
+                            af_item["ror"] = rids_str
                         if v_af.get("texto"):
                             af_item["texto"] = str(v_af["texto"]).strip()
             elif isinstance(v_af, str):
-                rid, _ = normalizar_ror(v_af)
-                if rid:
-                    ror_por_clave[clave_s] = rid
+                rids_str = ", ".join(r[0] for r in normalizar_rors(v_af))
+                if rids_str:
+                    ror_por_clave[clave_s] = rids_str
     elif isinstance(meta_afils, list):
         for idx_af, v_af in enumerate(meta_afils, start=1):
             if isinstance(v_af, dict):
@@ -3450,21 +3216,21 @@ def compilar_articulo(
                 if not asignado and (idx_af - 1) < len(autores_est) and not autores_est[idx_af - 1].get("orcid"):
                     autores_est[idx_af - 1]["orcid"] = oid
 
-        ror_id = ror_por_clave.get(clave_af, "")
-        if not ror_id and (idx_af - 1) < len(afiliaciones_est):
-            ror_id = normalizar_ror(afiliaciones_est[idx_af - 1].get("ror", ""))[0]
-        if not ror_id and rors_linea:
-            ror_id = rors_linea[0]
-            if (idx_af - 1) < len(afiliaciones_est):
-                afiliaciones_est[idx_af - 1]["ror"] = ror_id
+        ror_raw = ror_por_clave.get(clave_af, "")
+        if not ror_raw and (idx_af - 1) < len(afiliaciones_est):
+            ror_raw = str(afiliaciones_est[idx_af - 1].get("ror", "")).strip()
+        rors_list = normalizar_rors(ror_raw)
+        if not rors_list and rors_linea:
+            rors_list = [normalizar_ror(r) for r in rors_linea if normalizar_ror(r)[0]]
+            if rors_list and (idx_af - 1) < len(afiliaciones_est):
+                afiliaciones_est[idx_af - 1]["ror"] = ", ".join(r[0] for r in rors_list)
 
-        if ror_id:
-            _, ror_url = normalizar_ror(ror_id)
+        for rid, ror_url in rors_list:
             if tiene_icono_ror:
                 badge_ror = (
                     f' <a class="enlace-id enlace-ror" href="{html.escape(ror_url)}" '
-                    f'title="ROR: {html.escape(ror_id)}">'
-                    f'<img class="icono-ror" src="assets/ror.svg" alt="ROR: {html.escape(ror_id)}"></a>'
+                    f'title="ROR: {html.escape(rid)}">'
+                    f'<img class="icono-ror" src="assets/ror.svg" alt="ROR: {html.escape(rid)}"></a>'
                 )
             else:
                 badge_ror = f' <a class="enlace-id enlace-ror" href="{html.escape(ror_url)}">[ROR]</a>'
@@ -3509,7 +3275,8 @@ def compilar_articulo(
                 meta_autores_head.append(f'    <meta name="citation_author_orcid" content="{html.escape(orcid_url)}">')
     meta_autores_head_str = ("\n" + "\n".join(meta_autores_head)) if meta_autores_head else ""
     refs_con_backlinks = motor_citas.renderizar_referencias_con_backlinks(art["referencias"])
-    refs_html = "\n".join(f"      {p_ref}" for p_ref in refs_con_backlinks)
+    refs_html = "\n".join(f'      <p class="ref-item">{r}</p>' for r in refs_con_backlinks)
+
     notas_html_section = ""
     if art["notas_usadas"]:
         items_fn = "\n".join(
@@ -3518,7 +3285,7 @@ def compilar_articulo(
         )
         notas_html_section = (
             f'    <section class="notas-al-pie-html">\n'
-            f'      <h2>Notas</h2>\n'
+            f'      <h2>{etiq_notas}</h2>\n'
             f'      <ol>\n{items_fn}\n      </ol>\n'
             f'    </section>\n'
         )
@@ -3528,7 +3295,7 @@ def compilar_articulo(
 
     autor_corto_val = str(meta.get("autor_corto", "")).strip()
     if not autor_corto_val and autores_planos:
-        lista_aut = [a.strip() for a in re.split(r",|;|\by\b", autores_planos) if a.strip()]
+        lista_aut = [a.strip() for a in re.split(r"(?!(?<=\d),\s*\d),|;|\by\b", autores_planos) if a.strip()]
         if lista_aut:
             partes_p1 = lista_aut[0].split()
             inicial = f"{partes_p1[0][0]}. " if len(partes_p1) > 1 else ""
@@ -3537,7 +3304,7 @@ def compilar_articulo(
 
     titulo_corto_val = str(meta.get("titulo_corto", "")).strip()
     if not titulo_corto_val and titulo_plano:
-        titulo_corto_val = (titulo_plano[:52].rstrip() + "...") if len(titulo_plano) > 55 else titulo_plano
+        titulo_corto_val = sugerir_titulo_corto(titulo_plano, 55)
 
     sigla = str(rev.get("sigla", "RMA")).strip()
     titulo_revista = str(rev.get("titulo_revista", "Revista del Museo de Antropología")).strip()
@@ -3555,7 +3322,13 @@ def compilar_articulo(
     doi_raw = str(meta.get("doi", "")).strip() or "https://doi.org/10.31048/xxxxxx"
     doi_href = normalizar_url_doi(doi_raw)
     seccion = str(meta.get("seccion", "Artículos")).strip()
-    slug_seccion, data_seccion_ojs = resolver_slugs_seccion(seccion)
+    idioma_art = normalizar_codigo_idioma(meta.get("idioma", "")) or detectar_idioma_texto(" ".join(re.sub(r"<[^>]+>", " ", b.get("html", "")) for b in cuerpo_bloques[:8]) or f"{titulo_plano} {art.get('resumen', '')} {art.get('abstract', '')}")
+    idioma_local_art = "pt" if (idioma_art == "pt" or art.get("idioma_resumen_local") == "pt") else "es"
+    es_ingles = (idioma_art == "en")
+    etiq_figura = "Figure" if es_ingles else "Figura"
+    etiq_tabla = "Table" if es_ingles else ("Tabela" if idioma_art == "pt" else "Tabla")
+    etiq_refs = "References" if es_ingles else ("Referências bibliográficas" if idioma_art == "pt" else "Referencias bibliográficas")
+    etiq_notas = "Notes" if es_ingles else "Notas"
     vol = str(meta.get("volumen", "")).strip()
     num_rev = str(meta.get("numero", "")).strip()
     anio = str(meta.get("anio", "")).strip()
@@ -3571,7 +3344,7 @@ def compilar_articulo(
 
     issn_running = f"ISSN {issn_imp} (impreso) / ISSN {issn_ele} (electrónico)"
     cod_pub = str(meta.get("codigo_publicacion", "")).strip()
-    nombre_salida = f"{cod_pub}_{art_id}" if cod_pub else str(art_id)
+    nombre_salida = cod_pub if cod_pub else str(art_id)
     meta["id_ojs"] = art_id
     meta["nombre_salida"] = nombre_salida
 
@@ -3594,60 +3367,15 @@ def compilar_articulo(
             f"ISSN {issn_imp} (impreso) / ISSN {issn_ele} (electrónico)"
         )
         style_tag = f"\n    <style>{estilo_inline_extra}</style>" if estilo_inline_extra else ""
+        incluir_bloque_refs = incluir_refs_externas and (bloques_html_cuerpo is None)
         bloque_refs_final = (
-            f'\n        <h2 id="sec-referencias">Referencias bibliográficas</h2>\n'
+            f'\n        <h2>{etiq_refs}</h2>\n'
             f'        <section class="referencias">\n{refs_html}\n        </section>'
-            if incluir_refs_externas
+            if incluir_bloque_refs
             else ""
         )
-
-        bloques_interactivos_ojs = ""
-        visores_final_ojs = ""
-        if incluir_refs_externas:
-            items_nav = [
-                f'<a href="#{sid}">{html.escape(stitle)}</a>'
-                for sid, stitle in secciones_toc
-            ]
-            if art["notas_usadas"]:
-                items_nav.append('<a href="#sec-notas">Notas</a>')
-            if art["referencias"]:
-                items_nav.append(f'<a href="#sec-referencias">Referencias ({len(art["referencias"])})</a>')
-            for f_num, _, _, _ in figuras_usadas:
-                items_nav.append(f'<a class="pill-recurso" href="#fig-{f_num}">Fig. {f_num}</a>')
-            for t_num in tablas_toc:
-                items_nav.append(f'<a class="pill-recurso" href="#tab-{t_num}">Tabla {t_num}</a>')
-
-            cita_apa7_html = _construir_cita_apa7(
-                autores_est=autores_est,
-                autores_planos=autores_planos,
-                anio=anio,
-                titulo_plano=titulo_plano,
-                titulo_revista=titulo_revista,
-                vol=vol,
-                num_rev=num_rev,
-                pags_rango=pags_rango,
-                doi_href=doi_href,
-            )
-            nav_links_str = "\n                ".join(items_nav)
-            bloques_interactivos_ojs = f"""
-        <details class="caja-interactiva" open>
-            <summary>Índice de contenidos, figuras y tablas</summary>
-            <nav class="indice-grid" aria-label="Navegación rápida del artículo">
-                {nav_links_str}
-            </nav>
-        </details>
-
-        <details class="caja-interactiva">
-            <summary>Cómo citar este artículo (APA 7.ª ed.)</summary>
-            <p class="cita-sugerida-texto">
-                {cita_apa7_html}
-            </p>
-        </details>"""
-            if visores_ojs:
-                visores_final_ojs = "\n\n" + "\n\n".join(visores_ojs)
-
         return f"""<!DOCTYPE html>
-<html lang="es">
+<html lang="{idioma_art}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -3662,7 +3390,7 @@ def compilar_articulo(
     <meta name="citation_doi" content="{html.escape(doi_href)}">{meta_autores_head_str}
     <link rel="stylesheet" href="{hoja_css}">{style_tag}
 </head>
-<body data-seccion="{html.escape(data_seccion_ojs)}" class="perfil-{perfil} sec-{html.escape(slug_seccion)}">
+<body class="perfil-{perfil}">
     <div class="running-header-left">
         <span class="rh-linea">{html.escape(autor_corto_val)} | {html.escape(cita_revista)}</span>
         <span class="rh-linea">DOI: <a href="{html.escape(doi_href)}">{html.escape(doi_href)}</a></span>
@@ -3719,22 +3447,19 @@ def compilar_articulo(
         </div>
 
         <div class="bloque-resumenes">
-            <h3>Resumen</h3>
-            {art['resumen']}
-            <p class="keywords">{art['palabras_clave']}</p>
+            <h3>{'Abstract' if es_ingles else ('Resumo' if idioma_local_art == 'pt' else 'Resumen')}</h3>
+            {art['abstract'] if es_ingles else art['resumen']}
+            <p class="keywords">{art['keywords'] if es_ingles else art['palabras_clave']}</p>
             <hr class="divisor-resumen">
-            <h3>Abstract</h3>
-            {art['abstract']}
-            <p class="keywords">{art['keywords']}</p>
-        </div>{bloques_interactivos_ojs}
+            <h3>{('Resumo' if idioma_local_art == 'pt' else 'Resumen') if es_ingles else 'Abstract'}</h3>
+            {art['resumen'] if es_ingles else art['abstract']}
+            <p class="keywords">{art['palabras_clave'] if es_ingles else art['keywords']}</p>
+        </div>
     </header>
 
     <hr class="divisor-portada">
 
-    <main class="cuerpo-articulo">
-        {chr(10).join(lista_cuerpo)}
-{notas_html_section}{bloque_refs_final}
-    </main>{visores_final_ojs}
+    {"".join(_segmentar_cuerpo_multicolumna(lista_cuerpo, f"{notas_html_section}{bloque_refs_final}", perfil))}
 </body>
 </html>"""
 
@@ -3745,15 +3470,15 @@ def compilar_articulo(
             "id": "blk-refs-h2",
             "tipo": "h2_refs",
             "movible": True,
-            "html_pdf": '<h2 data-blk="blk-refs-h2">Referencias bibliográficas</h2>',
+            "html_pdf": f'<h2 data-blk="blk-refs-h2">{etiq_refs}</h2>',
         })
-        for idx_r, p_ref_html in enumerate(refs_con_backlinks, start=1):
+        for idx_r, r_html in enumerate(art["referencias"]):
             rid = f"blk-ref-{idx_r}"
             bloques_pdf_base.append({
                 "id": rid,
                 "tipo": "ref",
                 "movible": True,
-                "html_pdf": f'<div class="referencias" data-blk="{rid}">{p_ref_html}</div>',
+                "html_pdf": f'<div class="referencias" data-blk="{rid}"><p class="ref-item">{r_html}</p></div>',
             })
 
     def _emparejar_figuras_columna(lista_blks: list[dict]) -> list[dict]:
@@ -3820,7 +3545,6 @@ def compilar_articulo(
             mid_x = (c_left + c_right) / 2.0
 
             items = []
-
             def _walk(box):
                 el = getattr(box, "element", None)
                 if el is not None:
@@ -3839,7 +3563,6 @@ def compilar_articulo(
                             return
                 for ch in getattr(box, "children", []):
                     _walk(ch)
-
             _walk(pbox)
 
             max_y_l = c_top
@@ -3848,7 +3571,7 @@ def compilar_articulo(
                 blk_pages.setdefault(bid, []).append(p_idx)
                 blk_boxes.setdefault(bid, []).append((p_idx, x, y, w, h))
                 bot = y + h
-                if perfil in ("moderno", "secciones") or w > (c_right - c_left) * 0.62:
+                if perfil == "moderno" or w > (c_right - c_left) * 0.62:
                     if bot > max_y_l:
                         max_y_l = bot
                     if bot > max_y_r:
@@ -3914,62 +3637,75 @@ def compilar_articulo(
             if b["tipo"] in ("FIGURA", "TABLA") and b["id"] in bp:
                 ancla_orig[b["id"]] = min(bp[b["id"]])
 
-        # Fase 0: Si una tabla automática indivisible supera 185 mm de alto, permitir división entre páginas
+        # Fase 0: Compactar tipografía/relleno de tablas altas para que entren enteras en 1 página;
+        # solo si aun así superan 212 mm, permitir salto nativo de WeasyPrint con <thead> repetido
         promovida = False
         for idx, b in enumerate(trabajo):
-            if (
-                b["tipo"] == "TABLA"
-                and b.get("modo_dividir") == "indivisible"
-                and not b.get("dividir_forzado", False)
-                and b["id"] in bbox
-            ):
+            if b["tipo"] == "TABLA" and b["id"] in bbox:
                 alt_mm = sum(box[4] for box in bbox[b["id"]]) / px_por_mm
                 if alt_mm > 185.0:
-                    trabajo[idx] = dict(b)
-                    trabajo[idx]["modo_dividir"] = "divisible"
-                    trabajo[idx]["html_pdf"] = trabajo[idx]["html_pdf"].replace("tabla-indivisible", "tabla-divisible", 1)
-                    promovida = True
+                    cabe_en_una = False
+                    for nivel_c in ("tabla-compacta-1", "tabla-compacta-2", "tabla-compacta-3"):
+                        cand_c = [dict(x) for x in trabajo]
+                        cand_c[idx]["html_pdf"] = cand_c[idx]["html_pdf"].replace(
+                            'class="rma-tabla', f'class="rma-tabla {nivel_c}', 1
+                        )
+                        _, _, _, bbox_c, _ = _renderizar_y_medir_pdf(cand_c, regla_ini)
+                        if b["id"] in bbox_c:
+                            alt_c = sum(box[4] for box in bbox_c[b["id"]]) / px_por_mm
+                            if alt_c <= 212.0:
+                                trabajo[idx] = cand_c[idx]
+                                promovida = True
+                                cabe_en_una = True
+                                break
+                    if not cabe_en_una and not b.get("dividir_forzado", False):
+                        trabajo[idx] = dict(b)
+                        trabajo[idx]["modo_dividir"] = "divisible"
+                        trabajo[idx]["html_pdf"] = (
+                            trabajo[idx]["html_pdf"]
+                            .replace('class="rma-tabla', 'class="rma-tabla tabla-compacta-2', 1)
+                            .replace("tabla-indivisible", "tabla-divisible", 1)
+                        )
+                        promovida = True
         if promovida:
             doc_act, pags, bp, bbox, tr_pages = _renderizar_y_medir_pdf(trabajo, regla_ini)
+            ancla_orig.update({b["id"]: min(bp[b["id"]]) for b in trabajo if b["tipo"] in ("FIGURA", "TABLA") and b["id"] in bp})
 
-        # Fase 1: Ajuste elástico de altura máxima en figuras que saltaron por <= 32 mm
-        for idx, b in enumerate(trabajo):
-            if b["tipo"] != "FIGURA" or not b.get("movible", True) or b.get("es_par"):
-                continue
-            bid = b["id"]
-            if bid not in bp or bid not in bbox:
-                continue
-            p_fig = min(bp[bid])
-            if p_fig == 0:
-                continue
-            p_ant = pags[p_fig - 1]
-            if p_ant["blks"] and p_ant["blks"][-1] != bid and p_ant["gap_avg_mm"] >= 45.0:
-                fig_h_mm = bbox[bid][0][4] / px_por_mm
-                rem_mm = p_ant["gap_avg_mm"]
-                deficit_mm = fig_h_mm - rem_mm
-                if 0 < deficit_mm <= 32.0:
-                    base_img_h = (
-                        (100.0 if b.get("clase_ancho") == "ancho-completo" else 84.0)
-                        if perfil == "tradicional"
-                        else (114.0 if b.get("clase_ancho") == "ancho-completo" else 98.0)
-                    )
-                    piso_mm = 60.0 if b.get("clase_ancho") == "ancho-completo" else 50.0
-                    nueva_h = base_img_h - (deficit_mm + 4.0)
-                    if nueva_h >= piso_mm:
-                        cand = [dict(x) for x in trabajo]
-                        cand[idx]["html_pdf"] = re.sub(
-                            r"(<img [^>]*)(>)",
-                            lambda m: f'{m.group(1)} style="max-height:{nueva_h:.1f}mm;"{m.group(2)}',
-                            cand[idx]["html_pdf"],
-                            count=1,
-                        )
-                        doc_c, pags_c, bp_c, bbox_c, tr_pages_c = _renderizar_y_medir_pdf(cand, regla_ini)
-                        if bid in bp_c and min(bp_c[bid]) == p_fig - 1 and len(pags_c) <= len(pags):
-                            trabajo = cand
-                            doc_act, pags, bp, bbox = doc_c, pags_c, bp_c, bbox_c
+        def _ajustar_altura_figuras_saltadas(trab_in, doc_in, pags_in, bp_in, bbox_in):
+            for idx, b in enumerate(trab_in):
+                if b["tipo"] != "FIGURA" or not b.get("movible", True) or b.get("es_par"):
+                    continue
+                bid = b["id"]
+                if bid not in bp_in or bid not in bbox_in:
+                    continue
+                p_fig = min(bp_in[bid])
+                if p_fig == 0:
+                    continue
+                p_ant = pags_in[p_fig - 1]
+                if p_ant["blks"] and p_ant["blks"][-1] != bid and p_ant["gap_avg_mm"] >= 40.0:
+                    fig_h_mm = bbox_in[bid][0][4] / px_por_mm
+                    deficit_mm = fig_h_mm - p_ant["gap_avg_mm"]
+                    if 0 < deficit_mm <= 48.0:
+                        base_img_h = (100.0 if b.get("clase_ancho") == "ancho-completo" else 185.0) if perfil == "tradicional" else (114.0 if b.get("clase_ancho") == "ancho-completo" else 98.0)
+                        img_h_est = min(base_img_h, max(35.0, fig_h_mm - 24.0))
+                        for extra_h in (4.0, 9.0, 15.0, 22.0):
+                            nueva_h = max(46.0, img_h_est - (deficit_mm + extra_h))
+                            cand = [dict(x) for x in trab_in]
+                            if 'style="' in cand[idx]["html_pdf"]:
+                                cand[idx]["html_pdf"] = re.sub(r'style="[^"]*"', f'style="max-height:{nueva_h:.1f}mm;"', cand[idx]["html_pdf"], count=1)
+                            else:
+                                cand[idx]["html_pdf"] = re.sub(r"(<im[^>]*)(>)", lambda m: f'{m.group(1)} style="max-height:{nueva_h:.1f}mm;"{m.group(2)}', cand[idx]["html_pdf"], count=1)
+                            doc_c, pags_c, bp_c, bbox_c, _ = _renderizar_y_medir_pdf(cand, regla_ini)
+                            if bid in bp_c and min(bp_c[bid]) == p_fig - 1 and len(pags_c) <= len(pags_in):
+                                trab_in, doc_in, pags_in, bp_in, bbox_in = cand, doc_c, pags_c, bp_c, bbox_c
+                                break
+            return trab_in, doc_in, pags_in, bp_in, bbox_in
+
+        # Fase 1: Ajuste elástico inicial de figuras que saltaron por <= 48 mm
+        trabajo, doc_act, pags, bp, bbox = _ajustar_altura_figuras_saltadas(trabajo, doc_act, pags, bp, bbox)
 
         # Fase 2: Rellenar vacíos previos a figuras/tablas desplazadas y anclarlas al tope o pie de página
-        for _ in range(85):
+        for _ in range(110):
             cambio = False
             for idx, b in enumerate(trabajo):
                 if b["tipo"] not in ("FIGURA", "TABLA") or not b.get("movible", True):
@@ -3985,7 +3721,6 @@ def compilar_articulo(
                 if not paquete:
                     continue
 
-                # Caso A: La figura saltó a p_fig dejando vacío al pie de p_fig - 1
                 necesita_relleno_anterior = False
                 if p_fig >= 1:
                     p_ant = pags[p_fig - 1]
@@ -3994,7 +3729,6 @@ def compilar_articulo(
                     ):
                         necesita_relleno_anterior = True
 
-                # Caso B: La figura está en medio de p_fig (ni arriba ni abajo) -> deslizarla al pie de p_fig
                 _, _, y_fig, _, h_fig = bbox[bid][0]
                 c_top_f = pags[p_fig]["c_top"]
                 c_bot_f = pags[p_fig]["c_bot"]
@@ -4002,7 +3736,8 @@ def compilar_articulo(
                 dist_bot_mm = (c_bot_f - (y_fig + h_fig)) / px_por_mm
                 en_medio_pagina = (dist_top_mm > 14.0) and (dist_bot_mm > 14.0)
 
-                if not (necesita_relleno_anterior or en_medio_pagina):
+                hueco_col = (perfil == "tradicional" and pags[p_fig]["gap_l_mm"] >= 28.0 and dist_top_mm <= 16.0)
+                if not (necesita_relleno_anterior or en_medio_pagina or hueco_col):
                     continue
 
                 cand = []
@@ -4016,7 +3751,7 @@ def compilar_articulo(
                     else:
                         cand.append(item)
 
-                doc_c, pags_c, bp_c, bbox_c, tr_pages_c = _renderizar_y_medir_pdf(cand, regla_ini)
+                doc_c, pags_c, bp_c, bbox_c, _ = _renderizar_y_medir_pdf(cand, regla_ini)
                 if bid not in bp_c or bid not in bbox_c or len(pags_c) > len(pags):
                     continue
                 p_fig_c = min(bp_c[bid])
@@ -4042,6 +3777,9 @@ def compilar_articulo(
                     if dist_bot_c < dist_bot_mm - 2.0 and dist_bot_c >= -1.0:
                         aceptar = True
 
+                if not aceptar and hueco_col and p_fig < len(pags_c) and pags_c[p_fig]["gap_l_mm"] < pags[p_fig]["gap_l_mm"] - 5.0:
+                    aceptar = True
+
                 if aceptar:
                     trabajo = cand
                     doc_act, pags, bp, bbox = doc_c, pags_c, bp_c, bbox_c
@@ -4051,31 +3789,17 @@ def compilar_articulo(
             if not cambio:
                 break
 
-        # Fase 3: Si alguna tabla divisible se partió entre páginas, insertar avisos de continuación
-        bloques_finales = []
-        hubo_division_tabla = False
-        for b in trabajo:
-            if b["tipo"] == "TABLA" and b["id"] in tr_pages:
-                frags = _construir_fragmentos_tabla_dividida(b, tr_pages[b["id"]], pagina_inicio)
-                if frags:
-                    hubo_division_tabla = True
-                    for idx_f, f_html in enumerate(frags):
-                        bloques_finales.append({
-                            "id": f"{b['id']}-frag-{idx_f}",
-                            "tipo": "TABLA_FRAG",
-                            "html_pdf": f_html,
-                        })
-                    continue
-            bloques_finales.append(b)
+        # Fase 1b: Re-ajustar altura de figuras que tras Fase 2 quedaron saltando con >= 40 mm libres arriba
+        trabajo, doc_act, pags, bp, bbox = _ajustar_altura_figuras_saltadas(trabajo, doc_act, pags, bp, bbox)
 
-        if hubo_division_tabla:
-            doc_act, _, _, _, _ = _renderizar_y_medir_pdf(bloques_finales, regla_ini)
-
+        bloques_finales = trabajo
         return bloques_finales, doc_act
 
     shutil.copy2(css_origen, carpeta_salida / ".rma_print_tmp.css")
     try:
         regla_contador_pagina = f"@page :first {{ counter-reset: page {pagina_inicio}; }}"
+        _k=int(meta.get("compactar_pdf") or 0);regla_contador_pagina+=(f"body{{line-height:{1.35-.03*_k:.2f}}}.cuerpo-articulo p{{margin-bottom:{2.1-.35*_k:.2f}mm}}.referencias .ref-item{{line-height:{1.26-.04*_k:.2f};margin-bottom:{1.4-.35*_k:.2f}mm}}.rma-figura{{margin:{5.5-.6*_k:.1f}mm 0}}" if _k else "")+str(meta.get("css_pdf_extra",""))
+        _niv=str(meta.get("compactar_pdf","")).strip();_mp={"1":"body{line-height:1.32}.cuerpo-articulo p{margin-bottom:1.7mm}.referencias .ref-item{line-height:1.21;margin-bottom:1.0mm}","2":"body{line-height:1.29}.cuerpo-articulo p{margin-bottom:1.45mm}.referencias .ref-item{line-height:1.18;margin-bottom:0.8mm}.rma-figura{margin:4.5mm 0 5mm 0}","3":"body{line-height:1.26;font-size:8.85pt}.cuerpo-articulo p{margin-bottom:1.25mm}.referencias .ref-item{line-height:1.15;margin-bottom:0.65mm}.rma-figura{margin:4mm 0 4.5mm 0}"};regla_contador_pagina+=("\n"+_mp[_niv] if _niv in _mp else "")+("\n"+str(meta["css_pdf_extra"]) if meta.get("css_pdf_extra") else "")
         bloques_pdf_opt, doc_medido = _optimizar_flujo_bloques_pdf(bloques_pdf_base, regla_contador_pagina)
         cuerpo_render_pdf = [x["html_pdf"] for x in bloques_pdf_opt]
 
@@ -4093,92 +3817,10 @@ def compilar_articulo(
             lpage_str=lpage_str,
             estilo_inline_extra=regla_contador_pagina,
             bloques_html_cuerpo=cuerpo_render_pdf,
-            incluir_refs_externas=False,
         )
-        doc_pdf_final = HTML(string=html_pdf_final, base_url=str(carpeta_salida)).render()
-        ruta_pdf_out = carpeta_salida / f"{nombre_salida}.pdf"
-        pdf_crudo_bytes = doc_pdf_final.write_pdf()
-        try:
-            import io
-            import pypdf
-            from pypdf.generic import (
-                ArrayObject,
-                DictionaryObject,
-                FloatObject,
-                NameObject,
-                NumberObject,
-            )
-
-            reader_pdf = pypdf.PdfReader(io.BytesIO(pdf_crudo_bytes))
-            writer_pdf = pypdf.PdfWriter(clone_from=reader_pdf)
-            escala_pdf = 0.75  # 72 pt/in / 96 px/in
-
-            destinos_pdf: dict[str, tuple[int, float, float]] = {}
-            for p_idx, pg in enumerate(doc_pdf_final.pages):
-                for anchor_name, (ax_css, ay_css) in getattr(pg, "anchors", {}).items():
-                    destinos_pdf[anchor_name] = (
-                        p_idx,
-                        ax_css * escala_pdf,
-                        (pg.height - ay_css) * escala_pdf,
-                    )
-
-            for p_idx, pg in enumerate(doc_pdf_final.pages):
-                pdf_pg = writer_pdf.pages[p_idx]
-                annots_orig = pdf_pg.get("/Annots")
-                annots_limpias = ArrayObject()
-                if annots_orig is not None:
-                    for a_ref in annots_orig.get_object():
-                        a_obj = a_ref.get_object()
-                        # Conservar enlaces externos (/URI) y reemplazar internos sin destino
-                        if a_obj.get("/Subtype") != "/Link" or "/Dest" not in a_obj:
-                            annots_limpias.append(a_ref)
-
-                vistos_pagina: set[tuple[str, float, float, float, float]] = set()
-                for link_type, target, rect_css, box in getattr(pg, "links", []):
-                    if link_type != "internal" or target not in destinos_pdf:
-                        continue
-                    el_box = getattr(box, "element", None)
-                    if el_box is not None and getattr(el_box, "tag", "").lower() != "a":
-                        continue
-                    x1_c, y1_c, x2_c, y2_c = rect_css
-                    llx = round(x1_c * escala_pdf, 2)
-                    lly = round((pg.height - y2_c) * escala_pdf, 2)
-                    urx = round(x2_c * escala_pdf, 2)
-                    ury = round((pg.height - y1_c) * escala_pdf, 2)
-                    clave_link = (target, llx, lly, urx, ury)
-                    if clave_link in vistos_pagina:
-                        continue
-                    vistos_pagina.add(clave_link)
-
-                    dest_p_idx, dest_x, dest_y = destinos_pdf[target]
-                    dest_page_ref = writer_pdf.pages[dest_p_idx].indirect_reference
-                    link_annot = DictionaryObject({
-                        NameObject("/Type"): NameObject("/Annot"),
-                        NameObject("/Subtype"): NameObject("/Link"),
-                        NameObject("/Rect"): ArrayObject([
-                            FloatObject(llx),
-                            FloatObject(lly),
-                            FloatObject(urx),
-                            FloatObject(ury),
-                        ]),
-                        NameObject("/Border"): ArrayObject([NumberObject(0), NumberObject(0), NumberObject(0)]),
-                        NameObject("/Dest"): ArrayObject([
-                            dest_page_ref,
-                            NameObject("/XYZ"),
-                            FloatObject(max(0.0, dest_x - 10.0)),
-                            FloatObject(dest_y + 12.0),
-                            NumberObject(0),
-                        ]),
-                    })
-                    annots_limpias.append(writer_pdf._add_object(link_annot))
-
-                if len(annots_limpias) > 0:
-                    pdf_pg[NameObject("/Annots")] = annots_limpias
-
-            with open(ruta_pdf_out, "wb") as f_pdf:
-                writer_pdf.write(f_pdf)
-        except Exception:
-            ruta_pdf_out.write_bytes(pdf_crudo_bytes)
+        HTML(string=html_pdf_final, base_url=str(carpeta_salida)).write_pdf(
+            carpeta_salida / f"{nombre_salida}.pdf"
+        )
     finally:
         (carpeta_salida / ".rma_print_tmp.css").unlink(missing_ok=True)
 
@@ -4194,31 +3836,15 @@ def compilar_articulo(
     else:
         html_autocontenido = str(auto_raw).strip().lower() not in ("false", "0", "no", "off", "linkeado", "externo")
 
-    ruta_css_ojs = dir_script / "rma_ojs.css"
-    usar_css_maestra = (
-        perfil == "secciones"
-        or str(meta.get("plantilla_ojs", rev.get("plantilla_ojs", "maestra"))).strip().lower() == "maestra"
-        or not ruta_css_ojs.exists()
-    )
-    css_ojs_fallback = CSS_OJS_MAESTRA if usar_css_maestra else ""
-
     if html_autocontenido:
-        html_ojs = empaquetar_html_autocontenido(
-            html_ojs,
-            carpeta_salida,
-            ruta_css_ojs,
-            css_fallback=css_ojs_fallback,
-        )
+        html_ojs = empaquetar_html_autocontenido(html_ojs, carpeta_salida, dir_script / "rma_ojs.css")
         (carpeta_salida / f"{nombre_salida}.html").write_text(html_ojs, encoding="utf-8")
         (carpeta_salida / "rma_ojs.css").unlink(missing_ok=True)
         shutil.rmtree(carpeta_salida_fig, ignore_errors=True)
         shutil.rmtree(carpeta_salida_assets, ignore_errors=True)
     else:
         (carpeta_salida / f"{nombre_salida}.html").write_text(html_ojs, encoding="utf-8")
-        if usar_css_maestra:
-            (carpeta_salida / "rma_ojs.css").write_text(CSS_OJS_MAESTRA, encoding="utf-8")
-        else:
-            shutil.copy2(ruta_css_ojs, carpeta_salida / "rma_ojs.css")
+        shutil.copy2(dir_script / "rma_ojs.css", carpeta_salida / "rma_ojs.css")
 
     meta["fpage_str"] = fpage_str
     meta["lpage_str"] = lpage_str
@@ -4256,16 +3882,20 @@ def compilar_articulo(
         print(f"  - {nombre_salida}.html (autocontenido: CSS + imágenes embebidas en Base64)")
     else:
         print(f"  - {nombre_salida}.html (+ rma_ojs.css + assets/ + figuras/)")
-    sin_ref, no_citadas = motor_citas.diagnosticar()
-    print(f"  - Citas bidireccionales enlazadas: {motor_citas._contador_citas}")
-    if sin_ref:
-        print(f"  [Aviso Citas] Sin entrada en Referencias: {', '.join(sin_ref)}")
-    if no_citadas:
-        print(f"  [Aviso Referencias] No citadas en el texto: {', '.join(no_citadas)}")
     if avisos_xml:
         print(f"  - {nombre_salida}.xml [Avisos SPS 1.9: {'; '.join(avisos_xml)}]")
     else:
         print(f"  - {nombre_salida}.xml (JATS 1.1 / SciELO SPS 1.9 verificado)")
+    sin_ref, no_citadas = motor_citas.diagnosticar()
+    if sin_ref:
+        print(f"  [!] Citas en texto SIN referencia ({len(sin_ref)}):")
+        for item in sin_ref:
+            print(f"      * {item}")
+    if no_citadas:
+        print(f"  [!] Referencias NO citadas en texto ({len(no_citadas)}):")
+        for item in no_citadas:
+            print(f"      * {item}")
+    print(f"  - Citas bidireccionales enlazadas: {motor_citas._contador_citas}")
 
     return {
         "id_ojs": art_id,
@@ -4279,6 +3909,412 @@ def compilar_articulo(
         "total_paginas": total_paginas,
         "paginas": rango_paginas,
     }
+
+
+
+def _norm_clave_autor(s: str) -> str:
+    s = unicodedata.normalize("NFD", s.lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    s = re.sub(r"[’'`´]", "", s)
+    s = re.sub(r"[^a-z0-9\s\-]", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def _extraer_primer_apellido_ref(autores_raw: str) -> str:
+    s = re.sub(r"\s+", " ", autores_raw).strip().rstrip(".,;")
+    if not s:
+        return ""
+    if "," in s:
+        ap = s.split(",", 1)[0].strip()
+        return _norm_clave_autor(ap)
+    # Autor institucional / sigla sin coma (ej. CONICET, INDEC, UNESCO)
+    return _norm_clave_autor(s)
+
+def _extraer_apellido_probable_cita(autor_cita: str) -> str:
+    """
+    Extrae la clave de apellido para cruzar citas en texto con referencias bibliográficas,
+    manejando tanto 'Apellido (2026)' como 'Nombre Apellido (2026)' o 'de Apellido (2026)'.
+    """
+    s = re.sub(r"\s+", " ", autor_cita or "").strip(" ,.;:()[]\"“”‘’")
+    s = re.sub(
+        r"^(?:vease|véase|ver|cf\.?|cfr\.?|en|in|citado\s+en|segun|según|por|e\.g\.?|por\s+ejemplo)\s+",
+        "",
+        s,
+        flags=re.I,
+    ).strip()
+    s = re.sub(r"\s+et\.?\s+al\.?$", "", s, flags=re.I).strip()
+    primer_bloque = re.split(r"\s*[,;]\s*|\s+(?:y|and|e|&)\s+", s, maxsplit=1)[0].strip()
+    partes = primer_bloque.split()
+    if not partes:
+        return ""
+    particulas = {"de", "da", "do", "dos", "das", "del", "la", "las", "los", "van", "von"}
+    while len(partes) > 1 and _norm_clave_autor(partes[0]) in particulas:
+        partes.pop(0)
+    if not partes:
+        return ""
+    if len(partes) >= 2:
+        return _norm_clave_autor(partes[-1])
+    return _norm_clave_autor(partes[0])
+
+
+_PAT_ENTIDAD_NO_AUTOR = re.compile(
+    r"^(?:"
+    r"brasil|rio\s+de\s+janeiro|sao\s+paulo|são\s+paulo|belo\s+horizonte|brasilia|brasília|salvador|olinda|ouro\s+preto|goias|goiás|paraty|valongo|pantanal|"
+    r"iphan|unesco|ibge|funarte|minc|conicet|uba|unc|"
+    r"centro\s+historico|centro\s+histórico|conjunto\s+moderno|parque\s+nacional|sitio\s+roberto|sítio\s+roberto|"
+    r"salvaguarda\s+da|oral\s+e\s+imaterial|cultural\s+imaterial|cirio\s+de|círio\s+de|roda\s+de|frevo|descobrimento|sudeste|nacionais\s+da|baiano|espirito\s+santo|espírito\s+santo|luis|luís|mar|dia|fernando\s+de\s+noronha"
+    r")\b",
+    flags=re.I,
+)
+
+def _extraer_primer_apellido_cita(autor_cita: str) -> str:
+    s = re.sub(r"\s+", " ", autor_cita).strip(" ,.;:()[]")
+    s = re.sub(
+        r"^(?:véase|vease|ver|cf\.?|cfr\.?|en|in|citado en|según|segun|por|e\.g\.?|por ejemplo)\s+",
+        "",
+        s,
+        flags=re.I,
+    ).strip()
+    s = re.sub(r"\s+et\s+al\.?$", "", s, flags=re.I).strip()
+    s = re.split(r"\s*,\s*|\s+(?:y|and|e)\s+|\s*&\s*", s, maxsplit=1)[0].strip()
+    return _norm_clave_autor(s)
+
+
+def _limpiar_html_citas(raw_h: str) -> str:
+    s = re.sub(r"<sup\b[^>]*>.*?</sup>", "", raw_h, flags=re.I | re.S)
+    s = re.sub(r"</?(?:p|div|li|tr|td|th|h[1-6]|blockquote|br|hr)\b[^>]*>", " ", raw_h, flags=re.I)
+    s = re.sub(r"<[^>]+>", "", s)
+    s = html.unescape(s)
+    s = s.replace("\u200b", "").replace("\xad", "")
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def _norm_lista_autores_completa(autores_raw: str) -> str:
+    s = re.sub(r"\s*(?:&|\band\b|\be\b)\s*", " y ", autores_raw, flags=re.I)
+    return _norm_clave_autor(s)
+
+
+_PAT_YEAR_REF = re.compile(
+    r"(?:"
+    r"\(\s*([^()]{0,35}?\b(?:\d{4}\s*[a-z]?|s\.f\.|en prensa|in press)\b[^()]{0,15})\s*\)"
+    r"|"
+    r"(?<=[.\s])\s*(\d{4}\s*[a-z]?|s\.f\.|en prensa|in press)(?=\s*\.)"
+    r")",
+    flags=re.I,
+)
+
+
+def validar_formato_referencias_rma(referencias_html: list[str]) -> tuple[list[dict], list[str]]:
+    """
+    Revisa cada entrada de Referencias bibliográficas según las normas editoriales de la RMA:
+      1. Año entre paréntesis seguido inmediatamente de punto: '(Año).'
+      2. Uso de 'y' en lugar de '&' (o 'and') entre autores (ignorando URLs/DOIs).
+      3. Sin espacio entre el año y la letra diferenciadora (ej. '(2020a).' y no '(2020 a).').
+      4. Desambiguación con letras 'a', 'b', ... cuando coinciden autor(es) y año.
+    """
+    hallazgos = []
+    grupos_autor_anio = {}
+
+    for idx, r_html in enumerate(referencias_html, 1):
+        txt = _limpiar_html_citas(r_html)
+        txt_sin_num = re.sub(r"^(?:\[\d+\]|\d+[.)])\s+", "", txt).strip()
+        if not txt_sin_num:
+            continue
+
+        problemas_entry = []
+        m_y = _PAT_YEAR_REF.search(txt_sin_num)
+
+        if not m_y:
+            problemas_entry.append("No se encontró un bloque de año válido con formato '(Año).'")
+            hallazgos.append({
+                "idx": idx,
+                "preview": txt_sin_num[:90] + ("..." if len(txt_sin_num) > 90 else ""),
+                "problemas": problemas_entry,
+            })
+            continue
+
+        autores_raw = txt_sin_num[: m_y.start()].strip()
+        resto_tras_anio = txt_sin_num[m_y.end() :]
+        primer_ap = _extraer_primer_apellido_ref(autores_raw)
+
+        # 1) Uso de 'y' en lugar de '&' o 'and' entre autores
+        if "&" in autores_raw:
+            problemas_entry.append("Usa '&' en lugar de 'y' entre autores")
+        elif re.search(r"\band\b", autores_raw, flags=re.I):
+            problemas_entry.append("Usa 'and' en lugar de 'y' entre autores")
+
+        # 2) Año entre paréntesis seguido de punto: '(Año).'
+        if m_y.group(2) is not None:
+            anio_suelto = m_y.group(2).strip()
+            problemas_entry.append(f"Año sin paréntesis: '{anio_suelto}.' (debe ir como '({anio_suelto}).')")
+            bloque_anio = anio_suelto
+        else:
+            bloque_anio = (m_y.group(1) or "").strip()
+            if not resto_tras_anio.startswith("."):
+                problemas_entry.append(
+                    f"Falta punto después del paréntesis del año: '({bloque_anio})' (debe ser '({bloque_anio}).')"
+                )
+
+        # 3) Espacio indebido entre año y letra: ej. (2020 a) -> (2020a)
+        m_esp_letra = re.search(r"\b(\d{4})\s+([a-z])\b", bloque_anio, flags=re.I)
+        if m_esp_letra:
+            problemas_entry.append(
+                f"Espacio entre año y letra: '({m_esp_letra.group(1)} {m_esp_letra.group(2)})' (debe ser '({m_esp_letra.group(1)}{m_esp_letra.group(2).lower()}).')"
+            )
+
+        # 4) Agrupar por primer apellido + año numérico puro (sin letra a/b)
+        encontrados = [
+            re.sub(r"\s+", "", a).lower()
+            for a in re.findall(r"\b(?:\d{4}\s*[a-z]?|s\.f\.|en prensa|in press)\b", bloque_anio, flags=re.I)
+        ]
+        anio_pub = encontrados[-1] if encontrados else ""
+        if primer_ap and anio_pub and re.fullmatch(r"\d{4}", anio_pub):
+            autores_norm_completo = _norm_lista_autores_completa(autores_raw)
+            es_et_al = (autores_raw.count(",") >= 3) or bool(re.search(r"\bet\s+al\b", autores_raw, flags=re.I))
+            grupos_autor_anio.setdefault((primer_ap, anio_pub), []).append({
+                "idx": idx,
+                "autores_norm": autores_norm_completo,
+                "autores_raw": autores_raw,
+                "es_et_al": es_et_al,
+            })
+
+        if problemas_entry:
+            hallazgos.append({
+                "idx": idx,
+                "preview": txt_sin_num[:90] + ("..." if len(txt_sin_num) > 90 else ""),
+                "problemas": problemas_entry,
+            })
+
+    colisiones_ab = []
+    for (primer_ap, anio_pub), items in sorted(grupos_autor_anio.items(), key=lambda kv: kv[1][0]["idx"]):
+        if len(items) < 2:
+            continue
+    idxs_str = ", ".join(f"[{it['idx']}]" for it in items)
+    mismos_autores = len({it["autores_norm"] for it in items}) == 1
+    todos_et_al = all(it["es_et_al"] for it in items)
+    if mismos_autores:
+        colisiones_ab.append(
+            f"Referencias {idxs_str} comparten autor(es) y año ({anio_pub}) sin letra a/b -> usar ({anio_pub}a), ({anio_pub}b)..."
+        )
+    elif todos_et_al:
+        ap_vis = items[0]["autores_raw"].split(",")[0].strip()
+        colisiones_ab.append(
+            f"Referencias {idxs_str} comparten primer autor '{ap_vis}' (3+ autores -> et al.) y año ({anio_pub}) sin letra a/b -> revisar si requiere ({anio_pub}a), ({anio_pub}b)"
+        )
+
+    return hallazgos, colisiones_ab
+
+
+def _clave_autor_flexible(clave: str) -> str:
+    import re
+    c = (clave or "").strip().lower()
+    if not c:
+        return ""
+    return re.sub(r"([aeiou])z([aeiou])", r"\1s\2", c)
+
+
+def auditar_citas_y_referencias(art: dict, cuerpo_bloques: list[dict] | None = None) -> dict:
+    """
+    Cruza las citas detectadas en cuerpo, tablas, epígrafes y notas al pie con
+    las entradas de Referencias bibliográficas, y valida el formato RMA de cada entrada.
+    """
+    refs_raw_list = art.get("referencias", [])
+    errores_formato_rma, colisiones_ab = validar_formato_referencias_rma(refs_raw_list)
+
+    refs_parsed = []
+    indice_ref_por_clave = {}
+    anios_por_autor = {}
+
+    for idx, r_html in enumerate(refs_raw_list, 1):
+        txt = _limpiar_html_citas(r_html)
+        txt_sin_num = re.sub(r"^(?:\[\d+\]|\d+[.)])\s+", "", txt)
+
+        m_y = _PAT_YEAR_REF.search(txt_sin_num)
+        if not m_y:
+            refs_parsed.append({
+                "idx": idx,
+                "texto": txt_sin_num,
+                "autor_clave": "",
+                "anios": [],
+                "citada": False,
+            })
+            continue
+
+        autores_raw = txt_sin_num[: m_y.start()].strip()
+        autor_clave = _extraer_primer_apellido_ref(autores_raw)
+        bloque_anio = (m_y.group(1) or m_y.group(2) or "").strip()
+
+        encontrados = [
+            re.sub(r"\s+", "", a).lower()
+            for a in re.findall(r"\b(?:\d{4}\s*[a-z]?|s\.f\.|en prensa|in press)\b", bloque_anio, flags=re.I)
+        ]
+        anio_pub = encontrados[-1] if encontrados else ""
+        anios = list(dict.fromkeys(([anio_pub] if anio_pub else []) + encontrados))
+
+        info_ref = {
+            "idx": idx,
+            "texto": txt_sin_num,
+            "autor_clave": autor_clave,
+            "anios": anios,
+            "citada": False,
+        }
+        refs_parsed.append(info_ref)
+
+        if autor_clave and anios:
+            anios_por_autor.setdefault(autor_clave, set()).update(anios)
+            for a in anios:
+                indice_ref_por_clave.setdefault((autor_clave, a), []).append(info_ref)
+
+    fragmentos_texto = []
+    celdas_tabla = []
+    fuentes_bloques = cuerpo_bloques if cuerpo_bloques is not None else art.get("bloques_cuerpo", [])
+    for b in fuentes_bloques:
+        raw_h = b.get("html_pdf") or b.get("html_ojs") or b.get("html") or b.get("texto") or ""
+        if raw_h:
+            fragmentos_texto.append(_limpiar_html_citas(raw_h))
+            for m_td in re.finditer(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", raw_h, flags=re.I | re.S):
+                celdas_tabla.append(_limpiar_html_citas(m_td.group(1)))
+    if cuerpo_bloques is None:
+        for t_html in art.get("tablas_embebidas", []):
+            fragmentos_texto.append(_limpiar_html_citas(t_html))
+            for m_td in re.finditer(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", t_html, flags=re.I | re.S):
+                celdas_tabla.append(_limpiar_html_citas(m_td.group(1)))
+    for item_nota in art.get("notas_usadas", []):
+        n_html = item_nota[1] if isinstance(item_nota, (tuple, list)) else str(item_nota)
+        fragmentos_texto.append(_limpiar_html_citas(n_html))
+
+    texto_completo = "\n".join(fragmentos_texto)
+
+    pat_apellido = (
+        r"(?:(?:de|del|de\s+la|de\s+los|van|von|da|dos|das|le|la|Del|De\s+la)\s+)?"
+        r"[A-ZÁÉÍÓÚÑÜ][A-Za-zÁÉÍÓÚÑÜáéíóúñü'’\-]+"
+        r"(?:\s+(?:(?:de|del|de\s+la|de\s+los|van|von|da|dos|das)\s+)?[A-ZÁÉÍÓÚÑÜ][A-Za-zÁÉÍÓÚÑÜáéíóúñü'’\-]+){0,2}"
+    )
+    pat_autor_cita = (
+        rf"{pat_apellido}"
+        rf"(?:"
+        rf"\s+et\.?\s+al\s*\.?"
+        rf"|(?:,\s*{pat_apellido})*\s*(?:,?\s*(?:y|and|e|&)\s+{pat_apellido})"
+        rf")?"
+    )
+    pat_anio = r"(?:\d{4}[a-z]?|s\.f\.|en prensa|in press)"
+    pat_bloque_anios = (
+        rf"(?:\[\s*\d{{4}}(?:\s*[-–—]\s*\d{{2,4}})?\s*\]\s*)?"
+        rf"(?:{pat_anio})(?:\s*(?:,|;|y|and)\s*(?:\[\s*\d{{4}}(?:\s*[-–—]\s*\d{{2,4}})?\s*\]\s*)?(?:{pat_anio}))*"
+    )
+
+    stop_autores = {
+        "figura", "tabla", "fig", "tab", "figure", "figures", "table", "tables", "cap", "capitulo", "ano", "anos",
+        "en", "para", "desde", "hasta", "entre", "durante", "siglo", "siglos",
+    }
+    citas_detectadas = []
+
+    for m_par in re.finditer(r"\(([^()]{4,400})\)", texto_completo):
+        contenido = m_par.group(1)
+        if not re.search(pat_anio, contenido, flags=re.I):
+            continue
+        for m_c in re.finditer(
+            rf"({pat_autor_cita})(?:\s*,\s*|\s+)({pat_bloque_anios})(?=$|[\s:,.\];])",
+            contenido,
+        ):
+            autor_txt = m_c.group(1).strip()
+            anios_txt = m_c.group(2)
+            autor_cl = _extraer_primer_apellido_cita(autor_txt)
+            if not autor_cl or autor_cl in stop_autores:
+                continue
+            for a in re.findall(pat_anio, anios_txt, flags=re.I):
+                citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+    for m_nar in re.finditer(
+        rf"({pat_autor_cita})\s*\(\s*({pat_bloque_anios})(?:\s*[: ,][^)]*)?\)",
+        texto_completo,
+    ):
+        autor_txt = m_nar.group(1).strip()
+        anios_txt = m_nar.group(2)
+        autor_cl = _extraer_primer_apellido_cita(autor_txt)
+        if not autor_cl or autor_cl in stop_autores:
+            continue
+        for a in re.findall(pat_anio, anios_txt, flags=re.I):
+            citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+    for celda in celdas_tabla:
+        for m_td_c in re.finditer(
+            rf"({pat_autor_cita})(?:\s*,\s*|\s+)({pat_bloque_anios})(?=$|[\s:,.\];])",
+            celda,
+        ):
+            autor_txt = m_td_c.group(1).strip()
+            anios_txt = m_td_c.group(2)
+            autor_cl = _extraer_primer_apellido_cita(autor_txt)
+            if not autor_cl or autor_cl in stop_autores:
+                continue
+            for a in re.findall(pat_anio, anios_txt, flags=re.I):
+                citas_detectadas.append((f"{autor_txt} ({a})", autor_cl, a.lower().strip()))
+
+    citas_sin_ref = {}
+    for etiqueta, autor_cl, a_norm in citas_detectadas:
+        clave = (autor_cl, a_norm)
+        if clave in indice_ref_por_clave:
+            for r_obj in indice_ref_por_clave[clave]:
+                r_obj["citada"] = True
+        else:
+            if clave not in citas_sin_ref:
+                otros = sorted(anios_por_autor.get(autor_cl, []))
+                sugerencia = f" (en Bibliografía figura con año: {', '.join(otros)})" if otros else ""
+                citas_sin_ref[clave] = f"{etiqueta}{sugerencia}"
+
+    refs_no_citadas = []
+    for r in refs_parsed:
+        if not r["citada"]:
+            muestra = ""
+            if r["autor_clave"]:
+                m_dbg = re.search(rf".{{0,25}}\b{re.escape(r['autor_clave'].split()[0])}\b.{{0,35}}", texto_completo, flags=re.I)
+                if m_dbg:
+                    muestra = f" [en texto aparece: '{m_dbg.group(0).strip()}']"
+            refs_no_citadas.append(
+                f"[{r['idx']}] {r['texto'][:90]}{'...' if len(r['texto']) > 90 else ''}{muestra}"
+            )
+
+    return {
+        "total_citas": len(citas_detectadas),
+        "total_refs": len(refs_parsed),
+        "citas_sin_ref": list(citas_sin_ref.values()),
+        "refs_no_citadas": refs_no_citadas,
+        "posibles_duplicados": colisiones_ab,
+        "errores_formato_rma": errores_formato_rma,
+    }
+
+
+def imprimir_auditoria_citas(art: dict, cuerpo_bloques: list[dict] | None = None) -> None:
+    rep = auditar_citas_y_referencias(art, cuerpo_bloques=cuerpo_bloques)
+    print(
+        f"  - Control citas/bibliografía: {rep['total_citas']} citas en texto vs. "
+        f"{rep['total_refs']} referencias"
+    )
+    if rep["citas_sin_ref"]:
+        print(f"    [!] Citas en texto SIN referencia en bibliografía ({len(rep['citas_sin_ref'])}):")
+        for item in rep["citas_sin_ref"]:
+            print(f"        * {item}")
+    if rep["refs_no_citadas"]:
+        print(f"    [!] Referencias en bibliografía NO citadas en texto ({len(rep['refs_no_citadas'])}):")
+        for item in rep["refs_no_citadas"]:
+            print(f"        * {item}")
+    if rep["errores_formato_rma"]:
+        print(f"    [!] Formato bibliográfico RMA ({len(rep['errores_formato_rma'])} entrada/s con observaciones):")
+        for item in rep["errores_formato_rma"]:
+            print(f"        * [{item['idx']}] {item['preview']}")
+            for prob in item["problemas"]:
+                print(f"            - {prob}")
+    if rep["posibles_duplicados"]:
+        print(f"    [!] Posibles referencias mismo autor/año sin letra a/b ({len(rep['posibles_duplicados'])}):")
+        for item in rep["posibles_duplicados"]:
+            print(f"        * {item}")
+    if (
+        not rep["citas_sin_ref"]
+        and not rep["refs_no_citadas"]
+        and not rep["errores_formato_rma"]
+        and not rep["posibles_duplicados"]
+    ):
+        print("    [OK] Todas las citas y referencias coinciden y cumplen el formato RMA.")
 
 
 if __name__ == "__main__":

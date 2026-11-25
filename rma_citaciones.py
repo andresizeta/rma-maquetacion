@@ -474,7 +474,7 @@ class MotorCitacionesRMA:
         # 2) Citas narrativas: Maruca Sosa (1957: 176), Fibiger y Knüsel (2005), Waldron (1991, 2019)
         for mn in pat_narrativa.finditer(plain):
             ns, ne = mn.span()
-            if any(not (ne <= ps or ns >= pe) for ps, pe in paren_spans):
+            if any(ps <= ns and ne <= pe for ps, pe in paren_spans):
                 continue
             autor_raw = mn.group(1)
             autor_limpio, offset_stop = self._limpiar_palabras_iniciales_no_autor(autor_raw.strip())
